@@ -1,0 +1,1566 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>The Reform Lab - Reformer & Mat Pilates Routines</title>
+
+    <!-- Mobile & PWA Settings -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Reform Lab">
+    <meta name="theme-color" content="#FAF7F2">
+
+    <!-- Dynamic PWA Manifest Link & App Icons -->
+    <link id="pwa-manifest" rel="manifest">
+    <link id="pwa-apple-icon" rel="apple-touch-icon">
+    <link id="pwa-favicon" rel="icon" type="image/svg+xml">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                screens: {
+                    'xs': '380px',
+                    'sm': '640px',
+                    'md': '768px',
+                    'lg': '1024px',
+                    'xl': '1280px',
+                },
+                extend: {
+                    colors: {
+                        peach: {
+                            50: '#fef6f3',
+                            100: '#fdebe4',
+                            400: '#f79b7f',
+                            500: '#F27854',
+                            600: '#d95a34'
+                        },
+                        sage: {
+                            50: '#f4f8f7',
+                            100: '#e4efed',
+                            400: '#7bb2aa',
+                            500: '#518A82',
+                            600: '#43736d'
+                        },
+                        mint: {
+                            100: '#e6f9f1',
+                            500: '#51CF99',
+                            600: '#38b881'
+                        },
+                        ivory: {
+                            50: '#FAF7F2',
+                            100: '#F5F0E8',
+                            200: '#EAE3D7',
+                            300: '#DCD3C5',
+                            800: '#5A5650',
+                            900: '#2B2D2B'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif']
+                    }
+                }
+            }
+        };
+    </script>
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #FAF7F2;
+            color: #2B2D2B;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+            padding-top: env(safe-area-inset-top);
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+
+        /* Safe area utility helpers for notch and home bar */
+        .pt-safe { padding-top: max(1rem, env(safe-area-inset-top)); }
+        .pb-safe { padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
+
+        /* Prevent unwanted zooming on input elements in mobile iOS Safari */
+        input, select, textarea {
+            font-size: 16px !important;
+        }
+
+        /* Keyframe Animations for Vector Machine & Human Postures */
+        @keyframes carriageGlide {
+            0%, 100% { transform: translateX(0px); }
+            50% { transform: translateX(-28px); }
+        }
+
+        @keyframes springStretch {
+            0%, 100% { transform: scaleX(1); }
+            50% { transform: scaleX(1.75); }
+        }
+
+        @keyframes humanBreath {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-1.5px) scale(1.02); }
+        }
+
+        @keyframes supineKneeBend {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(-15deg); }
+        }
+
+        @keyframes strapLegLowerLift {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(24deg); }
+        }
+
+        .anim-carriage-glide { animation: carriageGlide 3.5s ease-in-out infinite; }
+        .anim-spring-stretch { transform-origin: 225px 102px; animation: springStretch 3.5s ease-in-out infinite; }
+        .anim-human-breath { animation: humanBreath 3.5s ease-in-out infinite; }
+        .anim-supine-knee { transform-origin: 135px 84px; animation: supineKneeBend 3.5s ease-in-out infinite; }
+        .anim-leg-straps { transform-origin: 135px 84px; animation: strapLegLowerLift 3.5s ease-in-out infinite; }
+
+        /* Custom Scrollbar Styling */
+        ::-webkit-scrollbar { width: 4px; height: 4px; }
+        ::-webkit-scrollbar-track { background: #FAF7F2; }
+        ::-webkit-scrollbar-thumb { background: #EAE3D7; border-radius: 9999px; }
+        ::-webkit-scrollbar-thumb:hover { background: #518A82; }
+        .scrollbar-none::-webkit-scrollbar { display: none; }
+        .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="h-full flex flex-col antialiased selection:bg-peach-100 selection:text-peach-600">
+
+    <!-- Top Header Bar -->
+    <header class="bg-white border-b border-ivory-200 sticky top-0 z-30 shadow-sm">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between gap-2">
+            
+            <!-- TRL Monogram Logo & Tagline -->
+            <div class="flex items-center space-x-2.5 flex-shrink-0">
+                <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-sage-50 border border-sage-200 flex items-center justify-center p-1 shadow-sm">
+                    <svg viewBox="0 0 100 100" class="w-full h-full text-sage-600 fill-current">
+                        <path d="M 12 18 H 58 V 25 H 41 V 68 H 31 V 25 H 12 Z"/>
+                        <path d="M 36 30 H 62 C 72 30 78 36 78 44 C 78 52 70 56 60 56 H 48 V 49 H 58 C 65 49 70 47 70 43 C 70 38 65 36 58 36 H 44 V 62 C 44 60 48 55 58 55 C 68 55 76 60 84 72 L 75 76 C 68 66 62 62 55 62 H 48 Z"/>
+                        <path d="M 44 52 H 52 V 76 H 88 V 83 H 44 Z"/>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-xs sm:text-base font-black tracking-tight text-ivory-900 leading-none">THE REFORM LAB</h1>
+                    <p class="text-[8px] sm:text-[10px] font-extrabold text-sage-600 tracking-wider mt-0.5 uppercase">MOVE &bull; STRONGER &bull; FURTHER</p>
+                </div>
+            </div>
+
+            <!-- Desktop Equipment Switcher Pill (Reformer vs Mat) -->
+            <div class="hidden sm:flex items-center bg-ivory-100 p-1 rounded-2xl border border-ivory-200">
+                <button id="btn-mode-reformer-dt" onclick="window.setEquipmentMode('reformer')" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-black transition bg-sage-500 text-white shadow-sm min-h-[36px]">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                        <path d="M2,17 H22 V19 H2 Z M4,14 H20 V16 H4 Z M6,10 H18 V13 H6 Z M19,7 V10 H21 V7 Z"/>
+                    </svg>
+                    <span>Reformer</span>
+                </button>
+                <button id="btn-mode-mat-dt" onclick="window.setEquipmentMode('mat')" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-black transition text-ivory-800 hover:text-ivory-900 min-h-[36px]">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                        <path d="M4,17 C2.89,17 2,16.11 2,15 C2,13.89 2.89,13 4,13 H20 C21.11,13 22,13.89 22,15 C22,16.11 21.11,17 20,17 Z M4,11 H20 V9 H4 Z M6,7 H18 V5 H6 Z"/>
+                    </svg>
+                    <span>Mat</span>
+                </button>
+            </div>
+
+            <!-- Desktop Header Controls -->
+            <div class="hidden sm:flex items-center space-x-2">
+                <!-- Spotify Link Input (Desktop) -->
+                <div class="hidden lg:flex items-center space-x-2 bg-ivory-50 px-3 py-1.5 rounded-xl border border-ivory-200 hover:border-mint-500 transition">
+                    <i data-lucide="music" class="w-4 h-4 text-mint-500 flex-shrink-0"></i>
+                    <input type="text" id="header-spotify-url" onchange="window.saveSpotifyLink(this.value)" placeholder="Paste Spotify Playlist URL..." class="bg-transparent text-xs font-semibold focus:outline-none w-36 text-ivory-900 placeholder-ivory-800">
+                </div>
+
+                <!-- PWA Install Button -->
+                <button id="btn-pwa-install" onclick="window.triggerPwaInstall()" class="flex items-center space-x-1.5 px-3 py-2 rounded-xl bg-sage-50 border border-sage-200 text-sage-600 hover:bg-sage-100 transition text-xs font-bold min-h-[38px]" title="Install PWA App">
+                    <i data-lucide="download" class="w-4 h-4 text-sage-600 flex-shrink-0"></i>
+                    <span>Install</span>
+                </button>
+
+                <!-- Workout Preferences Modal Button -->
+                <button onclick="window.openProfileModal()" class="flex items-center space-x-2 px-3 py-2 rounded-xl bg-ivory-50 border border-ivory-200 hover:border-peach-400 transition text-xs font-bold text-ivory-800 min-h-[38px]" title="Workout Preferences">
+                    <i data-lucide="sliders" class="w-4 h-4 text-peach-500 flex-shrink-0"></i>
+                    <span>Preferences</span>
+                    <span id="profile-badge-text-dt" class="capitalize bg-peach-100 text-peach-600 px-1.5 py-0.5 rounded-md text-[10px] font-extrabold">Intermediate</span>
+                </button>
+
+                <button id="btn-audio-toggle-dt" onclick="window.toggleAudioMode()" class="p-2 rounded-xl bg-peach-50 text-peach-600 border border-peach-100 hover:bg-peach-100 transition min-h-[38px] min-w-[38px] flex items-center justify-center" title="Toggle Audio Voice Cues">
+                    <i data-lucide="volume-2" class="w-4 h-4"></i>
+                </button>
+
+                <button onclick="window.startWorkout()" class="px-3.5 py-2 rounded-xl bg-peach-500 text-white font-extrabold text-xs hover:bg-peach-600 transition shadow-md shadow-peach-500/20 flex items-center space-x-1.5 min-h-[38px]">
+                    <i data-lucide="play" class="w-4 h-4 fill-current"></i>
+                    <span>Start Session</span>
+                </button>
+            </div>
+
+            <!-- Mobile Top Quick Header Action Badges -->
+            <div class="flex sm:hidden items-center space-x-1.5">
+                <button onclick="window.openProfileModal()" class="flex items-center space-x-1 px-2.5 py-1.5 rounded-xl bg-ivory-50 border border-ivory-200 text-[11px] font-extrabold text-ivory-900 min-h-[36px]">
+                    <i data-lucide="sliders" class="w-3.5 h-3.5 text-peach-500"></i>
+                    <span id="profile-badge-text-mb" class="capitalize">Interm.</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 lg:px-8 py-3 sm:py-4 space-y-4 pb-28 sm:pb-6">
+
+        <!-- Calendar Date Ribbon -->
+        <div id="date-ribbon-container" class="flex items-center space-x-2 overflow-x-auto pb-1 scrollbar-none">
+            <!-- Dynamically Populated -->
+        </div>
+
+        <!-- Serene Sage Daily Banner -->
+        <div class="bg-sage-500 rounded-3xl p-4 sm:p-6 text-white shadow-xl shadow-sage-500/15 relative overflow-hidden flex flex-col md:flex-row items-start md:items-center justify-between gap-3">
+            <div class="space-y-1.5 sm:space-y-2 max-w-2xl z-10">
+                <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white/15 backdrop-blur-md text-[10px] sm:text-[11px] font-bold tracking-wide">
+                    <i data-lucide="sparkles" class="w-3.5 h-3.5 text-peach-100"></i>
+                    <span id="banner-equipment-label" class="uppercase">DAILY REFORMER PILATES INSIGHT</span>
+                </div>
+                <blockquote id="daily-quote-text" class="text-xs sm:text-base md:text-lg font-semibold italic text-ivory-50 leading-relaxed">
+                    "Physical fitness is the first requisite of happiness."
+                </blockquote>
+                <p id="daily-quote-author" class="text-[9px] sm:text-xs font-bold text-ivory-200 uppercase tracking-widest">&mdash; Joseph Pilates</p>
+            </div>
+
+            <!-- Duration Selector (30m / 45m) -->
+            <div class="z-10 flex flex-wrap items-center gap-2 bg-white/10 backdrop-blur-md p-1.5 sm:p-2 rounded-2xl border border-white/20 w-full sm:w-auto justify-between sm:justify-start">
+                <span class="text-xs font-extrabold text-white px-2">Duration:</span>
+                <div class="flex items-center space-x-1.5">
+                    <button id="btn-duration-30" onclick="window.setDuration(30)" class="px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-black transition bg-white text-sage-600 shadow-sm min-h-[36px]">
+                        30 Mins (20 Moves)
+                    </button>
+                    <button id="btn-duration-45" onclick="window.setDuration(45)" class="px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-black transition text-white hover:bg-white/10 min-h-[36px]">
+                        45 Mins (25 Moves)
+                    </button>
+                </div>
+            </div>
+
+            <div class="absolute -right-10 -bottom-10 opacity-10 pointer-events-none">
+                <i data-lucide="activity" class="w-64 h-64 text-white"></i>
+            </div>
+        </div>
+
+        <!-- View Switcher & Block Filter Bar -->
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b border-ivory-200 pb-3 gap-3">
+            <nav class="flex space-x-1.5 sm:space-x-3 w-full sm:w-auto overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
+                <button id="tab-daily" onclick="window.switchView('daily')" class="px-3 sm:px-3.5 py-2 rounded-xl text-xs font-extrabold transition bg-peach-500 text-white shadow-sm flex-shrink-0 min-h-[38px]">
+                    Daily Routine
+                </button>
+                <button id="tab-library" onclick="window.switchView('library')" class="px-3 sm:px-3.5 py-2 rounded-xl text-xs font-extrabold transition text-ivory-800 hover:bg-ivory-100 flex-shrink-0 min-h-[38px]">
+                    Repertoire Library
+                </button>
+                <button id="tab-builder" onclick="window.switchView('builder')" class="px-3 sm:px-3.5 py-2 rounded-xl text-xs font-extrabold transition text-ivory-800 hover:bg-ivory-100 flex-shrink-0 min-h-[38px]">
+                    Custom Flow Builder
+                </button>
+            </nav>
+
+            <div id="focus-filter-wrapper" class="flex items-center space-x-2 w-full sm:w-auto justify-end">
+                <span class="text-xs font-bold text-ivory-800 hidden sm:inline">Block Filter:</span>
+                <select id="select-focus-filter" onchange="window.setFocusFilter(this.value)" class="text-xs font-bold bg-white border border-ivory-200 rounded-xl px-3 py-2 text-ivory-900 focus:outline-none focus:border-peach-500 w-full sm:w-auto min-h-[38px]">
+                    <option value="all">All Routine Blocks</option>
+                    <option value="warmup">1. Warm-Up Series</option>
+                    <option value="core">2. Core & Abdominals</option>
+                    <option value="arms">3. Upper Body & Arms</option>
+                    <option value="glutes">4. Glutes & Legs</option>
+                    <option value="bonus">5. Bonus Block (Straps / Standing)</option>
+                    <option value="stretch">6. Cool-Down Stretch (2 Moves)</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- VIEW 1: DAILY ROUTINE -->
+        <div id="view-daily" class="space-y-6">
+            <div id="routine-cards-container" class="space-y-4 sm:space-y-8">
+                <!-- Dynamically Populated -->
+            </div>
+        </div>
+
+        <!-- VIEW 2: REPERTOIRE LIBRARY -->
+        <div id="view-library" class="hidden space-y-4 sm:space-y-6">
+            <div class="bg-white rounded-2xl p-3 sm:p-4 border border-ivory-200 flex flex-col md:flex-row items-center justify-between gap-3">
+                <div class="relative w-full md:w-80">
+                    <i data-lucide="search" class="w-4 h-4 text-ivory-800 absolute left-3 top-3"></i>
+                    <input type="text" id="library-search" onkeyup="window.filterLibrary()" placeholder="Search movements or props..." class="w-full pl-9 pr-4 py-2 text-xs font-semibold bg-ivory-50 border border-ivory-200 rounded-xl focus:outline-none focus:border-peach-500">
+                </div>
+
+                <div class="flex items-center space-x-1.5 w-full md:w-auto overflow-x-auto pb-1 md:pb-0 scrollbar-none">
+                    <button id="lib-lvl-all" onclick="window.setLibraryLevelFilter('all')" class="px-3 py-2 rounded-lg text-xs font-bold bg-peach-500 text-white flex-shrink-0 min-h-[36px]">All Levels</button>
+                    <button id="lib-lvl-beginner" onclick="window.setLibraryLevelFilter('beginner')" class="px-3 py-2 rounded-lg text-xs font-bold bg-ivory-100 text-ivory-800 hover:bg-ivory-200 flex-shrink-0 min-h-[36px]">Beginner</button>
+                    <button id="lib-lvl-intermediate" onclick="window.setLibraryLevelFilter('intermediate')" class="px-3 py-2 rounded-lg text-xs font-bold bg-ivory-100 text-ivory-800 hover:bg-ivory-200 flex-shrink-0 min-h-[36px]">Intermediate</button>
+                    <button id="lib-lvl-advanced" onclick="window.setLibraryLevelFilter('advanced')" class="px-3 py-2 rounded-lg text-xs font-bold bg-ivory-100 text-ivory-800 hover:bg-ivory-200 flex-shrink-0 min-h-[36px]">Advanced</button>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-between text-xs font-bold text-ivory-800 px-1">
+                <span id="library-count-indicator">Showing Movements</span>
+                <span>Full Studio Repertoire</span>
+            </div>
+
+            <div id="library-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4">
+                <!-- Dynamically Populated -->
+            </div>
+        </div>
+
+        <!-- VIEW 3: CUSTOM FLOW BUILDER -->
+        <div id="view-builder" class="hidden space-y-4 sm:space-y-6">
+            <div class="bg-white rounded-2xl p-4 sm:p-6 border border-ivory-200 space-y-4">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                    <div>
+                        <h3 class="text-xs sm:text-base font-extrabold text-ivory-900">Build Your Custom Flow</h3>
+                        <p class="text-[11px] sm:text-xs text-ivory-800 font-medium">Select movements to construct a custom flow sequence.</p>
+                    </div>
+                    <button onclick="window.startCustomWorkout()" class="px-4 py-2.5 rounded-xl bg-peach-500 text-white text-xs font-extrabold hover:bg-peach-600 transition shadow-sm flex items-center space-x-1.5 w-full sm:w-auto justify-center min-h-[42px]">
+                        <i data-lucide="play" class="w-4 h-4 fill-current"></i>
+                        <span>Play Custom Sequence</span>
+                    </button>
+                </div>
+
+                <div id="builder-queue" class="min-h-[72px] bg-ivory-50 rounded-2xl p-3 border border-ivory-200 flex flex-wrap items-center gap-2">
+                    <span class="text-xs text-ivory-800 font-medium italic w-full text-center">No exercises added yet. Click "+ Add" from the bank below.</span>
+                </div>
+            </div>
+
+            <div class="relative w-full max-w-md">
+                <i data-lucide="search" class="w-4 h-4 text-ivory-800 absolute left-3 top-3"></i>
+                <input type="text" id="builder-search" onkeyup="window.renderBuilderBank()" placeholder="Filter exercise bank..." class="w-full pl-9 pr-4 py-2 text-xs font-semibold bg-white border border-ivory-200 rounded-xl focus:outline-none focus:border-peach-500">
+            </div>
+
+            <div id="builder-bank" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                <!-- Dynamically Populated -->
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Fixed Mobile Bottom Navigation Bar -->
+    <div id="mobile-bottom-menu-bar" class="fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur-md border-t border-ivory-200 px-3 py-2 pb-safe shadow-xl flex sm:hidden items-center justify-between gap-1.5">
+        
+        <!-- Mobile Equipment Switcher Toggle -->
+        <div class="flex items-center bg-ivory-100 p-1 rounded-2xl border border-ivory-200 flex-1 max-w-[170px]">
+            <button id="btn-mode-reformer-mb" onclick="window.setEquipmentMode('reformer')" class="flex-1 flex items-center justify-center space-x-1 py-1.5 rounded-xl text-[10px] font-black transition bg-sage-500 text-white shadow-sm min-h-[36px]">
+                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path d="M2,17 H22 V19 H2 Z M4,14 H20 V16 H4 Z M6,10 H18 V13 H6 Z M19,7 V10 H21 V7 Z"/>
+                </svg>
+                <span>Reformer</span>
+            </button>
+            <button id="btn-mode-mat-mb" onclick="window.setEquipmentMode('mat')" class="flex-1 flex items-center justify-center space-x-1 py-1.5 rounded-xl text-[10px] font-black transition text-ivory-800 hover:text-ivory-900 min-h-[36px]">
+                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path d="M4,17 C2.89,17 2,16.11 2,15 C2,13.89 2.89,13 4,13 H20 C21.11,13 22,13.89 22,15 C22,16.11 21.11,17 20,17 Z M4,11 H20 V9 H4 Z M6,7 H18 V5 H6 Z"/>
+                </svg>
+                <span>Mat</span>
+            </button>
+        </div>
+
+        <!-- Audio Cue Toggle -->
+        <button id="btn-audio-toggle-mb" onclick="window.toggleAudioMode()" class="p-2.5 rounded-xl bg-peach-50 text-peach-600 border border-peach-100 min-h-[38px] min-w-[38px] flex items-center justify-center" title="Toggle Voice Cues">
+            <i data-lucide="volume-2" class="w-4 h-4"></i>
+        </button>
+
+        <!-- Workout Preferences Button -->
+        <button onclick="window.openProfileModal()" class="p-2.5 rounded-xl bg-ivory-50 border border-ivory-200 text-ivory-800 min-h-[38px] min-w-[38px] flex items-center justify-center" title="Workout Preferences">
+            <i data-lucide="sliders" class="w-4 h-4 text-peach-500"></i>
+        </button>
+
+        <!-- Start Session Main Action Button -->
+        <button onclick="window.startWorkout()" class="flex-1 px-3 py-2 rounded-xl bg-peach-500 text-white font-black text-xs hover:bg-peach-600 transition shadow-md shadow-peach-500/20 flex items-center justify-center space-x-1 min-h-[38px]">
+            <i data-lucide="play" class="w-3.5 h-3.5 fill-current"></i>
+            <span>Start</span>
+        </button>
+
+    </div>
+
+    <!-- WORKOUT PLAYER OVERLAY -->
+    <div id="view-player" class="fixed inset-0 z-50 bg-ivory-900 flex flex-col hidden text-white pt-safe pb-safe">
+        <!-- Player Top Bar -->
+        <div class="h-14 sm:h-16 border-b border-white/10 px-3 sm:px-6 flex items-center justify-between">
+            <div class="flex items-center space-x-2 sm:space-x-3">
+                <span id="player-block-badge" class="px-2.5 py-1 rounded-full bg-peach-500 text-white font-extrabold text-[10px] sm:text-xs uppercase tracking-wider">
+                    Block 1
+                </span>
+                <span id="player-step-counter" class="text-xs font-bold text-ivory-300">Move 1 / 20</span>
+            </div>
+            <button onclick="window.exitWorkout()" class="p-2 rounded-xl bg-white/10 hover:bg-white/20 transition text-white min-h-[40px] min-w-[40px] flex items-center justify-center">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+        </div>
+
+        <!-- Player Main Body -->
+        <div class="flex-1 max-w-4xl w-full mx-auto p-3 sm:p-6 flex flex-col justify-between space-y-3 sm:space-y-4 overflow-y-auto">
+
+            <!-- 10s Side Swap Flashing Banner -->
+            <div id="side-swap-overlay" class="hidden bg-peach-500 text-white px-3 py-2 rounded-2xl text-center font-black text-[11px] sm:text-xs uppercase tracking-widest animate-pulse shadow-lg border border-peach-400">
+                &sharp; 10s SIDE SWAP BUFFER &mdash; CHANGE SIDES NOW
+            </div>
+
+            <!-- Inter-Block Break Banner -->
+            <div id="block-break-overlay" class="hidden bg-sage-500 text-white px-3 py-2.5 rounded-2xl text-center font-black text-[11px] sm:text-xs uppercase tracking-widest shadow-lg border border-sage-400 space-y-1">
+                <div>20s INTER-BLOCK BREAK</div>
+                <div id="block-break-next-title" class="text-[10px] sm:text-[11px] text-ivory-100 font-bold capitalize">Next Block: Core & Abdominals</div>
+            </div>
+
+            <!-- Upcoming Preview Banner -->
+            <div id="player-upcoming-preview" class="hidden bg-ivory-100 text-ivory-900 border border-peach-400 px-3 py-2 rounded-2xl flex items-center justify-between shadow-md">
+                <div class="flex items-center space-x-2">
+                    <span class="px-2 py-0.5 rounded-md bg-peach-500 text-white font-extrabold text-[9px] sm:text-[10px] uppercase">UPCOMING @ 10s</span>
+                    <span id="preview-upcoming-name" class="text-xs font-black">Move Name</span>
+                </div>
+                <span id="preview-upcoming-spring" class="text-[10px] font-bold text-peach-600 bg-peach-50 px-2 py-0.5 rounded">1 Red Spring</span>
+            </div>
+
+            <!-- Posture-Matched Animated Vector Showcase -->
+            <div class="bg-white/5 border border-white/10 rounded-3xl p-2 sm:p-4 flex flex-col items-center justify-center min-h-[160px] sm:min-h-[220px] relative overflow-hidden">
+                <div id="player-vector-container" class="w-full max-w-md h-36 sm:h-48 flex items-center justify-center">
+                    <!-- Dynamic Posture SVG Injected Here -->
+                </div>
+            </div>
+
+            <!-- Exercise Details -->
+            <div class="text-center space-y-1 sm:space-y-2">
+                <p id="player-category-name" class="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-peach-400">Warm-Up Series</p>
+                <h2 id="player-exercise-title" class="text-lg sm:text-3xl font-black tracking-tight text-white">Footwork: Parallel Heels</h2>
+                <div class="flex items-center justify-center space-x-2 sm:space-x-3 text-[11px] sm:text-xs font-bold text-ivory-200">
+                    <span id="player-spring-badge" class="px-2.5 py-1 rounded-lg bg-white/10 border border-white/15 text-peach-300">2 Red Springs</span>
+                    <span id="player-prop-badge" class="px-2.5 py-1 rounded-lg bg-white/10 border border-white/15">Prop: None</span>
+                </div>
+                <p id="player-form-cue" class="text-xs text-ivory-300 max-w-xl mx-auto font-medium leading-relaxed px-2">
+                    Press smoothly through heels, engaging glutes and maintaining neutral spine.
+                </p>
+            </div>
+
+            <div class="flex flex-col items-center justify-center space-y-2 sm:space-y-4">
+                <div class="relative w-28 h-28 sm:w-36 sm:h-36 flex items-center justify-center">
+                    <svg class="w-full h-full transform -rotate-90" viewBox="0 0 120 120">
+                        <circle cx="60" cy="60" r="52" stroke="currentColor" stroke-width="8" class="text-white/10" fill="none"/>
+                        <circle id="timer-progress-circle" cx="60" cy="60" r="52" stroke="currentColor" stroke-width="8" class="text-peach-500" fill="none" stroke-dasharray="326.72" stroke-dashoffset="0" stroke-linecap="round"/>
+                    </svg>
+                    <div class="absolute flex flex-col items-center">
+                        <span id="timer-display-digits" class="text-2xl sm:text-3xl font-black tracking-tight">01:00</span>
+                        <span id="timer-phase-label" class="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-peach-400">WORK</span>
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-6">
+                    <button onclick="window.prevExercise()" class="p-3 sm:p-3.5 rounded-2xl bg-white/10 hover:bg-white/20 text-white transition min-h-[48px] min-w-[48px] flex items-center justify-center">
+                        <i data-lucide="skip-back" class="w-5 h-5"></i>
+                    </button>
+                    <button id="btn-player-play" onclick="window.toggleTimer()" class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-peach-500 hover:bg-peach-600 text-white flex items-center justify-center shadow-lg shadow-peach-500/30 transition">
+                        <i data-lucide="pause" class="w-7 h-7 sm:w-8 sm:h-8 fill-current"></i>
+                    </button>
+                    <button onclick="window.nextExercise()" class="p-3 sm:p-3.5 rounded-2xl bg-white/10 hover:bg-white/20 text-white transition min-h-[48px] min-w-[48px] flex items-center justify-center">
+                        <i data-lucide="skip-forward" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Spotify Sync Bar -->
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-2.5 sm:p-3 flex items-center justify-between">
+                <div class="flex items-center space-x-2.5">
+                    <i data-lucide="music" class="w-5 h-5 text-mint-500 flex-shrink-0"></i>
+                    <div>
+                        <p class="text-xs font-bold text-white">Spotify Block Soundtrack</p>
+                        <p id="spotify-current-playlist" class="text-[10px] text-ivory-300 font-semibold truncate max-w-[150px] sm:max-w-[180px]">Warm-Up Lo-Fi Beats</p>
+                    </div>
+                </div>
+                <button onclick="window.connectSpotify()" class="px-3 py-1.5 rounded-xl bg-mint-500 text-ivory-900 font-extrabold text-xs hover:bg-mint-600 transition">
+                    Sync
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- WORKOUT PREFERENCES MODAL -->
+    <div id="modal-profile" class="fixed inset-0 z-50 bg-ivory-900/60 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4 hidden">
+        <div class="bg-white rounded-t-3xl sm:rounded-3xl max-w-lg w-full p-5 sm:p-6 space-y-4 sm:space-y-5 shadow-2xl border border-ivory-200 max-h-[85vh] sm:max-h-[90vh] overflow-y-auto">
+            <div class="flex items-center justify-between border-b border-ivory-200 pb-3">
+                <div class="flex items-center space-x-2">
+                    <i data-lucide="sliders" class="w-5 h-5 text-peach-500"></i>
+                    <h3 class="text-sm sm:text-base font-extrabold text-ivory-900">Workout Preferences</h3>
+                </div>
+                <button onclick="window.closeProfileModal()" class="p-1 rounded-lg text-ivory-800 hover:bg-ivory-100 min-h-[36px] min-w-[36px] flex items-center justify-center">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <!-- Primary Equipment Mode in Preferences -->
+            <div class="space-y-2">
+                <label class="text-xs font-extrabold text-ivory-900 uppercase tracking-wide">Primary Equipment</label>
+                <div class="grid grid-cols-2 gap-2">
+                    <button id="pref-mode-reformer" onclick="window.setEquipmentMode('reformer')" class="py-2.5 px-3 rounded-xl border text-xs font-bold transition flex items-center justify-center space-x-2 bg-sage-50 border-sage-500 text-sage-600 min-h-[44px]">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                            <path d="M2,17 H22 V19 H2 Z M4,14 H20 V16 H4 Z M6,10 H18 V13 H6 Z M19,7 V10 H21 V7 Z"/>
+                        </svg>
+                        <span>Reformer Bed</span>
+                    </button>
+                    <button id="pref-mode-mat" onclick="window.setEquipmentMode('mat')" class="py-2.5 px-3 rounded-xl border text-xs font-bold transition flex items-center justify-center space-x-2 border-ivory-200 text-ivory-800 min-h-[44px]">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                            <path d="M4,17 C2.89,17 2,16.11 2,15 C2,13.89 2.89,13 4,13 H20 C21.11,13 22,13.89 22,15 C22,16.11 21.11,17 20,17 Z M4,11 H20 V9 H4 Z M6,7 H18 V5 H6 Z"/>
+                        </svg>
+                        <span>Mat Pilates</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Spotify Music Section inside Preferences -->
+            <div class="space-y-2 bg-ivory-50 p-3.5 rounded-2xl border border-ivory-200">
+                <label class="text-xs font-extrabold text-ivory-900 uppercase tracking-wide flex items-center justify-between">
+                    <span>Workout Spotify Playlist</span>
+                    <i data-lucide="music" class="w-4 h-4 text-mint-500"></i>
+                </label>
+                <div class="flex items-center space-x-2">
+                    <input type="text" id="pref-spotify-url" placeholder="Paste Spotify Playlist URL..." class="flex-1 bg-white border border-ivory-200 rounded-xl px-3 py-2 text-xs font-semibold focus:outline-none focus:border-mint-500 text-ivory-900">
+                    <button onclick="window.copySpotifyLink()" class="px-3 py-2 rounded-xl bg-mint-500 text-ivory-900 font-extrabold text-xs hover:bg-mint-600 transition flex-shrink-0 flex items-center space-x-1 min-h-[38px]">
+                        <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                        <span>Copy</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Skill Level Selector -->
+            <div class="space-y-2">
+                <label class="text-xs font-extrabold text-ivory-900 uppercase tracking-wide">Workout Skill Level</label>
+                <div class="grid grid-cols-3 gap-2">
+                    <button id="opt-lvl-beginner" onclick="window.setSkillLevel('beginner')" class="py-2.5 px-2 rounded-xl border text-xs font-bold transition border-ivory-200 text-ivory-800 min-h-[40px]">
+                        Beginner
+                    </button>
+                    <button id="opt-lvl-intermediate" onclick="window.setSkillLevel('intermediate')" class="py-2.5 px-2 rounded-xl border text-xs font-bold transition border-peach-500 bg-peach-50 text-peach-600 min-h-[40px]">
+                        Intermediate
+                    </button>
+                    <button id="opt-lvl-advanced" onclick="window.setSkillLevel('advanced')" class="py-2.5 px-2 rounded-xl border text-xs font-bold transition border-ivory-200 text-ivory-800 min-h-[40px]">
+                        Advanced
+                    </button>
+                </div>
+            </div>
+
+            <!-- Equipment Checkboxes -->
+            <div class="space-y-2.5">
+                <label class="text-xs font-extrabold text-ivory-900 uppercase tracking-wide">Available Props & Accessories</label>
+                <div class="space-y-2.5 text-xs font-bold text-ivory-800">
+                    <label class="flex items-center space-x-2.5 cursor-pointer py-1">
+                        <input type="checkbox" id="chk-prop-box" checked onchange="window.toggleEquipment('box', this.checked)" class="rounded border-ivory-300 text-peach-500 focus:ring-peach-500 w-4 h-4">
+                        <span id="lbl-prop-box">Short / Long Box (Reformer Support)</span>
+                    </label>
+                    <label class="flex items-center space-x-2.5 cursor-pointer py-1">
+                        <input type="checkbox" id="chk-prop-ball" checked onchange="window.toggleEquipment('ball', this.checked)" class="rounded border-ivory-300 text-peach-500 focus:ring-peach-500 w-4 h-4">
+                        <span>Small Pilates / Yoga Ball</span>
+                    </label>
+                    <label class="flex items-center space-x-2.5 cursor-pointer py-1">
+                        <input type="checkbox" id="chk-prop-circle" checked onchange="window.toggleEquipment('circle', this.checked)" class="rounded border-ivory-300 text-peach-500 focus:ring-peach-500 w-4 h-4">
+                        <span>Magic Circle (Pilates Ring)</span>
+                    </label>
+                    <label class="flex items-center space-x-2.5 cursor-pointer py-1">
+                        <input type="checkbox" id="chk-prop-block" checked onchange="window.toggleEquipment('block', this.checked)" class="rounded border-ivory-300 text-peach-500 focus:ring-peach-500 w-4 h-4">
+                        <span>Yoga Block</span>
+                    </label>
+                    <label class="flex items-center space-x-2.5 cursor-pointer py-1">
+                        <input type="checkbox" id="chk-prop-band" checked onchange="window.toggleEquipment('band', this.checked)" class="rounded border-ivory-300 text-peach-500 focus:ring-peach-500 w-4 h-4">
+                        <span>Resistance Band</span>
+                    </label>
+                </div>
+            </div>
+
+            <button onclick="window.saveAndApplyProfile()" class="w-full py-3 rounded-2xl bg-peach-500 text-white font-extrabold text-xs hover:bg-peach-600 transition shadow-md shadow-peach-500/20 min-h-[44px]">
+                Save Preferences & Regenerate Routine
+            </button>
+        </div>
+    </div>
+
+    <!-- iOS Safari PWA Install Guidance Modal -->
+    <div id="modal-ios-pwa" class="fixed inset-0 z-50 bg-ivory-900/60 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4 hidden">
+        <div class="bg-white rounded-t-3xl sm:rounded-3xl max-w-md w-full p-5 sm:p-6 space-y-4 shadow-2xl border border-ivory-200">
+            <div class="flex items-center justify-between border-b border-ivory-200 pb-3">
+                <div class="flex items-center space-x-2">
+                    <i data-lucide="download" class="w-5 h-5 text-sage-600"></i>
+                    <h3 class="text-base font-extrabold text-ivory-900">Install Reform Lab App</h3>
+                </div>
+                <button onclick="document.getElementById('modal-ios-pwa').classList.add('hidden')" class="p-1 rounded-lg text-ivory-800 hover:bg-ivory-100 min-h-[36px] min-w-[36px] flex items-center justify-center">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            <p class="text-xs text-ivory-800 font-medium leading-relaxed">
+                Install <strong>The Reform Lab</strong> directly to your home screen for full-screen workouts, faster loading, and offline access.
+            </p>
+            <div class="space-y-3 bg-sage-50 p-3.5 rounded-2xl border border-sage-200 text-xs font-bold text-sage-800">
+                <div class="flex items-center space-x-3">
+                    <span class="w-6 h-6 rounded-full bg-sage-500 text-white flex items-center justify-center text-xs flex-shrink-0">1</span>
+                    <span>Tap the <strong>Share</strong> button in Safari's bottom toolbar.</span>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <span class="w-6 h-6 rounded-full bg-sage-500 text-white flex items-center justify-center text-xs flex-shrink-0">2</span>
+                    <span>Scroll down and select <strong>"Add to Home Screen"</strong>.</span>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <span class="w-6 h-6 rounded-full bg-sage-500 text-white flex items-center justify-center text-xs flex-shrink-0">3</span>
+                    <span>Tap <strong>Add</strong> in the top right corner!</span>
+                </div>
+            </div>
+            <button onclick="document.getElementById('modal-ios-pwa').classList.add('hidden')" class="w-full py-3 rounded-2xl bg-sage-500 text-white font-extrabold text-xs hover:bg-sage-600 transition min-h-[44px]">
+                Got It
+            </button>
+        </div>
+    </div>
+
+    <!-- Toast Notification Banner -->
+    <div id="toast-banner" class="fixed bottom-20 sm:bottom-6 right-4 sm:right-6 z-50 bg-ivory-900 text-white px-4 py-2.5 rounded-2xl text-xs font-bold shadow-2xl border border-white/10 hidden transform transition-all duration-300 max-w-xs sm:max-w-md">
+        <span id="toast-message">Notification message here</span>
+    </div>
+
+    <script>
+        window.equipmentMode = 'reformer'; // 'reformer' or 'mat'
+        window.currentDateStr = new Date().toISOString().split('T')[0];
+        window.currentDuration = 30; // 30 or 45 mins
+        window.userSkillLevel = 'intermediate';
+        window.equipmentAvailable = { box: true, ball: true, circle: true, block: true, band: true };
+        window.audioMode = 'all';
+        window.currentFocusFilter = 'all';
+        window.libraryLevelFilter = 'all';
+        window.customBuilderQueue = [];
+        window.activeRoutine = [];
+        window.playerIndex = 0;
+        window.playerPhase = 'WORK_SIDE_1'; 
+        window.timerSeconds = 30;
+        window.isTimerRunning = false;
+        window.timerInterval = null;
+        window.userSpotifyUrl = '';
+        window.deferredPwaPrompt = null;
+
+        window.DAILY_QUOTES = [
+            { text: "Physical fitness is the first requisite of happiness.", author: "Joseph Pilates" },
+            { text: "Contrology develops the body uniformly, corrects wrong postures, and restores physical vitality.", author: "Joseph Pilates" },
+            { text: "Patience and persistence are vital qualities in the ultimate accomplishment of any worthwhile endeavor.", author: "Joseph Pilates" },
+            { text: "Change happens through movement and movement heals.", author: "Joseph Pilates" },
+            { text: "In 10 sessions you'll feel the difference, in 20 sessions you'll see the difference, and in 30 sessions you'll have a whole new body.", author: "Joseph Pilates" }
+        ];
+
+        window.setSkillLevel = function(lvl) {
+            window.userSkillLevel = lvl;
+            ['beginner', 'intermediate', 'advanced'].forEach(l => {
+                const btn = document.getElementById(`opt-lvl-${l}`);
+                if (btn) {
+                    if (l === lvl) {
+                        btn.className = 'py-2.5 px-2 rounded-xl border text-xs font-bold transition border-peach-500 bg-peach-50 text-peach-600 min-h-[40px]';
+                    } else {
+                        btn.className = 'py-2.5 px-2 rounded-xl border text-xs font-bold transition border-ivory-200 text-ivory-800 min-h-[40px]';
+                    }
+                }
+            });
+            const dtBadge = document.getElementById('profile-badge-text-dt');
+            const mbBadge = document.getElementById('profile-badge-text-mb');
+            if (dtBadge) dtBadge.innerText = lvl;
+            if (mbBadge) mbBadge.innerText = lvl.substring(0, 7) + (lvl.length > 7 ? '.' : '');
+        };
+
+        window.toggleEquipment = function(prop, isChecked) {
+            window.equipmentAvailable[prop] = isChecked;
+        };
+
+        window.saveAndApplyProfile = function() {
+            window.closeProfileModal();
+            window.generateDailyRoutine();
+            window.renderDailyView();
+            window.showToast("Preferences saved & routine regenerated!");
+        };
+
+        window.saveSpotifyLink = function(url) {
+            window.userSpotifyUrl = url;
+            const headerInput = document.getElementById('header-spotify-url');
+            const prefInput = document.getElementById('pref-spotify-url');
+            if (headerInput && headerInput.value !== url) headerInput.value = url;
+            if (prefInput && prefInput.value !== url) prefInput.value = url;
+            
+            const playlistLabel = document.getElementById('spotify-current-playlist');
+            if (playlistLabel) {
+                playlistLabel.innerText = url ? "Custom Playlist Synced" : "Warm-Up Lo-Fi Beats";
+            }
+            window.showToast(url ? "Spotify Playlist Synced!" : "Spotify link cleared");
+        };
+
+        window.copySpotifyLink = function() {
+            const prefInput = document.getElementById('pref-spotify-url');
+            if (prefInput && prefInput.value) {
+                window.saveSpotifyLink(prefInput.value);
+                const temp = document.createElement('textarea');
+                temp.value = prefInput.value;
+                document.body.appendChild(temp);
+                temp.select();
+                document.execCommand('copy');
+                document.body.removeChild(temp);
+                window.showToast("Spotify Link Copied to Clipboard!");
+            } else {
+                window.showToast("Please paste a Spotify URL first");
+            }
+        };
+
+        window.connectSpotify = function() {
+            if (window.userSpotifyUrl) {
+                window.open(window.userSpotifyUrl, '_blank');
+            } else {
+                window.showToast("Paste a Spotify playlist URL in Preferences first!");
+            }
+        };
+
+        window.toggleAudioMode = function() {
+            if (window.audioMode === 'all') window.audioMode = 'beeps';
+            else if (window.audioMode === 'beeps') window.audioMode = 'off';
+            else window.audioMode = 'all';
+
+            const btnDt = document.getElementById('btn-audio-toggle-dt');
+            const btnMb = document.getElementById('btn-audio-toggle-mb');
+            const activeClass = 'p-2 rounded-xl bg-peach-50 text-peach-600 border border-peach-100 min-h-[38px] min-w-[38px] flex items-center justify-center';
+            const beepsClass = 'p-2 rounded-xl bg-sage-50 text-sage-600 border border-sage-100 min-h-[38px] min-w-[38px] flex items-center justify-center';
+            const offClass = 'p-2 rounded-xl bg-ivory-100 text-ivory-800 border border-ivory-200 min-h-[38px] min-w-[38px] flex items-center justify-center';
+
+            let currentClass = activeClass;
+            if (window.audioMode === 'beeps') currentClass = beepsClass;
+            else if (window.audioMode === 'off') currentClass = offClass;
+
+            if (btnDt) btnDt.className = currentClass;
+            if (btnMb) btnMb.className = currentClass;
+
+            window.showToast(`Voice Cues Set To: ${window.audioMode.toUpperCase()}`);
+        };
+
+        window.triggerPwaInstall = function() {
+            if (window.deferredPwaPrompt) {
+                window.deferredPwaPrompt.prompt();
+                window.deferredPwaPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        window.showToast("Thank you for installing The Reform Lab!");
+                    }
+                    window.deferredPwaPrompt = null;
+                });
+            } else {
+                const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+                if (isIOS) {
+                    const iosModal = document.getElementById('modal-ios-pwa');
+                    if (iosModal) iosModal.classList.remove('hidden');
+                } else {
+                    window.showToast("To install, open your browser menu and tap 'Add to Home Screen'");
+                }
+            }
+        };
+
+        window.initExerciseDatabase = function() {
+            // Helper to generate 200 procedural studio movements per equipment mode
+            const buildDataset = (baseCategories, isMat) => {
+                const levels = ['beginner', 'intermediate', 'advanced'];
+                const propsList = ['None', 'Box', 'Ball', 'Circle', 'Block', 'Band'];
+                const result = { warmup: [], core: [], arms: [], glutes: [], bonus: [], stretch: [] };
+                
+                // Allocation targeting 200 total moves: Warmup(40), Core(40), Arms(40), Glutes(40), Bonus(25), Stretch(15) = 200
+                const targetCounts = { warmup: 40, core: 40, arms: 40, glutes: 40, bonus: 25, stretch: 15 };
+
+                Object.keys(targetCounts).forEach(cat => {
+                    const templates = baseCategories[cat] || baseCategories.warmup;
+                    const target = targetCounts[cat];
+                    
+                    for (let i = 0; i < target; i++) {
+                        const base = templates[i % templates.length];
+                        const levelVal = levels[i % levels.length];
+                        const propVal = (i < templates.length) ? base.prop : propsList[i % propsList.length];
+                        
+                        let springText = base.spring;
+                        if (isMat) {
+                            springText = "Bodyweight";
+                        } else if (propVal === 'Band') {
+                            springText = "1 Blue Spring + Band";
+                        } else if (propVal === 'Circle' || propVal === 'Ball') {
+                            springText = "1 Red, 1 Blue";
+                        }
+
+                        let moveName = base.name;
+                        if (i >= templates.length) {
+                            const cycle = Math.floor(i / templates.length) + 1;
+                            const levelTag = levelVal.charAt(0).toUpperCase() + levelVal.slice(1);
+                            moveName = `${base.name} (${levelTag} Var ${cycle})`;
+                        }
+
+                        result[cat].push({
+                            id: `${isMat ? 'mat' : 'ref'}_${cat}_${i + 1}`,
+                            name: moveName,
+                            posture: base.posture,
+                            spring: springText,
+                            prop: propVal,
+                            level: levelVal,
+                            unilateral: base.unilateral || (i % 3 === 0 && cat !== 'stretch'),
+                            cue: base.cue
+                        });
+                    }
+                });
+                return result;
+            };
+
+            const reformerTemplates = {
+                warmup: [
+                    { name: "Footwork: Parallel Heels", posture: "supine", spring: "2 Red, 1 Blue", prop: "None", level: "beginner", unilateral: false, cue: "Press smoothly through heels, engaging glutes and maintaining neutral spine." },
+                    { name: "Footwork: V-Position Toes", posture: "supine", spring: "2 Red, 1 Blue", prop: "None", level: "beginner", unilateral: false, cue: "Heels connected, toes wrapped on footbar, zip inner thighs on extension." },
+                    { name: "Footwork: High Half Toe", posture: "supine", spring: "2 Red", prop: "None", level: "intermediate", unilateral: false, cue: "Keep heels lifted high as carriage extends and returns smoothly." },
+                    { name: "Footwork: Tendon Stretch", posture: "supine", spring: "2 Red", prop: "None", level: "intermediate", unilateral: false, cue: "Press out fully, lower heels under footbar for 3 counts, lift heels and return." },
+                    { name: "Footwork: Magic Circle Squeeze", posture: "supine", spring: "2 Red", prop: "Circle", level: "intermediate", unilateral: false, cue: "Squeeze Magic Circle between outer thighs while pressing carriage out." },
+                    { name: "Footwork: Ball Between Knees", posture: "supine", spring: "2 Red", prop: "Ball", level: "beginner", unilateral: false, cue: "Maintain gentle adductor engagement on small ball throughout press." },
+                    { name: "Footwork: Single Leg Heel Press", posture: "supine", spring: "1 Red, 1 Blue", prop: "None", level: "advanced", unilateral: true, cue: "Anchor stable hip, press single heel into footbar without tilting pelvis." },
+                    { name: "Footwork: Wide Stance Second", posture: "supine", spring: "2 Red", prop: "None", level: "beginner", unilateral: false, cue: "Place heels wide on footbar corners, press smoothly with open hips." }
+                ],
+                core: [
+                    { name: "Hundred: Supine Tabletop", posture: "supine", spring: "1 Red, 1 Blue", prop: "None", level: "beginner", unilateral: false, cue: "Curl head and shoulders up, pump arms vigorously with rhythmic breath." },
+                    { name: "Hundred: Extended Leg 45 Deg", posture: "supine", spring: "1 Red", prop: "None", level: "intermediate", unilateral: false, cue: "Reach legs long at 45 degrees, maintain low back connection to carriage." },
+                    { name: "Coordination: Knee Fold", posture: "supine", spring: "1 Red, 1 Blue", prop: "None", level: "intermediate", unilateral: false, cue: "Pull straps down, open/close legs, bend knees, return arms." },
+                    { name: "Short Box: Flat Back", posture: "seated", spring: "2 Red", prop: "Box", level: "beginner", unilateral: false, cue: "Hinge back with tall neutral spine, engaging deep transverse abdominis." },
+                    { name: "Short Box: Round Back", posture: "seated", spring: "2 Red", prop: "Box", level: "beginner", unilateral: false, cue: "Scoop belly, roll off sit bones into deep C-curve, roll back up." },
+                    { name: "Elephant: Flat Spine Pike", posture: "pike", spring: "1 Red, 1 Blue", prop: "None", level: "intermediate", unilateral: false, cue: "Lift abdominal wall high into inverted V fold without moving shoulders." },
+                    { name: "Long Stretch Plank", posture: "pike", spring: "1 Red, 1 Blue", prop: "None", level: "advanced", unilateral: false, cue: "Maintain long plank from crown to heels, push carriage back with shoulders." },
+                    { name: "Teaser on Box with Straps", posture: "seated", spring: "1 Blue", prop: "Box", level: "advanced", unilateral: false, cue: "Balance on sit bones on box, extend arms and legs into V teaser." }
+                ],
+                arms: [
+                    { name: "Midback Series: Tricep Press", posture: "supine", spring: "1 Red", prop: "None", level: "beginner", unilateral: false, cue: "Anchor elbows to carriage sides, press hands down toward carriage floor." },
+                    { name: "Seated Row: Straight Arms", posture: "seated", spring: "1 Red", prop: "Box", level: "beginner", unilateral: false, cue: "Pull straps back past hips, squeezing shoulder blades together." },
+                    { name: "Seated Bicep Curl on Box", posture: "seated", spring: "1 Blue", prop: "Box", level: "intermediate", unilateral: false, cue: "Maintain lifted elbows at shoulder height while bending hands toward ears." },
+                    { name: "Chest Expansion: Kneeling", posture: "kneeling", spring: "1 Red", prop: "None", level: "intermediate", unilateral: false, cue: "Kneel tall against shoulder blocks, pull straps behind hips and turn neck." },
+                    { name: "Serving the Bread: Kneeling", posture: "kneeling", spring: "1 Blue", prop: "None", level: "beginner", unilateral: false, cue: "Reach palms forward and open side-to-side without arching lower back." },
+                    { name: "Salute: Seated Overhead Press", posture: "seated", spring: "1 Blue", prop: "Box", level: "intermediate", unilateral: false, cue: "Hands behind head in diamond, press overhead hinging slightly forward." }
+                ],
+                glutes: [
+                    { name: "Eve's Lunge: Carriage Glide", posture: "lunge", spring: "1 Red", prop: "None", level: "beginner", unilateral: true, cue: "Press back foot to glide carriage away while sinking front hip down." },
+                    { name: "Scooter: Single Leg Glute Press", posture: "lunge", spring: "1 Red, 1 Blue", prop: "None", level: "intermediate", unilateral: true, cue: "Keep standing knee soft, drive carriage back with back glute contraction." },
+                    { name: "Russian Squat: Standing Lunge", posture: "lunge", spring: "2 Red", prop: "None", level: "advanced", unilateral: true, cue: "Lower standing thigh parallel to carriage while pushing back carriage out." },
+                    { name: "Bridging: Feet on Footbar", posture: "supine", spring: "2 Red", prop: "Ball", level: "beginner", unilateral: false, cue: "Squeeze small ball between knees, lift pelvis high into bridge." },
+                    { name: "Side Split: Glute Abduction", posture: "lunge", spring: "1 Blue", prop: "None", level: "intermediate", unilateral: true, cue: "Press carriage out laterally, engaging outer glute and adductors evenly." }
+                ],
+                bonus: [
+                    { name: "Leg Circles: Out & In", posture: "feet_in_straps", spring: "1 Red, 1 Blue", prop: "None", level: "beginner", unilateral: false, cue: "Lower long legs 45 deg, circle wide and meet at top with controlled pelvis." },
+                    { name: "Frog Press: Heels Connected", posture: "feet_in_straps", spring: "1 Red, 1 Blue", prop: "None", level: "beginner", unilateral: false, cue: "Connect heels with toes turned out, press legs out smoothly through straps." },
+                    { name: "Standing Side Splits", posture: "lunge", spring: "1 Blue", prop: "None", level: "intermediate", unilateral: true, cue: "Stand tall across platform and carriage, glide carriage wide with core stability." },
+                    { name: "Short Spine Articulation", posture: "feet_in_straps", spring: "2 Red", prop: "None", level: "advanced", unilateral: false, cue: "Lift legs over hips, roll spine off carriage into vertical lift." }
+                ],
+                stretch: [
+                    { name: "Mermaid Stretch: Lateral Flexion", posture: "seated", spring: "1 Blue", prop: "None", level: "beginner", unilateral: true, cue: "Reach long arm overhead, bending spine sideways over footbar." },
+                    { name: "Elephant Hamstring Stretch", posture: "pike", spring: "2 Red", prop: "None", level: "beginner", unilateral: false, cue: "Press heels down into carriage, scoop abdominal wall for hamstrings stretch." },
+                    { name: "Hamstring Straddle in Straps", posture: "feet_in_straps", spring: "1 Red", prop: "None", level: "intermediate", unilateral: false, cue: "Open long legs wide into straddle in straps, flexing feet gently." }
+                ]
+            };
+
+            const matTemplates = {
+                warmup: [
+                    { name: "Mat Pelvic Clock & Roll-Up Prep", posture: "supine", spring: "Bodyweight", prop: "None", level: "beginner", unilateral: false, cue: "Tilt pelvis sequentially around clock face, articulating lower lumbar." },
+                    { name: "Supine Imprint & Spine Release", posture: "supine", spring: "Bodyweight", prop: "Ball", level: "beginner", unilateral: false, cue: "Exhale to gently press low back into mat around small ball." },
+                    { name: "Standing Roll Down to Plank", posture: "pike", spring: "Bodyweight", prop: "None", level: "beginner", unilateral: false, cue: "Roll spine down one vertebra at a time, walking hands out to plank." },
+                    { name: "Spine Twist & Warm-Up Reach", posture: "seated", spring: "Bodyweight", prop: "Circle", level: "intermediate", unilateral: false, cue: "Hold circle at chest, rotate torso left and right with anchored sit bones." },
+                    { name: "Cat-Cow Spine Articulation", posture: "quadruped", spring: "Bodyweight", prop: "None", level: "beginner", unilateral: false, cue: "Inhale to arch spine into extension, exhale to round high into cat scoop." },
+                    { name: "Supine Knee Taps with Ball", posture: "supine", spring: "Bodyweight", prop: "Ball", level: "intermediate", unilateral: true, cue: "Keep 90-degree bend at knees, lowering single toe to tap mat." }
+                ],
+                core: [
+                    { name: "Mat Pilates Hundred", posture: "supine", spring: "Bodyweight", prop: "None", level: "beginner", unilateral: false, cue: "Curl head and shoulders, extend legs to 45 deg, pump arms with 5 in / 5 out breath." },
+                    { name: "Full Pilates Roll Up", posture: "supine", spring: "Bodyweight", prop: "Band", level: "intermediate", unilateral: false, cue: "Reach arms long, articulate spine up over legs in C-curve, control descend." },
+                    { name: "Single Leg Stretch Series", posture: "supine", spring: "Bodyweight", prop: "None", level: "beginner", unilateral: true, cue: "Pull single knee to chest, extend opposite leg long, alternating with abdominal curl." },
+                    { name: "Double Leg Stretch & Circle", posture: "supine", spring: "Bodyweight", prop: "Circle", level: "intermediate", unilateral: false, cue: "Hug knees, reach arms and legs long, circle arms back to knees." },
+                    { name: "Mat Teaser Roll Up Prep", posture: "supine", spring: "Bodyweight", prop: "Ball", level: "advanced", unilateral: false, cue: "Reach long arms to toes, floating torso and legs into V position." },
+                    { name: "Criss Cross Oblique Twists", posture: "supine", spring: "Bodyweight", prop: "None", level: "intermediate", unilateral: true, cue: "Rotate opposite elbow to knee, extending opposite leg long at 45 degrees." },
+                    { name: "Plank to Pike Scoop", posture: "pike", spring: "Bodyweight", prop: "Block", level: "advanced", unilateral: false, cue: "From strong plank, scoop abdominals to lift tailbone high into pike." }
+                ],
+                arms: [
+                    { name: "Quadruped Bird-Dog Reach", posture: "quadruped", spring: "Bodyweight", prop: "None", level: "beginner", unilateral: true, cue: "Reach opposite arm and leg long in tabletop without swaying lower back." },
+                    { name: "Mat Tricep Push-Up to Child Pose", posture: "quadruped", spring: "Bodyweight", prop: "None", level: "intermediate", unilateral: false, cue: "Keep elbows hugged tight to ribs, lowering chest to mat and pressing up." },
+                    { name: "Kneeling Resistance Band Row", posture: "kneeling", spring: "Bodyweight", prop: "Band", level: "beginner", unilateral: false, cue: "Kneel tall, pull band past side ribs, squeezing mid-back shoulder blades." },
+                    { name: "Side Plank Arm Reach & Tap", posture: "lunge", spring: "Bodyweight", prop: "Block", level: "advanced", unilateral: true, cue: "Lift bottom hip in side plank, reaching top arm smoothly overhead." },
+                    { name: "Swimming Arm & Leg Lifts", posture: "supine", spring: "Bodyweight", prop: "None", level: "intermediate", unilateral: false, cue: "Lie prone on belly, flutter arms and legs rhythmically engaging back line." }
+                ],
+                glutes: [
+                    { name: "Side Lying Clamshell Squeeze", posture: "supine", spring: "Bodyweight", prop: "Band", level: "beginner", unilateral: true, cue: "Keep feet connected, open top knee against band tension to engage glute medius." },
+                    { name: "Rainbow Leg Lift Arc", posture: "quadruped", spring: "Bodyweight", prop: "None", level: "intermediate", unilateral: true, cue: "Tap long leg side to side in high arc, keeping hips level and still." },
+                    { name: "Mat Shoulder Bridge Lift", posture: "supine", spring: "Bodyweight", prop: "Ball", level: "beginner", unilateral: false, cue: "Squeeze ball between knees, lift hips into bridge, roll down vertebra by vertebra." },
+                    { name: "Kneeling Side Kick Series", posture: "kneeling", spring: "Bodyweight", prop: "Block", level: "advanced", unilateral: true, cue: "Hand on block, extend top leg parallel to floor, kicking forward and back." },
+                    { name: "Single Leg Bridge Pulse", posture: "supine", spring: "Bodyweight", prop: "None", level: "intermediate", unilateral: true, cue: "Extend one leg toward ceiling, drive supporting heel into mat to pulse hips." }
+                ],
+                bonus: [
+                    { name: "Mat Standing Side Leg Abduction", posture: "lunge", spring: "Bodyweight", prop: "Band", level: "intermediate", unilateral: true, cue: "Stand tall with band around ankles, lift leg sideways with core stability." },
+                    { name: "Plank Leg Lift & Hold", posture: "pike", spring: "Bodyweight", prop: "None", level: "advanced", unilateral: true, cue: "Maintain strong plank posture while floating one heel up at a time." },
+                    { name: "Standing Woodchopper Twist", posture: "seated", spring: "Bodyweight", prop: "Block", level: "beginner", unilateral: true, cue: "Rotate block across hips to opposite shoulder, engaging obliques." },
+                    { name: "Curtsy Lunge to Single Leg Balance", posture: "lunge", spring: "Bodyweight", prop: "None", level: "intermediate", unilateral: true, cue: "Cross back leg behind into curtsy lunge, driving front knee up to chest balance." }
+                ],
+                stretch: [
+                    { name: "Mat Mermaid Lateral Stretch", posture: "seated", spring: "Bodyweight", prop: "None", level: "beginner", unilateral: true, cue: "Sit in Z-sit position, reach long arm overhead into deep lateral arc." },
+                    { name: "Seated Hamstring Fold with Band", posture: "seated", spring: "Bodyweight", prop: "Band", level: "beginner", unilateral: false, cue: "Loop band over feet, hinge from hips with flat back to stretch hamstrings." },
+                    { name: "Spine Stretch Forward", posture: "seated", spring: "Bodyweight", prop: "None", level: "beginner", unilateral: false, cue: "Sit tall with legs straight and wide, articulate spine forward over toes." }
+                ]
+            };
+
+            window.EXERCISE_DATABASE_REFORMER = buildDataset(reformerTemplates, false);
+            window.EXERCISE_DATABASE_MAT = buildDataset(matTemplates, true);
+
+            window.EXERCISE_DATABASE = (window.equipmentMode === 'mat') 
+                ? window.EXERCISE_DATABASE_MAT 
+                : window.EXERCISE_DATABASE_REFORMER;
+        };
+
+        window.setEquipmentMode = function(mode) {
+            window.equipmentMode = mode;
+            window.initExerciseDatabase();
+
+            const btnRefDt = document.getElementById('btn-mode-reformer-dt');
+            const btnMatDt = document.getElementById('btn-mode-mat-dt');
+            const btnRefMb = document.getElementById('btn-mode-reformer-mb');
+            const btnMatMb = document.getElementById('btn-mode-mat-mb');
+            const prefRef = document.getElementById('pref-mode-reformer');
+            const prefMat = document.getElementById('pref-mode-mat');
+            const bannerLabel = document.getElementById('banner-equipment-label');
+            const propBoxLbl = document.getElementById('lbl-prop-box');
+
+            if (mode === 'reformer') {
+                if (btnRefDt) btnRefDt.className = 'flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-black transition bg-sage-500 text-white shadow-sm min-h-[36px]';
+                if (btnMatDt) btnMatDt.className = 'flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-black transition text-ivory-800 hover:text-ivory-900 min-h-[36px]';
+                if (btnRefMb) btnRefMb.className = 'flex-1 flex items-center justify-center space-x-1 py-1.5 rounded-xl text-[10px] font-black transition bg-sage-500 text-white shadow-sm min-h-[36px]';
+                if (btnMatMb) btnMatMb.className = 'flex-1 flex items-center justify-center space-x-1 py-1.5 rounded-xl text-[10px] font-black transition text-ivory-800 hover:text-ivory-900 min-h-[36px]';
+                if (prefRef) prefRef.className = 'py-2.5 px-3 rounded-xl border text-xs font-bold transition flex items-center justify-center space-x-2 bg-sage-50 border-sage-500 text-sage-600 min-h-[44px]';
+                if (prefMat) prefMat.className = 'py-2.5 px-3 rounded-xl border text-xs font-bold transition flex items-center justify-center space-x-2 border-ivory-200 text-ivory-800 min-h-[44px]';
+                if (bannerLabel) bannerLabel.innerText = "DAILY REFORMER PILATES INSIGHT";
+                if (propBoxLbl) propBoxLbl.innerText = "Short / Long Box (Reformer Support)";
+            } else {
+                if (btnMatDt) btnMatDt.className = 'flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-black transition bg-sage-500 text-white shadow-sm min-h-[36px]';
+                if (btnRefDt) btnRefDt.className = 'flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-black transition text-ivory-800 hover:text-ivory-900 min-h-[36px]';
+                if (btnMatMb) btnMatMb.className = 'flex-1 flex items-center justify-center space-x-1 py-1.5 rounded-xl text-[10px] font-black transition bg-sage-500 text-white shadow-sm min-h-[36px]';
+                if (btnRefMb) btnRefMb.className = 'flex-1 flex items-center justify-center space-x-1 py-1.5 rounded-xl text-[10px] font-black transition text-ivory-800 hover:text-ivory-900 min-h-[36px]';
+                if (prefMat) prefMat.className = 'py-2.5 px-3 rounded-xl border text-xs font-bold transition flex items-center justify-center space-x-2 bg-sage-50 border-sage-500 text-sage-600 min-h-[44px]';
+                if (prefRef) prefRef.className = 'py-2.5 px-3 rounded-xl border text-xs font-bold transition flex items-center justify-center space-x-2 border-ivory-200 text-ivory-800 min-h-[44px]';
+                if (bannerLabel) bannerLabel.innerText = "DAILY MAT PILATES INSIGHT";
+                if (propBoxLbl) propBoxLbl.innerText = "Mat Elevation / Support Box";
+            }
+
+            window.generateDailyRoutine();
+            window.renderDailyView();
+            window.showToast(`Switched to ${mode === 'mat' ? 'Mat Pilates' : 'Reformer Pilates'} Mode`);
+        };
+
+        window.showToast = function(msg) {
+            const banner = document.getElementById('toast-banner');
+            const msgEl = document.getElementById('toast-message');
+            if (banner && msgEl) {
+                msgEl.innerText = msg;
+                banner.classList.remove('hidden');
+                setTimeout(() => banner.classList.add('hidden'), 3000);
+            }
+        };
+
+        window.renderHumanSVG = function(posture, isAnimated) {
+            const isMat = window.equipmentMode === 'mat';
+            const animGlide = isAnimated ? 'anim-carriage-glide' : '';
+            const animSpring = isAnimated ? 'anim-spring-stretch' : '';
+            const animHuman = isAnimated ? 'anim-human-breath' : '';
+
+            let frameContent = '';
+            if (isMat) {
+                frameContent = `<rect x="10" y="105" width="230" height="8" rx="4" fill="#518A82"/>`;
+            } else {
+                frameContent = `
+                    <rect x="10" y="105" width="230" height="8" rx="4" fill="#EAE3D7"/>
+                    <rect x="15" y="113" width="10" height="15" fill="#5A5650"/>
+                    <rect x="225" y="113" width="10" height="15" fill="#5A5650"/>
+                    <path d="M 215 105 L 215 50 L 225 50 L 225 105" fill="#518A82"/>
+                    <g class="${animSpring}">
+                        <path d="M 180 108 C 185 100, 190 116, 195 108 L 225 108" stroke="#F27854" stroke-width="3" fill="none"/>
+                    </g>
+                `;
+            }
+
+            let poseContent = `
+                <circle cx="115" cy="45" r="8" fill="#2B2D2B"/>
+                <path d="M 115 53 L 115 84" stroke="#2B2D2B" stroke-width="12" stroke-linecap="round"/>
+                <path d="M 115 84 L 150 84 L 150 108" stroke="#518A82" stroke-width="7" stroke-linecap="round" fill="none"/>
+            `;
+
+            return `
+                <svg viewBox="0 0 250 130" class="w-full h-full">
+                    ${frameContent}
+                    <g class="${isMat ? '' : animGlide}">
+                        <rect x="65" y="90" width="110" height="15" rx="5" fill="#FAF7F2" stroke="#DCD3C5" stroke-width="2"/>
+                        <g class="${animHuman}">${poseContent}</g>
+                    </g>
+                </svg>
+            `;
+        };
+
+        window.initDateRibbon = function() {
+            const container = document.getElementById('date-ribbon-container');
+            if (!container) return;
+            container.innerHTML = '';
+
+            const today = new Date();
+            for (let i = -3; i <= 3; i++) {
+                const d = new Date();
+                d.setDate(today.getDate() + i);
+                const dateStr = d.toISOString().split('T')[0];
+                const dayName = d.toLocaleDateString('en-US', { weekday: 'short' });
+                const dayNum = d.getDate();
+                const isSelected = dateStr === window.currentDateStr;
+
+                const btn = document.createElement('button');
+                btn.className = isSelected 
+                    ? 'flex-shrink-0 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-2xl bg-peach-500 text-white font-black text-xs shadow-md text-center transition min-h-[40px]'
+                    : 'flex-shrink-0 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-2xl bg-white border border-ivory-200 text-ivory-800 hover:border-peach-400 font-extrabold text-xs text-center transition min-h-[40px]';
+                
+                btn.onclick = () => {
+                    window.currentDateStr = dateStr;
+                    window.initDateRibbon();
+                    window.updateDailyQuote();
+                    window.generateDailyRoutine();
+                    window.renderDailyView();
+                };
+
+                btn.innerHTML = `<div class="text-[9px] uppercase opacity-80">${dayName}</div><div class="text-xs sm:text-sm">${dayNum}</div>`;
+                container.appendChild(btn);
+            }
+        };
+
+        window.updateDailyQuote = function() {
+            if (!window.DAILY_QUOTES || !window.DAILY_QUOTES.length) return;
+            const dayIndex = new Date(window.currentDateStr).getDate() % window.DAILY_QUOTES.length;
+            const q = window.DAILY_QUOTES[dayIndex];
+            const textEl = document.getElementById('daily-quote-text');
+            const authorEl = document.getElementById('daily-quote-author');
+            if (textEl) textEl.innerText = `"${q.text}"`;
+            if (authorEl) authorEl.innerText = `\u2014 ${q.author}`;
+        };
+
+        window.generateDailyRoutine = function() {
+            window.initExerciseDatabase();
+            const dayNum = new Date(window.currentDateStr).getDate();
+            const countPerCore = (window.currentDuration === 30) ? 4 : 5;
+            const countBonus = (window.currentDuration === 30) ? 2 : 3;
+
+            const filterByEquipment = (list) => {
+                return (list || []).filter(ex => {
+                    if (ex.prop === 'Box' && !window.equipmentAvailable.box) return false;
+                    if (ex.prop === 'Ball' && !window.equipmentAvailable.ball) return false;
+                    if (ex.prop === 'Circle' && !window.equipmentAvailable.circle) return false;
+                    if (ex.prop === 'Block' && !window.equipmentAvailable.block) return false;
+                    if (ex.prop === 'Band' && !window.equipmentAvailable.band) return false;
+                    return true;
+                });
+            };
+
+            const getSubset = (catKey, count) => {
+                const pool = filterByEquipment(window.EXERCISE_DATABASE[catKey] || []);
+                const shuffled = [...pool].sort(() => 0.5 - Math.sin(dayNum));
+                return shuffled.slice(0, count);
+            };
+
+            const blocks = [
+                { key: 'warmup', title: '1. Warm-Up Series', moves: getSubset('warmup', countPerCore) },
+                { key: 'core', title: '2. Core & Abdominals', moves: getSubset('core', countPerCore) },
+                { key: 'arms', title: '3. Upper Body & Arms', moves: getSubset('arms', countPerCore) },
+                { key: 'glutes', title: '4. Glutes & Legs', moves: getSubset('glutes', countPerCore) },
+                { key: 'bonus', title: '5. Bonus Block (Straps / Standing)', moves: getSubset('bonus', countBonus) },
+                { key: 'stretch', title: '6. Cool-Down Stretch (2 Moves)', moves: getSubset('stretch', 2) }
+            ];
+
+            window.activeRoutine = [];
+            let stepCounter = 1;
+            blocks.forEach(b => {
+                b.moves.forEach(m => {
+                    window.activeRoutine.push({
+                        ...m,
+                        blockKey: b.key,
+                        blockTitle: b.title,
+                        stepNumber: stepCounter++
+                    });
+                });
+            });
+        };
+
+        window.renderDailyView = function() {
+            const container = document.getElementById('routine-cards-container');
+            if (!container) return;
+            container.innerHTML = '';
+
+            const requiredProps = Array.from(new Set(
+                window.activeRoutine
+                    .map(ex => ex.prop)
+                    .filter(prop => prop && prop !== 'None')
+            ));
+
+            const propNameMap = {
+                'Box': window.equipmentMode === 'mat' ? 'Elevation / Support Box' : 'Short / Long Box',
+                'Ball': 'Small Pilates Ball',
+                'Circle': 'Magic Circle (Ring)',
+                'Block': 'Yoga Block',
+                'Band': 'Resistance Band'
+            };
+
+            const summaryCard = document.createElement('div');
+            summaryCard.className = 'bg-white rounded-3xl p-4 sm:p-5 border border-ivory-200 shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 bg-gradient-to-r from-white via-ivory-50 to-sage-50/40';
+
+            let propsBadgeHTML = '';
+            if (requiredProps.length === 0) {
+                propsBadgeHTML = `
+                    <span class="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-sage-50 text-sage-600 border border-sage-200 text-xs font-bold">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-sage-500"></i>
+                        <span>No Extra Props Needed (${window.equipmentMode === 'mat' ? 'Mat Only' : 'Reformer Only'})</span>
+                    </span>
+                `;
+            } else {
+                propsBadgeHTML = requiredProps.map(p => `
+                    <span class="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-peach-50 text-peach-600 border border-peach-200 text-xs font-bold shadow-xs">
+                        <i data-lucide="package" class="w-3.5 h-3.5 text-peach-500"></i>
+                        <span>${propNameMap[p] || p}</span>
+                    </span>
+                `).join('');
+            }
+
+            summaryCard.innerHTML = `
+                <div class="space-y-1">
+                    <div class="flex items-center space-x-2">
+                        <div class="p-1.5 rounded-xl bg-sage-100 text-sage-600">
+                            <i data-lucide="layers" class="w-4 h-4"></i>
+                        </div>
+                        <h3 class="text-xs sm:text-sm font-extrabold text-ivory-900 uppercase tracking-wide">
+                            Props & Equipment Required Today
+                        </h3>
+                    </div>
+                    <p class="text-[11px] sm:text-xs text-ivory-800 font-medium">
+                        ${requiredProps.length === 0 ? 'Ready to flow straight away!' : 'Gather these props before starting your session for smooth transitions.'}
+                    </p>
+                </div>
+                <div class="flex flex-wrap items-center gap-2">
+                    ${propsBadgeHTML}
+                </div>
+            `;
+
+            container.appendChild(summaryCard);
+
+            const blocksMap = {};
+            window.activeRoutine.forEach(ex => {
+                if (!blocksMap[ex.blockKey]) {
+                    blocksMap[ex.blockKey] = { title: ex.blockTitle, moves: [] };
+                }
+                blocksMap[ex.blockKey].moves.push(ex);
+            });
+
+            Object.keys(blocksMap).forEach(key => {
+                if (window.currentFocusFilter !== 'all' && window.currentFocusFilter !== key) return;
+                const block = blocksMap[key];
+                const card = document.createElement('div');
+                card.className = 'bg-white rounded-3xl p-3.5 sm:p-6 border border-ivory-200 shadow-sm space-y-3';
+
+                let movesHTML = '';
+                block.moves.forEach(m => {
+                    movesHTML += `
+                        <div class="flex items-center justify-between p-2.5 sm:p-3 rounded-2xl bg-ivory-50 border border-ivory-100 hover:border-peach-300 transition gap-2">
+                            <div class="flex items-center space-x-2.5">
+                                <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-xl bg-peach-500 text-white font-extrabold text-xs flex items-center justify-center flex-shrink-0">${m.stepNumber}</span>
+                                <div>
+                                    <h4 class="text-xs font-black text-ivory-900">${m.name}</h4>
+                                    <p class="text-[10px] text-ivory-800 font-semibold line-clamp-1">${m.cue}</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-1.5 flex-shrink-0">
+                                <span class="text-[9px] sm:text-[10px] font-bold text-peach-600 bg-peach-50 px-1.5 py-0.5 rounded border border-peach-100">${m.spring}</span>
+                                <span class="text-[9px] sm:text-[10px] font-bold text-sage-600 bg-sage-50 px-1.5 py-0.5 rounded border border-sage-100">${m.prop}</span>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                card.innerHTML = `
+                    <div class="flex items-center justify-between border-b border-ivory-100 pb-2.5">
+                        <h3 class="text-xs sm:text-sm font-extrabold text-ivory-900">${block.title}</h3>
+                        <span class="text-[10px] sm:text-xs font-bold text-sage-600 bg-sage-50 px-2 py-0.5 rounded-xl">${block.moves.length} Moves</span>
+                    </div>
+                    <div class="space-y-2">${movesHTML}</div>
+                `;
+                container.appendChild(card);
+            });
+
+            if (window.lucide) window.lucide.createIcons();
+        };
+
+        window.renderLibrary = function() {
+            window.initExerciseDatabase();
+            const grid = document.getElementById('library-grid');
+            const search = (document.getElementById('library-search')?.value || '').toLowerCase();
+            const countIndicator = document.getElementById('library-count-indicator');
+            if (!grid) return;
+            grid.innerHTML = '';
+
+            let allMoves = [];
+            if (window.EXERCISE_DATABASE) {
+                Object.keys(window.EXERCISE_DATABASE).forEach(cat => {
+                    if (Array.isArray(window.EXERCISE_DATABASE[cat])) {
+                        allMoves = allMoves.concat(window.EXERCISE_DATABASE[cat]);
+                    }
+                });
+            }
+
+            const filtered = allMoves.filter(ex => {
+                const matchLvl = window.libraryLevelFilter === 'all' || ex.level === window.libraryLevelFilter;
+                const matchSearch = ex.name.toLowerCase().includes(search) || ex.prop.toLowerCase().includes(search) || ex.cue.toLowerCase().includes(search);
+                return matchLvl && matchSearch;
+            });
+
+            if (countIndicator) {
+                countIndicator.innerText = `Showing ${filtered.length} Repertoire Movements`;
+            }
+
+            filtered.forEach(ex => {
+                const card = document.createElement('div');
+                card.className = 'bg-white rounded-2xl p-3.5 sm:p-4 border border-ivory-200 shadow-sm space-y-3 hover:border-peach-400 transition';
+                card.innerHTML = `
+                    <div class="flex items-center justify-between">
+                        <h4 class="text-xs font-extrabold text-ivory-900">${ex.name}</h4>
+                        <span class="text-[9px] font-bold px-2 py-0.5 rounded-md bg-ivory-100 text-ivory-800 border border-ivory-200 capitalize">${ex.level}</span>
+                    </div>
+                    <div class="h-24 bg-ivory-50 rounded-xl overflow-hidden flex items-center justify-center border border-ivory-100">
+                        ${window.renderHumanSVG(ex.posture, false)}
+                    </div>
+                    <div class="flex items-center justify-between text-[10px] sm:text-[11px]">
+                        <span class="font-bold text-peach-600 bg-peach-50 px-2 py-0.5 rounded border border-peach-100">${ex.spring}</span>
+                        <span class="text-ivory-800 font-semibold">Prop: ${ex.prop}</span>
+                    </div>
+                    <p class="text-[11px] text-ivory-800 font-medium">${ex.cue}</p>
+                `;
+                grid.appendChild(card);
+            });
+        };
+
+        window.setLibraryLevelFilter = function(lvl) {
+            window.libraryLevelFilter = lvl;
+            ['all', 'beginner', 'intermediate', 'advanced'].forEach(l => {
+                const btn = document.getElementById(`lib-lvl-${l}`);
+                if (btn) {
+                    if (l === lvl) btn.className = 'px-3 py-2 rounded-lg text-xs font-bold bg-peach-500 text-white flex-shrink-0 min-h-[36px]';
+                    else btn.className = 'px-3 py-2 rounded-lg text-xs font-bold bg-ivory-100 text-ivory-800 hover:bg-ivory-200 flex-shrink-0 min-h-[36px]';
+                }
+            });
+            window.renderLibrary();
+        };
+
+        window.filterLibrary = function() {
+            window.renderLibrary();
+        };
+
+        window.renderBuilderBank = function() {
+            window.initExerciseDatabase();
+            const bank = document.getElementById('builder-bank');
+            const search = (document.getElementById('builder-search')?.value || '').toLowerCase();
+            if (!bank) return;
+            bank.innerHTML = '';
+
+            let allMoves = [];
+            if (window.EXERCISE_DATABASE) {
+                Object.keys(window.EXERCISE_DATABASE).forEach(cat => {
+                    if (Array.isArray(window.EXERCISE_DATABASE[cat])) {
+                        allMoves = allMoves.concat(window.EXERCISE_DATABASE[cat]);
+                    }
+                });
+            }
+
+            const filtered = allMoves.filter(ex => ex.name.toLowerCase().includes(search) || ex.prop.toLowerCase().includes(search));
+
+            filtered.slice(0, 60).forEach((ex) => {
+                const card = document.createElement('div');
+                card.className = 'bg-white rounded-xl p-3 border border-ivory-200 flex items-center justify-between hover:border-peach-400 transition';
+                card.innerHTML = `
+                    <div class="max-w-[70%]">
+                        <h5 class="text-xs font-bold text-ivory-900 truncate">${ex.name}</h5>
+                        <span class="text-[10px] text-sage-600 font-semibold">${ex.spring} &bull; Prop: ${ex.prop}</span>
+                    </div>
+                    <button onclick="window.addToCustomQueueByObject('${encodeURIComponent(JSON.stringify(ex))}')" class="px-2.5 py-1.5 rounded-lg bg-peach-50 text-peach-600 font-bold text-xs hover:bg-peach-100 transition flex-shrink-0 min-h-[36px]">
+                        + Add
+                    </button>
+                `;
+                bank.appendChild(card);
+            });
+        };
+
+        window.addToCustomQueueByObject = function(encodedObj) {
+            try {
+                const item = JSON.parse(decodeURIComponent(encodedObj));
+                window.customBuilderQueue.push(item);
+                window.renderBuilderQueue();
+                window.showToast(`Added "${item.name}" to custom flow`);
+            } catch(e) {}
+        };
+
+        window.renderBuilderQueue = function() {
+            const q = document.getElementById('builder-queue');
+            if (!q) return;
+            if (window.customBuilderQueue.length === 0) {
+                q.innerHTML = '<span class="text-xs text-ivory-800 font-medium italic w-full text-center">No exercises added yet. Click "+ Add" from the bank below.</span>';
+                return;
+            }
+            q.innerHTML = window.customBuilderQueue.map((ex, i) => `
+                <div class="bg-white px-3 py-1.5 rounded-xl border border-ivory-200 text-xs font-bold text-ivory-900 flex items-center space-x-2">
+                    <span>${i + 1}. ${ex.name}</span>
+                    <button onclick="window.removeFromQueue(${i})" class="text-peach-500 hover:text-peach-600 font-black">&times;</button>
+                </div>
+            `).join('');
+        };
+
+        window.removeFromQueue = function(i) {
+            window.customBuilderQueue.splice(i, 1);
+            window.renderBuilderQueue();
+        };
+
+        window.startCustomWorkout = function() {
+            if (window.customBuilderQueue.length === 0) {
+                window.showToast("Please add exercises to your custom flow first!");
+                return;
+            }
+            window.activeRoutine = window.customBuilderQueue.map((ex, i) => ({
+                ...ex,
+                blockTitle: "Custom Flow",
+                blockKey: "custom",
+                stepNumber: i + 1
+            }));
+            window.startWorkout();
+        };
+
+        window.switchView = function(viewName) {
+            ['daily', 'library', 'builder'].forEach(v => {
+                const el = document.getElementById(`view-${v}`);
+                const tab = document.getElementById(`tab-${v}`);
+                if (el) el.classList.add('hidden');
+                if (tab) tab.className = 'px-3 sm:px-3.5 py-2 rounded-xl text-xs font-extrabold transition text-ivory-800 hover:bg-ivory-100 flex-shrink-0 min-h-[38px]';
+            });
+
+            const activeEl = document.getElementById(`view-${viewName}`);
+            const activeTab = document.getElementById(`tab-${viewName}`);
+            if (activeEl) activeEl.classList.remove('hidden');
+            if (activeTab) activeTab.className = 'px-3 sm:px-3.5 py-2 rounded-xl text-xs font-extrabold transition bg-peach-500 text-white shadow-sm flex-shrink-0 min-h-[38px]';
+
+            if (viewName === 'library') window.renderLibrary();
+            if (viewName === 'builder') {
+                window.renderBuilderBank();
+                window.renderBuilderQueue();
+            }
+        };
+
+        window.setDuration = function(mins) {
+            window.currentDuration = mins;
+            const btn30 = document.getElementById('btn-duration-30');
+            const btn45 = document.getElementById('btn-duration-45');
+
+            if (mins === 30) {
+                if (btn30) btn30.className = 'px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-black transition bg-white text-sage-600 shadow-sm min-h-[36px]';
+                if (btn45) btn45.className = 'px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-black transition text-white hover:bg-white/10 min-h-[36px]';
+            } else {
+                if (btn45) btn45.className = 'px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-black transition bg-white text-sage-600 shadow-sm min-h-[36px]';
+                if (btn30) btn30.className = 'px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-black transition text-white hover:bg-white/10 min-h-[36px]';
+            }
+
+            window.generateDailyRoutine();
+            window.renderDailyView();
+        };
+
+        window.setFocusFilter = function(val) {
+            window.currentFocusFilter = val;
+            window.renderDailyView();
+        };
+
+        window.openProfileModal = function() {
+            const modal = document.getElementById('modal-profile');
+            if (modal) modal.classList.remove('hidden');
+        };
+
+        window.closeProfileModal = function() {
+            const modal = document.getElementById('modal-profile');
+            if (modal) modal.classList.add('hidden');
+        };
+
+        window.startWorkout = function() {
+            if (window.activeRoutine.length === 0) window.generateDailyRoutine();
+            window.playerIndex = 0;
+            const firstEx = window.activeRoutine[0];
+            window.playerPhase = firstEx && firstEx.unilateral ? 'WORK_SIDE_1' : 'WORK_FULL';
+            window.timerSeconds = firstEx && firstEx.unilateral ? 30 : 60;
+            document.getElementById('view-player').classList.remove('hidden');
+            window.updatePlayerUI();
+            window.startTimer();
+        };
+
+        window.exitWorkout = function() {
+            window.pauseTimer();
+            document.getElementById('view-player').classList.add('hidden');
+        };
+
+        window.updatePlayerUI = function() {
+            const currentEx = window.activeRoutine[window.playerIndex];
+            if (!currentEx) return;
+
+            document.getElementById('player-block-badge').innerText = currentEx.blockTitle;
+            document.getElementById('player-step-counter').innerText = `Move ${window.playerIndex + 1} / ${window.activeRoutine.length}`;
+            document.getElementById('player-category-name').innerText = currentEx.blockTitle;
+            document.getElementById('player-exercise-title').innerText = currentEx.name;
+            document.getElementById('player-spring-badge').innerText = currentEx.spring;
+            document.getElementById('player-prop-badge').innerText = `Prop: ${currentEx.prop}`;
+            document.getElementById('player-form-cue').innerText = currentEx.cue;
+
+            const vectorContainer = document.getElementById('player-vector-container');
+            if (vectorContainer) {
+                vectorContainer.innerHTML = window.renderHumanSVG(currentEx.posture, true);
+            }
+        };
+
+        window.updateTimerUI = function() {
+            const display = document.getElementById('timer-display-digits');
+            const phaseLabel = document.getElementById('timer-phase-label');
+            const circle = document.getElementById('timer-progress-circle');
+
+            const m = Math.floor(window.timerSeconds / 60);
+            const s = window.timerSeconds % 60;
+            if (display) display.innerText = `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+
+            let maxSecs = 60;
+            if (window.playerPhase === 'WORK_SIDE_1' || window.playerPhase === 'WORK_SIDE_2') maxSecs = 30;
+
+            const progress = (window.timerSeconds / maxSecs) * 326.72;
+            if (circle) circle.style.strokeDashoffset = (326.72 - progress).toString();
+
+            if (phaseLabel) {
+                if (window.playerPhase === 'WORK_SIDE_1') phaseLabel.innerText = 'WORK (SIDE 1)';
+                else if (window.playerPhase === 'WORK_SIDE_2') phaseLabel.innerText = 'WORK (SIDE 2)';
+                else phaseLabel.innerText = 'WORK';
+            }
+        };
+
+        window.startTimer = function() {
+            if (window.isTimerRunning) return;
+            window.isTimerRunning = true;
+            const btn = document.getElementById('btn-player-play');
+            if (btn) btn.innerHTML = '<i data-lucide="pause" class="w-7 h-7 sm:w-8 sm:h-8 fill-current"></i>';
+            if (window.lucide) window.lucide.createIcons();
+
+            window.timerInterval = setInterval(() => {
+                if (window.timerSeconds > 0) {
+                    window.timerSeconds--;
+                    window.updateTimerUI();
+                } else {
+                    if (window.playerPhase === 'WORK_SIDE_1') {
+                        window.playerPhase = 'WORK_SIDE_2';
+                        window.timerSeconds = 30;
+                    } else if (window.playerPhase === 'WORK_SIDE_2' || window.playerPhase === 'WORK_FULL') {
+                        window.nextExercise();
+                    }
+                }
+            }, 1000);
+        };
+
+        window.pauseTimer = function() {
+            window.isTimerRunning = false;
+            clearInterval(window.timerInterval);
+            const btn = document.getElementById('btn-player-play');
+            if (btn) btn.innerHTML = '<i data-lucide="play" class="w-7 h-7 sm:w-8 sm:h-8 fill-current"></i>';
+            if (window.lucide) window.lucide.createIcons();
+        };
+
+        window.toggleTimer = function() {
+            if (window.isTimerRunning) window.pauseTimer();
+            else window.startTimer();
+        };
+
+        window.nextExercise = function() {
+            window.pauseTimer();
+            if (window.playerIndex < window.activeRoutine.length - 1) {
+                window.playerIndex++;
+                const nextEx = window.activeRoutine[window.playerIndex];
+                window.playerPhase = nextEx && nextEx.unilateral ? 'WORK_SIDE_1' : 'WORK_FULL';
+                window.timerSeconds = nextEx && nextEx.unilateral ? 30 : 60;
+                window.updatePlayerUI();
+                window.startTimer();
+            } else {
+                window.exitWorkout();
+                window.showToast("Workout complete! Great session!");
+            }
+        };
+
+        window.prevExercise = function() {
+            window.pauseTimer();
+            if (window.playerIndex > 0) {
+                window.playerIndex--;
+                const prevEx = window.activeRoutine[window.playerIndex];
+                window.playerPhase = prevEx && prevEx.unilateral ? 'WORK_SIDE_1' : 'WORK_FULL';
+                window.timerSeconds = prevEx && prevEx.unilateral ? 30 : 60;
+                window.updatePlayerUI();
+                window.startTimer();
+            }
+        };
+
+        window.setupPwaFeatures = function() {
+            const manifestData = {
+                name: "The Reform Lab - Reformer & Mat Pilates",
+                short_name: "Reform Lab",
+                description: "Studio Quality Reformer & Mat Pilates Workout Generator",
+                start_url: "./",
+                display: "standalone",
+                background_color: "#FAF7F2",
+                theme_color: "#518A82",
+                orientation: "portrait-primary",
+                icons: [{
+                    src: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23FAF7F2' rx='24'/><g fill='%2343736D'><path d='M 12 18 H 58 V 25 H 41 V 68 H 31 V 25 H 12 Z'/><path d='M 36 30 H 62 C 72 30 78 36 78 44 C 78 52 70 56 60 56 H 48 V 49 H 58 C 65 49 70 47 70 43 C 70 38 65 36 58 36 H 44 V 62 C 44 60 48 55 58 55 C 68 55 76 60 84 72 L 75 76 C 68 66 62 62 55 62 H 48 Z'/><path d='M 44 52 H 52 V 76 H 88 V 83 H 44 Z'/></g></svg>",
+                    sizes: "192x192 512x512",
+                    type: "image/svg+xml"
+                }]
+            };
+
+            try {
+                const manifestBlob = new Blob([JSON.stringify(manifestData)], { type: 'application/manifest+json' });
+                const manifestUrl = URL.createObjectURL(manifestBlob);
+                const manifestLink = document.getElementById('pwa-manifest');
+                if (manifestLink) manifestLink.setAttribute('href', manifestUrl);
+
+                const appIconSvg = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23FAF7F2' rx='24'/><g fill='%2343736D'><path d='M 12 18 H 58 V 25 H 41 V 68 H 31 V 25 H 12 Z'/><path d='M 36 30 H 62 C 72 30 78 36 78 44 C 78 52 70 56 60 56 H 48 V 49 H 58 C 65 49 70 47 70 43 C 70 38 65 36 58 36 H 44 V 62 C 44 60 48 55 58 55 C 68 55 76 60 84 72 L 75 76 C 68 66 62 62 55 62 H 48 Z'/><path d='M 44 52 H 52 V 76 H 88 V 83 H 44 Z'/></g></svg>";
+                const appleIcon = document.getElementById('pwa-apple-icon');
+                const favicon = document.getElementById('pwa-favicon');
+                if (appleIcon) appleIcon.setAttribute('href', appIconSvg);
+                if (favicon) favicon.setAttribute('href', appIconSvg);
+            } catch(e) {}
+
+            window.addEventListener('beforeinstallprompt', (e) => {
+                e.preventDefault();
+                window.deferredPwaPrompt = e;
+                const btn = document.getElementById('btn-pwa-install');
+                if (btn) btn.classList.remove('hidden');
+            });
+        };
+
+        window.initTouchSwipeHandlers = function() {
+            let touchStartX = 0;
+            const playerEl = document.getElementById('view-player');
+            if (!playerEl) return;
+
+            playerEl.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            playerEl.addEventListener('touchend', (e) => {
+                const touchEndX = e.changedTouches[0].screenX;
+                const diff = touchEndX - touchStartX;
+                if (diff < -50) window.nextExercise();
+                else if (diff > 50) window.prevExercise();
+            }, { passive: true });
+        };
+
+        window.onload = function() {
+            window.initExerciseDatabase();
+            if (window.lucide) window.lucide.createIcons();
+            window.initDateRibbon();
+            window.updateDailyQuote();
+            window.generateDailyRoutine();
+            window.renderDailyView();
+            window.initTouchSwipeHandlers();
+            window.setupPwaFeatures();
+        };
+    </script>
+</body>
+</html>
