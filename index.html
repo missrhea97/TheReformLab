@@ -1,0 +1,1810 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>The Reform Lab - Reformer & Mat Pilates</title>
+
+    <!-- Dynamic PWA Links -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Reform Lab">
+    <meta name="theme-color" content="#518A82">
+
+    <link id="pwa-manifest" rel="manifest">
+    <link id="pwa-apple-icon" rel="apple-touch-icon">
+    <link id="pwa-favicon" rel="icon" type="image/svg+xml">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        peach: {
+                            50: '#fef6f3',
+                            100: '#fdebe4',
+                            400: '#f79b7f',
+                            500: '#F27854',
+                            600: '#d95a34'
+                        },
+                        sage: {
+                            50: '#f4f8f7',
+                            100: '#e4efed',
+                            400: '#7bb2aa',
+                            500: '#518A82',
+                            600: '#43736d'
+                        },
+                        mint: {
+                            100: '#e6f9f1',
+                            500: '#51CF99',
+                            600: '#38b881'
+                        },
+                        ivory: {
+                            50: '#FAF7F2',
+                            100: '#F5F0E8',
+                            200: '#EAE3D7',
+                            300: '#DCD3C5',
+                            800: '#5A5650',
+                            900: '#2B2D2B'
+                        },
+                        darkbg: {
+                            800: '#1F1E1C',
+                            900: '#141413'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif']
+                    }
+                }
+            }
+        };
+    </script>
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #FAF7F2;
+            color: #2B2D2B;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+            padding-top: env(safe-area-inset-top);
+            padding-bottom: env(safe-area-inset-bottom);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dark body {
+            background-color: #141413;
+            color: #FAF7F2;
+        }
+
+        .pt-safe { padding-top: max(1rem, env(safe-area-inset-top)); }
+        .pb-safe { padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
+
+        input, select, textarea {
+            font-size: 16px !important;
+        }
+
+        /* Keyframe Animations */
+        @keyframes carriageGlide {
+            0%, 100% { transform: translateX(0px); }
+            50% { transform: translateX(-28px); }
+        }
+
+        @keyframes springStretch {
+            0%, 100% { transform: scaleX(1); }
+            50% { transform: scaleX(1.75); }
+        }
+
+        @keyframes humanBreath {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-1.5px) scale(1.02); }
+        }
+
+        .anim-carriage-glide { animation: carriageGlide 3.5s ease-in-out infinite; }
+        .anim-spring-stretch { transform-origin: 225px 102px; animation: springStretch 3.5s ease-in-out infinite; }
+        .anim-human-breath { animation: humanBreath 3.5s ease-in-out infinite; }
+
+        ::-webkit-scrollbar { width: 4px; height: 4px; }
+        ::-webkit-scrollbar-track { background: #FAF7F2; }
+        .dark ::-webkit-scrollbar-track { background: #141413; }
+        ::-webkit-scrollbar-thumb { background: #EAE3D7; border-radius: 9999px; }
+        .dark ::-webkit-scrollbar-thumb { background: #3A3835; }
+        ::-webkit-scrollbar-thumb:hover { background: #518A82; }
+        .scrollbar-none::-webkit-scrollbar { display: none; }
+        .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="h-full flex flex-col antialiased selection:bg-peach-100 selection:text-peach-600 pb-20 sm:pb-0">
+
+    <header class="bg-white dark:bg-darkbg-800 border-b border-ivory-200 dark:border-stone-800 sticky top-0 z-30 shadow-sm transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2">
+            
+            <!-- Logo Brand Title -->
+            <div class="flex items-center space-x-3 flex-shrink-0">
+                <div class="w-10 h-10 rounded-2xl bg-sage-50 dark:bg-sage-600/20 border border-sage-200 dark:border-sage-500/30 flex items-center justify-center p-1 shadow-sm">
+                    <svg viewBox="0 0 100 100" class="w-full h-full text-sage-600 dark:text-sage-400 fill-current">
+                        <path d="M 12 18 H 58 V 25 H 41 V 68 H 31 V 25 H 12 Z"/>
+                        <path d="M 36 30 H 62 C 72 30 78 36 78 44 C 78 52 70 56 60 56 H 48 V 49 H 58 C 65 49 70 47 70 43 C 70 38 65 36 58 36 H 44 V 62 C 44 60 48 55 58 55 C 68 55 76 60 84 72 L 75 76 C 68 66 62 62 55 62 H 48 Z"/>
+                        <path d="M 44 52 H 52 V 76 H 88 V 83 H 44 Z"/>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-xs sm:text-base font-black tracking-tight text-ivory-900 dark:text-ivory-50 leading-none">THE REFORM LAB</h1>
+                    <p class="text-[8px] sm:text-[10px] font-extrabold text-sage-600 dark:text-sage-400 tracking-wider mt-0.5 uppercase">MOVE &bull; STRONGER &bull; FURTHER</p>
+                </div>
+            </div>
+
+            <!-- Desktop Equipment Switcher -->
+            <div class="hidden sm:flex items-center bg-ivory-100 dark:bg-stone-800 p-1 rounded-2xl border border-ivory-200 dark:border-stone-700">
+                <button id="hdr-equip-reformer" onclick="window.setEquipmentMode('reformer')" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-black transition bg-sage-500 text-white shadow-sm min-h-[36px]">
+                    <span>Reformer</span>
+                </button>
+                <button id="hdr-equip-mat" onclick="window.setEquipmentMode('mat')" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-black transition text-ivory-800 dark:text-ivory-200 hover:text-ivory-900 min-h-[36px]">
+                    <span>Mat</span>
+                </button>
+            </div>
+
+            <div class="hidden sm:flex items-center space-x-2">
+                <button id="btn-pwa-install" onclick="window.triggerPwaInstall()" class="flex items-center space-x-1.5 px-3 py-2 rounded-xl bg-sage-50 dark:bg-sage-600/20 border border-sage-200 dark:border-sage-500/30 text-sage-600 dark:text-sage-400 hover:bg-sage-100 transition text-xs font-bold min-h-[38px]" title="Install App">
+                    <i data-lucide="download" class="w-4 h-4 text-sage-600 dark:text-sage-400 flex-shrink-0"></i>
+                    <span>Install</span>
+                </button>
+
+                <button onclick="window.openProfileModal()" class="flex items-center space-x-2 px-3 py-2 rounded-xl bg-ivory-50 dark:bg-stone-800 border border-ivory-200 dark:border-stone-700 hover:border-peach-400 transition text-xs font-bold text-ivory-800 dark:text-ivory-200 min-h-[38px]" title="Workout Preferences">
+                    <i data-lucide="sliders" class="w-4 h-4 text-peach-500 flex-shrink-0"></i>
+                    <span>Preferences</span>
+                    <span id="profile-badge-text" class="capitalize bg-peach-100 dark:bg-peach-500/20 text-peach-600 dark:text-peach-400 px-1.5 py-0.5 rounded-md text-[10px] font-extrabold">Level 2</span>
+                </button>
+
+                <button id="btn-audio-toggle" onclick="window.toggleAudioMode()" class="p-2 rounded-xl bg-peach-50 dark:bg-peach-500/20 text-peach-600 dark:text-peach-400 border border-peach-100 dark:border-peach-500/30 hover:bg-peach-100 transition min-h-[38px] min-w-[38px] flex items-center justify-center" title="Toggle Voice Cues">
+                    <i data-lucide="volume-2" class="w-4 h-4"></i>
+                </button>
+
+                <button onclick="window.startWorkout()" class="px-3.5 py-2 rounded-xl bg-peach-500 text-white font-extrabold text-xs hover:bg-peach-600 transition shadow-md shadow-peach-500/20 flex items-center space-x-1.5 min-h-[38px]">
+                    <i data-lucide="play" class="w-4 h-4 fill-current"></i>
+                    <span>Start Session</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 lg:px-8 py-3 sm:py-4 space-y-4 pb-28 sm:pb-6">
+
+        <!-- Calendar Date Ribbon -->
+        <div id="date-ribbon-container" class="flex items-center space-x-2 overflow-x-auto pb-1 scrollbar-none"></div>
+
+        <!-- Sage Daily Quote Banner -->
+        <div class="bg-sage-500 dark:bg-sage-600 rounded-3xl p-4 sm:p-5 text-white shadow-xl shadow-sage-500/15 relative overflow-hidden flex flex-col md:flex-row items-start md:items-center justify-between gap-3">
+            <div class="space-y-1 sm:space-y-1.5 max-w-2xl z-10">
+                <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white/15 backdrop-blur-md text-[10px] sm:text-[11px] font-bold tracking-wide">
+                    <i data-lucide="sparkles" class="w-3.5 h-3.5 text-peach-100"></i>
+                    <span id="banner-equipment-label" class="uppercase">DAILY REFORMER PILATES INSIGHT</span>
+                </div>
+                <blockquote id="daily-quote-text" class="text-xs sm:text-base font-semibold italic text-ivory-50 leading-relaxed">
+                    "Physical fitness is the first requisite of happiness."
+                </blockquote>
+                <p id="daily-quote-author" class="text-[9px] sm:text-xs font-bold text-ivory-200 uppercase tracking-widest">&mdash; Joseph Pilates</p>
+            </div>
+
+            <div class="absolute -right-10 -bottom-10 opacity-10 pointer-events-none">
+                <i data-lucide="activity" class="w-64 h-64 text-white"></i>
+            </div>
+        </div>
+
+        <div class="hidden sm:flex items-center justify-between border-b border-ivory-200 dark:border-stone-800 pb-3 gap-3">
+            <nav class="flex space-x-2 overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
+                <button id="tab-daily" onclick="window.switchView('daily')" class="px-3.5 py-2 rounded-xl text-xs font-extrabold transition bg-peach-500 text-white shadow-sm flex-shrink-0 min-h-[38px]">
+                    Daily Routine
+                </button>
+                <button id="tab-library" onclick="window.switchView('library')" class="px-3.5 py-2 rounded-xl text-xs font-extrabold transition text-ivory-800 dark:text-ivory-200 hover:bg-ivory-100 dark:hover:bg-stone-800 flex-shrink-0 min-h-[38px]">
+                    Repertoire Library (20 Categories)
+                </button>
+                <button id="tab-builder" onclick="window.switchView('builder')" class="px-3.5 py-2 rounded-xl text-xs font-extrabold transition text-ivory-800 dark:text-ivory-200 hover:bg-ivory-100 dark:hover:bg-stone-800 flex-shrink-0 min-h-[38px]">
+                    Custom Flow Builder
+                </button>
+            </nav>
+        </div>
+
+        <!-- VIEW 1: DAILY ROUTINE BOARD -->
+        <div id="view-daily" class="space-y-6">
+            <div id="routine-cards-container" class="space-y-4 sm:space-y-6"></div>
+        </div>
+
+        <div id="view-library" class="hidden space-y-4 sm:space-y-6">
+            <div class="bg-white dark:bg-darkbg-800 rounded-3xl p-3 sm:p-4 border border-ivory-200 dark:border-stone-800 flex flex-col md:flex-row items-center justify-between gap-3 shadow-sm">
+                <div class="relative w-full md:w-80">
+                    <i data-lucide="search" class="w-4 h-4 text-ivory-800 dark:text-ivory-300 absolute left-3.5 top-3"></i>
+                    <input type="text" id="library-search" onkeyup="window.filterLibrary()" placeholder="Search movements, props or categories..." class="w-full pl-10 pr-4 py-2 text-xs font-semibold bg-ivory-50 dark:bg-stone-800 border border-ivory-200 dark:border-stone-700 dark:text-white rounded-xl focus:outline-none focus:border-peach-500">
+                </div>
+
+                <div class="flex items-center space-x-2 w-full md:w-auto">
+                    <select id="library-cat-filter" onchange="window.filterLibrary()" class="w-full md:w-auto text-xs font-bold bg-ivory-50 dark:bg-stone-800 border border-ivory-200 dark:border-stone-700 rounded-xl px-3 py-2 text-ivory-900 dark:text-ivory-100 focus:outline-none min-h-[38px]">
+                        <option value="all">All 20 Repertoire Categories</option>
+                        <option value="Footwork">1. Footwork</option>
+                        <option value="Bridging">2. Bridging</option>
+                        <option value="Abdominals">3. Abdominals</option>
+                        <option value="Arms">4. Arms</option>
+                        <option value="Legs & Glutes">5. Legs & Glutes</option>
+                        <option value="Side-Lying">6. Side-Lying</option>
+                        <option value="Kneeling">7. Kneeling</option>
+                        <option value="Planks">8. Planks</option>
+                        <option value="Standing">9. Standing</option>
+                        <option value="Elephant">10. Elephant</option>
+                        <option value="Long Stretch Series">11. Long Stretch Series</option>
+                        <option value="Short Box">12. Short Box</option>
+                        <option value="Long Box">13. Long Box</option>
+                        <option value="Seated">14. Seated</option>
+                        <option value="Spine Mobility">15. Spine Mobility</option>
+                        <option value="Balance">16. Balance</option>
+                        <option value="Jumpboard">17. Jumpboard</option>
+                        <option value="Cardio">18. Cardio</option>
+                        <option value="Flexibility">19. Flexibility</option>
+                        <option value="Full Body Flows">20. Full Body Flows</option>
+                    </select>
+
+                    <div class="flex items-center space-x-1 flex-shrink-0">
+                        <button id="lib-lvl-all" onclick="window.setLibraryLevelFilter('all')" class="px-2.5 py-2 rounded-lg text-xs font-bold bg-peach-500 text-white min-h-[36px]">All</button>
+                        <button id="lib-lvl-beginner" onclick="window.setLibraryLevelFilter('beginner')" class="px-2.5 py-2 rounded-lg text-xs font-bold bg-ivory-100 dark:bg-stone-800 text-ivory-800 dark:text-ivory-200 min-h-[36px]">Lvl 1</button>
+                        <button id="lib-lvl-intermediate" onclick="window.setLibraryLevelFilter('intermediate')" class="px-2.5 py-2 rounded-lg text-xs font-bold bg-ivory-100 dark:bg-stone-800 text-ivory-800 dark:text-ivory-200 min-h-[36px]">Lvl 2</button>
+                        <button id="lib-lvl-advanced" onclick="window.setLibraryLevelFilter('advanced')" class="px-2.5 py-2 rounded-lg text-xs font-bold bg-ivory-100 dark:bg-stone-800 text-ivory-800 dark:text-ivory-200 min-h-[36px]">Lvl 3</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-between text-xs font-bold text-ivory-800 dark:text-ivory-300 px-1">
+                <span id="library-count-indicator">Showing Studio Movements</span>
+                <span>Level 1 = Beginner &bull; Level 2 = Intermediate &bull; Level 3 = Advanced</span>
+            </div>
+
+            <div id="library-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4"></div>
+        </div>
+
+        <div id="view-builder" class="hidden space-y-4 sm:space-y-6">
+            <div class="bg-white dark:bg-darkbg-800 rounded-3xl p-4 sm:p-5 border border-ivory-200 dark:border-stone-800 space-y-4 shadow-sm">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                    <div>
+                        <h3 class="text-sm font-extrabold text-ivory-900 dark:text-ivory-50">Build Your Custom Flow Sequence</h3>
+                        <p class="text-xs text-ivory-800 dark:text-ivory-300 font-medium">Select movements from the exercise bank across all 20 repertoire categories.</p>
+                    </div>
+                    <button onclick="window.startCustomWorkout()" class="px-4 py-2.5 rounded-xl bg-peach-500 text-white text-xs font-extrabold hover:bg-peach-600 transition shadow-sm flex items-center space-x-1.5 w-full sm:w-auto justify-center min-h-[42px]">
+                        <i data-lucide="play" class="w-4 h-4 fill-current"></i>
+                        <span>Play Custom Flow</span>
+                    </button>
+                </div>
+
+                <div id="builder-queue" class="min-h-[72px] bg-ivory-50 dark:bg-stone-800/60 rounded-2xl p-3 border border-ivory-200 dark:border-stone-700 flex flex-wrap items-center gap-2">
+                    <span class="text-xs text-ivory-800 dark:text-ivory-300 font-medium italic w-full text-center">No exercises added yet. Click "+ Add" from the repertoire bank below.</span>
+                </div>
+            </div>
+
+            <div class="relative w-full max-w-md">
+                <i data-lucide="search" class="w-4 h-4 text-ivory-800 dark:text-ivory-300 absolute left-3.5 top-3"></i>
+                <input type="text" id="builder-search" onkeyup="window.renderBuilderBank()" placeholder="Filter repertoire bank..." class="w-full pl-10 pr-4 py-2 text-xs font-semibold bg-white dark:bg-stone-800 border border-ivory-200 dark:border-stone-700 rounded-xl focus:outline-none focus:border-peach-500 text-ivory-900 dark:text-ivory-100">
+            </div>
+
+            <div id="builder-bank" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"></div>
+        </div>
+
+    </main>
+
+    <div id="mobile-bottom-menu-bar" class="fixed bottom-0 inset-x-0 z-40 bg-white/95 dark:bg-darkbg-800/95 backdrop-blur-md border-t border-ivory-200 dark:border-stone-800 px-2 py-1.5 pb-safe shadow-xl flex sm:hidden items-center justify-around gap-1 transition-colors">
+        <button id="mob-tab-daily" onclick="window.switchView('daily')" class="flex flex-col items-center justify-center space-y-0.5 text-peach-500 font-extrabold transition py-1 px-1.5 min-w-[50px]">
+            <i data-lucide="calendar" class="w-4 h-4"></i>
+            <span class="text-[9px]">Daily</span>
+        </button>
+
+        <button id="mob-tab-library" onclick="window.switchView('library')" class="flex flex-col items-center justify-center space-y-0.5 text-ivory-800 dark:text-ivory-300 hover:text-peach-500 transition py-1 px-1.5 min-w-[50px]">
+            <i data-lucide="book-open" class="w-4 h-4"></i>
+            <span class="text-[9px]">Library</span>
+        </button>
+
+        <button id="mob-tab-builder" onclick="window.switchView('builder')" class="flex flex-col items-center justify-center space-y-0.5 text-ivory-800 dark:text-ivory-300 hover:text-peach-500 transition py-1 px-1.5 min-w-[50px]">
+            <i data-lucide="wrench" class="w-4 h-4"></i>
+            <span class="text-[9px]">Builder</span>
+        </button>
+
+        <button id="btn-audio-toggle-mb" onclick="window.toggleAudioMode()" class="p-2 rounded-xl bg-peach-50 dark:bg-peach-500/20 text-peach-600 dark:text-peach-400 border border-peach-100 dark:border-peach-500/30 min-h-[38px] min-w-[38px] flex items-center justify-center" title="Toggle Voice Cues">
+            <i data-lucide="volume-2" class="w-4 h-4"></i>
+        </button>
+
+        <button onclick="window.openProfileModal()" class="p-2 rounded-xl bg-ivory-50 dark:bg-stone-800 border border-ivory-200 dark:border-stone-700 text-ivory-800 dark:text-ivory-200 min-h-[38px] min-w-[38px] flex items-center justify-center" title="Workout Preferences">
+            <i data-lucide="sliders" class="w-4 h-4 text-peach-500"></i>
+        </button>
+
+        <button onclick="window.startWorkout()" class="px-3 py-2 rounded-xl bg-peach-500 text-white font-black text-xs hover:bg-peach-600 transition shadow-md shadow-peach-500/20 flex items-center justify-center space-x-1 min-h-[38px]">
+            <i data-lucide="play" class="w-3.5 h-3.5 fill-current"></i>
+            <span>Start</span>
+        </button>
+    </div>
+
+    <div id="view-player" class="fixed inset-0 z-50 bg-ivory-900 flex flex-col hidden text-white pt-safe pb-safe">
+        <div class="h-14 sm:h-16 border-b border-white/10 px-3 sm:px-6 flex items-center justify-between">
+            <div class="flex items-center space-x-2 sm:space-x-3">
+                <span id="player-block-badge" class="px-2.5 py-1 rounded-full bg-peach-500 text-white font-extrabold text-[10px] sm:text-xs uppercase tracking-wider">
+                    Block 1
+                </span>
+                <span id="player-step-counter" class="text-xs font-bold text-ivory-300">Move 1 / 20</span>
+            </div>
+            <div class="flex items-center space-x-2">
+                <a id="player-demo-btn" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-1 px-2.5 py-1 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition border border-white/15">
+                    <i data-lucide="play-circle" class="w-3.5 h-3.5 text-peach-400"></i>
+                    <span>Demo</span>
+                </a>
+                <button onclick="window.exitWorkout()" class="p-2 rounded-xl bg-white/10 hover:bg-white/20 transition text-white min-h-[40px] min-w-[40px] flex items-center justify-center">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="flex-1 max-w-4xl w-full mx-auto p-3 sm:p-6 flex flex-col justify-between space-y-3 sm:space-y-4 overflow-y-auto">
+
+            <!-- 10s Side Swap Flashing Banner -->
+            <div id="side-swap-overlay" class="hidden bg-peach-500 text-white px-3 py-2 rounded-2xl text-center font-black text-[11px] sm:text-xs uppercase tracking-widest animate-pulse shadow-lg border border-peach-400">
+                &sharp; 10s SIDE SWAP BUFFER &mdash; CHANGE SIDES NOW
+            </div>
+
+            <!-- 10s Upcoming Move Notice Banner (Shown during last 10s of work phase & spring changes) -->
+            <div id="upcoming-move-overlay" class="hidden bg-mint-500 text-ivory-900 px-3 py-2 rounded-2xl text-center font-black text-[11px] sm:text-xs uppercase tracking-widest shadow-lg border border-mint-400 flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <i data-lucide="bell" class="w-4 h-4 animate-bounce text-ivory-900"></i>
+                    <span id="upcoming-move-label">UPCOMING IN 10S:</span>
+                </div>
+                <span id="upcoming-move-title" class="font-extrabold capitalize text-ivory-900 truncate max-w-[200px] sm:max-w-xs">Next Move Name</span>
+            </div>
+
+            <div id="player-vector-container" class="bg-white/5 border border-white/10 rounded-3xl p-2 sm:p-4 flex flex-col items-center justify-center min-h-[160px] sm:min-h-[200px] relative overflow-hidden"></div>
+
+            <div class="text-center space-y-1 sm:space-y-2">
+                <p id="player-category-name" class="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-peach-400">Footwork</p>
+                <h2 id="player-exercise-title" class="text-lg sm:text-3xl font-black tracking-tight text-white">Footwork</h2>
+                <div class="flex items-center justify-center space-x-2 sm:space-x-3 text-[11px] sm:text-xs font-bold text-ivory-200">
+                    <span id="player-spring-badge" class="px-2.5 py-1 rounded-lg bg-white/10 border border-white/15 text-peach-300">2 Red Springs</span>
+                    <span id="player-prop-badge" class="px-2.5 py-1 rounded-lg bg-white/10 border border-white/15">Prop: None</span>
+                </div>
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-3 text-left space-y-1 max-w-2xl mx-auto">
+                    <div class="text-[10px] uppercase font-bold text-sage-400 tracking-wider">Detailed Technique & Guidance</div>
+                    <p id="player-form-cue" class="text-xs text-ivory-200 font-medium leading-relaxed">
+                        Form instructions...
+                    </p>
+                </div>
+            </div>
+
+            <!-- Spotify Player Container -->
+            <div id="player-spotify-container" class="bg-white/5 border border-white/10 rounded-2xl p-2 sm:p-3 space-y-2">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-2">
+                        <i data-lucide="music" class="w-4 h-4 text-mint-500 flex-shrink-0"></i>
+                        <span class="text-xs font-bold text-white">Spotify Workout Music</span>
+                    </div>
+                    <button onclick="window.openProfileModal()" class="text-[10px] font-bold text-mint-400 hover:underline">
+                        Change Track/Playlist
+                    </button>
+                </div>
+                <div id="spotify-iframe-wrapper" class="w-full rounded-xl overflow-hidden bg-black/20 flex items-center justify-center"></div>
+            </div>
+
+            <div class="flex flex-col items-center justify-center space-y-2 sm:space-y-4">
+                <div class="relative w-28 h-28 sm:w-36 sm:h-36 flex items-center justify-center">
+                    <svg class="w-full h-full transform -rotate-90" viewBox="0 0 120 120">
+                        <circle cx="60" cy="60" r="52" stroke="currentColor" stroke-width="8" class="text-white/10" fill="none"/>
+                        <circle id="timer-progress-circle" cx="60" cy="60" r="52" stroke="currentColor" stroke-width="8" class="text-peach-500" fill="none" stroke-dasharray="326.72" stroke-dashoffset="0" stroke-linecap="round"/>
+                    </svg>
+                    <div class="absolute flex flex-col items-center">
+                        <span id="timer-display-digits" class="text-2xl sm:text-3xl font-black tracking-tight">01:00</span>
+                        <span id="timer-phase-label" class="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-peach-400">WORK</span>
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-6">
+                    <button onclick="window.prevExercise()" class="p-3 sm:p-3.5 rounded-2xl bg-white/10 hover:bg-white/20 text-white transition min-h-[48px] min-w-[48px] flex items-center justify-center">
+                        <i data-lucide="skip-back" class="w-5 h-5"></i>
+                    </button>
+                    <button id="btn-player-play" onclick="window.toggleTimer()" class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-peach-500 hover:bg-peach-600 text-white flex items-center justify-center shadow-lg shadow-peach-500/30 transition">
+                        <i data-lucide="pause" class="w-7 h-7 sm:w-8 sm:h-8 fill-current"></i>
+                    </button>
+                    <button onclick="window.nextExercise()" class="p-3 sm:p-3.5 rounded-2xl bg-white/10 hover:bg-white/20 text-white transition min-h-[48px] min-w-[48px] flex items-center justify-center">
+                        <i data-lucide="skip-forward" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="modal-profile" class="fixed inset-0 z-50 bg-ivory-900/60 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4 hidden">
+        <div class="bg-white dark:bg-darkbg-800 rounded-t-3xl sm:rounded-3xl max-w-lg w-full p-5 sm:p-6 space-y-4 sm:space-y-5 shadow-2xl border border-ivory-200 dark:border-stone-800 max-h-[85vh] sm:max-h-[90vh] overflow-y-auto">
+            <div class="flex items-center justify-between border-b border-ivory-200 dark:border-stone-700 pb-3">
+                <div class="flex items-center space-x-2">
+                    <i data-lucide="sliders" class="w-5 h-5 text-peach-500"></i>
+                    <div>
+                        <h3 class="text-sm sm:text-base font-extrabold text-ivory-900 dark:text-ivory-50">Workout Preferences</h3>
+                        <p class="text-[10px] text-sage-600 dark:text-sage-400 font-bold">Configure your app theme, apparatus & music</p>
+                    </div>
+                </div>
+                <button onclick="window.closeProfileModal()" class="p-1 rounded-lg text-ivory-800 dark:text-ivory-200 hover:bg-ivory-100 dark:hover:bg-stone-700 min-h-[36px] min-w-[36px] flex items-center justify-center">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <!-- Dark / Light Mode Switcher -->
+            <div class="space-y-2">
+                <label class="text-xs font-extrabold text-ivory-900 dark:text-ivory-100 uppercase tracking-wide flex items-center justify-between">
+                    <span>App Display Mode</span>
+                    <i data-lucide="moon" class="w-4 h-4 text-peach-500"></i>
+                </label>
+                <div class="grid grid-cols-2 gap-2">
+                    <button id="opt-theme-light" onclick="window.setThemeMode('light')" class="py-2.5 px-3 rounded-xl border text-xs font-bold transition flex items-center justify-center space-x-2 bg-peach-50 border-peach-500 text-peach-600 min-h-[44px]">
+                        <i data-lucide="sun" class="w-4 h-4"></i>
+                        <span>Light Mode</span>
+                    </button>
+                    <button id="opt-theme-dark" onclick="window.setThemeMode('dark')" class="py-2.5 px-3 rounded-xl border text-xs font-bold transition flex items-center justify-center space-x-2 border-ivory-200 dark:border-stone-700 text-ivory-800 dark:text-ivory-200 min-h-[44px]">
+                        <i data-lucide="moon" class="w-4 h-4"></i>
+                        <span>Dark Mode</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Primary Equipment Switcher -->
+            <div class="space-y-2">
+                <label class="text-xs font-extrabold text-ivory-900 dark:text-ivory-100 uppercase tracking-wide">Primary Equipment</label>
+                <div class="grid grid-cols-2 gap-2">
+                    <button id="opt-equip-reformer" onclick="window.setEquipmentMode('reformer')" class="py-2.5 px-3 rounded-xl border text-xs font-bold transition flex items-center justify-center space-x-2 bg-sage-50 border-sage-500 text-sage-600 min-h-[44px]">
+                        <span>Reformer Bed</span>
+                    </button>
+                    <button id="opt-equip-mat" onclick="window.setEquipmentMode('mat')" class="py-2.5 px-3 rounded-xl border text-xs font-bold transition flex items-center justify-center space-x-2 border-ivory-200 dark:border-stone-700 text-ivory-800 dark:text-ivory-200 min-h-[44px]">
+                        <span>Mat Pilates</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="space-y-2">
+                <label class="text-xs font-extrabold text-ivory-900 dark:text-ivory-100 uppercase tracking-wide">Workout Duration</label>
+                <div class="grid grid-cols-2 gap-2">
+                    <button id="opt-dur-30" onclick="window.setDuration(30)" class="py-2.5 px-3 rounded-xl border text-xs font-bold transition flex items-center justify-center space-x-1.5 bg-peach-50 border-peach-500 text-peach-600 min-h-[44px]">
+                        <i data-lucide="clock" class="w-4 h-4 text-peach-500"></i>
+                        <span>30 Mins (20 Moves)</span>
+                    </button>
+                    <button id="opt-dur-45" onclick="window.setDuration(45)" class="py-2.5 px-3 rounded-xl border text-xs font-bold transition flex items-center justify-center space-x-1.5 border-ivory-200 dark:border-stone-700 text-ivory-800 dark:text-ivory-200 min-h-[44px]">
+                        <i data-lucide="clock" class="w-4 h-4"></i>
+                        <span>45 Mins (25 Moves)</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Spotify Integration Box -->
+            <div class="space-y-2 bg-ivory-50 dark:bg-stone-800/80 p-3.5 rounded-2xl border border-ivory-200 dark:border-stone-700">
+                <label class="text-xs font-extrabold text-ivory-900 dark:text-ivory-100 uppercase tracking-wide flex items-center justify-between">
+                    <span>Workout Spotify Playlist</span>
+                    <i data-lucide="music" class="w-4 h-4 text-mint-500"></i>
+                </label>
+                <p class="text-[11px] text-ivory-800 dark:text-ivory-300 font-medium">Paste a Spotify playlist, album, or track URL below to embed live music inside your session:</p>
+                <div class="flex items-center space-x-2">
+                    <input type="text" id="pref-spotify-url" placeholder="Paste Spotify link (e.g. open.spotify.com/playlist/...)" class="flex-1 bg-white dark:bg-stone-900 border border-ivory-200 dark:border-stone-700 rounded-xl px-3 py-2 text-xs font-semibold focus:outline-none focus:border-mint-500 text-ivory-900 dark:text-ivory-100">
+                    <button onclick="window.saveSpotifyFromModal()" class="px-3 py-2 rounded-xl bg-mint-500 text-ivory-900 font-extrabold text-xs hover:bg-mint-600 transition flex-shrink-0 flex items-center space-x-1 min-h-[38px]">
+                        <i data-lucide="check" class="w-3.5 h-3.5"></i>
+                        <span>Sync</span>
+                    </button>
+                </div>
+                <div id="modal-spotify-preview" class="mt-2 w-full rounded-xl overflow-hidden"></div>
+            </div>
+
+            <!-- Skill Level Selection -->
+            <div class="space-y-2">
+                <label class="text-xs font-extrabold text-ivory-900 dark:text-ivory-100 uppercase tracking-wide">Skill Level Classification</label>
+                <div class="grid grid-cols-3 gap-2">
+                    <button id="opt-lvl-beginner" onclick="window.setSkillLevel('beginner')" class="py-2.5 px-2 rounded-xl border text-xs font-bold transition border-ivory-200 dark:border-stone-700 text-ivory-800 dark:text-ivory-200 min-h-[40px]">
+                        Level 1 (Beginner)
+                    </button>
+                    <button id="opt-lvl-intermediate" onclick="window.setSkillLevel('intermediate')" class="py-2.5 px-2 rounded-xl border text-xs font-bold transition border-peach-500 bg-peach-50 text-peach-600 min-h-[40px]">
+                        Level 2 (Interm.)
+                    </button>
+                    <button id="opt-lvl-advanced" onclick="window.setSkillLevel('advanced')" class="py-2.5 px-2 rounded-xl border text-xs font-bold transition border-ivory-200 dark:border-stone-700 text-ivory-800 dark:text-ivory-200 min-h-[40px]">
+                        Level 3 (Advanced)
+                    </button>
+                </div>
+            </div>
+
+            <div class="space-y-2.5">
+                <label class="text-xs font-extrabold text-ivory-900 dark:text-ivory-100 uppercase tracking-wide">Available Props & Accessories</label>
+                <div class="space-y-2 text-xs font-bold text-ivory-800 dark:text-ivory-200">
+                    <label class="flex items-center space-x-2.5 cursor-pointer py-0.5">
+                        <input type="checkbox" id="chk-prop-box" checked onchange="window.toggleEquipment('box', this.checked)" class="rounded border-ivory-300 text-peach-500 focus:ring-peach-500 w-4 h-4">
+                        <span id="lbl-prop-box">Box / Support Riser (Required for Short & Long Box)</span>
+                    </label>
+                    <label class="flex items-center space-x-2.5 cursor-pointer py-0.5">
+                        <input type="checkbox" id="chk-prop-jumpboard" checked onchange="window.toggleEquipment('jumpboard', this.checked)" class="rounded border-ivory-300 text-peach-500 focus:ring-peach-500 w-4 h-4">
+                        <span>Jumpboard Attachment (Required for Jumpboard)</span>
+                    </label>
+                    <label class="flex items-center space-x-2.5 cursor-pointer py-0.5">
+                        <input type="checkbox" id="chk-prop-ball" checked onchange="window.toggleEquipment('ball', this.checked)" class="rounded border-ivory-300 text-peach-500 focus:ring-peach-500 w-4 h-4">
+                        <span>Small Pilates / Yoga Ball</span>
+                    </label>
+                    <label class="flex items-center space-x-2.5 cursor-pointer py-0.5">
+                        <input type="checkbox" id="chk-prop-circle" checked onchange="window.toggleEquipment('circle', this.checked)" class="rounded border-ivory-300 text-peach-500 focus:ring-peach-500 w-4 h-4">
+                        <span>Magic Circle (Pilates Ring)</span>
+                    </label>
+                    <label class="flex items-center space-x-2.5 cursor-pointer py-0.5">
+                        <input type="checkbox" id="chk-prop-block" checked onchange="window.toggleEquipment('block', this.checked)" class="rounded border-ivory-300 text-peach-500 focus:ring-peach-500 w-4 h-4">
+                        <span>Yoga Block</span>
+                    </label>
+                    <label class="flex items-center space-x-2.5 cursor-pointer py-0.5">
+                        <input type="checkbox" id="chk-prop-band" checked onchange="window.toggleEquipment('band', this.checked)" class="rounded border-ivory-300 text-peach-500 focus:ring-peach-500 w-4 h-4">
+                        <span>Resistance Band</span>
+                    </label>
+                </div>
+            </div>
+
+            <button onclick="window.saveAndApplyProfile()" class="w-full py-3 rounded-2xl bg-peach-500 text-white font-extrabold text-xs hover:bg-peach-600 transition shadow-md shadow-peach-500/20 min-h-[44px]">
+                Save Preferences & Regenerate Routine
+            </button>
+        </div>
+    </div>
+
+    <!-- Toast Notification Banner -->
+    <div id="toast-banner" class="fixed bottom-20 sm:bottom-6 right-4 sm:right-6 z-50 bg-stone-900 text-white px-4 py-2.5 rounded-2xl text-xs font-bold shadow-2xl border border-white/10 hidden transform transition-all duration-300 max-w-xs sm:max-w-md">
+        <span id="toast-message">Notification message here</span>
+    </div>
+
+    <script>
+        // Global Application State Variables
+        window.currentDateStr = new Date().toISOString().split('T')[0];
+        window.primaryEquipment = 'reformer'; // reformer or mat
+        window.currentDuration = 30; // 30 or 45 mins
+        window.userSkillLevel = 'intermediate'; // beginner (Level 1), intermediate (Level 2), advanced (Level 3)
+        window.equipmentAvailable = { box: true, jumpboard: true, ball: true, circle: true, block: true, band: true };
+        window.themeMode = 'light'; // light or dark
+        window.audioMode = 'all'; 
+        window.libraryLevelFilter = 'all';
+        window.customBuilderQueue = [];
+        window.activeRoutine = [];
+        window.playerIndex = 0;
+        
+        window.playerPhase = 'WORK_SIDE_1'; 
+        window.timerSeconds = 30;
+        window.isTimerRunning = false;
+        window.timerInterval = null;
+        window.userSpotifyUrl = '';
+
+        // Local Storage Persistence Handlers
+        window.savePreferencesToStorage = function() {
+            try {
+                const prefs = {
+                    primaryEquipment: window.primaryEquipment,
+                    currentDuration: window.currentDuration,
+                    userSkillLevel: window.userSkillLevel,
+                    equipmentAvailable: window.equipmentAvailable,
+                    themeMode: window.themeMode,
+                    audioMode: window.audioMode,
+                    userSpotifyUrl: window.userSpotifyUrl
+                };
+                localStorage.setItem('trl_user_preferences', JSON.stringify(prefs));
+            } catch(e) {}
+        };
+
+        window.loadPreferencesFromStorage = function() {
+            try {
+                const saved = localStorage.getItem('trl_user_preferences');
+                if (saved) {
+                    const prefs = JSON.parse(saved);
+                    if (prefs.primaryEquipment) window.primaryEquipment = prefs.primaryEquipment;
+                    if (prefs.currentDuration) window.currentDuration = prefs.currentDuration;
+                    if (prefs.userSkillLevel) window.userSkillLevel = prefs.userSkillLevel;
+                    if (prefs.equipmentAvailable) window.equipmentAvailable = prefs.equipmentAvailable;
+                    if (prefs.themeMode) window.themeMode = prefs.themeMode;
+                    if (prefs.audioMode) window.audioMode = prefs.audioMode;
+                    if (prefs.userSpotifyUrl) window.userSpotifyUrl = prefs.userSpotifyUrl;
+                    return true;
+                }
+            } catch(e) {}
+            return false;
+        };
+
+        window.setThemeMode = function(mode) {
+            window.themeMode = mode;
+            if (mode === 'dark') {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+
+            ['light', 'dark'].forEach(m => {
+                const btn = document.getElementById(`opt-theme-${m}`);
+                if (btn) btn.className = (m === mode)
+                    ? 'py-2.5 px-3 rounded-xl border text-xs font-bold transition flex items-center justify-center space-x-2 bg-peach-50 border-peach-500 text-peach-600 min-h-[44px]'
+                    : 'py-2.5 px-3 rounded-xl border text-xs font-bold transition flex items-center justify-center space-x-2 border-ivory-200 dark:border-stone-700 text-ivory-800 dark:text-ivory-200 min-h-[44px]';
+            });
+
+            window.savePreferencesToStorage();
+            if (window.lucide) window.lucide.createIcons();
+        };
+
+        window.getDemoVideoUrl = function(exercise) {
+            const apparatus = window.primaryEquipment === 'reformer' ? 'Reformer Pilates' : 'Mat Pilates';
+            const query = encodeURIComponent(`${apparatus} ${exercise.category} ${exercise.name} exercise tutorial form`);
+            return `https://www.youtube.com/results?search_query=${query}`;
+        };
+
+        // 20 Repertoire Categories
+        window.REPERTOIRE_CATEGORIES = [
+            "Footwork", "Bridging", "Abdominals", "Arms", "Legs & Glutes",
+            "Side-Lying", "Kneeling", "Planks", "Standing", "Elephant",
+            "Long Stretch Series", "Short Box", "Long Box", "Seated", "Spine Mobility",
+            "Balance", "Jumpboard", "Cardio", "Flexibility", "Full Body Flows"
+        ];
+
+        window.initExerciseDatabase = function() {
+            if (window.EXERCISE_DATABASE && window.EXERCISE_DATABASE.reformer && window.EXERCISE_DATABASE.reformer.length > 0) return;
+
+            window.EXERCISE_DATABASE = { reformer: [], mat: [] };
+
+            const isUnilateral = (name, cat = '', typeStr = '') => {
+                if (typeStr && typeStr.toLowerCase() === 'unilateral') return true;
+                const n = (name + ' ' + cat).toLowerCase();
+                return n.includes('single') || n.includes('standing') || n.includes('lunge') ||
+                       n.includes('scooter') || n.includes('side') || n.includes('clamshell') ||
+                       n.includes('donkey') || n.includes('curtsy') || n.includes('arabesque') ||
+                       n.includes('skater') || n.includes('march') || n.includes('one leg') || n.includes('one arm');
+            };
+
+            const getPosture = (name) => {
+                const n = name.toLowerCase();
+                if (n.includes('plank') || n.includes('push-up') || n.includes('down stretch') || n.includes('long stretch') || n.includes('pike')) return 'pike';
+                if (n.includes('lunge') || n.includes('standing') || n.includes('scooter') || n.includes('split')) return 'lunge';
+                if (n.includes('kneeling') || n.includes('cat') || n.includes('bird')) return 'kneeling';
+                if (n.includes('seated') || n.includes('box') || n.includes('saw') || n.includes('mermaid') || n.includes('teaser')) return 'seated';
+                return 'supine';
+            };
+
+            // Raw structured repertoire seed derived from spreadsheet specifications
+            const reformerRaw = [
+                // Abdominals
+                { c: "Abdominals", n: "Short Box: Round Back C-Curve", l: "beginner", s: "All Springs", p: "Box", t: "Bilateral", q: "Feet hooked in strap, scoop lower abs to roll back into C-curve spine." },
+                { c: "Abdominals", n: "Mid-Back Series: The Hundred", l: "intermediate", s: "1 Red, 1 Blue", p: "None", t: "Bilateral", q: "Arms in straps, curl chest up, pump arms vigorously with 5-count breath." },
+                { c: "Abdominals", n: "Short Box: Flat Back Hinge", l: "intermediate", s: "All Springs", p: "Box", q: "Hinge back from hips with long flat neutral spine, feet anchored under strap." },
+                { c: "Abdominals", n: "Short Box: Oblique Twist", l: "intermediate", s: "All Springs", p: "Box", t: "Unilateral", q: "Hinge back 45 degrees, rotate ribcage smoothly to side firing obliques." },
+                { c: "Abdominals", n: "Stomach Massage: Hands Back", l: "intermediate", s: "2 Red, 1 Blue", p: "None", q: "Sit on front edge of carriage, rounded spine, press carriage out and in." },
+                { c: "Abdominals", n: "Stomach Massage: Arms Reaching", l: "advanced", s: "1 Red, 1 Blue", p: "None", q: "Extend arms overhead without strap support, maintain deep low belly scoop." },
+                { c: "Abdominals", n: "Coordination Series", l: "intermediate", s: "1 Red, 1 Blue", p: "None", q: "Press arms down, extend legs, open/close legs in V, bend knees, return arms." },
+                { c: "Abdominals", n: "Backstroke on Long Box", l: "advanced", s: "1 Blue", p: "Long Box", q: "Lie supine on box, reach limbs to ceiling, circle arms and legs in coordination." },
+                { c: "Abdominals", n: "Single-Leg Abdominal Curl in Straps", l: "intermediate", s: "1 Red", p: "None", t: "Unilateral", q: "One leg in tabletop, curl chest up toward knee while drawing strap down." },
+                { c: "Abdominals", n: "Teaser on Reformer Carriage", l: "advanced", s: "1 Red", p: "None", q: "Balance on sit-bones, lift legs to V-shape, sweep arms to toes against straps." },
+
+                // Arms
+                { c: "Arms", n: "Seated Chest Expansion", l: "beginner", s: "1 Red", p: "Straps", q: "Sit tall facing straps press arms straight back past hips." },
+                { c: "Arms", n: "Pulling Straps 1 (Long Box)", l: "intermediate", s: "1 Blue", p: "Box", q: "Prone on box, pull straps past hips, articulate upper thoracic extension." },
+                { c: "Arms", n: "Pulling Straps 2: T-Pull", l: "intermediate", s: "1 Blue", p: "Box", q: "Arms wide in T-shape, draw straps to sides of box, firing mid-back rhomboids." },
+                { c: "Arms", n: "Bicep Curls in Kneeling", l: "intermediate", s: "1 Red", p: "None", q: "Kneel facing straps, curl handles to shoulders with tall upright torso." },
+                { c: "Arms", n: "Tricep Kickbacks on Box", l: "intermediate", s: "1 Blue", p: "Box", q: "Prone on box, extend elbows straight back, pinning upper arms to ribs." },
+                { c: "Arms", n: "Kneeling Hug a Tree", l: "intermediate", s: "1 Blue", p: "None", q: "Kneel facing away from straps, circle arms forward as if hugging a barrel." },
+                { c: "Arms", n: "Kneeling Salute", l: "advanced", s: "1 Red", p: "None", q: "Hands at forehead, press straps forward and up at 45 degree angle, hold core flat." },
+                { c: "Arms", n: "Single-Arm Row in Kneeling", l: "intermediate", s: "1 Red", p: "None", t: "Unilateral", q: "One-hand strap pull, rotate ribcage slightly, maintaining hips square." },
+                { c: "Arms", n: "Side Arms: Serve the Platter", l: "intermediate", s: "1 Blue", p: "None", q: "Extend palms forward from waist level, keeping shoulders packed down." },
+                { c: "Arms", n: "Arm Circles on Box with Resistance", l: "intermediate", s: "1 Blue", p: "Box", q: "Draw smooth forward and backward circles against spring resistance." },
+
+                // Bridging
+                { c: "Bridging", n: "Pelvic Curl & Articulating Bridge", l: "beginner", s: "2 Red", p: "None", q: "Imprint lower back peel spine up bone-by-bone." },
+                { c: "Bridging", n: "Flat Back Bridge Press", l: "beginner", s: "2 Red", p: "None", q: "Hips lifted to high bridge press carriage away using hamstrings and butt muscles." },
+                { c: "Bridging", n: "Bridge with Pilates Ball Under Lower Back", l: "beginner", s: "1 Red, 1 Blue", p: "Ball", q: "Rest sacrum on soft ball press carriage out while isolating pelvic stability." },
+                { c: "Bridging", n: "Single-Leg High Bridge", l: "intermediate", s: "1 Red, 1 Blue", p: "None", t: "Unilateral", q: "Lift one leg to 90 degree tabletop press carriage maintaining square level hips." },
+                { c: "Bridging", n: "Bridge with Magic Circle Squeeze", l: "intermediate", s: "2 Red", p: "Circle", q: "Place magic circle between thighs maintain inner thigh compression while bridging." },
+                { c: "Bridging", n: "High Relevé Bridge", l: "intermediate", s: "2 Red", p: "None", q: "Lift heels high off footbar hold peak bridge alignment while gliding carriage." },
+                { c: "Bridging", n: "Single-Leg Hamstring Curl", l: "advanced", s: "1 Red", p: "None", t: "Unilateral", q: "Single leg on bar pull carriage all the way in using active hamstring." },
+                { c: "Bridging", n: "Semi-Circle Spine Articulation", l: "advanced", s: "2 Red", p: "None", q: "Articulate pelvis down into carriage frame sweep back up through hip extension." },
+                { c: "Bridging", n: "Single-Leg Bridge March", l: "intermediate", s: "1 Red, 1 Blue", p: "None", t: "Unilateral", q: "Hold high bridge alternate marching legs without dropping pelvic height." },
+                { c: "Bridging", n: "Wide Stance Glute Bridge", l: "beginner", s: "2 Red", p: "None", q: "Turn feet out to corners of footbar squeeze outer glutes at top of lift." },
+
+                // Elephant
+                { c: "Elephant", n: "Elephant: Flat Back", l: "beginner", s: "2 Red", p: "None", q: "Feet flat on carriage heels back drive carriage in with lower stomach muscles." },
+                { c: "Elephant", n: "Elephant: Round Back", l: "beginner", s: "2 Red", p: "None", q: "Round back curve spine nose to belly button pull carriage home using abs." },
+                { c: "Elephant", n: "Single-Leg Elephant", l: "intermediate", s: "2 Red", p: "None", t: "Unilateral", q: "Lift one leg behind slide carriage using supporting leg and core." },
+                { c: "Elephant", n: "Elephant with Leg Lift Behind", l: "advanced", s: "1 Red, 1 Blue", p: "None", t: "Unilateral", q: "Lift rear leg high into air as carriage presses away." },
+                { c: "Elephant", n: "Elephant Knee Drive", l: "intermediate", s: "2 Red", p: "None", t: "Unilateral", q: "Draw single knee to chest at top of carriage return." },
+                { c: "Elephant", n: "Elephant High Heels", l: "intermediate", s: "2 Red", p: "None", q: "Lift heels high off carriage maintain deep pike curve throughout." },
+                { c: "Elephant", n: "Wide Stance Elephant", l: "beginner", s: "2 Red", p: "None", q: "Place feet wide against shoulder blocks pull carriage in firmly." },
+                { c: "Elephant", n: "Elephant with Single-Arm Reach", l: "advanced", s: "1 Red, 1 Blue", p: "None", t: "Unilateral", q: "Reach one hand to opposite ankle hold diagonal core pull." },
+                { c: "Elephant", n: "Elephant Pulse at Stopper", l: "intermediate", s: "2 Red", p: "None", q: "Pulse carriage two inches from stopper firing lower abs." },
+                { c: "Elephant", n: "Elephant to Up-Stretch Flow", l: "advanced", s: "2 Red", p: "None", q: "Dynamic flow from pike Elephant into arched chest extension." },
+
+                // Footwork
+                { c: "Footwork", n: "Parallel Toes", l: "beginner", s: "2 Red, 1 Blue", p: "None", q: "Toes hip-width on footbar, press carriage away smoothly without locking knees." },
+                { c: "Footwork", n: "Parallel Heels", l: "beginner", s: "2 Red, 1 Blue", p: "None", q: "Heels grounded on footbar, flex ankles, drive power through glutes." },
+                { c: "Footwork", n: "High Half Toe / Relevé", l: "intermediate", s: "2 Red, 1 Blue", p: "None", q: "Heels lifted high, press out on balls of feet, keep ankles steady." },
+                { c: "Footwork", n: "Single Leg Heel Lowers", l: "intermediate", s: "2 Red", p: "None", t: "Unilateral", q: "One leg extended at 45 degrees, lower and lift heel of working leg under bar." },
+                { c: "Footwork", n: "Wide Second Position", l: "beginner", s: "2 Red, 1 Blue", p: "None", q: "Heels at outer edges of footbar, toes turned out, squeeze inner thighs on return." },
+                { c: "Footwork", n: "Prehensile Footwork", l: "intermediate", s: "2 Red, 1 Blue", p: "None", q: "Wrap toes and balls of feet tightly over footbar like a bird on a perch." },
+                { c: "Footwork", n: "Running in Place", l: "beginner", s: "2 Red, 1 Blue", p: "None", t: "Unilateral", q: "Alternate bending one knee while lowering opposite heel under footbar." },
+                { c: "Footwork", n: "Lower & Lift Heels", l: "beginner", s: "2 Red, 1 Blue", p: "None", q: "Carriage extended out, press heels down under bar and lift high up." },
+                { c: "Footwork", n: "Internal Rotation Footwork", l: "intermediate", s: "2 Red", p: "None", q: "Toes turned inward, knees pointing toward each other, press out smoothly." },
+                { c: "Footwork", n: "Flex & Point Feet", l: "beginner", s: "2 Red, 1 Blue", p: "None", q: "Carriage extended, alternate flexing ankles back and pointing toes long." },
+
+                // Legs & Glutes
+                { c: "Legs & Glutes", n: "Feet in Straps: Frog Press", l: "beginner", s: "2 Red", p: "Straps", q: "Heels together toes turned out press legs away to 45 degree angle." },
+                { c: "Legs & Glutes", n: "Feet in Straps: Leg Circles", l: "beginner", s: "2 Red", p: "Straps", q: "Draw smooth controlled circles with legs keeping pelvis still on carriage." },
+                { c: "Legs & Glutes", n: "Feet in Straps: Scissors", l: "intermediate", s: "2 Red", p: "Straps", q: "Open legs wide to sides draw inner thighs back together firmly." },
+                { c: "Legs & Glutes", n: "Scooter Series", l: "intermediate", s: "1 Red", p: "None", t: "Unilateral", q: "Hands on footbar press rear leg back into low lunge position." },
+                { c: "Legs & Glutes", n: "Single-Leg Lunge Press", l: "intermediate", s: "1 Red", p: "None", t: "Unilateral", q: "Front foot on platform drive front heel down to slide carriage back." },
+                { c: "Legs & Glutes", n: "Kneeling Quad & Glute Press", l: "intermediate", s: "1 Red, 1 Blue", p: "None", t: "Unilateral", q: "Knee against shoulder block press foot against footbar to push back." },
+                { c: "Legs & Glutes", n: "Single Leg Glute Kickback in Straps", l: "intermediate", s: "1 Red", p: "Straps", t: "Unilateral", q: "Hands and knees on carriage strap on foot drive heel up to ceiling." },
+                { c: "Legs & Glutes", n: "Feet in Straps: Walking in Air", l: "intermediate", s: "2 Red", p: "Straps", q: "Alternate leg strides up and down against strap tension." },
+                { c: "Legs & Glutes", n: "Standing Curtsy Lunge on Carriage", l: "advanced", s: "1 Blue", p: "None", t: "Unilateral", q: "Cross leg behind sink into front glute press carriage back with control." },
+                { c: "Legs & Glutes", n: "Feet in Straps: Inner Thigh Pulls", l: "beginner", s: "2 Red", p: "Straps", q: "Draw legs together from wide V-split focusing on inner thighs." },
+
+                // Side-Lying
+                { c: "Side-Lying", n: "Side-Lying Leg Press on Footbar", l: "intermediate", s: "1 Red, 1 Blue", p: "None", t: "Unilateral", q: "Lie on side along shoulder rests press top foot against footbar." },
+                { c: "Side-Lying", n: "Side Clamshell with Strap", l: "intermediate", s: "1 Blue", p: "Straps", t: "Unilateral", q: "Top foot in strap rotate top knee open while keeping ankles together." },
+                { c: "Side-Lying", n: "Side-Lying Leg Circles in Strap", l: "intermediate", s: "1 Blue", p: "Straps", t: "Unilateral", q: "Top leg extended in strap draw smooth controlled circles." },
+                { c: "Side-Lying", n: "Side-Lying Forward & Back Kicks", l: "intermediate", s: "1 Blue", p: "Straps", t: "Unilateral", q: "Kick top leg forward and sweep back without moving lower back." },
+                { c: "Side-Lying", n: "Side Plank Press on Carriage", l: "advanced", s: "1 Red", p: "None", t: "Unilateral", q: "Forearm on box lift hips into side plank slide carriage out." },
+                { c: "Side-Lying", n: "Side-Lying Bicep Pull", l: "intermediate", s: "1 Blue", p: "Straps", t: "Unilateral", q: "Lie side-facing pull strap toward shoulder with top arm." },
+                { c: "Side-Lying", n: "Side Bend on Short Box", l: "advanced", s: "All Springs", p: "Box", t: "Unilateral", q: "Feet in strap side bend down over box curl back up using waist." },
+                { c: "Side-Lying", n: "Side-Lying Inner Thigh Lift", l: "intermediate", s: "1 Blue", p: "Straps", t: "Unilateral", q: "Bottom leg in strap lift upward against spring tension." },
+                { c: "Side-Lying", n: "Side-Lying Fire Hydrant in Strap", l: "intermediate", s: "1 Blue", p: "Straps", t: "Unilateral", q: "Top knee bent 90 degrees lift knee up targeting side glute." },
+                { c: "Side-Lying", n: "Side-Lying Bicycle Kicks", l: "intermediate", s: "1 Blue", p: "Straps", t: "Unilateral", q: "Pedal top leg in continuous bicycle motion against strap." },
+
+                // Standing
+                { c: "Standing", n: "Standing Side Splits", l: "intermediate", s: "1 Blue", p: "None", t: "Unilateral", q: "One foot on platform one on carriage press legs apart smoothly." },
+                { c: "Standing", n: "Standing Front Splits", l: "advanced", s: "1 Red", p: "None", t: "Unilateral", q: "Lunge stance front foot on platform press carriage back with rear leg." },
+                { c: "Standing", n: "Standing Skater Press", l: "intermediate", s: "1 Blue", p: "None", t: "Unilateral", q: "Soft squat stance press carriage out sideways with working leg." },
+                { c: "Standing", n: "Standing Balance Lunge", l: "advanced", s: "1 Blue", p: "None", t: "Unilateral", q: "Stand on platform press carriage away without touching hands down." },
+                { c: "Standing", n: "Standing Inner Thigh Pull-In", l: "intermediate", s: "1 Yellow", p: "None", t: "Unilateral", q: "Press carriage out use inner thighs to pull carriage back home." },
+                { c: "Standing", n: "Standing Single-Leg Squat", l: "advanced", s: "1 Red", p: "None", t: "Unilateral", q: "All weight on platform leg sink into heel as carriage slides." },
+                { c: "Standing", n: "Standing Side Split with Arm Reach", l: "intermediate", s: "1 Blue", p: "Band", t: "Unilateral", q: "Slide carriage wide while pulling resistance band overhead." },
+                { c: "Standing", n: "Standing Reverse Lunge", l: "intermediate", s: "1 Red", p: "None", t: "Unilateral", q: "Face back of reformer slide carriage away into deep glute lunge." },
+                { c: "Standing", n: "Standing Rotational Twist", l: "advanced", s: "1 Red", p: "Straps", t: "Unilateral", q: "Stand side-facing pull strap diagonally across body with twist." },
+                { c: "Standing", n: "Standing Balance T-Pike", l: "advanced", s: "1 Blue", p: "None", t: "Unilateral", q: "Hinge forward on standing leg extend rear leg out parallel." },
+
+                // Short Box & Long Box
+                { c: "Short Box", n: "Short Box: Round Back Roll-Down", l: "beginner", s: "All Springs", p: "Box", q: "Feet in strap scoop belly to roll back onto box." },
+                { c: "Short Box", n: "Short Box: Side to Side Flexion", l: "intermediate", s: "All Springs", p: "Box", t: "Unilateral", q: "Reach arms overhead side bend right and left over box." },
+                { c: "Short Box", n: "Short Box: Twist & Reach", l: "intermediate", s: "All Springs", p: "Box", t: "Unilateral", q: "Rotate torso 45 degrees hinge back over box corner." },
+                { c: "Short Box", n: "Short Box: The Tree", l: "advanced", s: "All Springs", p: "Box", t: "Unilateral", q: "Climb up single leg extend back over box into full stretch." },
+                { c: "Short Box", n: "Short Box: Around the World", l: "advanced", s: "All Springs", p: "Box", q: "Circle torso smoothly through roll-back side bend and flat back." },
+                { c: "Short Box", n: "Short Box: Lean with Pilates Ball", l: "intermediate", s: "All Springs", p: "Box", q: "Ball behind lower back roll back 45 degrees and hold." },
+                { c: "Short Box", n: "Short Box: Single-Leg Flat Back", l: "advanced", s: "All Springs", p: "Box", t: "Unilateral", q: "Extend one leg off box while hinging back with flat spine." },
+                { c: "Short Box", n: "Short Box: Oblique Twist", l: "intermediate", s: "All Springs", p: "Box", t: "Unilateral", q: "Hold pole at chest rotate ribcage at lowest point of hinge." },
+                { c: "Short Box", n: "Short Box: Full Spine Extension", l: "advanced", s: "All Springs", p: "Box", q: "Arch completely back over box opening chest and shoulders." },
+
+                { c: "Long Box", n: "Pulling Straps: Basic Extension", l: "intermediate", s: "1 Blue", p: "Box", q: "Prone on box pull straps straight back to hips lift chest." },
+                { c: "Long Box", n: "T-Pull Arms on Box", l: "intermediate", s: "1 Blue", p: "Box", q: "Open arms wide pull handles back to align with box sides." },
+                { c: "Long Box", n: "Breaststroke on Long Box", l: "advanced", s: "1 Blue", p: "Box", q: "Circle arms forward side and back while extending upper spine." },
+                { c: "Long Box", n: "Swimming on Long Box", l: "intermediate", s: "1 Blue", p: "Box", q: "Flutter arms and legs in opposition holding chest lift." },
+                { c: "Long Box", n: "Single-Arm Long Box Pull", l: "intermediate", s: "1 Blue", p: "Box", t: "Unilateral", q: "Pull single strap resisting torso twist to keep chest square." },
+                { c: "Long Box", n: "Hamstring Curls on Long Box", l: "beginner", s: "1 Blue", p: "Box", q: "Prone on box bend heels to glutes against strap tension." },
+                { c: "Long Box", n: "Tricep Press on Long Box", l: "intermediate", s: "1 Blue", p: "Box", q: "Keep upper arms high extend wrists straight back past hips." },
+                { c: "Long Box", n: "Reverse Expansion on Long Box", l: "intermediate", s: "1 Blue", p: "Box", q: "Sit facing back of reformer on box press arms straight back." },
+                { c: "Long Box", n: "Bicep Curl Facing Back", l: "intermediate", s: "1 Red", p: "Box", q: "Sit on box curl straps toward forehead with tall posture." },
+                { c: "Long Box", n: "Long Box Swan Dive", l: "advanced", s: "1 Blue", p: "Box", q: "Press straps down lift chest and thighs off box in arc." },
+
+                // Planks
+                { c: "Planks", n: "Front Control / Plank Press", l: "advanced", s: "1 Red, 1 Blue", p: "None", q: "Hands on footbar toes on carriage press carriage out with shoulders." },
+                { c: "Planks", n: "Plank to Pike / Elephant Plank", l: "advanced", s: "1 Red", p: "None", q: "High plank stance lift hips straight up to ceiling using deep abs." },
+                { c: "Planks", n: "Forearm Plank Carriage Glides", l: "intermediate", s: "1 Red", p: "Box", q: "Forearms on box toes on carriage slide carriage away 3 to 6 inches." },
+                { c: "Planks", n: "Single-Leg Plank Lift", l: "advanced", s: "1 Red, 1 Blue", p: "None", t: "Unilateral", q: "Hold high plank on footbar float one leg into air without arching back." },
+                { c: "Planks", n: "Side Plank with Carriage Slide", l: "advanced", s: "1 Blue", p: "None", t: "Unilateral", q: "Side plank on elbow push carriage out with bottom leg." },
+                { c: "Planks", n: "Plank Knee Tuck / Jackknife", l: "intermediate", s: "1 Red", p: "None", q: "Plank stance pull knees into chest sliding carriage forward." },
+                { c: "Planks", n: "Oblique Plank Knee Tucks", l: "advanced", s: "1 Red", p: "None", t: "Unilateral", q: "Draw knees toward left elbow then right elbow rotating waist." },
+                { c: "Planks", n: "Bear Plank Hold & Pulse", l: "intermediate", s: "2 Red", p: "None", q: "Knees bent under hips hovering off carriage pulse carriage two inches." },
+                { c: "Planks", n: "Plank Push-Up on Footbar", l: "advanced", s: "1 Red, 1 Blue", p: "None", q: "Maintain rigid plank alignment while performing tricep push-ups." },
+                { c: "Planks", n: "Saw Plank on Forearms", l: "advanced", s: "1 Red", p: "Block", q: "Forearm plank rock shoulders forward and back over elbows." },
+
+                // Jumpboard & Cardio
+                { c: "Jumpboard", n: "Parallel Feet Jumps", l: "intermediate", s: "2 Red", p: "Jumpboard", q: "Springy rebound off jumpboard soft toe-ball-heel landing mechanics." },
+                { c: "Jumpboard", n: "Pilates V Jumps", l: "intermediate", s: "2 Red", p: "Jumpboard", q: "Jump with heels together toes turned out 45 degrees." },
+                { c: "Jumpboard", n: "Single-Leg Rebound Jumps", l: "advanced", s: "1 Red, 1 Blue", p: "Jumpboard", t: "Unilateral", q: "Jump and land on single foot keeping pelvis level." },
+                { c: "Jumpboard", n: "Running / Alternating Leg Jumps", l: "intermediate", s: "1 Red, 1 Blue", p: "Jumpboard", t: "Unilateral", q: "Switch legs mid-air in steady jogging cadence." },
+                { c: "Jumpboard", n: "Wide Stance Jumpboard Jumps", l: "intermediate", s: "2 Red", p: "Jumpboard", q: "Jump with feet wide at upper corners of board." },
+                { c: "Jumpboard", n: "Single-Leg Side Jump", l: "advanced", s: "1 Red, 1 Blue", p: "Jumpboard", t: "Unilateral", q: "Land on outer edge of jumpboard with single leg control." },
+                { c: "Jumpboard", n: "Jumpboard Ski Jumps", l: "intermediate", s: "1 Red, 1 Blue", p: "Jumpboard", q: "Keep knees together swing feet side-to-side in mid-air." },
+                { c: "Jumpboard", n: "Jumpboard Tuck Jumps", l: "advanced", s: "1 Red, 1 Blue", p: "Jumpboard", q: "Explode off board pull knees toward chest before landing." },
+                { c: "Jumpboard", n: "Jumpboard Straddle Jumps", l: "advanced", s: "1 Red", p: "Jumpboard", q: "Open legs wide in air draw feet together before touchdown." },
+                { c: "Jumpboard", n: "Single-Leg Pulse Jumps", l: "advanced", s: "1 Red", p: "Jumpboard", t: "Unilateral", q: "Low rapid jumps on single leg building glute stamina." },
+
+                { c: "Cardio", n: "Jumpboard Cardio Interval Sprints", l: "intermediate", s: "1 Red, 1 Blue", p: "Jumpboard", q: "Fast-paced jumps off board maintaining quick one-second tempo." },
+                { c: "Cardio", n: "Jumpboard Scissors & Jack Jumps", l: "advanced", s: "1 Red, 1 Blue", p: "Jumpboard", t: "Unilateral", q: "Alternate scissor legs and wide jacks in cardio rhythm." },
+                { c: "Cardio", n: "Carriage Sprint Mountain Climbers", l: "advanced", s: "1 Red", p: "None", t: "Unilateral", q: "Hands on footbar rapid knee drives pushing carriage in and out." },
+                { c: "Cardio", n: "Jumpboard Single-Leg Cardio Hops", l: "advanced", s: "1 Red", p: "Jumpboard", t: "Unilateral", q: "Rapid single-leg hops on jumpboard firing calves and glutes." },
+                { c: "Cardio", n: "Plank Jack Carriage Springs", l: "advanced", s: "1 Red", p: "None", q: "High plank jump feet wide and close on carriage surface." },
+                { c: "Cardio", n: "Jumpboard High Knee Runs", l: "intermediate", s: "1 Red, 1 Blue", p: "Jumpboard", t: "Unilateral", q: "Drive knees high toward chest in mid-air jumping sequence." },
+                { c: "Cardio", n: "Burpee Jumpboard Transitions", l: "advanced", s: "1 Red", p: "Jumpboard", q: "Jump off board land hop up to stand on platform repeat." },
+                { c: "Cardio", n: "Jumpboard Cross-Jack Jumps", l: "advanced", s: "1 Red, 1 Blue", p: "Jumpboard", t: "Unilateral", q: "Cross legs in air right over left then left over right on jumps." },
+                { c: "Cardio", n: "Quick-Foot Cardio Taps", l: "intermediate", s: "1 Red", p: "Jumpboard", t: "Unilateral", q: "Alternate toe taps on top edge of jumpboard at fast pace." },
+                { c: "Cardio", n: "Jumpboard Power Squat Rebounds", l: "advanced", s: "2 Red", p: "Jumpboard", q: "Deep squat on landing explode forcefully off board." }
+            ];
+
+            const matRaw = [
+                // Footwork & Bridging
+                { c: "Footwork", n: "Mat Footwork Toe Taps", l: "beginner", s: "Bodyweight", p: "None", q: "Supine knees in tabletop tap toes to mat without arching lower back." },
+                { c: "Footwork", n: "Mat Footwork Flex & Point", l: "beginner", s: "Bodyweight", p: "None", q: "Extend legs to 45 degrees flex and point ankles with low abs flat." },
+                { c: "Footwork", n: "Single-Leg Heel Lower & Lift", l: "intermediate", s: "Bodyweight", p: "None", t: "Unilateral", q: "One leg extended high lower heel toward floor with neutral spine." },
+                { c: "Footwork", n: "Mat Running / Bicycle Legs", l: "intermediate", s: "Bodyweight", p: "None", t: "Unilateral", q: "Pedal legs smoothly in air keeping pelvis completely still." },
+                { c: "Footwork", n: "Pilates V Leg Presses", l: "beginner", s: "Bodyweight", p: "Ball", q: "Squeeze ball between ankles extend legs to 45 degrees in V-stance." },
+                { c: "Footwork", n: "Single-Leg Toe Taps in Tabletop", l: "beginner", s: "Bodyweight", p: "None", t: "Unilateral", q: "Alternate tapping single foot down maintaining 90 degree knee angle." },
+                { c: "Footwork", n: "Wide Stance Leg Extensions", l: "beginner", s: "Bodyweight", p: "Band", q: "Band around arches press legs out wide into V-split." },
+                { c: "Footwork", n: "High Relevé Heel Presses", l: "intermediate", s: "Bodyweight", p: "None", q: "Lift hips slightly press toes into mat as if wearing high heels." },
+                { c: "Footwork", n: "Single-Leg Circle Taps", l: "intermediate", s: "Bodyweight", p: "None", t: "Unilateral", q: "Draw small circles with toe before tapping mat surface." },
+                { c: "Footwork", n: "Mat Plié & Pulse", l: "intermediate", s: "Bodyweight", p: "Circle", q: "Circle between knees pulse knees inward in tabletop pose." },
+
+                { c: "Bridging", n: "Classic Shoulder Bridge", l: "beginner", s: "Bodyweight", p: "None", q: "Peel spine off mat hold bridge fire glutes and hamstrings." },
+                { c: "Bridging", n: "Single-Leg Bridge Lift & Lower", l: "intermediate", s: "Bodyweight", p: "None", t: "Unilateral", q: "Hold high bridge lift and lower one straight leg without hip dipping." },
+                { c: "Bridging", n: "Bridge with Pilates Ball Squeeze", l: "beginner", s: "Bodyweight", p: "Ball", q: "Squeeze ball between knees while lifting hips to ceiling." },
+                { c: "Bridging", n: "High Relevé Bridge Pulses", l: "intermediate", s: "Bodyweight", p: "None", q: "Lift heels high pulse hips two inches up at top of bridge range." },
+                { c: "Bridging", n: "Single-Leg Hamstring Bridge Pull", l: "advanced", s: "Bodyweight", p: "None", t: "Unilateral", q: "Single-leg support drag heel isometric toward glute." },
+                { c: "Bridging", n: "Wide Stance Glute Bridge", l: "beginner", s: "Bodyweight", p: "None", q: "Feet wide at mat edges turn toes out squeeze glutes." },
+                { c: "Bridging", n: "Bridge with Magic Circle Press", l: "intermediate", s: "Bodyweight", p: "Circle", q: "Place circle around outer thighs press outwards into ring." },
+                { c: "Bridging", n: "Articulating Spine Roll Bridge", l: "beginner", s: "Bodyweight", p: "None", q: "Roll up through spine bone-by-bone lower down with control." },
+                { c: "Bridging", n: "Single-Leg Bridge Kicks", l: "intermediate", s: "Bodyweight", p: "None", t: "Unilateral", q: "Kick extended leg to ceiling lower to knee level in high bridge." },
+                { c: "Bridging", n: "Hamstring Walkout Bridge", l: "advanced", s: "Bodyweight", p: "None", q: "High bridge walk feet out three steps walk back in." },
+
+                { c: "Abdominals", n: "The Hundred", l: "intermediate", s: "Bodyweight", p: "None", q: "Supine head and shoulders curled up pump arms with 5-count breath." },
+                { c: "Abdominals", n: "Single Leg Stretch", l: "beginner", s: "Bodyweight", p: "None", t: "Unilateral", q: "Hug one knee to chest extend opposite leg low to 45 degrees." },
+                { c: "Abdominals", n: "Double Leg Stretch", l: "intermediate", s: "Bodyweight", p: "None", q: "Reach arms back and legs forward sweep arms around to hug knees." },
+                { c: "Abdominals", n: "Single Straight Leg Stretch (Scissors)", l: "intermediate", s: "Bodyweight", p: "None", t: "Unilateral", q: "Hold single ankle pulse leg toward face twice switch legs." },
+                { c: "Abdominals", n: "Double Straight Leg Lower & Lift", l: "intermediate", s: "Bodyweight", p: "None", q: "Hands behind head lower straight legs down 45 degrees lift with abs." },
+                { c: "Abdominals", n: "Criss-Cross (Oblique Twists)", l: "intermediate", s: "Bodyweight", p: "None", t: "Unilateral", q: "Rotate ribcage toward opposite knee extend straight leg low." },
+                { c: "Abdominals", n: "The Roll Up", l: "intermediate", s: "Bodyweight", p: "None", q: "Roll up from mat bone-by-bone reach past toes in long C-curve." },
+                { c: "Abdominals", n: "Rolling Like a Ball", l: "beginner", s: "Bodyweight", p: "None", q: "Hug shins roll back to shoulder blades roll up to balance." },
+                { c: "Abdominals", n: "Teaser 1 (Legs in Tabletop)", l: "advanced", s: "Bodyweight", p: "None", q: "Roll up into V-sit posture arms reaching parallel to thighs." },
+                { c: "Abdominals", n: "Corkscrew", l: "advanced", s: "Bodyweight", p: "None", q: "Circle both straight legs together left to right massaging lower back." },
+
+                { c: "Planks", n: "High Plank Hold", l: "intermediate", s: "Bodyweight", p: "None", q: "Hold rigid plank line on hands firing abs glutes and shoulders." },
+                { c: "Planks", n: "Forearm Plank Hold", l: "intermediate", s: "Bodyweight", p: "None", q: "Hold plank line on forearms maintaining neutral neck line." },
+                { c: "Planks", n: "Plank Single-Leg Lift", l: "advanced", s: "Bodyweight", p: "None", t: "Unilateral", q: "High plank lift single leg straight up without arching back." },
+                { c: "Planks", n: "Forearm Plank Body Saw", l: "advanced", s: "Bodyweight", p: "Block", q: "Forearm plank rock body forward and back over toes." },
+                { c: "Planks", n: "Plank Knee to Elbow", l: "intermediate", s: "Bodyweight", p: "None", t: "Unilateral", q: "Draw right knee to right elbow hold one second return." },
+                { c: "Planks", n: "Plank Cross-Body Knee Tuck", l: "intermediate", s: "Bodyweight", p: "None", t: "Unilateral", q: "Drive knee across body toward opposite elbow." },
+                { c: "Planks", n: "Plank Jacks", l: "advanced", s: "Bodyweight", p: "None", q: "Jump feet wide and together while holding plank alignment." },
+                { c: "Planks", n: "Forearm to High Plank Commandos", l: "advanced", s: "Bodyweight", p: "None", t: "Unilateral", q: "Walk up to hands one at a time lower down to forearms." },
+                { c: "Planks", n: "Bear Plank Knee Taps", l: "intermediate", s: "Bodyweight", p: "None", q: "Hover knees one inch tap knees lightly to mat lift back up." },
+                { c: "Planks", n: "Plank Pike Ups", l: "advanced", s: "Bodyweight", p: "None", q: "Lift hips high to ceiling from plank into downward pike." }
+            ];
+
+            // Build full Reformer exercises list
+            reformerRaw.forEach((item, idx) => {
+                window.EXERCISE_DATABASE.reformer.push({
+                    id: `ref_${idx}`,
+                    name: item.n,
+                    category: item.c,
+                    posture: getPosture(item.n),
+                    spring: item.s,
+                    prop: item.p,
+                    level: item.l,
+                    unilateral: isUnilateral(item.n, item.c, item.t),
+                    cue: item.q
+                });
+            });
+
+            // Build full Mat exercises list
+            matRaw.forEach((item, idx) => {
+                window.EXERCISE_DATABASE.mat.push({
+                    id: `mat_${idx}`,
+                    name: item.n,
+                    category: item.c,
+                    posture: getPosture(item.n),
+                    spring: item.s || "Bodyweight",
+                    prop: item.p,
+                    level: item.l,
+                    unilateral: isUnilateral(item.n, item.c, item.t),
+                    cue: item.q
+                });
+            });
+        };
+
+        window.generateDailyRoutine = function() {
+            window.initExerciseDatabase();
+
+            const pool = window.EXERCISE_DATABASE[window.primaryEquipment] || [];
+            const dayNum = new Date(window.currentDateStr).getDate();
+            const is30 = (window.currentDuration === 30);
+
+            const filteredPool = pool.filter(ex => {
+                if (!window.equipmentAvailable.box) {
+                    if (ex.prop === 'Box' || ex.category === 'Short Box' || ex.category === 'Long Box') return false;
+                }
+                if (!window.equipmentAvailable.jumpboard) {
+                    if (ex.prop === 'Jumpboard' || ex.category === 'Jumpboard') return false;
+                }
+                if (ex.prop === 'Ball' && !window.equipmentAvailable.ball) return false;
+                if (ex.prop === 'Circle' && !window.equipmentAvailable.circle) return false;
+                if (ex.prop === 'Block' && !window.equipmentAvailable.block) return false;
+                if (ex.prop === 'Band' && !window.equipmentAvailable.band) return false;
+                return true;
+            });
+
+            const blockSpecs = [
+                { id: 'b1', title: 'Block 1: Warm-Up & Footwork', categories: ['Footwork'], count: is30 ? 4 : 5 },
+                { id: 'b2', title: 'Block 2: Core & Abs', categories: ['Abdominals', 'Planks'], count: is30 ? 4 : 5 },
+                { id: 'b3', title: 'Block 3: Arms', categories: ['Arms'], count: is30 ? 3 : 4 },
+                { id: 'b4', title: 'Block 4: Legs & Glutes', categories: ['Legs & Glutes', 'Side-Lying', 'Standing', 'Bridging'], count: is30 ? 4 : 5 },
+                { id: 'b5', title: 'Block 5: Bonus Category', categories: [], isBonus: true, count: 3 },
+                { id: 'b6', title: 'Block 6: Cool Down & Stretch', categories: ['Flexibility', 'Spine Mobility'], count: is30 ? 2 : 3 }
+            ];
+
+            const primaryCategories = new Set(['Footwork', 'Abdominals', 'Planks', 'Arms', 'Legs & Glutes', 'Side-Lying', 'Standing', 'Bridging', 'Flexibility', 'Spine Mobility']);
+            let bonusPoolCategories = window.REPERTOIRE_CATEGORIES.filter(c => !primaryCategories.has(c));
+
+            if (!window.equipmentAvailable.box) {
+                bonusPoolCategories = bonusPoolCategories.filter(c => c !== 'Short Box' && c !== 'Long Box');
+            }
+            if (!window.equipmentAvailable.jumpboard) {
+                bonusPoolCategories = bonusPoolCategories.filter(c => c !== 'Jumpboard');
+            }
+
+            const selectedBonusCategory = bonusPoolCategories.length > 0
+                ? bonusPoolCategories[dayNum % bonusPoolCategories.length]
+                : 'Seated';
+
+            blockSpecs[4].categories = [selectedBonusCategory];
+            blockSpecs[4].title = `Block 5: Bonus (${selectedBonusCategory})`;
+
+            let routine = [];
+            let stepCounter = 1;
+            let usedIds = new Set();
+
+            blockSpecs.forEach(block => {
+                let candidates = filteredPool.filter(ex => block.categories.includes(ex.category) && !usedIds.has(ex.id));
+                
+                candidates.sort((a, b) => {
+                    const hashA = Math.sin(a.id.length * dayNum + a.name.charCodeAt(0));
+                    const hashB = Math.sin(b.id.length * dayNum + b.name.charCodeAt(0));
+                    return hashA - hashB;
+                });
+
+                if (candidates.length < block.count) {
+                    const fallback = filteredPool.filter(ex => !usedIds.has(ex.id));
+                    candidates = candidates.concat(fallback);
+                }
+
+                const selectedForBlock = candidates.slice(0, block.count);
+                selectedForBlock.forEach(ex => {
+                    usedIds.add(ex.id);
+                    routine.push({
+                        ...ex,
+                        blockTitle: block.title,
+                        blockKey: block.id,
+                        stepNumber: stepCounter++
+                    });
+                });
+            });
+
+            window.activeRoutine = routine;
+        };
+
+        window.renderDailyView = function() {
+            const container = document.getElementById('routine-cards-container');
+            if (!container) return;
+            container.innerHTML = '';
+
+            const propsSet = new Set();
+            window.activeRoutine.forEach(ex => {
+                if (ex.prop && ex.prop !== 'None') propsSet.add(ex.prop);
+            });
+            const uniqueProps = Array.from(propsSet);
+
+            const propNameMap = {
+                'Box': window.primaryEquipment === 'mat' ? 'Elevation Box' : 'Short/Long Box',
+                'Jumpboard': 'Jumpboard Attachment',
+                'Ball': 'Small Pilates Ball',
+                'Circle': 'Magic Circle',
+                'Block': 'Yoga Block',
+                'Band': 'Resistance Band',
+                'Straps': 'Reformer Straps'
+            };
+
+            const propIconMap = {
+                'Box': 'box',
+                'Jumpboard': 'zap',
+                'Ball': 'circle-dot',
+                'Circle': 'circle',
+                'Block': 'layers',
+                'Band': 'infinity',
+                'Straps': 'unplug'
+            };
+
+            let propsBadgeHTML = '';
+            if (uniqueProps.length === 0) {
+                propsBadgeHTML = `<span class="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-mint-500/20 text-mint-300 border border-mint-500/30 text-xs font-bold"><i data-lucide="check-circle-2" class="w-4 h-4 text-mint-400"></i><span>No Extra Props Needed (${window.primaryEquipment === 'mat' ? 'Mat Only' : 'Reformer Only'})</span></span>`;
+            } else {
+                propsBadgeHTML = uniqueProps.map(p => {
+                    const icon = propIconMap[p] || 'package';
+                    const name = propNameMap[p] || p;
+                    return `<span class="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-peach-500/20 text-peach-200 border border-peach-500/30 text-xs font-bold"><i data-lucide="${icon}" class="w-3.5 h-3.5 text-peach-400"></i><span>${name}</span></span>`;
+                }).join(' ');
+            }
+
+            // Sleek Charcoal Grey Summary Banner
+            const summaryCard = document.createElement('div');
+            summaryCard.className = 'bg-stone-800 dark:bg-stone-900 rounded-3xl p-4 sm:p-5 text-white shadow-xl border border-stone-700/60 space-y-3.5 relative overflow-hidden';
+            summaryCard.innerHTML = `
+                <div class="flex items-center justify-between border-b border-white/10 pb-3">
+                    <div class="flex items-center space-x-2.5">
+                        <div class="w-8 h-8 rounded-xl bg-peach-500 text-white flex items-center justify-center shadow-md">
+                            <i data-lucide="clipboard-list" class="w-4.5 h-4.5"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xs sm:text-sm font-black text-white uppercase tracking-wider leading-none">Today's Workout Summary</h3>
+                            <p class="text-[9px] text-stone-300 font-bold mt-0.5">Custom daily sequence configured for your session</p>
+                        </div>
+                    </div>
+                    <button onclick="window.openProfileModal()" class="inline-flex items-center space-x-1 px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 text-xs font-bold text-white transition min-h-[36px]">
+                        <i data-lucide="sliders" class="w-3.5 h-3.5 text-peach-400"></i>
+                        <span>Preferences</span>
+                    </button>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+                    <div class="bg-white/10 p-3 rounded-2xl border border-white/10 backdrop-blur-sm space-y-0.5">
+                        <div class="text-[10px] font-extrabold uppercase text-peach-300 tracking-wider">Apparatus</div>
+                        <div class="text-xs sm:text-sm font-black text-white capitalize">${window.primaryEquipment === 'mat' ? 'Mat Pilates' : 'Reformer Bed'}</div>
+                    </div>
+                    <div class="bg-white/10 p-3 rounded-2xl border border-white/10 backdrop-blur-sm space-y-0.5">
+                        <div class="text-[10px] font-extrabold uppercase text-mint-400 tracking-wider">Duration</div>
+                        <div class="text-xs sm:text-sm font-black text-white">${window.currentDuration} Mins (${window.activeRoutine.length} Moves)</div>
+                    </div>
+                    <div class="bg-white/10 p-3 rounded-2xl border border-white/10 backdrop-blur-sm col-span-2 sm:col-span-1 space-y-0.5">
+                        <div class="text-[10px] font-extrabold uppercase text-stone-300 tracking-wider">Skill Level</div>
+                        <div class="text-xs sm:text-sm font-black text-white">${window.userSkillLevel === 'beginner' ? 'Level 1 (Beginner)' : window.userSkillLevel === 'intermediate' ? 'Level 2 (Interm.)' : 'Level 3 (Advanced)'}</div>
+                    </div>
+                </div>
+                <div class="pt-1">
+                    <div class="text-xs font-extrabold text-stone-200 uppercase tracking-wider mb-2 flex items-center space-x-1.5">
+                        <i data-lucide="package" class="w-4 h-4 text-peach-400"></i>
+                        <span>Required Props & Accessories</span>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2">${propsBadgeHTML}</div>
+                </div>
+            `;
+            container.appendChild(summaryCard);
+
+            const blocksMap = {};
+            window.activeRoutine.forEach(ex => {
+                if (!blocksMap[ex.blockKey]) blocksMap[ex.blockKey] = { title: ex.blockTitle, moves: [] };
+                blocksMap[ex.blockKey].moves.push(ex);
+            });
+
+            Object.keys(blocksMap).forEach(key => {
+                const block = blocksMap[key];
+                const card = document.createElement('div');
+                card.className = 'bg-white dark:bg-darkbg-800 rounded-3xl p-4 sm:p-5 border border-ivory-200 dark:border-stone-800 shadow-sm space-y-3';
+
+                let movesHTML = '';
+                block.moves.forEach(m => {
+                    movesHTML += `
+                        <div class="flex items-center justify-between p-2.5 sm:p-3 rounded-2xl bg-ivory-50 dark:bg-stone-800/80 border border-ivory-100 dark:border-stone-700/80 hover:border-peach-300 transition gap-2">
+                            <div class="flex items-center space-x-2.5">
+                                <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-xl bg-peach-500 text-white font-extrabold text-xs flex items-center justify-center flex-shrink-0">${m.stepNumber}</span>
+                                <div>
+                                    <div class="flex items-center space-x-1.5">
+                                        <h4 class="text-xs font-black text-ivory-900 dark:text-ivory-100">${m.name}</h4>
+                                        ${m.unilateral ? '<span class="text-[8px] font-extrabold px-1.5 py-0.2 rounded bg-peach-100 dark:bg-peach-500/20 text-peach-600 dark:text-peach-400 border border-peach-200 dark:border-peach-500/30 uppercase tracking-wide">Unilateral</span>' : ''}
+                                    </div>
+                                    <p class="text-[10px] text-ivory-800 dark:text-ivory-300 font-semibold line-clamp-1">${m.cue}</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-1.5 flex-shrink-0">
+                                <a href="${window.getDemoVideoUrl(m)}" target="_blank" rel="noopener noreferrer" class="p-1.5 rounded-lg bg-ivory-100 dark:bg-stone-700 text-ivory-800 dark:text-ivory-200 hover:text-peach-500 transition" title="Watch Demo">
+                                    <i data-lucide="video" class="w-3.5 h-3.5 text-peach-500"></i>
+                                </a>
+                                <span class="text-[9px] sm:text-[10px] font-bold text-peach-600 dark:text-peach-400 bg-peach-50 dark:bg-peach-500/10 px-1.5 py-0.5 rounded border border-peach-100 dark:border-peach-500/20">${m.spring}</span>
+                                <span class="text-[9px] sm:text-[10px] font-bold text-sage-600 dark:text-sage-400 bg-sage-50 dark:bg-sage-600/10 px-1.5 py-0.5 rounded border border-sage-100 dark:border-sage-500/20">${m.prop}</span>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                card.innerHTML = `
+                    <div class="flex items-center justify-between border-b border-ivory-100 dark:border-stone-700/60 pb-2.5">
+                        <h3 class="text-xs sm:text-sm font-extrabold text-ivory-900 dark:text-ivory-100">${block.title}</h3>
+                        <span class="text-[10px] sm:text-xs font-bold text-sage-600 dark:text-sage-400 bg-sage-50 dark:bg-sage-600/20 px-2 py-0.5 rounded-xl">${block.moves.length} Moves</span>
+                    </div>
+                    <div class="space-y-2">${movesHTML}</div>
+                `;
+                container.appendChild(card);
+            });
+
+            if (window.lucide) window.lucide.createIcons();
+        };
+
+        window.getSpotifyEmbedUrl = function(url) {
+            if (!url) return null;
+            const match = url.match(/open\.spotify\.com\/(playlist|track|album)\/([a-zA-Z0-9]+)/);
+            if (match) return `https://open.spotify.com/embed/${match[1]}/${match[2]}?utm_source=generator&theme=0`;
+            const uriMatch = url.match(/spotify:(playlist|track|album):([a-zA-Z0-9]+)/);
+            if (uriMatch) return `https://open.spotify.com/embed/${uriMatch[1]}/${uriMatch[2]}?utm_source=generator&theme=0`;
+            return null;
+        };
+
+        window.saveSpotifyLink = function(url) {
+            window.userSpotifyUrl = url;
+            const prefInput = document.getElementById('pref-spotify-url');
+            if (prefInput && prefInput.value !== url) prefInput.value = url;
+
+            window.savePreferencesToStorage();
+            window.updateSpotifyEmbed();
+            window.showToast(url ? "Spotify Music Synced & Embedded!" : "Spotify Link Cleared");
+        };
+
+        window.saveSpotifyFromModal = function() {
+            const input = document.getElementById('pref-spotify-url');
+            if (input) window.saveSpotifyLink(input.value);
+        };
+
+        window.updateSpotifyEmbed = function() {
+            const embedUrl = window.getSpotifyEmbedUrl(window.userSpotifyUrl);
+            const playerWrapper = document.getElementById('spotify-iframe-wrapper');
+            const modalPreview = document.getElementById('modal-spotify-preview');
+
+            if (embedUrl) {
+                const iframeHTML = `<iframe src="${embedUrl}" width="100%" height="80" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" class="rounded-xl shadow-md"></iframe>`;
+                if (playerWrapper) playerWrapper.innerHTML = iframeHTML;
+                if (modalPreview) modalPreview.innerHTML = iframeHTML;
+            } else {
+                const fallbackHTML = `<div class="p-3 text-center text-xs font-semibold text-ivory-800 dark:text-ivory-300 bg-ivory-100/50 dark:bg-stone-800 rounded-xl">Paste a valid Spotify playlist or track URL above to embed live player.</div>`;
+                if (playerWrapper) playerWrapper.innerHTML = fallbackHTML;
+                if (modalPreview) modalPreview.innerHTML = '';
+            }
+        };
+
+        window.setEquipmentMode = function(mode) {
+            window.primaryEquipment = mode;
+            ['reformer', 'mat'].forEach(m => {
+                const hdrBtn = document.getElementById(`hdr-equip-${m}`);
+                const optBtn = document.getElementById(`opt-equip-${m}`);
+                const isSel = (m === mode);
+
+                if (hdrBtn) hdrBtn.className = isSel 
+                    ? 'flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-black transition bg-sage-500 text-white shadow-sm min-h-[36px]' 
+                    : 'flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-black transition text-ivory-800 dark:text-ivory-200 hover:text-ivory-900 min-h-[36px]';
+                
+                if (optBtn) optBtn.className = isSel 
+                    ? 'py-2.5 px-3 rounded-xl border text-xs font-bold transition flex items-center justify-center space-x-2 bg-sage-50 border-sage-500 text-sage-600 min-h-[44px]' 
+                    : 'py-2.5 px-3 rounded-xl border text-xs font-bold transition flex items-center justify-center space-x-2 border-ivory-200 dark:border-stone-700 text-ivory-800 dark:text-ivory-200 min-h-[44px]';
+            });
+
+            const bannerLabel = document.getElementById('banner-equipment-label');
+            const propBoxLbl = document.getElementById('lbl-prop-box');
+            if (bannerLabel) bannerLabel.innerText = mode === 'reformer' ? "DAILY REFORMER PILATES INSIGHT" : "DAILY MAT PILATES INSIGHT";
+            if (propBoxLbl) propBoxLbl.innerText = mode === 'reformer' ? "Box / Support Riser (Required for Short & Long Box)" : "Elevation / Support Box";
+
+            window.savePreferencesToStorage();
+            window.generateDailyRoutine();
+            window.renderDailyView();
+            window.showToast(`Switched to ${mode === 'mat' ? 'Mat Pilates' : 'Reformer Pilates'} Mode`);
+        };
+
+        window.setSkillLevel = function(lvl) {
+            window.userSkillLevel = lvl;
+            ['beginner', 'intermediate', 'advanced'].forEach(l => {
+                const btn = document.getElementById(`opt-lvl-${l}`);
+                if (btn) btn.className = (l === lvl)
+                    ? 'py-2.5 px-2 rounded-xl border text-xs font-bold transition border-peach-500 bg-peach-50 text-peach-600 min-h-[40px]'
+                    : 'py-2.5 px-2 rounded-xl border text-xs font-bold transition border-ivory-200 dark:border-stone-700 text-ivory-800 dark:text-ivory-200 min-h-[40px]';
+            });
+            const badge = document.getElementById('profile-badge-text');
+            if (badge) {
+                const num = lvl === 'beginner' ? 'Level 1' : lvl === 'intermediate' ? 'Level 2' : 'Level 3';
+                badge.innerText = num;
+            }
+            window.savePreferencesToStorage();
+        };
+
+        window.setDuration = function(mins) {
+            window.currentDuration = mins;
+            ['30', '45'].forEach(d => {
+                const btn = document.getElementById(`opt-dur-${d}`);
+                if (btn) btn.className = (parseInt(d) === mins)
+                    ? 'py-2.5 px-3 rounded-xl border text-xs font-bold transition flex items-center justify-center space-x-1.5 bg-peach-50 border-peach-500 text-peach-600 min-h-[44px]'
+                    : 'py-2.5 px-3 rounded-xl border text-xs font-bold transition flex items-center justify-center space-x-1.5 border-ivory-200 dark:border-stone-700 text-ivory-800 dark:text-ivory-200 min-h-[44px]';
+            });
+            window.savePreferencesToStorage();
+            window.generateDailyRoutine();
+            window.renderDailyView();
+        };
+
+        window.toggleEquipment = function(prop, isChecked) {
+            window.equipmentAvailable[prop] = isChecked;
+            window.savePreferencesToStorage();
+        };
+
+        window.saveAndApplyProfile = function() {
+            window.savePreferencesToStorage();
+            window.closeProfileModal();
+            window.generateDailyRoutine();
+            window.renderDailyView();
+            window.showToast("Preferences saved & routine regenerated!");
+        };
+
+        window.toggleAudioMode = function() {
+            if (window.audioMode === 'all') window.audioMode = 'beeps';
+            else if (window.audioMode === 'beeps') window.audioMode = 'off';
+            else window.audioMode = 'all';
+
+            const btnDt = document.getElementById('btn-audio-toggle');
+            const btnMb = document.getElementById('btn-audio-toggle-mb');
+            const activeClass = 'p-2 rounded-xl bg-peach-50 dark:bg-peach-500/20 text-peach-600 dark:text-peach-400 border border-peach-100 dark:border-peach-500/30 min-h-[38px] min-w-[38px] flex items-center justify-center';
+            const beepsClass = 'p-2 rounded-xl bg-sage-50 dark:bg-sage-600/20 text-sage-600 dark:text-sage-400 border border-sage-100 dark:border-sage-500/30 min-h-[38px] min-w-[38px] flex items-center justify-center';
+            const offClass = 'p-2 rounded-xl bg-ivory-100 dark:bg-stone-800 text-ivory-800 dark:text-ivory-200 border border-ivory-200 dark:border-stone-700 min-h-[38px] min-w-[38px] flex items-center justify-center';
+
+            let curClass = activeClass;
+            if (window.audioMode === 'beeps') curClass = beepsClass;
+            else if (window.audioMode === 'off') curClass = offClass;
+
+            if (btnDt) btnDt.className = curClass;
+            if (btnMb) btnMb.className = curClass;
+
+            window.savePreferencesToStorage();
+            window.showToast(`Voice Cues Set To: ${window.audioMode.toUpperCase()}`);
+        };
+
+        window.playBeep = function(freq, type, duration) {
+            if (window.audioMode === 'off') return;
+            try {
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = type || 'sine';
+                osc.frequency.setValueAtTime(freq || 880, ctx.currentTime);
+                gain.gain.setValueAtTime(0.15, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + (duration || 0.25));
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start();
+                osc.stop(ctx.currentTime + (duration || 0.25));
+            } catch(e) {}
+        };
+
+        window.speakText = function(text) {
+            if (window.audioMode !== 'all' || !('speechSynthesis' in window)) return;
+            try {
+                window.speechSynthesis.cancel();
+                const utter = new SpeechSynthesisUtterance(text);
+                utter.rate = 1.0;
+                utter.pitch = 1.0;
+                window.speechSynthesis.speak(utter);
+            } catch(e) {}
+        };
+
+        window.renderHumanSVG = function(posture, isAnimated) {
+            const isMat = (window.primaryEquipment === 'mat');
+            const animGlide = isAnimated ? 'anim-carriage-glide' : '';
+            const animSpring = isAnimated ? 'anim-spring-stretch' : '';
+            const animHuman = isAnimated ? 'anim-human-breath' : '';
+
+            let frameContent = '';
+            if (isMat) {
+                frameContent = `<rect x="10" y="105" width="230" height="8" rx="4" fill="#518A82"/>`;
+            } else {
+                frameContent = `
+                    <rect x="10" y="105" width="230" height="8" rx="4" fill="#EAE3D7"/>
+                    <rect x="15" y="113" width="10" height="15" fill="#5A5650"/>
+                    <rect x="225" y="113" width="10" height="15" fill="#5A5650"/>
+                    <path d="M 215 105 L 215 50 L 225 50 L 225 105" fill="#518A82"/>
+                    <g class="${animSpring}">
+                        <path d="M 180 108 C 185 100, 190 116, 195 108 L 225 108" stroke="#F27854" stroke-width="3" fill="none"/>
+                    </g>
+                `;
+            }
+
+            let poseContent = `
+                <circle cx="115" cy="45" r="8" fill="#2B2D2B"/>
+                <path d="M 115 53 L 115 84" stroke="#2B2D2B" stroke-width="12" stroke-linecap="round"/>
+                <path d="M 115 84 L 150 84 L 150 108" stroke="#518A82" stroke-width="7" stroke-linecap="round" fill="none"/>
+            `;
+
+            return `
+                <svg viewBox="0 0 250 130" class="w-full h-full max-w-xs sm:max-w-md">
+                    ${frameContent}
+                    <g class="${isMat ? '' : animGlide}">
+                        <rect x="65" y="90" width="110" height="15" rx="5" fill="#FAF7F2" stroke="#DCD3C5" stroke-width="2"/>
+                        <g class="${animHuman}">${poseContent}</g>
+                    </g>
+                </svg>
+            `;
+        };
+
+        window.renderLibrary = function() {
+            window.initExerciseDatabase();
+
+            const grid = document.getElementById('library-grid');
+            const search = (document.getElementById('library-search')?.value || '').toLowerCase();
+            const catFilter = document.getElementById('library-cat-filter')?.value || 'all';
+            const countIndicator = document.getElementById('library-count-indicator');
+            if (!grid) return;
+            grid.innerHTML = '';
+
+            const pool = window.EXERCISE_DATABASE[window.primaryEquipment] || [];
+
+            const filtered = pool.filter(ex => {
+                const matchLvl = window.libraryLevelFilter === 'all' || ex.level === window.libraryLevelFilter;
+                const matchCat = catFilter === 'all' || ex.category === catFilter;
+                const matchSearch = ex.name.toLowerCase().includes(search) || ex.category.toLowerCase().includes(search) || ex.prop.toLowerCase().includes(search);
+                return matchLvl && matchCat && matchSearch;
+            });
+
+            if (countIndicator) {
+                countIndicator.innerText = `Showing ${filtered.length} of ${pool.length} ${window.primaryEquipment.toUpperCase()} Movements`;
+            }
+
+            filtered.forEach(ex => {
+                const lvlTag = ex.level === 'beginner' ? 'Level 1' : ex.level === 'intermediate' ? 'Level 2' : 'Level 3';
+                const card = document.createElement('div');
+                card.className = 'bg-white dark:bg-darkbg-800 rounded-2xl p-3.5 sm:p-4 border border-ivory-200 dark:border-stone-800 shadow-sm space-y-3 hover:border-peach-400 transition flex flex-col justify-between';
+                card.innerHTML = `
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between">
+                            <h4 class="text-xs font-extrabold text-ivory-900 dark:text-ivory-100">${ex.name}</h4>
+                            <div class="flex items-center space-x-1">
+                                ${ex.unilateral ? '<span class="text-[9px] font-extrabold px-1.5 py-0.5 rounded-md bg-peach-100 dark:bg-peach-500/20 text-peach-600 dark:text-peach-400 border border-peach-200 dark:border-peach-500/30 uppercase tracking-wide">Unilateral</span>' : ''}
+                                <span class="text-[9px] font-bold px-2 py-0.5 rounded-md bg-ivory-100 dark:bg-stone-800 text-ivory-800 dark:text-ivory-200 border border-ivory-200 dark:border-stone-700">${lvlTag}</span>
+                            </div>
+                        </div>
+                        <div class="h-24 bg-ivory-50 dark:bg-stone-800/80 rounded-xl overflow-hidden flex items-center justify-center border border-ivory-100 dark:border-stone-700/80">
+                            ${window.renderHumanSVG(ex.posture, false)}
+                        </div>
+                        <div class="flex items-center justify-between text-[10px] sm:text-[11px]">
+                            <span class="font-bold text-peach-600 dark:text-peach-400 bg-peach-50 dark:bg-peach-500/10 px-2 py-0.5 rounded border border-peach-100 dark:border-peach-500/20">${ex.spring}</span>
+                            <span class="text-ivory-800 dark:text-ivory-300 font-semibold">Prop: ${ex.prop}</span>
+                        </div>
+                        <p class="text-[11px] text-ivory-800 dark:text-ivory-300 font-medium leading-relaxed">${ex.cue}</p>
+                    </div>
+                    <div class="pt-2 border-t border-ivory-100 dark:border-stone-700/60 flex items-center justify-end">
+                        <a href="${window.getDemoVideoUrl(ex)}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-1 px-2.5 py-1 rounded-xl bg-ivory-100 dark:bg-stone-700 hover:bg-peach-50 text-ivory-800 dark:text-ivory-200 hover:text-peach-600 border border-ivory-200 dark:border-stone-600 text-[10px] font-bold transition">
+                            <i data-lucide="video" class="w-3.5 h-3.5 text-peach-500"></i>
+                            <span>Watch Demo</span>
+                        </a>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        };
+
+        window.setLibraryLevelFilter = function(lvl) {
+            window.libraryLevelFilter = lvl;
+            ['all', 'beginner', 'intermediate', 'advanced'].forEach(l => {
+                const btn = document.getElementById(`lib-lvl-${l}`);
+                if (btn) {
+                    btn.className = (l === lvl) 
+                        ? 'px-2.5 py-2 rounded-lg text-xs font-bold bg-peach-500 text-white min-h-[36px]' 
+                        : 'px-2.5 py-2 rounded-lg text-xs font-bold bg-ivory-100 dark:bg-stone-800 text-ivory-800 dark:text-ivory-200 min-h-[36px]';
+                }
+            });
+            window.renderLibrary();
+        };
+
+        window.filterLibrary = function() {
+            window.renderLibrary();
+        };
+
+        window.renderBuilderBank = function() {
+            window.initExerciseDatabase();
+            const bank = document.getElementById('builder-bank');
+            const search = (document.getElementById('builder-search')?.value || '').toLowerCase();
+            if (!bank) return;
+            bank.innerHTML = '';
+
+            const pool = window.EXERCISE_DATABASE[window.primaryEquipment] || [];
+            const filtered = pool.filter(ex => ex.name.toLowerCase().includes(search) || ex.category.toLowerCase().includes(search));
+
+            filtered.slice(0, 36).forEach(ex => {
+                const card = document.createElement('div');
+                card.className = 'bg-white dark:bg-darkbg-800 rounded-xl p-3 border border-ivory-200 dark:border-stone-800 flex items-center justify-between hover:border-peach-400 transition';
+                card.innerHTML = `
+                    <div class="max-w-[70%]">
+                        <h5 class="text-xs font-bold text-ivory-900 dark:text-ivory-100 truncate">${ex.name}</h5>
+                        <span class="text-[10px] text-sage-600 dark:text-sage-400 font-semibold">${ex.category} &bull; ${ex.prop}</span>
+                    </div>
+                    <button onclick="window.addToCustomQueueByObject('${encodeURIComponent(JSON.stringify(ex))}')" class="px-2.5 py-1 rounded-lg bg-peach-50 dark:bg-peach-500/20 text-peach-600 dark:text-peach-400 font-bold text-xs hover:bg-peach-100 transition flex-shrink-0">
+                        + Add
+                    </button>
+                `;
+                bank.appendChild(card);
+            });
+        };
+
+        window.addToCustomQueueByObject = function(encodedObj) {
+            try {
+                const item = JSON.parse(decodeURIComponent(encodedObj));
+                window.customBuilderQueue.push(item);
+                window.renderBuilderQueue();
+                window.showToast(`Added "${item.name}" to custom flow`);
+            } catch(e) {}
+        };
+
+        window.renderBuilderQueue = function() {
+            const q = document.getElementById('builder-queue');
+            if (!q) return;
+            if (window.customBuilderQueue.length === 0) {
+                q.innerHTML = '<span class="text-xs text-ivory-800 dark:text-ivory-300 font-medium italic w-full text-center">No exercises added yet. Click "+ Add" from the bank below.</span>';
+                return;
+            }
+            q.innerHTML = window.customBuilderQueue.map((ex, i) => `
+                <div class="bg-white dark:bg-stone-800 px-3 py-1.5 rounded-xl border border-ivory-200 dark:border-stone-700 text-xs font-bold text-ivory-900 dark:text-ivory-100 flex items-center space-x-2">
+                    <span>${i + 1}. ${ex.name}</span>
+                    <button onclick="window.removeFromQueue(${i})" class="text-peach-500 hover:text-peach-600 font-black">&times;</button>
+                </div>
+            `).join('');
+        };
+
+        window.removeFromQueue = function(i) {
+            window.customBuilderQueue.splice(i, 1);
+            window.renderBuilderQueue();
+        };
+
+        window.startCustomWorkout = function() {
+            if (window.customBuilderQueue.length === 0) {
+                window.showToast("Please add exercises to your custom flow first!");
+                return;
+            }
+            window.activeRoutine = window.customBuilderQueue.map((ex, i) => ({
+                ...ex,
+                blockTitle: "Custom Flow",
+                blockKey: "custom",
+                stepNumber: i + 1
+            }));
+            window.startWorkout();
+        };
+
+        window.switchView = function(viewName) {
+            ['daily', 'library', 'builder'].forEach(v => {
+                const el = document.getElementById(`view-${v}`);
+                const tab = document.getElementById(`tab-${v}`);
+                const mTab = document.getElementById(`mob-tab-${v}`);
+                if (el) el.classList.add('hidden');
+                if (tab) tab.className = 'px-3 sm:px-3.5 py-2 rounded-xl text-xs font-extrabold transition text-ivory-800 dark:text-ivory-200 hover:bg-ivory-100 dark:hover:bg-stone-800 flex-shrink-0 min-h-[38px]';
+                if (mTab) mTab.className = 'flex flex-col items-center justify-center space-y-0.5 text-ivory-800 dark:text-ivory-300 hover:text-peach-500 transition py-1 px-1.5 min-w-[50px]';
+            });
+
+            const activeEl = document.getElementById(`view-${viewName}`);
+            const activeTab = document.getElementById(`tab-${viewName}`);
+            const activeMTab = document.getElementById(`mob-tab-${viewName}`);
+
+            if (activeEl) activeEl.classList.remove('hidden');
+            if (activeTab) activeTab.className = 'px-3 sm:px-3.5 py-2 rounded-xl text-xs font-extrabold transition bg-peach-500 text-white shadow-sm flex-shrink-0 min-h-[38px]';
+            if (activeMTab) activeMTab.className = 'flex flex-col items-center justify-center space-y-0.5 text-peach-500 font-extrabold transition py-1 px-1.5 min-w-[50px]';
+
+            if (viewName === 'library') window.renderLibrary();
+            if (viewName === 'builder') {
+                window.renderBuilderBank();
+                window.renderBuilderQueue();
+            }
+        };
+
+        window.startWorkout = function() {
+            if (window.activeRoutine.length === 0) window.generateDailyRoutine();
+            window.playerIndex = 0;
+            const firstEx = window.activeRoutine[0];
+            window.playerPhase = firstEx && firstEx.unilateral ? 'WORK_SIDE_1' : 'WORK_FULL';
+            window.timerSeconds = firstEx && firstEx.unilateral ? 30 : 60;
+            document.getElementById('view-player').classList.remove('hidden');
+            window.updatePlayerUI();
+            window.startTimer();
+        };
+
+        window.exitWorkout = function() {
+            window.pauseTimer();
+            document.getElementById('view-player').classList.add('hidden');
+        };
+
+        window.updatePlayerUI = function() {
+            const currentEx = window.activeRoutine[window.playerIndex];
+            if (!currentEx) return;
+
+            document.getElementById('player-block-badge').innerText = currentEx.blockTitle;
+            document.getElementById('player-step-counter').innerText = `Move ${window.playerIndex + 1} / ${window.activeRoutine.length}`;
+            document.getElementById('player-category-name').innerText = currentEx.category;
+            document.getElementById('player-exercise-title').innerText = currentEx.name;
+            document.getElementById('player-spring-badge').innerText = currentEx.spring;
+            document.getElementById('player-prop-badge').innerText = `Prop: ${currentEx.prop}`;
+            document.getElementById('player-form-cue').innerText = currentEx.cue;
+
+            const demoBtn = document.getElementById('player-demo-btn');
+            if (demoBtn) demoBtn.href = window.getDemoVideoUrl(currentEx);
+
+            const vectorContainer = document.getElementById('player-vector-container');
+            if (vectorContainer) vectorContainer.innerHTML = window.renderHumanSVG(currentEx.posture, true);
+
+            if (window.playerPhase === 'WORK_SIDE_1' || window.playerPhase === 'WORK_FULL') {
+                window.speakText(`${currentEx.name}. ${currentEx.cue}`);
+            }
+        };
+
+        window.updateTimerUI = function() {
+            const display = document.getElementById('timer-display-digits');
+            const phaseLabel = document.getElementById('timer-phase-label');
+            const circle = document.getElementById('timer-progress-circle');
+            const swapBanner = document.getElementById('side-swap-overlay');
+            const upcomingBanner = document.getElementById('upcoming-move-overlay');
+            const upcomingLabel = document.getElementById('upcoming-move-label');
+            const upcomingTitle = document.getElementById('upcoming-move-title');
+
+            const m = Math.floor(window.timerSeconds / 60);
+            const s = window.timerSeconds % 60;
+            if (display) display.innerText = `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+
+            let maxSecs = 60;
+            if (window.playerPhase === 'WORK_SIDE_1' || window.playerPhase === 'WORK_SIDE_2') maxSecs = 30;
+            else if (window.playerPhase === 'SIDE_CHANGEOVER') maxSecs = 10;
+            else if (window.playerPhase === 'TRANSITION') maxSecs = 15;
+            else if (window.playerPhase === 'BLOCK_BREAK') maxSecs = 20;
+
+            const progress = (window.timerSeconds / maxSecs) * 326.72;
+            if (circle) circle.style.strokeDashoffset = (326.72 - progress).toString();
+
+            if (swapBanner) {
+                if (window.playerPhase === 'SIDE_CHANGEOVER') swapBanner.classList.remove('hidden');
+                else swapBanner.classList.add('hidden');
+            }
+
+            const activeMove = window.activeRoutine[window.playerIndex];
+            const nextEx = window.activeRoutine[window.playerIndex + 1];
+
+            if (upcomingBanner) {
+                if (window.timerSeconds <= 10 && window.timerSeconds > 0 && (window.playerPhase === 'WORK_FULL' || window.playerPhase === 'WORK_SIDE_2') && nextEx) {
+                    upcomingBanner.classList.remove('hidden');
+                    if (upcomingLabel) upcomingLabel.innerText = "UPCOMING IN 10S:";
+                    if (upcomingTitle) upcomingTitle.innerText = `${nextEx.name} (${nextEx.spring})`;
+                } else if ((window.playerPhase === 'TRANSITION' || window.playerPhase === 'BLOCK_BREAK') && activeMove) {
+                    upcomingBanner.classList.remove('hidden');
+                    if (upcomingLabel) upcomingLabel.innerText = "SPRING CHANGE / NEXT:";
+                    if (upcomingTitle) upcomingTitle.innerText = `${activeMove.name} (${activeMove.spring})`;
+                } else {
+                    upcomingBanner.classList.add('hidden');
+                }
+            }
+
+            if (phaseLabel) {
+                if (window.playerPhase === 'WORK_SIDE_1') phaseLabel.innerText = 'WORK (SIDE 1)';
+                else if (window.playerPhase === 'SIDE_CHANGEOVER') phaseLabel.innerText = '10s SIDE SWAP BUFFER';
+                else if (window.playerPhase === 'WORK_SIDE_2') phaseLabel.innerText = 'WORK (SIDE 2)';
+                else if (window.playerPhase === 'WORK_FULL') phaseLabel.innerText = 'WORK';
+                else if (window.playerPhase === 'TRANSITION') phaseLabel.innerText = 'SPRING TRANSITION (15s)';
+                else if (window.playerPhase === 'BLOCK_BREAK') phaseLabel.innerText = 'INTER-BLOCK BREAK';
+
+                phaseLabel.className = (window.playerPhase.startsWith('WORK') || window.playerPhase === 'SIDE_CHANGEOVER') 
+                    ? 'text-[10px] font-black uppercase tracking-widest text-peach-400' 
+                    : 'text-[10px] font-black uppercase tracking-widest text-mint-500';
+            }
+        };
+
+        window.startTimer = function() {
+            if (window.isTimerRunning) return;
+            window.isTimerRunning = true;
+
+            window.timerInterval = setInterval(() => {
+                if (window.timerSeconds > 0) {
+                    window.timerSeconds--;
+                    window.updateTimerUI();
+
+                    // 10-Second Warning Alert
+                    if (window.timerSeconds === 10) {
+                        window.playBeep(880, 'sine', 0.25);
+                        const isWork = window.playerPhase === 'WORK_FULL' || window.playerPhase === 'WORK_SIDE_2';
+                        const nextEx = window.activeRoutine[window.playerIndex + 1];
+                        if (isWork && nextEx) {
+                            window.speakText(`Upcoming move in 10 seconds: ${nextEx.name}`);
+                        }
+                    }
+                } else {
+                    // Exercise / Phase Finished Chime
+                    window.playBeep(1200, 'triangle', 0.35);
+
+                    const currentEx = window.activeRoutine[window.playerIndex];
+
+                    if (window.playerPhase === 'WORK_SIDE_1') {
+                        window.playerPhase = 'SIDE_CHANGEOVER';
+                        window.timerSeconds = 10;
+                        window.speakText("10 seconds change over sides now");
+                    } else if (window.playerPhase === 'SIDE_CHANGEOVER') {
+                        window.playerPhase = 'WORK_SIDE_2';
+                        window.timerSeconds = 30;
+                        window.speakText("Begin side two");
+                    } else if (window.playerPhase === 'WORK_SIDE_2' || window.playerPhase === 'WORK_FULL') {
+                        const nextEx = window.activeRoutine[window.playerIndex + 1];
+                        if (!nextEx) {
+                            window.exitWorkout();
+                            window.showToast("Workout complete! Great session!");
+                            return;
+                        }
+                        
+                        // Immediately advance playerIndex so main screen displays upcoming move during spring change
+                        window.playerIndex++;
+                        const upcomingEx = window.activeRoutine[window.playerIndex];
+
+                        if (upcomingEx.blockKey !== currentEx.blockKey) {
+                            window.playerPhase = 'BLOCK_BREAK';
+                            window.timerSeconds = 20;
+                            window.updatePlayerUI();
+                            window.speakText(`Take a 20 second break. Next block: ${upcomingEx.blockTitle}. Prepare for ${upcomingEx.name}`);
+                        } else {
+                            window.playerPhase = 'TRANSITION';
+                            window.timerSeconds = 15;
+                            window.updatePlayerUI();
+                            window.speakText(`15 second spring transition. Prepare for ${upcomingEx.name}, spring tension ${upcomingEx.spring}`);
+                        }
+                    } else if (window.playerPhase === 'TRANSITION' || window.playerPhase === 'BLOCK_BREAK') {
+                        const activeEx = window.activeRoutine[window.playerIndex];
+                        if (!activeEx) {
+                            window.exitWorkout();
+                            window.showToast("Workout complete! Great session!");
+                            return;
+                        }
+                        window.playerPhase = activeEx.unilateral ? 'WORK_SIDE_1' : 'WORK_FULL';
+                        window.timerSeconds = activeEx.unilateral ? 30 : 60;
+                        window.updatePlayerUI();
+                    }
+                }
+            }, 1000);
+        };
+
+        window.pauseTimer = function() {
+            window.isTimerRunning = false;
+            clearInterval(window.timerInterval);
+        };
+
+        window.toggleTimer = function() {
+            if (window.isTimerRunning) window.pauseTimer();
+            else window.startTimer();
+        };
+
+        window.nextExercise = function() {
+            window.pauseTimer();
+            if (window.playerIndex < window.activeRoutine.length - 1) {
+                window.playerIndex++;
+                const nextEx = window.activeRoutine[window.playerIndex];
+                window.playerPhase = nextEx && nextEx.unilateral ? 'WORK_SIDE_1' : 'WORK_FULL';
+                window.timerSeconds = nextEx && nextEx.unilateral ? 30 : 60;
+                window.updatePlayerUI();
+                window.startTimer();
+            } else {
+                window.exitWorkout();
+                window.showToast("Workout complete! Great session!");
+            }
+        };
+
+        window.prevExercise = function() {
+            window.pauseTimer();
+            if (window.playerIndex > 0) {
+                window.playerIndex--;
+                const prevEx = window.activeRoutine[window.playerIndex];
+                window.playerPhase = prevEx && prevEx.unilateral ? 'WORK_SIDE_1' : 'WORK_FULL';
+                window.timerSeconds = prevEx && prevEx.unilateral ? 30 : 60;
+                window.updatePlayerUI();
+                window.startTimer();
+            }
+        };
+
+        window.openProfileModal = function() {
+            document.getElementById('modal-profile')?.classList.remove('hidden');
+        };
+
+        window.closeProfileModal = function() {
+            document.getElementById('modal-profile')?.classList.add('hidden');
+        };
+
+        window.showToast = function(msg) {
+            const banner = document.getElementById('toast-banner');
+            const msgEl = document.getElementById('toast-message');
+            if (banner && msgEl) {
+                msgEl.innerText = msg;
+                banner.classList.remove('hidden');
+                setTimeout(() => banner.classList.add('hidden'), 3000);
+            }
+        };
+
+        window.triggerPwaInstall = function() {
+            if (window.deferredPwaPrompt) {
+                window.deferredPwaPrompt.prompt();
+                window.deferredPwaPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        window.showToast("Thank you for installing The Reform Lab!");
+                    }
+                    window.deferredPwaPrompt = null;
+                });
+            } else {
+                window.showToast("To install, open browser menu and tap 'Add to Home Screen'");
+            }
+        };
+
+        window.initDateRibbon = function() {
+            const container = document.getElementById('date-ribbon-container');
+            if (!container) return;
+            container.innerHTML = '';
+
+            const today = new Date();
+            for (let i = -3; i <= 3; i++) {
+                const d = new Date();
+                d.setDate(today.getDate() + i);
+                const dateStr = d.toISOString().split('T')[0];
+                const dayName = d.toLocaleDateString('en-US', { weekday: 'short' });
+                const dayNum = d.getDate();
+                const isSelected = dateStr === window.currentDateStr;
+
+                const btn = document.createElement('button');
+                btn.className = isSelected 
+                    ? 'flex-shrink-0 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-2xl bg-peach-500 text-white font-black text-xs shadow-md text-center transition min-h-[40px]'
+                    : 'flex-shrink-0 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-2xl bg-white dark:bg-stone-800 border border-ivory-200 dark:border-stone-700 text-ivory-800 dark:text-ivory-200 hover:border-peach-400 font-extrabold text-xs text-center transition min-h-[40px]';
+                
+                btn.onclick = () => {
+                    window.currentDateStr = dateStr;
+                    window.initDateRibbon();
+                    window.generateDailyRoutine();
+                    window.renderDailyView();
+                };
+
+                btn.innerHTML = `<div class="text-[9px] uppercase opacity-80">${dayName}</div><div class="text-xs sm:text-sm">${dayNum}</div>`;
+                container.appendChild(btn);
+            }
+        };
+
+        window.setupPwaFeatures = function() {
+            const manifestData = {
+                name: "The Reform Lab - Reformer & Mat Pilates",
+                short_name: "Reform Lab",
+                description: "Studio Quality Reformer & Mat Pilates Workout Generator",
+                start_url: "./",
+                display: "standalone",
+                background_color: "#FAF7F2",
+                theme_color: "#518A82",
+                orientation: "portrait-primary"
+            };
+
+            try {
+                const manifestBlob = new Blob([JSON.stringify(manifestData)], { type: 'application/manifest+json' });
+                const manifestUrl = URL.createObjectURL(manifestBlob);
+                const manifestLink = document.getElementById('pwa-manifest');
+                if (manifestLink) manifestLink.setAttribute('href', manifestUrl);
+            } catch(e) {}
+
+            window.addEventListener('beforeinstallprompt', (e) => {
+                e.preventDefault();
+                window.deferredPwaPrompt = e;
+            });
+        };
+
+        window.onload = function() {
+            window.initExerciseDatabase();
+            const hasSavedPrefs = window.loadPreferencesFromStorage();
+            
+            window.setThemeMode(window.themeMode);
+            window.setEquipmentMode(window.primaryEquipment);
+            window.setSkillLevel(window.userSkillLevel);
+            window.setDuration(window.currentDuration);
+
+            // Sync checkboxes in Modal
+            ['box', 'jumpboard', 'ball', 'circle', 'block', 'band'].forEach(p => {
+                const chk = document.getElementById(`chk-prop-${p}`);
+                if (chk) chk.checked = !!window.equipmentAvailable[p];
+            });
+
+            if (window.userSpotifyUrl) {
+                const prefInput = document.getElementById('pref-spotify-url');
+                if (prefInput) prefInput.value = window.userSpotifyUrl;
+            }
+
+            if (window.lucide) window.lucide.createIcons();
+            window.initDateRibbon();
+            window.generateDailyRoutine();
+            window.renderDailyView();
+            window.setupPwaFeatures();
+            window.updateSpotifyEmbed();
+
+            if (!hasSavedPrefs) {
+                setTimeout(() => {
+                    window.openProfileModal();
+                }, 300);
+            }
+        };
+    </script>
+</body>
+</html>
