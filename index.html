@@ -1,0 +1,2146 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>The Reform Lab - Reformer & Mat Pilates</title>
+
+    <!-- Dynamic PWA Meta -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Reform Lab">
+    <meta name="theme-color" content="#518A82">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        peach: {
+                            50: '#fef6f3',
+                            100: '#fdebe4',
+                            400: '#f79b7f',
+                            500: '#F27854',
+                            600: '#d95a34'
+                        },
+                        sage: {
+                            50: '#f4f8f7',
+                            100: '#e4efed',
+                            400: '#7bb2aa',
+                            500: '#518A82',
+                            600: '#43736d'
+                        },
+                        mint: {
+                            100: '#e6f9f1',
+                            500: '#51CF99',
+                            600: '#38b881'
+                        },
+                        ivory: {
+                            50: '#FAF7F2',
+                            100: '#F5F0E8',
+                            200: '#EAE3D7',
+                            300: '#DCD3C5',
+                            800: '#5A5650',
+                            900: '#2B2D2B'
+                        },
+                        darkbg: {
+                            800: '#1F1E1C',
+                            900: '#141413'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif']
+                    }
+                }
+            }
+        };
+    </script>
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #FAF7F2;
+            color: #2B2D2B;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+            padding-top: env(safe-area-inset-top);
+            padding-bottom: env(safe-area-inset-bottom);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dark body {
+            background-color: #141413;
+            color: #FAF7F2;
+        }
+
+        .pt-safe { padding-top: max(1rem, env(safe-area-inset-top)); }
+        .pb-safe { padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
+
+        input, select, textarea {
+            font-size: 16px !important;
+        }
+
+        @keyframes carriageGlide {
+            0%, 100% { transform: translateX(0px); }
+            50% { transform: translateX(-28px); }
+        }
+
+        @keyframes springStretch {
+            0%, 100% { transform: scaleX(1); }
+            50% { transform: scaleX(1.75); }
+        }
+
+        @keyframes humanBreath {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-1.5px) scale(1.02); }
+        }
+
+        .anim-carriage-glide { animation: carriageGlide 3.5s ease-in-out infinite; }
+        .anim-spring-stretch { transform-origin: 225px 102px; animation: springStretch 3.5s ease-in-out infinite; }
+        .anim-human-breath { animation: humanBreath 3.5s ease-in-out infinite; }
+
+        ::-webkit-scrollbar { width: 4px; height: 4px; }
+        ::-webkit-scrollbar-track { background: #FAF7F2; }
+        .dark ::-webkit-scrollbar-track { background: #141413; }
+        ::-webkit-scrollbar-thumb { background: #EAE3D7; border-radius: 9999px; }
+        .dark ::-webkit-scrollbar-thumb { background: #3A3835; }
+        ::-webkit-scrollbar-thumb:hover { background: #518A82; }
+        .scrollbar-none::-webkit-scrollbar { display: none; }
+        .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="h-full flex flex-col antialiased selection:bg-peach-100 selection:text-peach-600 pb-20 sm:pb-6">
+
+    <header class="bg-white dark:bg-darkbg-800 border-b border-ivory-200 dark:border-stone-800 sticky top-0 z-30 shadow-sm transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2">
+            
+            <div class="flex items-center space-x-3 flex-shrink-0">
+                <div class="w-10 h-10 rounded-2xl bg-sage-50 dark:bg-sage-600/20 border border-sage-200 dark:border-sage-500/30 flex items-center justify-center p-1 shadow-sm">
+                    <svg viewBox="0 0 100 100" class="w-full h-full text-sage-600 dark:text-sage-400 fill-current">
+                        <path d="M 12 18 H 58 V 25 H 41 V 68 H 31 V 25 H 12 Z"/>
+                        <path d="M 36 30 H 62 C 72 30 78 36 78 44 C 78 52 70 56 60 56 H 48 V 49 H 58 C 65 49 70 47 70 43 C 70 38 65 36 58 36 H 44 V 62 C 44 60 48 55 58 55 C 68 55 76 60 84 72 L 75 76 C 68 66 62 62 55 62 H 48 Z"/>
+                        <path d="M 44 52 H 52 V 76 H 88 V 83 H 44 Z"/>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-xs sm:text-base font-black tracking-tight text-ivory-900 dark:text-ivory-50 leading-none">THE REFORM LAB</h1>
+                    <p class="text-[8px] sm:text-[10px] font-extrabold text-sage-600 dark:text-sage-400 tracking-wider mt-0.5 uppercase">MOVE &bull; STRONGER &bull; FURTHER</p>
+                </div>
+            </div>
+
+            <div class="hidden sm:flex items-center bg-ivory-100 dark:bg-stone-800 p-1 rounded-2xl border border-ivory-200 dark:border-stone-700">
+                <button id="hdr-equip-reformer" onclick="window.setEquipmentMode('reformer')" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-black transition bg-sage-500 text-white shadow-sm min-h-[36px]">
+                    <span>Reformer</span>
+                </button>
+                <button id="hdr-equip-mat" onclick="window.setEquipmentMode('mat')" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-black transition text-ivory-800 dark:text-ivory-200 hover:text-ivory-900 min-h-[36px]">
+                    <span>Mat</span>
+                </button>
+            </div>
+
+            <div class="hidden sm:flex items-center space-x-2">
+                <button onclick="window.openProfileModal()" class="flex items-center space-x-2 px-3 py-2 rounded-xl bg-ivory-50 dark:bg-stone-800 border border-ivory-200 dark:border-stone-700 hover:border-peach-400 transition text-xs font-bold text-ivory-800 dark:text-ivory-200 min-h-[38px]" title="Workout Preferences">
+                    <i data-lucide="sliders" class="w-4 h-4 text-peach-500 flex-shrink-0"></i>
+                    <span>Preferences</span>
+                    <span id="profile-badge-text" class="capitalize bg-peach-100 dark:bg-peach-500/20 text-peach-600 dark:text-peach-400 px-1.5 py-0.5 rounded-md text-[10px] font-extrabold">Level 2</span>
+                </button>
+
+                <button id="btn-audio-toggle" onclick="window.toggleAudioMode()" class="p-2 rounded-xl bg-peach-50 dark:bg-peach-500/20 text-peach-600 dark:text-peach-400 border border-peach-100 dark:border-peach-500/30 hover:bg-peach-100 transition min-h-[38px] min-w-[38px] flex items-center justify-center" title="Toggle Voice Cues">
+                    <i data-lucide="volume-2" class="w-4 h-4"></i>
+                </button>
+
+                <button onclick="window.startWorkout()" class="px-3.5 py-2 rounded-xl bg-peach-500 text-white font-extrabold text-xs hover:bg-peach-600 transition shadow-md shadow-peach-500/20 flex items-center space-x-1.5 min-h-[38px]">
+                    <i data-lucide="play" class="w-4 h-4 fill-current"></i>
+                    <span>Start Session</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 lg:px-8 py-3 sm:py-4 space-y-4 pb-28 sm:pb-6">
+
+        <div id="date-ribbon-container" class="flex items-center space-x-2 overflow-x-auto pb-1 scrollbar-none"></div>
+
+        <div class="bg-sage-500 dark:bg-sage-600 rounded-3xl p-4 sm:p-5 text-white shadow-xl shadow-sage-500/15 relative overflow-hidden flex flex-col md:flex-row items-start md:items-center justify-between gap-3">
+            <div class="space-y-1 sm:space-y-1.5 max-w-2xl z-10">
+                <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white/15 backdrop-blur-md text-[10px] sm:text-[11px] font-bold tracking-wide">
+                    <i data-lucide="sparkles" class="w-3.5 h-3.5 text-peach-100"></i>
+                    <span id="banner-equipment-label" class="uppercase">DAILY REFORMER PILATES INSIGHT</span>
+                </div>
+                <blockquote id="daily-quote-text" class="text-xs sm:text-base font-semibold italic text-ivory-50 leading-relaxed">
+                    "Contrology develops the body uniformly, corrects wrong postures, restores physical vitality, and elevates the spirit."
+                </blockquote>
+                <p id="daily-quote-author" class="text-[9px] sm:text-xs font-bold text-ivory-200 uppercase tracking-widest">&mdash; Joseph Pilates</p>
+            </div>
+
+            <div class="absolute -right-10 -bottom-10 opacity-10 pointer-events-none">
+                <i data-lucide="activity" class="w-64 h-64 text-white"></i>
+            </div>
+        </div>
+
+        <div class="hidden sm:flex items-center justify-between border-b border-ivory-200 dark:border-stone-800 pb-3 gap-3">
+            <nav class="flex space-x-2 overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
+                <button id="tab-daily" onclick="window.switchView('daily')" class="px-3.5 py-2 rounded-xl text-xs font-extrabold transition bg-peach-500 text-white shadow-sm flex-shrink-0 min-h-[38px]">
+                    Daily Routine
+                </button>
+                <button id="tab-library" onclick="window.switchView('library')" class="px-3.5 py-2 rounded-xl text-xs font-extrabold transition text-ivory-800 dark:text-ivory-200 hover:bg-ivory-100 dark:hover:bg-stone-800 flex-shrink-0 min-h-[38px]">
+                    Repertoire Library
+                </button>
+                <button id="tab-builder" onclick="window.switchView('builder')" class="px-3.5 py-2 rounded-xl text-xs font-extrabold transition text-ivory-800 dark:text-ivory-200 hover:bg-ivory-100 dark:hover:bg-stone-800 flex-shrink-0 min-h-[38px]">
+                    Custom Flow Builder
+                </button>
+            </nav>
+        </div>
+
+        <!-- VIEW 1: DAILY ROUTINE BOARD -->
+        <div id="view-daily" class="space-y-6">
+            <div id="routine-cards-container" class="space-y-4 sm:space-y-6"></div>
+        </div>
+
+        <!-- VIEW 2: REPERTOIRE LIBRARY VIEW -->
+        <div id="view-library" class="hidden space-y-4 sm:space-y-6">
+            <div class="bg-white dark:bg-darkbg-800 rounded-3xl p-4 sm:p-5 border border-ivory-200 dark:border-stone-800 space-y-4 shadow-sm">
+                
+                <div class="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3">
+                    <div class="relative flex-1">
+                        <i data-lucide="search" class="w-4 h-4 text-ivory-800 dark:text-ivory-300 absolute left-3.5 top-3"></i>
+                        <input type="text" id="library-search" onkeyup="window.filterLibrary()" placeholder="Search movements, cues, or props..." class="w-full pl-10 pr-4 py-2 text-xs font-semibold bg-ivory-50 dark:bg-stone-800 border border-ivory-200 dark:border-stone-700 dark:text-white rounded-xl focus:outline-none focus:border-peach-500">
+                    </div>
+
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                        <div>
+                            <select id="library-app-filter" onchange="window.filterLibrary()" class="w-full text-xs font-bold bg-ivory-50 dark:bg-stone-800 border border-ivory-200 dark:border-stone-700 rounded-xl px-3 py-2 text-ivory-900 dark:text-ivory-100 focus:outline-none min-h-[38px]">
+                                <option value="all">Apparatus: All</option>
+                                <option value="reformer">Reformer Bed</option>
+                                <option value="mat">Mat Pilates</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <select id="library-cat-filter" onchange="window.filterLibrary()" class="w-full text-xs font-bold bg-ivory-50 dark:bg-stone-800 border border-ivory-200 dark:border-stone-700 rounded-xl px-3 py-2 text-ivory-900 dark:text-ivory-100 focus:outline-none min-h-[38px]">
+                                <option value="all">Category: All</option>
+                                <option value="Footwork">Footwork</option>
+                                <option value="Bridging">Bridging</option>
+                                <option value="Abs/Core">Abdominals</option>
+                                <option value="Arms & Upper Body">Arms & Upper Body</option>
+                                <option value="Legs & Glutes">Legs & Glutes</option>
+                                <option value="Side Lying Series">Side Lying Series</option>
+                                <option value="Kneeling Series">Kneeling Series</option>
+                                <option value="Plank Series">Planks & Core</option>
+                                <option value="Standing Series">Standing Series</option>
+                                <option value="Elephant Series">Elephant Series</option>
+                                <option value="Short Box Series">Short Box Series</option>
+                                <option value="Long Box Series">Long Box / Jumpboard</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <select id="library-lvl-filter" onchange="window.filterLibrary()" class="w-full text-xs font-bold bg-ivory-50 dark:bg-stone-800 border border-ivory-200 dark:border-stone-700 rounded-xl px-3 py-2 text-ivory-900 dark:text-ivory-100 focus:outline-none min-h-[38px]">
+                                <option value="all">Level: All</option>
+                                <option value="beginner">Level 1 (Beginner)</option>
+                                <option value="intermediate">Level 2 (Interm.)</option>
+                                <option value="advanced">Level 3 (Advanced)</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <select id="library-prop-filter" onchange="window.filterLibrary()" class="w-full text-xs font-bold bg-ivory-50 dark:bg-stone-800 border border-ivory-200 dark:border-stone-700 rounded-xl px-3 py-2 text-ivory-900 dark:text-ivory-100 focus:outline-none min-h-[38px]">
+                                <option value="all">Prop: All</option>
+                                <option value="None">None (Bodyweight)</option>
+                                <option value="Box">Box / Riser</option>
+                                <option value="Jumpboard">Jumpboard</option>
+                                <option value="Yoga Ball">Yoga Ball</option>
+                                <option value="Magic Circle">Magic Circle</option>
+                                <option value="Yoga Block">Yoga Block</option>
+                                <option value="Resistance Band">Resistance Band</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between text-xs font-bold text-ivory-800 dark:text-ivory-300 gap-1 pt-1 border-t border-ivory-100 dark:border-stone-700/60">
+                    <span id="library-count-indicator" class="text-peach-600 dark:text-peach-400 font-extrabold">Showing studio movements</span>
+                    <span class="text-[10px] text-sage-600 dark:text-sage-400 uppercase tracking-wide">&bull; Authentic Repertoire Database</span>
+                </div>
+            </div>
+
+            <div id="library-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4"></div>
+        </div>
+
+        <!-- VIEW 3: CUSTOM FLOW BUILDER VIEW -->
+        <div id="view-builder" class="hidden space-y-4 sm:space-y-6">
+            <div class="bg-white dark:bg-darkbg-800 rounded-3xl p-4 sm:p-5 border border-ivory-200 dark:border-stone-800 space-y-4 shadow-sm">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                    <div>
+                        <h3 class="text-sm font-extrabold text-ivory-900 dark:text-ivory-50">Build Your Custom Flow Sequence</h3>
+                        <p class="text-xs text-ivory-800 dark:text-ivory-300 font-medium">Select movements from the complete exercise bank.</p>
+                    </div>
+                    <button onclick="window.startCustomWorkout()" class="px-4 py-2.5 rounded-xl bg-peach-500 text-white text-xs font-extrabold hover:bg-peach-600 transition shadow-sm flex items-center space-x-1.5 w-full sm:w-auto justify-center min-h-[42px]">
+                        <i data-lucide="play" class="w-4 h-4 fill-current"></i>
+                        <span>Play Custom Flow</span>
+                    </button>
+                </div>
+
+                <div id="builder-queue" class="min-h-[72px] bg-ivory-50 dark:bg-stone-800/60 rounded-2xl p-3 border border-ivory-200 dark:border-stone-700 flex flex-wrap items-center gap-2">
+                    <span class="text-xs text-ivory-800 dark:text-ivory-300 font-medium italic w-full text-center">No exercises added yet. Click "+ Add" from the repertoire bank below.</span>
+                </div>
+            </div>
+
+            <div class="relative w-full max-w-md">
+                <i data-lucide="search" class="w-4 h-4 text-ivory-800 dark:text-ivory-300 absolute left-3.5 top-3"></i>
+                <input type="text" id="builder-search" onkeyup="window.renderBuilderBank()" placeholder="Filter repertoire bank..." class="w-full pl-10 pr-4 py-2 text-xs font-semibold bg-white dark:bg-stone-800 border border-ivory-200 dark:border-stone-700 rounded-xl focus:outline-none focus:border-peach-500 text-ivory-900 dark:text-ivory-100">
+            </div>
+
+            <div id="builder-bank" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"></div>
+        </div>
+
+    </main>
+
+    <div id="mobile-bottom-menu-bar" class="fixed bottom-0 inset-x-0 z-40 bg-white/95 dark:bg-darkbg-800/95 backdrop-blur-md border-t border-ivory-200 dark:border-stone-800 px-2 py-1.5 pb-safe shadow-xl flex sm:hidden items-center justify-around gap-1 transition-colors">
+        <button id="mob-tab-daily" onclick="window.switchView('daily')" class="flex flex-col items-center justify-center space-y-0.5 text-peach-500 font-extrabold transition py-1 px-1.5 min-w-[50px]">
+            <i data-lucide="calendar" class="w-4 h-4"></i>
+            <span class="text-[9px]">Daily</span>
+        </button>
+
+        <button id="mob-tab-library" onclick="window.switchView('library')" class="flex flex-col items-center justify-center space-y-0.5 text-ivory-800 dark:text-ivory-300 hover:text-peach-500 transition py-1 px-1.5 min-w-[50px]">
+            <i data-lucide="book-open" class="w-4 h-4"></i>
+            <span class="text-[9px]">Library</span>
+        </button>
+
+        <button id="mob-tab-builder" onclick="window.switchView('builder')" class="flex flex-col items-center justify-center space-y-0.5 text-ivory-800 dark:text-ivory-300 hover:text-peach-500 transition py-1 px-1.5 min-w-[50px]">
+            <i data-lucide="wrench" class="w-4 h-4"></i>
+            <span class="text-[9px]">Builder</span>
+        </button>
+
+        <button id="btn-audio-toggle-mb" onclick="window.toggleAudioMode()" class="p-2 rounded-xl bg-peach-50 dark:bg-peach-500/20 text-peach-600 dark:text-peach-400 border border-peach-100 dark:border-peach-500/30 min-h-[38px] min-w-[38px] flex items-center justify-center" title="Toggle Voice Cues">
+            <i data-lucide="volume-2" class="w-4 h-4"></i>
+        </button>
+
+        <button onclick="window.openProfileModal()" class="p-2 rounded-xl bg-ivory-50 dark:bg-stone-800 border border-ivory-200 dark:border-stone-700 text-ivory-800 dark:text-ivory-200 min-h-[38px] min-w-[38px] flex items-center justify-center" title="Workout Preferences">
+            <i data-lucide="sliders" class="w-4 h-4 text-peach-500"></i>
+        </button>
+
+        <button onclick="window.startWorkout()" class="px-3 py-2 rounded-xl bg-peach-500 text-white font-black text-xs hover:bg-peach-600 transition shadow-md shadow-peach-500/20 flex items-center justify-center space-x-1 min-h-[38px]">
+            <i data-lucide="play" class="w-3.5 h-3.5 fill-current"></i>
+            <span>Start</span>
+        </button>
+    </div>
+
+    <div id="view-player" class="fixed inset-0 z-50 bg-ivory-50 dark:bg-darkbg-900 flex flex-col hidden text-ivory-900 dark:text-white pt-safe pb-safe transition-colors duration-300">
+        <!-- Player Header -->
+        <div class="h-14 sm:h-16 border-b border-ivory-200 dark:border-white/10 px-3 sm:px-6 flex items-center justify-between">
+            <div class="flex items-center space-x-2 sm:space-x-3">
+                <span id="player-block-badge" class="px-2.5 py-1 rounded-full bg-peach-500 text-white font-extrabold text-[10px] sm:text-xs uppercase tracking-wider">
+                    Block 1
+                </span>
+                <span id="player-step-counter" class="text-xs font-bold text-ivory-800 dark:text-ivory-300">Move 1 / 20</span>
+            </div>
+            <div class="flex items-center space-x-2">
+                <button onclick="window.exitWorkout()" class="p-2 rounded-xl bg-ivory-200 dark:bg-white/10 hover:bg-ivory-300 dark:hover:bg-white/20 transition text-ivory-900 dark:text-white min-h-[40px] min-w-[40px] flex items-center justify-center">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Player Body -->
+        <div class="flex-1 max-w-4xl w-full mx-auto p-3 sm:p-6 flex flex-col justify-between space-y-3 sm:space-y-4 overflow-y-auto">
+
+            <div id="side-swap-overlay" class="hidden bg-peach-500 text-white px-3 py-2 rounded-2xl text-center font-black text-[11px] sm:text-xs uppercase tracking-widest animate-pulse shadow-lg border border-peach-400">
+                &sharp; 10s SIDE SWAP BUFFER &mdash; CHANGE SIDES NOW
+            </div>
+
+            <div id="upcoming-move-overlay" class="hidden bg-mint-500 text-ivory-900 px-3 py-2 rounded-2xl text-center font-black text-[11px] sm:text-xs uppercase tracking-widest shadow-lg border border-mint-400 flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <i data-lucide="bell" class="w-4 h-4 animate-bounce text-ivory-900"></i>
+                    <span id="upcoming-move-label">UPCOMING IN 10S:</span>
+                </div>
+                <span id="upcoming-move-title" class="font-extrabold capitalize text-ivory-900 truncate max-w-[200px] sm:max-w-xs">Next Move Name</span>
+            </div>
+
+            <div id="player-vector-container" class="bg-white dark:bg-white/5 border border-ivory-200 dark:border-white/10 rounded-3xl p-2 sm:p-4 flex flex-col items-center justify-center min-h-[160px] sm:min-h-[200px] relative overflow-hidden shadow-sm"></div>
+
+            <!-- Spotify background music player inside workout player -->
+            <div id="player-spotify-container" class="w-full hidden">
+                <iframe id="player-spotify-iframe" style="border-radius:12px" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+
+            <!-- Exercise Details & Cues -->
+            <div class="text-center space-y-1 sm:space-y-2">
+                <p id="player-category-name" class="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-peach-500 dark:text-peach-400">Footwork</p>
+                <h2 id="player-exercise-title" class="text-lg sm:text-2xl font-black tracking-tight text-ivory-900 dark:text-white">Footwork</h2>
+                
+                <div class="flex items-center justify-center space-x-2 sm:space-x-3 text-[11px] sm:text-xs font-bold text-ivory-800 dark:text-ivory-200">
+                    <span id="player-spring-badge" class="px-2.5 py-1 rounded-lg bg-ivory-100 dark:bg-white/10 border border-ivory-200 dark:border-white/15 text-peach-600 dark:text-peach-300">2 Red Springs</span>
+                    <span id="player-prop-badge" class="px-2.5 py-1 rounded-lg bg-ivory-100 dark:bg-white/10 border border-ivory-200 dark:border-white/15 inline-flex items-center space-x-1.5">
+                        <i data-lucide="check" class="w-3.5 h-3.5 text-mint-500"></i>
+                        <span>Prop: None</span>
+                    </span>
+                </div>
+
+                <div class="bg-white dark:bg-white/5 border border-ivory-200 dark:border-white/10 rounded-2xl p-3 text-left space-y-1 max-w-2xl mx-auto shadow-sm">
+                    <div class="text-[10px] uppercase font-bold text-sage-600 dark:text-sage-400 tracking-wider">Detailed Technique & Guidance</div>
+                    <p id="player-form-cue" class="text-xs text-ivory-800 dark:text-ivory-200 font-medium leading-relaxed">
+                        Form instructions...
+                    </p>
+                </div>
+            </div>
+
+            <div class="flex flex-col items-center justify-center space-y-2 sm:space-y-3">
+                
+                <!-- Clean Circular Progress Bar (Without Overlapping Digits Inside) -->
+                <div class="relative w-20 h-20 sm:w-28 sm:h-28 flex items-center justify-center">
+                    <svg class="w-full h-full transform -rotate-90" viewBox="0 0 120 120">
+                        <circle cx="60" cy="60" r="52" stroke="currentColor" stroke-width="8" class="text-ivory-200 dark:text-white/10" fill="none"/>
+                        <circle id="timer-progress-circle" cx="60" cy="60" r="52" stroke="currentColor" stroke-width="8" class="text-peach-500" fill="none" stroke-dasharray="326.72" stroke-dashoffset="0" stroke-linecap="round"/>
+                    </svg>
+                </div>
+
+                <!-- Digits & Phase Moved Below Circle to Ensure Perfect Mobile Fit -->
+                <div class="flex flex-col items-center text-center">
+                    <span id="timer-display-digits" class="text-2xl sm:text-3xl font-black tracking-tight text-ivory-900 dark:text-white">01:00</span>
+                    <span id="timer-phase-label" class="text-[10px] sm:text-xs font-black uppercase tracking-widest text-peach-500 dark:text-peach-400 mt-0.5">WORK</span>
+                </div>
+
+                <!-- Playback Controls -->
+                <div class="flex items-center space-x-6 pt-1">
+                    <button onclick="window.prevExercise()" class="p-3 sm:p-3.5 rounded-2xl bg-ivory-200 dark:bg-white/10 hover:bg-ivory-300 dark:hover:bg-white/20 text-ivory-900 dark:text-white transition min-h-[48px] min-w-[48px] flex items-center justify-center">
+                        <i data-lucide="skip-back" class="w-5 h-5"></i>
+                    </button>
+                    <button id="btn-player-play" onclick="window.toggleTimer()" class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-peach-500 hover:bg-peach-600 text-white flex items-center justify-center shadow-lg shadow-peach-500/30 transition">
+                        <i data-lucide="pause" class="w-7 h-7 sm:w-8 sm:h-8 fill-current"></i>
+                    </button>
+                    <button onclick="window.nextExercise()" class="p-3 sm:p-3.5 rounded-2xl bg-ivory-200 dark:bg-white/10 hover:bg-ivory-300 dark:hover:bg-white/20 text-ivory-900 dark:text-white transition min-h-[48px] min-w-[48px] flex items-center justify-center">
+                        <i data-lucide="skip-forward" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="modal-profile" class="fixed inset-0 z-50 bg-ivory-900/60 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4 hidden">
+        <div class="bg-white dark:bg-darkbg-800 rounded-t-3xl sm:rounded-3xl max-w-lg w-full p-5 sm:p-6 space-y-4 sm:space-y-5 shadow-2xl border border-ivory-200 dark:border-stone-800 max-h-[85vh] sm:max-h-[90vh] overflow-y-auto">
+            <div class="flex items-center justify-between border-b border-ivory-200 dark:border-stone-700 pb-3">
+                <div class="flex items-center space-x-2">
+                    <i data-lucide="sliders" class="w-5 h-5 text-peach-500"></i>
+                    <div>
+                        <h3 class="text-sm sm:text-base font-extrabold text-ivory-900 dark:text-ivory-50">Workout Preferences</h3>
+                        <p class="text-[10px] text-sage-600 dark:text-sage-400 font-bold">Configure session parameters, props & Spotify</p>
+                    </div>
+                </div>
+                <button onclick="window.closeProfileModal()" class="p-1 rounded-lg text-ivory-800 dark:text-ivory-200 hover:bg-ivory-100 dark:hover:bg-stone-700 min-h-[36px] min-w-[36px] flex items-center justify-center">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <!-- Spotify Playlist Link Configuration -->
+            <div class="space-y-2 bg-ivory-50 dark:bg-stone-800 p-3.5 rounded-2xl border border-ivory-200 dark:border-stone-700">
+                <label class="text-xs font-extrabold text-ivory-900 dark:text-ivory-100 uppercase tracking-wide flex items-center justify-between">
+                    <span class="flex items-center space-x-1.5">
+                        <i data-lucide="music" class="w-4 h-4 text-emerald-500"></i>
+                        <span>Spotify Background Music</span>
+                    </span>
+                    <span class="text-[10px] text-sage-600 dark:text-sage-400">Optional</span>
+                </label>
+                <div class="flex space-x-2">
+                    <input type="text" id="spotify-url-input" placeholder="Paste Spotify Playlist / Track URL..." class="flex-1 text-xs px-3 py-2 bg-white dark:bg-stone-900 border border-ivory-200 dark:border-stone-700 rounded-xl text-ivory-900 dark:text-ivory-100 focus:outline-none focus:border-peach-500">
+                    <button onclick="window.saveSpotifyUrl()" class="px-3 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-extrabold transition shadow-sm">Sync</button>
+                </div>
+                <div id="spotify-modal-player" class="pt-1"></div>
+            </div>
+
+            <div class="space-y-2">
+                <label class="text-xs font-extrabold text-ivory-900 dark:text-ivory-100 uppercase tracking-wide flex items-center justify-between">
+                    <span>App Display Mode</span>
+                    <i data-lucide="moon" class="w-4 h-4 text-peach-500"></i>
+                </label>
+                <div class="grid grid-cols-2 gap-2">
+                    <button id="opt-theme-light" onclick="window.setThemeMode('light')" class="py-2.5 px-3 rounded-xl border text-xs font-bold transition flex items-center justify-center space-x-2 bg-peach-50 border-peach-500 text-peach-600 min-h-[44px]">
+                        <i data-lucide="sun" class="w-4 h-4"></i>
+                        <span>Light Mode</span>
+                    </button>
+                    <button id="opt-theme-dark" onclick="window.setThemeMode('dark')" class="py-2.5 px-3 rounded-xl border text-xs font-bold transition flex items-center justify-center space-x-2 border-ivory-200 dark:border-stone-700 text-ivory-800 dark:text-ivory-200 min-h-[44px]">
+                        <i data-lucide="moon" class="w-4 h-4"></i>
+                        <span>Dark Mode</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="space-y-2">
+                <label class="text-xs font-extrabold text-ivory-900 dark:text-ivory-100 uppercase tracking-wide">Primary Equipment</label>
+                <div class="grid grid-cols-2 gap-2">
+                    <button id="opt-equip-reformer" onclick="window.setEquipmentMode('reformer')" class="py-2.5 px-3 rounded-xl border text-xs font-bold transition flex items-center justify-center space-x-2 bg-sage-50 border-sage-500 text-sage-600 min-h-[44px]">
+                        <span>Reformer Bed</span>
+                    </button>
+                    <button id="opt-equip-mat" onclick="window.setEquipmentMode('mat')" class="py-2.5 px-3 rounded-xl border text-xs font-bold transition flex items-center justify-center space-x-2 border-ivory-200 dark:border-stone-700 text-ivory-800 dark:text-ivory-200 min-h-[44px]">
+                        <span>Mat Pilates</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="space-y-2">
+                <label class="text-xs font-extrabold text-ivory-900 dark:text-ivory-100 uppercase tracking-wide">Workout Duration</label>
+                <div class="grid grid-cols-2 gap-2">
+                    <button id="opt-dur-30" onclick="window.setDuration(30)" class="py-2.5 px-3 rounded-xl border text-xs font-bold transition flex items-center justify-center space-x-1.5 bg-peach-50 border-peach-500 text-peach-600 min-h-[44px]">
+                        <i data-lucide="clock" class="w-4 h-4 text-peach-500"></i>
+                        <span>30 Mins (20 Moves)</span>
+                    </button>
+                    <button id="opt-dur-45" onclick="window.setDuration(45)" class="py-2.5 px-3 rounded-xl border text-xs font-bold transition flex items-center justify-center space-x-1.5 border-ivory-200 dark:border-stone-700 text-ivory-800 dark:text-ivory-200 min-h-[44px]">
+                        <i data-lucide="clock" class="w-4 h-4"></i>
+                        <span>45 Mins (25 Moves)</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="space-y-2">
+                <label class="text-xs font-extrabold text-ivory-900 dark:text-ivory-100 uppercase tracking-wide">Skill Level Classification</label>
+                <div class="grid grid-cols-3 gap-2">
+                    <button id="opt-lvl-beginner" onclick="window.setSkillLevel('beginner')" class="py-2.5 px-2 rounded-xl border text-xs font-bold transition border-ivory-200 dark:border-stone-700 text-ivory-800 dark:text-ivory-200 min-h-[40px]">
+                        Level 1 (Beginner)
+                    </button>
+                    <button id="opt-lvl-intermediate" onclick="window.setSkillLevel('intermediate')" class="py-2.5 px-2 rounded-xl border text-xs font-bold transition border-peach-500 bg-peach-50 text-peach-600 min-h-[40px]">
+                        Level 2 (Interm.)
+                    </button>
+                    <button id="opt-lvl-advanced" onclick="window.setSkillLevel('advanced')" class="py-2.5 px-2 rounded-xl border text-xs font-bold transition border-ivory-200 dark:border-stone-700 text-ivory-800 dark:text-ivory-200 min-h-[40px]">
+                        Level 3 (Advanced)
+                    </button>
+                </div>
+                <p id="level-prop-notice" class="text-[10px] text-peach-600 dark:text-peach-400 font-bold pt-1"></p>
+            </div>
+
+            <div id="props-section" class="space-y-2.5">
+                <label class="text-xs font-extrabold text-ivory-900 dark:text-ivory-100 uppercase tracking-wide">Available Props & Accessories</label>
+                <div class="space-y-2 text-xs font-bold text-ivory-800 dark:text-ivory-200">
+                    <label class="flex items-center space-x-2.5 cursor-pointer py-0.5">
+                        <input type="checkbox" id="chk-prop-box" checked onchange="window.toggleEquipment('box', this.checked)" class="rounded border-ivory-300 text-peach-500 focus:ring-peach-500 w-4 h-4">
+                        <span class="flex items-center space-x-1.5"><i data-lucide="package" class="w-4 h-4 text-sage-500"></i><span>Box / Support Riser</span></span>
+                    </label>
+                    <label class="flex items-center space-x-2.5 cursor-pointer py-0.5">
+                        <input type="checkbox" id="chk-prop-jumpboard" checked onchange="window.toggleEquipment('jumpboard', this.checked)" class="rounded border-ivory-300 text-peach-500 focus:ring-peach-500 w-4 h-4">
+                        <span class="flex items-center space-x-1.5"><i data-lucide="activity" class="w-4 h-4 text-peach-500"></i><span>Jumpboard Attachment</span></span>
+                    </label>
+                    <label class="flex items-center space-x-2.5 cursor-pointer py-0.5">
+                        <input type="checkbox" id="chk-prop-ball" checked onchange="window.toggleEquipment('ball', this.checked)" class="rounded border-ivory-300 text-peach-500 focus:ring-peach-500 w-4 h-4">
+                        <span class="flex items-center space-x-1.5"><i data-lucide="disc" class="w-4 h-4 text-mint-500"></i><span>Small Pilates Ball / Yoga Ball</span></span>
+                    </label>
+                    <label class="flex items-center space-x-2.5 cursor-pointer py-0.5">
+                        <input type="checkbox" id="chk-prop-circle" checked onchange="window.toggleEquipment('circle', this.checked)" class="rounded border-ivory-300 text-peach-500 focus:ring-peach-500 w-4 h-4">
+                        <span class="flex items-center space-x-1.5"><i data-lucide="circle" class="w-4 h-4 text-amber-500"></i><span>Magic Circle (Pilates Ring)</span></span>
+                    </label>
+                    <label class="flex items-center space-x-2.5 cursor-pointer py-0.5">
+                        <input type="checkbox" id="chk-prop-block" checked onchange="window.toggleEquipment('block', this.checked)" class="rounded border-ivory-300 text-peach-500 focus:ring-peach-500 w-4 h-4">
+                        <span class="flex items-center space-x-1.5"><i data-lucide="square" class="w-4 h-4 text-blue-500"></i><span>Yoga Block</span></span>
+                    </label>
+                    <label class="flex items-center space-x-2.5 cursor-pointer py-0.5">
+                        <input type="checkbox" id="chk-prop-band" checked onchange="window.toggleEquipment('band', this.checked)" class="rounded border-ivory-300 text-peach-500 focus:ring-peach-500 w-4 h-4">
+                        <span class="flex items-center space-x-1.5"><i data-lucide="minus" class="w-4 h-4 text-purple-500"></i><span>Resistance Band</span></span>
+                    </label>
+                </div>
+            </div>
+
+            <button onclick="window.saveAndApplyProfile()" class="w-full py-3 rounded-2xl bg-peach-500 text-white font-extrabold text-xs hover:bg-peach-600 transition shadow-md shadow-peach-500/20 min-h-[44px]">
+                Save Preferences & Regenerate Routine
+            </button>
+        </div>
+    </div>
+
+    <div id="toast-banner" class="fixed bottom-20 sm:bottom-6 right-4 sm:right-6 z-50 bg-stone-900 text-white px-4 py-2.5 rounded-2xl text-xs font-bold shadow-2xl border border-white/10 hidden transform transition-all duration-300 max-w-xs sm:max-w-md">
+        <span id="toast-message">Notification message here</span>
+    </div>
+
+    <script>
+        window.currentDateStr = new Date().toISOString().split('T')[0];
+        window.primaryEquipment = 'reformer';
+        window.currentDuration = 30;
+        window.userSkillLevel = 'intermediate';
+        window.equipmentAvailable = { box: true, jumpboard: true, ball: true, circle: true, block: true, band: true };
+        window.themeMode = 'light'; 
+        window.audioMode = 'all'; 
+        window.spotifyUrl = '';
+        window.customBuilderQueue = [];
+        window.activeRoutine = [];
+        window.playerIndex = 0;
+        
+        window.playerPhase = 'WORK_SIDE_1'; 
+        window.timerSeconds = 30;
+        window.isTimerRunning = false;
+        window.timerInterval = null;
+
+        window.savePreferencesToStorage = function() {
+            try {
+                const prefs = {
+                    primaryEquipment: window.primaryEquipment,
+                    currentDuration: window.currentDuration,
+                    userSkillLevel: window.userSkillLevel,
+                    equipmentAvailable: window.equipmentAvailable,
+                    themeMode: window.themeMode,
+                    audioMode: window.audioMode,
+                    spotifyUrl: window.spotifyUrl
+                };
+                localStorage.setItem('trl_user_preferences', JSON.stringify(prefs));
+            } catch(e) {}
+        };
+
+        window.loadPreferencesFromStorage = function() {
+            try {
+                const saved = localStorage.getItem('trl_user_preferences');
+                if (saved) {
+                    const prefs = JSON.parse(saved);
+                    if (prefs.primaryEquipment) window.primaryEquipment = prefs.primaryEquipment;
+                    if (prefs.currentDuration) window.currentDuration = prefs.currentDuration;
+                    if (prefs.userSkillLevel) window.userSkillLevel = prefs.userSkillLevel;
+                    if (prefs.equipmentAvailable) window.equipmentAvailable = prefs.equipmentAvailable;
+                    if (prefs.themeMode) window.themeMode = prefs.themeMode;
+                    if (prefs.audioMode) window.audioMode = prefs.audioMode;
+                    if (prefs.spotifyUrl) {
+                        window.spotifyUrl = prefs.spotifyUrl;
+                        const inp = document.getElementById('spotify-url-input');
+                        if (inp) inp.value = prefs.spotifyUrl;
+                        window.renderSpotifyPlayer();
+                    }
+                    return true;
+                }
+            } catch(e) {}
+            return false;
+        };
+
+        window.saveSpotifyUrl = function() {
+            const inp = document.getElementById('spotify-url-input');
+            if (inp) {
+                window.spotifyUrl = inp.value.trim();
+                window.savePreferencesToStorage();
+                window.renderSpotifyPlayer();
+                window.showToast("Spotify background music synced!");
+            }
+        };
+
+        window.renderSpotifyPlayer = function() {
+            const container = document.getElementById('spotify-modal-player');
+            const playerContainer = document.getElementById('player-spotify-container');
+            const iframeEl = document.getElementById('player-spotify-iframe');
+
+            if (!window.spotifyUrl) {
+                if (container) container.innerHTML = '';
+                if (playerContainer) playerContainer.classList.add('hidden');
+                return;
+            }
+
+            let embedUrl = window.spotifyUrl;
+            if (embedUrl.includes('spotify.com') && !embedUrl.includes('/embed/')) {
+                embedUrl = embedUrl.replace('spotify.com/', 'spotify.com/embed/');
+            }
+
+            const iframeHtml = `<iframe style="border-radius:12px" src="${embedUrl}" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`;
+            
+            if (container) container.innerHTML = iframeHtml;
+            if (playerContainer && iframeEl) {
+                iframeEl.src = embedUrl;
+                playerContainer.classList.remove('hidden');
+            }
+        };
+
+        window.setThemeMode = function(mode) {
+            window.themeMode = mode;
+            if (mode === 'dark') {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+
+            ['light', 'dark'].forEach(m => {
+                const btn = document.getElementById(`opt-theme-${m}`);
+                if (btn) btn.className = (m === mode)
+                    ? 'py-2.5 px-3 rounded-xl border text-xs font-bold transition flex items-center justify-center space-x-2 bg-peach-50 border-peach-500 text-peach-600 min-h-[44px]'
+                    : 'py-2.5 px-3 rounded-xl border text-xs font-bold transition flex items-center justify-center space-x-2 border-ivory-200 dark:border-stone-700 text-ivory-800 dark:text-ivory-200 min-h-[44px]';
+            });
+
+            window.savePreferencesToStorage();
+            if (window.lucide) window.lucide.createIcons();
+        };
+
+        window.renderHumanSVG = function(posture, isAnimated) {
+            const animClass = isAnimated ? "anim-human-breath" : "";
+            const glideClass = isAnimated ? "anim-carriage-glide" : "";
+            const stretchClass = isAnimated ? "anim-spring-stretch" : "";
+            
+            let posePaths = "";
+            if (posture === "supine") {
+                posePaths = `<rect x="110" y="70" width="80" height="12" rx="6" fill="#F27854"/>
+                             <circle cx="180" cy="65" r="8" fill="#518A82"/>
+                             <line x1="120" y1="82" x2="110" y2="92" stroke="#518A82" stroke-width="4" stroke-linecap="round"/>
+                             <line x1="135" y1="82" x2="125" y2="92" stroke="#518A82" stroke-width="4" stroke-linecap="round"/>`;
+            } else if (posture === "seated") {
+                posePaths = `<rect x="130" y="50" width="12" height="30" rx="6" fill="#F27854"/>
+                             <rect x="130" y="72" width="30" height="10" rx="5" fill="#F27854"/>
+                             <circle cx="136" cy="42" r="8" fill="#518A82"/>
+                             <line x1="140" y1="82" x2="150" y2="92" stroke="#518A82" stroke-width="4" stroke-linecap="round"/>`;
+            } else if (posture === "kneeling") {
+                posePaths = `<rect x="125" y="55" width="12" height="25" rx="6" fill="#F27854"/>
+                             <circle cx="131" cy="46" r="8" fill="#518A82"/>
+                             <line x1="125" y1="75" x2="155" y2="78" stroke="#F27854" stroke-width="6" stroke-linecap="round"/>
+                             <line x1="155" y1="78" x2="155" y2="88" stroke="#518A82" stroke-width="4" stroke-linecap="round"/>`;
+            } else if (posture === "pike") {
+                posePaths = `<path d="M 120 80 L 145 45 L 175 80" stroke="#F27854" stroke-width="6" stroke-linecap="round" fill="none"/>
+                             <circle cx="145" cy="38" r="8" fill="#518A82"/>`;
+            } else {
+                posePaths = `<line x1="120" y1="50" x2="150" y2="78" stroke="#F27854" stroke-width="6" stroke-linecap="round"/>
+                             <circle cx="116" cy="42" r="8" fill="#518A82"/>
+                             <line x1="150" y1="78" x2="180" y2="78" stroke="#F27854" stroke-width="6" stroke-linecap="round"/>`;
+            }
+
+            return `<svg viewBox="0 0 300 120" class="w-full h-full max-h-36">
+                <rect x="20" y="88" width="260" height="8" rx="4" fill="#DCD3C5" class="dark:fill-stone-700"/>
+                <rect x="30" y="96" width="8" height="18" fill="#5A5650"/>
+                <rect x="260" y="96" width="8" height="18" fill="#5A5650"/>
+                <rect x="260" y="60" width="6" height="28" rx="3" fill="#518A82"/>
+                <line x1="30" y1="92" x2="100" y2="92" stroke="#F27854" stroke-width="3" stroke-dasharray="3,3" class="${stretchClass}"/>
+                <g class="${glideClass}">
+                    <rect x="100" y="80" width="100" height="10" rx="4" fill="#5A5650"/>
+                    <g class="${animClass}">
+                        ${posePaths}
+                    </g>
+                </g>
+            </svg>`;
+        };
+
+        window.initExerciseDatabase = function() {
+            if (window.EXERCISE_DATABASE && window.EXERCISE_DATABASE.reformer && window.EXERCISE_DATABASE.mat) return;
+
+            window.EXERCISE_DATABASE = { reformer: [], mat: [] };
+
+            const rawReformerData = [
+                ["Reformer", "Level 1", "Footwork", "Toes High V on Footbar", "2 Red, 1 Blue", "None", "Bilateral", "Press carriage smoothly through balls of feet with neutral spine."],
+                ["Reformer", "Level 1", "Footwork", "Heels Parallel on Footbar", "2 Red, 1 Blue", "None", "Bilateral", "Drive power through heels, keeping pelvis stable on carriage."],
+                ["Reformer", "Level 1", "Footwork", "High Arches Tendon Press", "2 Red", "None", "Bilateral", "Wrap arches over bar, press out maintaining deep abdominal scoop."],
+                ["Reformer", "Level 1", "Footwork", "Running in Place", "2 Red, 1 Blue", "None", "Unilateral", "Lower one heel under bar while flexing opposite knee in steady rhythm."],
+                ["Reformer", "Level 1", "Footwork", "Wide Second Position Heels", "2 Red, 1 Blue", "None", "Bilateral", "Turn toes out at edges of bar, engage inner thighs on return."],
+                ["Reformer", "Level 1", "Footwork", "Wide Second Position Toes", "2 Red, 1 Blue", "None", "Bilateral", "High relevé stance wide on footbar, press out with level pelvis."],
+                ["Reformer", "Level 1", "Footwork", "Single Leg Heel Drive", "2 Red", "None", "Unilateral", "One leg extended 45°, drive through supporting heel with square hips."],
+                ["Reformer", "Level 1", "Footwork", "Single Leg Toe Relevé", "1 Red, 1 Blue", "None", "Unilateral", "Single leg ball of foot press, articulate ankle joint smoothly."],
+                ["Reformer", "Level 1", "Footwork", "Tendon Stretch Heels Lower", "2 Red", "None", "Bilateral", "Lower both heels below bar at full carriage extension, lift high."],
+                ["Reformer", "Level 1", "Footwork", "Footwork Mid-Range Pulses", "2 Red", "None", "Bilateral", "Maintain 90° knee bend, pulse carriage 2 inches in mid-range."],
+                ["Reformer", "Level 2", "Footwork", "Plié Press with Ball Squeeze", "2 Red", "Yoga Ball", "Bilateral", "Squeeze soft ball between knees while pressing carriage out."],
+                ["Reformer", "Level 2", "Footwork", "Single Leg Press on Block", "1 Red, 1 Blue", "Yoga Block", "Unilateral", "Place non-working foot on block, press bar with active heel."],
+                ["Reformer", "Level 2", "Footwork", "Magic Circle Thigh Press", "2 Red", "Magic Circle", "Bilateral", "Maintain constant ring compression between thighs during footwork."],
+                ["Reformer", "Level 2", "Footwork", "Resistance Band Ankle Relevé", "1 Red, 1 Blue", "Resistance Band", "Bilateral", "Band looped around arches, articulate ankle extension against tension."],
+                ["Reformer", "Level 2", "Footwork", "Single Leg Extension with Ball", "1 Red, 1 Blue", "Yoga Ball", "Unilateral", "Balance ball on non-working shin while driving single leg press."],
+                ["Reformer", "Level 2", "Footwork", "Jumpboard Rebound Footwork", "2 Red", "Jumpboard", "Bilateral", "Soft toe-ball-heel landing on jumpboard with continuous rhythmic press."],
+                ["Reformer", "Level 2", "Footwork", "Wide Second Circle Chest Press", "2 Red", "Magic Circle", "Bilateral", "Press circle between hands at chest while driving wide second plié."],
+                ["Reformer", "Level 2", "Footwork", "Single Leg Calf Rise with Band", "1 Red, 1 Blue", "Resistance Band", "Unilateral", "Band under ball of foot, articulate full ankle flexion/extension."],
+                ["Reformer", "Level 2", "Footwork", "Tabletop Press with Block", "2 Red", "Yoga Block", "Bilateral", "Block held between ankles, press carriage out without arching low back."],
+                ["Reformer", "Level 2", "Footwork", "Single Leg Jumpboard Rebounds", "1 Red, 1 Blue", "Jumpboard", "Unilateral", "Alternate single leg footwork rebounds on jumpboard surface."],
+                ["Reformer", "Level 3", "Footwork", "Relevé Pulse on Jumpboard", "1 Red, 1 Blue", "Jumpboard", "Unilateral", "Rapid single-leg jumpboard rebounds maintaining elevated heel stance."],
+                ["Reformer", "Level 3", "Footwork", "Magic Circle Overhead Press", "2 Red", "Magic Circle", "Bilateral", "Hold magic circle tension overhead while driving rapid footwork tempo."],
+                ["Reformer", "Level 3", "Footwork", "Unilateral Press with Band Pull", "1 Red, 1 Blue", "Resistance Band", "Unilateral", "Drive single heel press while pulling band across chest."],
+                ["Reformer", "Level 3", "Footwork", "Single Leg Box Relevé", "2 Red", "Box", "Unilateral", "Elevate non-working leg onto box in tabletop while driving single relevé."],
+                ["Reformer", "Level 3", "Footwork", "Jumpboard Scissors Sprint", "1 Red, 1 Blue", "Jumpboard", "Unilateral", "Switch legs mid-air on jumpboard in rapid cardio cadence."],
+                ["Reformer", "Level 3", "Footwork", "Block Squeeze Single Leg Relevé", "1 Red, 1 Blue", "Yoga Block", "Unilateral", "Squeeze block behind non-working knee while executing single leg press."],
+                ["Reformer", "Level 3", "Footwork", "Wide Jumpboard Straddle Rebound", "2 Red", "Jumpboard", "Bilateral", "Explosive wide jumps off board returning to narrow parallel stance."],
+                ["Reformer", "Level 3", "Footwork", "Band Resisted Tabletop Press", "2 Red", "Resistance Band", "Unilateral", "Anchor band around active foot, push against bar with double resistance."],
+                ["Reformer", "Level 3", "Footwork", "Ball Between Ankle Single Drive", "1 Red, 1 Blue", "Yoga Ball", "Unilateral", "Pinch ball between working ankle and bar, control return eccentrically."],
+                ["Reformer", "Level 3", "Footwork", "Jumpboard Single Leg Tuck Rebound", "1 Red, 1 Blue", "Jumpboard", "Unilateral", "Explode off jumpboard on single leg, tucking non-working knee to chest."],
+                ["Reformer", "Level 1", "Bridging", "Pelvic Curl & Articulating Bridge", "2 Red", "None", "Bilateral", "Imprint lower back, peel spine up bone-by-bone, squeeze glutes at peak."],
+                ["Reformer", "Level 1", "Bridging", "Flat Back Bridge Press", "2 Red", "None", "Bilateral", "Hips lifted to high bridge, press carriage away using hamstrings/glutes."],
+                ["Reformer", "Level 1", "Bridging", "High Relevé Bridge", "2 Red", "None", "Bilateral", "Lift heels high off bar, hold peak bridge alignment while gliding carriage."],
+                ["Reformer", "Level 1", "Bridging", "Single Leg Bridge March", "1 Red, 1 Blue", "None", "Unilateral", "Hold high bridge, alternate marching legs without dropping pelvic height."],
+                ["Reformer", "Level 1", "Bridging", "Wide Stance Glute Bridge", "2 Red", "None", "Bilateral", "Turn feet out to corners of footbar, squeeze outer glutes at top of lift."],
+                ["Reformer", "Level 1", "Bridging", "Single Leg High Bridge", "1 Red, 1 Blue", "None", "Unilateral", "Lift one leg to 90° tabletop, press carriage maintaining square, level hips."],
+                ["Reformer", "Level 1", "Bridging", "Bridge Carriage Pulse", "2 Red", "None", "Bilateral", "Hold peak bridge height, pulse carriage 2 inches in/out with hamstrings."],
+                ["Reformer", "Level 1", "Bridging", "Articulating Spine Roll Bridge", "2 Red", "None", "Bilateral", "Roll up through spine, melt middle and lower back down to carriage."],
+                ["Reformer", "Level 1", "Bridging", "Single Leg Hamstring Bridge Pull", "1 Red", "None", "Unilateral", "Single leg on bar, pull carriage all the way in using active hamstring."],
+                ["Reformer", "Level 1", "Bridging", "Bridge Lower & Lift", "2 Red", "None", "Bilateral", "Keep carriage glued to stopper, lower and lift hips in isolation."],
+                ["Reformer", "Level 2", "Bridging", "Bridge with Pilates Ball Under Sacrum", "1 Red, 1 Blue", "Yoga Ball", "Bilateral", "Rest sacrum on soft ball, press carriage out while isolating pelvic stability."],
+                ["Reformer", "Level 2", "Bridging", "Bridge with Magic Circle Squeeze", "2 Red", "Magic Circle", "Bilateral", "Place circle between thighs, maintain inner thigh compression while bridging."],
+                ["Reformer", "Level 2", "Bridging", "Single Leg Bridge with Block Press", "1 Red, 1 Blue", "Yoga Block", "Unilateral", "Squeeze yoga block between knees during single leg bridge press."],
+                ["Reformer", "Level 2", "Bridging", "Resistance Band Glute Bridge Press", "2 Red", "Resistance Band", "Bilateral", "Band wrapped around outer thighs, press legs wide into band tension."],
+                ["Reformer", "Level 2", "Bridging", "Box Elevated Glute Bridge", "2 Red", "Box", "Bilateral", "Heels on box, lift hips into bridge and articulate spine down."],
+                ["Reformer", "Level 2", "Bridging", "Jumpboard Heel Bridge Press", "2 Red", "Jumpboard", "Bilateral", "Heels flat on jumpboard surface, drive hips high into extension."],
+                ["Reformer", "Level 2", "Bridging", "Single Leg Bridge with Ball Squeeze", "1 Red, 1 Blue", "Yoga Ball", "Unilateral", "Squeeze ball behind non-working knee while lifting hips into single bridge."],
+                ["Reformer", "Level 2", "Bridging", "Magic Circle Outer Thigh Bridge", "2 Red", "Magic Circle", "Bilateral", "Circle around outer thighs, push knees outward into ring tension."],
+                ["Reformer", "Level 2", "Bridging", "Band Resisted Hamstring Bridge", "1 Red, 1 Blue", "Resistance Band", "Bilateral", "Loop band around waist anchored to frame, drive hips against band pull."],
+                ["Reformer", "Level 2", "Bridging", "Single Leg Box Hamstring Curl", "1 Red", "Box", "Unilateral", "Single heel on box, pull carriage to stopper using isolated hamstring."],
+                ["Reformer", "Level 3", "Bridging", "Single Leg Bridge on Jumpboard", "1 Red, 1 Blue", "Jumpboard", "Unilateral", "Single heel on jumpboard, drive hips high while pressing carriage back."],
+                ["Reformer", "Level 3", "Bridging", "Overhead Band Pull Single Bridge", "1 Red", "Resistance Band", "Unilateral", "Pull band to hips while holding single leg bridge on bar."],
+                ["Reformer", "Level 3", "Bridging", "Ball Balance Single Leg Bridge Relevé", "1 Red, 1 Blue", "Yoga Ball", "Unilateral", "Foot on soft ball on bar, drive single leg bridge into high relevé."],
+                ["Reformer", "Level 3", "Bridging", "Magic Circle Single Leg Bridge Pulse", "1 Red, 1 Blue", "Magic Circle", "Unilateral", "Hold circle between hands overhead while pulsing single leg bridge."],
+                ["Reformer", "Level 3", "Bridging", "Box Elevated Single Leg Bridge Drive", "1 Red, 1 Blue", "Box", "Unilateral", "Foot elevated on box, drive hips to maximum extension on single leg."],
+                ["Reformer", "Level 3", "Bridging", "Jumpboard Rebound Bridge Sprint", "2 Red", "Jumpboard", "Bilateral", "Perform rapid jumpboard rebounds from high glute bridge pose."],
+                ["Reformer", "Level 3", "Bridging", "Block Squeeze Single Hamstring Curl", "1 Red", "Yoga Block", "Unilateral", "Block pinched behind working knee, pull carriage in with single hamstring."],
+                ["Reformer", "Level 3", "Bridging", "Resistance Band Overhead Bridge Pulse", "2 Red", "Resistance Band", "Bilateral", "Pull band taut overhead while pulsing hips at top of bridge range."],
+                ["Reformer", "Level 3", "Bridging", "Single Leg Ball Marching Bridge", "1 Red, 1 Blue", "Yoga Ball", "Unilateral", "Balance back on soft ball, alternate marching single leg bridges."],
+                ["Reformer", "Level 3", "Bridging", "Box Single Leg Hamstring Rebound", "1 Red", "Box", "Unilateral", "Single foot on box, drive explosive hamstring rebounds off box."],
+                ["Reformer", "Level 1", "Abs/Core", "Mid-Back Series: The Hundred", "1 Red, 1 Blue", "None", "Bilateral", "Arms in straps, curl head/shoulders up, pump arms with 5-count breath."],
+                ["Reformer", "Level 1", "Abs/Core", "Single Leg Abdominal Curl", "1 Red", "None", "Unilateral", "One leg in tabletop, curl chest up toward knee while pulling strap down."],
+                ["Reformer", "Level 1", "Abs/Core", "Coordination Series", "1 Red, 1 Blue", "None", "Bilateral", "Press arms down, extend legs, open/close legs, bend knees, return arms."],
+                ["Reformer", "Level 1", "Abs/Core", "Stomach Massage: Hands Back", "2 Red, 1 Blue", "None", "Bilateral", "Sit on front third of carriage, rounded spine, press carriage out/in."],
+                ["Reformer", "Level 1", "Abs/Core", "Double Leg Abdominal Curl", "1 Red, 1 Blue", "None", "Bilateral", "Both legs in tabletop, curl head and shoulders up against straps."],
+                ["Reformer", "Level 1", "Abs/Core", "Criss-Cross Oblique Curl", "1 Red", "None", "Unilateral", "Rotate shoulder toward opposite knee while pulling strap down."],
+                ["Reformer", "Level 1", "Abs/Core", "Supine Lower & Lift", "1 Red, 1 Blue", "None", "Bilateral", "Head rested on carriage, lower straight legs to 45° and lift with abs."],
+                ["Reformer", "Level 1", "Abs/Core", "Abdominal Curl with Arm Press", "1 Red", "None", "Bilateral", "Curl chest up, press straps past hips, pause 2 seconds at peak."],
+                ["Reformer", "Level 1", "Abs/Core", "Reverse Abdominal Curl", "1 Red", "None", "Bilateral", "Pull knees to chest sliding carriage forward using lower abs."],
+                ["Reformer", "Level 1", "Abs/Core", "Stomach Massage: Round Back", "2 Red", "None", "Bilateral", "Maintain deep C-curve spine while driving carriage with legs."],
+                ["Reformer", "Level 2", "Abs/Core", "Hundred with Pilates Ball Under Back", "1 Red, 1 Blue", "Yoga Ball", "Bilateral", "Place soft ball under thoracic spine, curl up and pump arms in straps."],
+                ["Reformer", "Level 2", "Abs/Core", "Abdominal Curl with Magic Circle", "1 Red", "Magic Circle", "Bilateral", "Squeeze circle between ankles while pulling straps past hips."],
+                ["Reformer", "Level 2", "Abs/Core", "Oblique Curl with Resistance Band", "1 Red", "Resistance Band", "Unilateral", "Band around feet, rotate torso toward active knee in abdominal curl."],
+                ["Reformer", "Level 2", "Abs/Core", "Block Squeeze Abdominal Crunch", "1 Red, 1 Blue", "Yoga Block", "Bilateral", "Squeeze yoga block between knees, curl chest up against strap resistance."],
+                ["Reformer", "Level 2", "Abs/Core", "Box Abdominal Curl in Straps", "1 Red", "Box", "Bilateral", "Lie supine on box, curl head/shoulders up pulling straps down."],
+                ["Reformer", "Level 2", "Abs/Core", "Jumpboard Abdominal Crunch", "1 Red, 1 Blue", "Jumpboard", "Bilateral", "Rebound off jumpboard while holding steady chest curl up."],
+                ["Reformer", "Level 2", "Abs/Core", "Single Leg Curl with Ball Squeeze", "1 Red", "Yoga Ball", "Unilateral", "Squeeze ball behind active knee, curl torso up toward thigh."],
+                ["Reformer", "Level 2", "Abs/Core", "Magic Circle Overhead Abdominal Press", "1 Red, 1 Blue", "Magic Circle", "Bilateral", "Hold circle between hands, press overhead while curling chest up."],
+                ["Reformer", "Level 2", "Abs/Core", "Band Resisted Leg Lower & Lift", "1 Red", "Resistance Band", "Bilateral", "Loop band around feet, lower legs to 45° against spring pull."],
+                ["Reformer", "Level 2", "Abs/Core", "Box Oblique Crunch in Straps", "1 Red", "Box", "Unilateral", "Supine on box, rotate torso to side while pulling single strap."],
+                ["Reformer", "Level 3", "Abs/Core", "Teaser on Reformer Carriage", "1 Red", "None", "Bilateral", "Balance on sit-bones, lift legs to V-shape, sweep arms to toes against straps."],
+                ["Reformer", "Level 3", "Abs/Core", "Teaser with Magic Circle Squeeze", "1 Red", "Magic Circle", "Bilateral", "Hold Teaser balance while compressing magic circle between ankles."],
+                ["Reformer", "Level 3", "Abs/Core", "Single Leg Teaser in Straps", "1 Red", "None", "Unilateral", "Extend single leg to 45°, roll up into V-sit against single strap."],
+                ["Reformer", "Level 3", "Abs/Core", "Ball Balance Teaser Twist", "1 Red", "Yoga Ball", "Unilateral", "Rest lower back on soft ball, execute Teaser rotation side to side."],
+                ["Reformer", "Level 3", "Abs/Core", "Resistance Band Teaser Press", "1 Red", "Resistance Band", "Bilateral", "Loop band around feet, roll up into full Teaser pulling band to chest."],
+                ["Reformer", "Level 3", "Abs/Core", "Box Teaser in Straps", "1 Red", "Box", "Bilateral", "Sit on box, sweep arms to toes, lift legs into high Teaser posture."],
+                ["Reformer", "Level 3", "Abs/Core", "Jumpboard Teaser Rebound", "1 Red", "Jumpboard", "Bilateral", "Hold Teaser posture on carriage while performing jumpboard rebounds."],
+                ["Reformer", "Level 3", "Abs/Core", "Block Between Ankle Teaser Circle", "1 Red", "Yoga Block", "Bilateral", "Pinch block between ankles, sweep legs in circles from Teaser pose."],
+                ["Reformer", "Level 3", "Abs/Core", "Magic Circle Single Leg Teaser Twist", "1 Red", "Magic Circle", "Unilateral", "Balance in single leg Teaser, rotate magic circle across active knee."],
+                ["Reformer", "Level 3", "Abs/Core", "Box Overhead Teaser Pull", "1 Red", "Box", "Bilateral", "From box roll-down, explode up into Teaser reaching straps overhead."],
+                ["Reformer", "Level 1", "Arms & Upper Body", "Seated Chest Expansion", "1 Red", "None", "Bilateral", "Sit tall facing straps, press arms straight back past hips, open chest."],
+                ["Reformer", "Level 1", "Arms & Upper Body", "Kneeling Hug a Tree", "1 Blue", "None", "Bilateral", "Kneel facing away, circle arms forward as if hugging a wide barrel."],
+                ["Reformer", "Level 1", "Arms & Upper Body", "Kneeling Bicep Curls", "1 Red", "None", "Bilateral", "Kneel facing straps, curl handles to shoulders with tall upright spine."],
+                ["Reformer", "Level 1", "Arms & Upper Body", "Kneeling Salute", "1 Red", "None", "Bilateral", "Hands at forehead, press straps forward and up at 45° angle."],
+                ["Reformer", "Level 1", "Arms & Upper Body", "Single Arm Row in Kneeling", "1 Red", "None", "Unilateral", "One-hand strap pull, rotate ribcage slightly, keeping hips square."],
+                ["Reformer", "Level 1", "Arms & Upper Body", "Serve the Platter", "1 Blue", "None", "Bilateral", "Extend palms forward from waist level, keeping shoulders packed down."],
+                ["Reformer", "Level 1", "Arms & Upper Body", "Seated Overhead Tricep Extension", "1 Red", "None", "Bilateral", "Sit tall, elbows bent by ears, press straps straight up to ceiling."],
+                ["Reformer", "Level 1", "Arms & Upper Body", "Kneeling Arm Reaches", "1 Red", "None", "Bilateral", "Tall kneeling, draw straps forward, keep glutes and core fired."],
+                ["Reformer", "Level 1", "Arms & Upper Body", "Seated High Row", "1 Red, 1 Blue", "None", "Bilateral", "Sit facing straps, pull elbows high and wide, squeezing rhomboids."],
+                ["Reformer", "Level 1", "Arms & Upper Body", "Kneeling Chest Flyes", "1 Blue", "None", "Bilateral", "Open arms wide in T-shape, hug handles together at center."],
+                ["Reformer", "Level 2", "Arms & Upper Body", "Pulling Straps 1 on Long Box", "1 Blue", "Box", "Bilateral", "Prone on box, pull straps past hips, articulate thoracic extension."],
+                ["Reformer", "Level 2", "Arms & Upper Body", "T-Pull on Long Box", "1 Blue", "Box", "Bilateral", "Arms wide in T-shape, draw straps to sides of box, firing mid-traps."],
+                ["Reformer", "Level 2", "Arms & Upper Body", "Bicep Curls with Pilates Ball", "1 Red", "Yoga Ball", "Bilateral", "Squeeze ball between thighs in kneeling pose while curling straps."],
+                ["Reformer", "Level 2", "Arms & Upper Body", "Tricep Kickbacks on Box", "1 Blue", "Box", "Bilateral", "Prone on box, extend elbows straight back, pinning upper arms to ribs."],
+                ["Reformer", "Level 2", "Arms & Upper Body", "Hug a Tree with Magic Circle", "1 Blue", "Magic Circle", "Bilateral", "Hold circle between palms, press inward while performing Hug a Tree."],
+                ["Reformer", "Level 2", "Arms & Upper Body", "Resistance Band Arm Circles", "1 Red", "Resistance Band", "Bilateral", "Loop band around wrists, draw circles against spring and band pull."],
+                ["Reformer", "Level 2", "Arms & Upper Body", "Single Arm Row on Box", "1 Blue", "Box", "Unilateral", "Prone on box, pull single strap to chest without twisting shoulders."],
+                ["Reformer", "Level 2", "Arms & Upper Body", "Serve Platter with Block Squeeze", "1 Blue", "Yoga Block", "Bilateral", "Squeeze yoga block between elbows while serving platter forward."],
+                ["Reformer", "Level 2", "Arms & Upper Body", "Kneeling Salute with Resistance Band", "1 Red", "Resistance Band", "Bilateral", "Band wrapped around back, press straps forward against double tension."],
+                ["Reformer", "Level 2", "Arms & Upper Body", "Box Chest Expansion with Ball", "1 Blue", "Yoga Ball", "Bilateral", "Sit on box, ball behind lower back, press straps straight back past hips."],
+                ["Reformer", "Level 3", "Arms & Upper Body", "Advanced Breaststroke on Long Box", "1 Blue", "Box", "Bilateral", "Sweep arms wide, lift thoracic spine high, pull straps past hips in arc."],
+                ["Reformer", "Level 3", "Arms & Upper Body", "Single Arm Tricep Press on Box", "1 Blue", "Box", "Unilateral", "Prone on box, drive single tricep press while holding high plank torso."],
+                ["Reformer", "Level 3", "Arms & Upper Body", "Magic Circle Salute in Kneeling", "1 Red", "Magic Circle", "Bilateral", "Squeeze circle between hands while driving 45° overhead salute."],
+                ["Reformer", "Level 3", "Arms & Upper Body", "Resistance Band Bicep Pull on Box", "1 Red", "Resistance Band", "Bilateral", "Sit tall on box, execute heavy bicep curls against band and spring."],
+                ["Reformer", "Level 3", "Arms & Upper Body", "Single Arm High Row with Ball Balance", "1 Red", "Yoga Ball", "Unilateral", "Kneel on soft ball on carriage, pull single high row with balance."],
+                ["Reformer", "Level 3", "Arms & Upper Body", "Box Reversal Arm Flyes", "1 Blue", "Box", "Bilateral", "Sit facing back on box, open arms into wide rear delt flyes against straps."],
+                ["Reformer", "Level 3", "Arms & Upper Body", "Jumpboard Arm Sprint Press", "1 Red", "Jumpboard", "Bilateral", "Perform rapid arm press pushes against jumpboard surface in plank pose."],
+                ["Reformer", "Level 3", "Arms & Upper Body", "Block Between Elbow Tricep Extension", "1 Red", "Yoga Block", "Bilateral", "Pinch block between elbows, press straps overhead without flaring arms."],
+                ["Reformer", "Level 3", "Arms & Upper Body", "Resistance Band Chest Flye on Box", "1 Blue", "Resistance Band", "Bilateral", "Prone on box, draw arms wide into heavy chest flyes against band."],
+                ["Reformer", "Level 3", "Arms & Upper Body", "Overhead Tricep Press with Ball Squeeze", "1 Red", "Yoga Ball", "Bilateral", "Squeeze ball overhead between wrists, drive tricep extension."],
+                ["Reformer", "Level 1", "Legs & Glutes", "Feet in Straps: Frog Press", "2 Red", "None", "Bilateral", "Heels together, toes V-shape, press legs to 45° line from hip sockets."],
+                ["Reformer", "Level 1", "Legs & Glutes", "Feet in Straps: Leg Circles", "2 Red", "None", "Bilateral", "Sweep legs out and around in controlled circles without pelvis tilting."],
+                ["Reformer", "Level 1", "Legs & Glutes", "Feet in Straps: Scissors", "2 Red", "None", "Bilateral", "Open legs laterally into wide V, pull inner thighs together firmly."],
+                ["Reformer", "Level 1", "Legs & Glutes", "Scooter Series", "1 Red", "None", "Unilateral", "Hands on bar, press carriage back with rear leg in low lunge stance."],
+                ["Reformer", "Level 1", "Legs & Glutes", "Single Leg Lunge Press", "1 Red", "None", "Unilateral", "Standing on carriage platform, drive front heel down to slide carriage."],
+                ["Reformer", "Level 1", "Legs & Glutes", "Kneeling Quad / Glute Press", "1 Red, 1 Blue", "None", "Unilateral", "One knee against shoulder block, press foot against bar to push back."],
+                ["Reformer", "Level 1", "Legs & Glutes", "Feet in Straps: Walking in Air", "2 Red", "None", "Bilateral", "Alternate scissor strides against strap tension with neutral spine."],
+                ["Reformer", "Level 1", "Legs & Glutes", "Feet in Straps: Inner Thigh Pulls", "2 Red", "None", "Bilateral", "Draw legs together from wide V-split, focusing on adductor control."],
+                ["Reformer", "Level 1", "Legs & Glutes", "Single Leg Glute Kickback in Straps", "1 Red", "None", "Unilateral", "Quadruped on carriage, strap on foot, drive heel straight back to ceiling."],
+                ["Reformer", "Level 1", "Legs & Glutes", "Kneeling Glute Press to Stopper", "1 Red, 1 Blue", "None", "Unilateral", "Press rear foot against footbar, drive carriage back using glute max."],
+                ["Reformer", "Level 2", "Legs & Glutes", "Frog Press with Pilates Ball Squeeze", "2 Red", "Yoga Ball", "Bilateral", "Squeeze soft ball between ankles during feet-in-straps frog press."],
+                ["Reformer", "Level 2", "Legs & Glutes", "Scooter Series with Yoga Block", "1 Red", "Yoga Block", "Unilateral", "Place yoga block under front standing foot, press rear leg back on carriage."],
+                ["Reformer", "Level 2", "Legs & Glutes", "Magic Circle Inner Thigh Frog Press", "2 Red", "Magic Circle", "Bilateral", "Place magic circle between thighs, maintain squeeze during leg press."],
+                ["Reformer", "Level 2", "Legs & Glutes", "Resistance Band Leg Circles", "2 Red", "Resistance Band", "Bilateral", "Loop band around outer thighs, sweep legs in wide resisted circles."],
+                ["Reformer", "Level 2", "Legs & Glutes", "Box Elevated Single Leg Lunge", "1 Red", "Box", "Unilateral", "Front foot elevated on box, slide carriage back with rear leg in lunge."],
+                ["Reformer", "Level 2", "Legs & Glutes", "Jumpboard Single Leg Glute Press", "1 Red, 1 Blue", "Jumpboard", "Unilateral", "Rebound off jumpboard with single leg, focusing on deep glute drive."],
+                ["Reformer", "Level 2", "Legs & Glutes", "Single Leg Kickback with Ball", "1 Red", "Yoga Ball", "Unilateral", "Pinch ball behind working knee, drive heel to ceiling in quadruped."],
+                ["Reformer", "Level 2", "Legs & Glutes", "Magic Circle Outer Thigh Scissors", "2 Red", "Magic Circle", "Bilateral", "Circle around outer ankles, press legs wide apart against ring tension."],
+                ["Reformer", "Level 2", "Legs & Glutes", "Band Resisted Scooter Press", "1 Red", "Resistance Band", "Unilateral", "Band around working thigh, press carriage back in scooter posture."],
+                ["Reformer", "Level 2", "Legs & Glutes", "Box Glute Bridge Kickback in Straps", "1 Red", "Box", "Unilateral", "Rest shoulders on box, execute single leg strap kickbacks."],
+                ["Reformer", "Level 3", "Legs & Glutes", "Single Leg Jumpboard Glute Sprint", "1 Red, 1 Blue", "Jumpboard", "Unilateral", "Rapid single-leg jumps off board, driving working glute to fatigue."],
+                ["Reformer", "Level 3", "Legs & Glutes", "Magic Circle Single Leg Frog Press", "2 Red", "Magic Circle", "Unilateral", "Compress circle between active ankle and non-working knee in strap."],
+                ["Reformer", "Level 3", "Legs & Glutes", "Resistance Band Curtsy Lunge", "1 Blue", "Resistance Band", "Unilateral", "Cross working leg behind, sink into glute against band pull."],
+                ["Reformer", "Level 3", "Legs & Glutes", "Box Single Leg Arabesque Press", "1 Red", "Box", "Unilateral", "Stand on box, extend trailing leg parallel to ceiling sliding carriage."],
+                ["Reformer", "Level 3", "Legs & Glutes", "Jumpboard Scissors Glute Rebound", "1 Red, 1 Blue", "Jumpboard", "Unilateral", "Switch legs mid-air on jumpboard landing in deep single leg lunge."],
+                ["Reformer", "Level 3", "Legs & Glutes", "Block Squeeze Glute Kickback", "1 Red", "Yoga Block", "Unilateral", "Squeeze yoga block behind working knee, drive heel to ceiling against strap."],
+                ["Reformer", "Level 3", "Legs & Glutes", "Resistance Band Single Leg Lunge Pulse", "1 Red", "Resistance Band", "Unilateral", "Band looped around front knee, pulse bottom of lunge stance 10 beats."],
+                ["Reformer", "Level 3", "Legs & Glutes", "Ball Balance Single Leg Scooter", "1 Red", "Yoga Ball", "Unilateral", "Front foot balanced on soft ball, slide carriage back with rear leg."],
+                ["Reformer", "Level 3", "Legs & Glutes", "Box High Lunge Rebound", "1 Red", "Box", "Unilateral", "Front foot on box, drive explosive single leg lunge leaps."],
+                ["Reformer", "Level 3", "Legs & Glutes", "Magic Circle Single Leg Adductor Pull", "2 Red", "Magic Circle", "Unilateral", "Squeeze ring between ankles while executing single leg strap pull."],
+                ["Reformer", "Level 1", "Side Lying Series", "Side-Lying Leg Press on Footbar", "1 Red, 1 Blue", "None", "Unilateral", "Lie on side along shoulder rests, press top foot against footbar."],
+                ["Reformer", "Level 1", "Side Lying Series", "Side Clamshell with Strap", "1 Blue", "None", "Unilateral", "Top foot in strap, rotate top knee open while keeping heels glued."],
+                ["Reformer", "Level 1", "Side Lying Series", "Side-Lying Leg Circles in Strap", "1 Blue", "None", "Unilateral", "Top leg extended in strap, draw smooth dinner-plate sized circles."],
+                ["Reformer", "Level 1", "Side Lying Series", "Side-Lying Forward & Back Kicks", "1 Blue", "None", "Unilateral", "Sweep top leg forward and back without swaying lower back."],
+                ["Reformer", "Level 1", "Side Lying Series", "Side-Lying Bicep Pull", "1 Blue", "None", "Unilateral", "Lie side-facing, pull strap toward shoulder with top arm."],
+                ["Reformer", "Level 1", "Side Lying Series", "Side-Lying Inner Thigh Lift", "1 Blue", "None", "Unilateral", "Bottom leg in strap, lift upward against spring resistance."],
+                ["Reformer", "Level 1", "Side Lying Series", "Side-Lying Fire Hydrant in Strap", "1 Blue", "None", "Unilateral", "Top knee bent 90°, lift knee laterally targeting gluteus medius."],
+                ["Reformer", "Level 1", "Side Lying Series", "Side-Lying Bicycle Kicks", "1 Blue", "None", "Unilateral", "Pedal top leg in fluid bicycle motion against strap tension."],
+                ["Reformer", "Level 1", "Side Lying Series", "Side-Lying Straight Leg Sweep", "1 Blue", "None", "Unilateral", "Keep top leg parallel to floor, sweep forward to 90° and return."],
+                ["Reformer", "Level 1", "Side Lying Series", "Side-Lying Abductor Lift", "1 Blue", "None", "Unilateral", "Lift top leg straight up to ceiling against strap tension."],
+                ["Reformer", "Level 2", "Side Lying Series", "Side Clamshell with Pilates Ball", "1 Blue", "Yoga Ball", "Unilateral", "Squeeze soft ball between knees during side-lying clamshell open."],
+                ["Reformer", "Level 2", "Side Lying Series", "Side-Lying Leg Press with Block", "1 Red, 1 Blue", "Yoga Block", "Unilateral", "Rest head on yoga block, press footbar with top leg in side-lying pose."],
+                ["Reformer", "Level 2", "Side Lying Series", "Magic Circle Side Clamshell Press", "1 Blue", "Magic Circle", "Unilateral", "Compress magic circle between outer knees during side clamshell."],
+                ["Reformer", "Level 2", "Side Lying Series", "Resistance Band Side Leg Sweep", "1 Blue", "Resistance Band", "Unilateral", "Band wrapped around knees, sweep top leg against double resistance."],
+                ["Reformer", "Level 2", "Side Lying Series", "Box Side-Lying Leg Press", "1 Red, 1 Blue", "Box", "Unilateral", "Lie on side on box, press top foot against footbar with square hips."],
+                ["Reformer", "Level 2", "Side Lying Series", "Jumpboard Side Rebound Kick", "1 Red", "Jumpboard", "Unilateral", "Lie side-lying, perform single-leg rebounds off jumpboard surface."],
+                ["Reformer", "Level 2", "Side Lying Series", "Side Leg Circles with Ball", "1 Blue", "Yoga Ball", "Unilateral", "Squeeze ball behind top knee while drawing leg circles in strap."],
+                ["Reformer", "Level 2", "Side Lying Series", "Magic Circle Side Inner Thigh Press", "1 Blue", "Magic Circle", "Unilateral", "Place circle between ankles, press top leg down into ring."],
+                ["Reformer", "Level 2", "Side Lying Series", "Band Resisted Side Bicycle Kicks", "1 Blue", "Resistance Band", "Unilateral", "Loop band around arches, pedal top leg in side-lying bicycle."],
+                ["Reformer", "Level 2", "Side Lying Series", "Box Side Plank Press", "1 Red", "Box", "Unilateral", "Forearm on box, hold side plank while sliding carriage with feet."],
+                ["Reformer", "Level 3", "Side Lying Series", "Side Plank Press on Carriage", "1 Red", "None", "Unilateral", "Forearm on box/carriage, lift hips into side plank, slide carriage out."],
+                ["Reformer", "Level 3", "Side Lying Series", "Side Bend on Short Box", "All Springs", "Box", "Unilateral", "Hook feet in strap, lateral flexion down over side of box, curl up."],
+                ["Reformer", "Level 3", "Side Lying Series", "Side Plank with Magic Circle Squeeze", "1 Red", "Magic Circle", "Unilateral", "Hold high side plank, squeeze magic circle between ankles."],
+                ["Reformer", "Level 3", "Side Lying Series", "Resistance Band Side Plank Leg Lift", "1 Red", "Resistance Band", "Unilateral", "Hold side plank, lift top leg straight up against heavy band pull."],
+                ["Reformer", "Level 3", "Side Lying Series", "Ball Balance Side Plank Slide", "1 Red", "Yoga Ball", "Unilateral", "Forearm rested on soft ball, drive side plank carriage slides."],
+                ["Reformer", "Level 3", "Side Lying Series", "Jumpboard Side Plank Rebound", "1 Red", "Jumpboard", "Unilateral", "Hold side plank on carriage, rebound off jumpboard with bottom leg."],
+                ["Reformer", "Level 3", "Side Lying Series", "Block Between Knee Side Plank Twist", "1 Red", "Yoga Block", "Unilateral", "Squeeze block between knees in side plank, rotate top arm under ribcage."],
+                ["Reformer", "Level 3", "Side Lying Series", "Resistance Band Side Bend on Box", "All Springs", "Box, Band", "Unilateral", "Lateral side bend over box pulling resistance band overhead."],
+                ["Reformer", "Level 3", "Side Lying Series", "Magic Circle Side Plank Thread Needle", "1 Red", "Magic Circle", "Unilateral", "Hold side plank, thread magic circle under waist and reach high."],
+                ["Reformer", "Level 3", "Side Lying Series", "Box Elevated Side Plank Star", "1 Red", "Box", "Unilateral", "Foot elevated on box, hold side plank star pose with leg lifted."],
+                ["Reformer", "Level 1", "Kneeling Series", "Knee Stretches: Round Back", "2 Red", "None", "Bilateral", "Kneel facing bar, rounded spine, press carriage back with lower abs."],
+                ["Reformer", "Level 1", "Kneeling Series", "Knee Stretches: Flat Back", "2 Red", "None", "Bilateral", "Neutral flat spine, press carriage back using glutes and hamstrings."],
+                ["Reformer", "Level 1", "Kneeling Series", "Kneeling Thigh Stretch", "1 Red, 1 Blue", "None", "Bilateral", "Hinge back from knees, keeping straight line from head to knees."],
+                ["Reformer", "Level 1", "Kneeling Series", "Kneeling Single Arm Row", "1 Red", "None", "Unilateral", "Single arm strap row in tall kneeling, resisting torso rotation."],
+                ["Reformer", "Level 1", "Kneeling Series", "Kneeling Overhead Tricep Extension", "1 Red", "None", "Bilateral", "Elbows bent by ears, press straps straight up toward ceiling."],
+                ["Reformer", "Level 1", "Kneeling Series", "Kneeling Side Arm Pull", "1 Blue", "None", "Unilateral", "Kneel side-facing straps, draw handle across waist to opposite hip."],
+                ["Reformer", "Level 1", "Kneeling Series", "Kneeling Cat Stretch Glide", "1 Red", "None", "Bilateral", "Hands on footbar, round spine to push carriage out, scoop in."],
+                ["Reformer", "Level 1", "Kneeling Series", "Kneeling Chest Expansion", "1 Red", "None", "Bilateral", "Tall kneeling, press arms straight back past hips with open collarbones."],
+                ["Reformer", "Level 1", "Kneeling Series", "Kneeling Arm Reaches", "1 Red", "None", "Bilateral", "Kneel upright, reach straps forward at shoulder height."],
+                ["Reformer", "Level 1", "Kneeling Series", "Kneeling Quad Stretch", "1 Red", "None", "Unilateral", "Kneel facing bar, press carriage back to open rear quad and hip flexor."],
+                ["Reformer", "Level 2", "Kneeling Series", "Knee Stretches with Pilates Ball", "2 Red", "Yoga Ball", "Bilateral", "Squeeze soft ball between thighs during round back knee stretches."],
+                ["Reformer", "Level 2", "Kneeling Series", "Kneeling Thigh Stretch with Block", "1 Red, 1 Blue", "Yoga Block", "Bilateral", "Hold yoga block between hands overhead during kneeling thigh stretch hinge."],
+                ["Reformer", "Level 2", "Kneeling Series", "Magic Circle Kneeling Chest Flyes", "1 Blue", "Magic Circle", "Bilateral", "Compress magic circle between palms while executing kneeling arm pulls."],
+                ["Reformer", "Level 2", "Kneeling Series", "Resistance Band Kneeling Salute", "1 Red", "Resistance Band", "Bilateral", "Band wrapped behind back, press straps forward in 45° salute."],
+                ["Reformer", "Level 2", "Kneeling Series", "Box Kneeling Arm Pulls", "1 Red", "Box", "Bilateral", "Kneel on box facing straps, pull handles to hips with upright posture."],
+                ["Reformer", "Level 2", "Kneeling Series", "Jumpboard Kneeling Arm Press", "1 Red, 1 Blue", "Jumpboard", "Bilateral", "Kneel facing jumpboard, press hands against board to move carriage."],
+                ["Reformer", "Level 2", "Kneeling Series", "Kneeling Single Arm Row with Ball", "1 Red", "Yoga Ball", "Unilateral", "Squeeze ball between thighs while driving single arm strap row."],
+                ["Reformer", "Level 2", "Kneeling Series", "Magic Circle Kneeling Side Arm Pull", "1 Blue", "Magic Circle", "Unilateral", "Hold magic circle in non-working hand while pulling single arm strap."],
+                ["Reformer", "Level 2", "Kneeling Series", "Band Resisted Kneeling Thigh Stretch", "1 Red, 1 Blue", "Resistance Band", "Bilateral", "Band anchored to frame, hinge back into thigh stretch against tension."],
+                ["Reformer", "Level 2", "Kneeling Series", "Box Kneeling Single Arm Row", "1 Red", "Box", "Unilateral", "Kneel on box, pull single strap to chest maintaining tall posture."],
+                ["Reformer", "Level 3", "Kneeling Series", "Knee Stretches: Knees Off", "2 Red", "None", "Bilateral", "Hover knees 1 inch off carriage, press carriage out in active plank pose."],
+                ["Reformer", "Level 3", "Kneeling Series", "Knees Off with Magic Circle Squeeze", "2 Red", "Magic Circle", "Bilateral", "Hover knees off carriage, squeeze magic circle between ankles in plank."],
+                ["Reformer", "Level 3", "Kneeling Series", "Resistance Band Knees Off Press", "2 Red", "Resistance Band", "Bilateral", "Loop band around knees, hover off carriage and slide back/forth."],
+                ["Reformer", "Level 3", "Kneeling Series", "Ball Balance Kneeling Thigh Stretch", "1 Red", "Yoga Ball", "Bilateral", "Kneel on soft ball on carriage, hinge back into thigh stretch."],
+                ["Reformer", "Level 3", "Kneeling Series", "Box Knees Off Plank Press", "2 Red", "Box", "Bilateral", "Feet on box, knees hovering off carriage, drive carriage out with abs."],
+                ["Reformer", "Level 3", "Kneeling Series", "Jumpboard Knees Off Sprint", "2 Red", "Jumpboard", "Bilateral", "Hands on jumpboard, knees hovering off carriage, sprint carriage back/forth."],
+                ["Reformer", "Level 3", "Kneeling Series", "Block Between Ankle Knees Off Pulse", "2 Red", "Yoga Block", "Bilateral", "Squeeze block between ankles, hover knees, pulse carriage 2 inches."],
+                ["Reformer", "Level 3", "Kneeling Series", "Resistance Band Kneeling Arm Flyes", "1 Blue", "Resistance Band", "Bilateral", "Tall kneeling balance, execute wide arm flyes against heavy band."],
+                ["Reformer", "Level 3", "Kneeling Series", "Magic Circle Knees Off Twist", "2 Red", "Magic Circle", "Bilateral", "Hover knees off carriage, rotate hips right and left holding circle."],
+                ["Reformer", "Level 3", "Kneeling Series", "Box Kneeling Overhead Tricep Press", "1 Red", "Box", "Bilateral", "Kneel tall on box, drive heavy tricep extension overhead against straps."],
+                ["Reformer", "Level 1", "Plank Series", "Plank Knee Tuck / Jackknife", "1 Red", "None", "Bilateral", "Plank stance, pull knees into chest sliding carriage forward."],
+                ["Reformer", "Level 1", "Plank Series", "Bear Plank Hold & Pulse", "2 Red", "None", "Bilateral", "Knees bent under hips hovering off carriage, pulse carriage 2 inches."],
+                ["Reformer", "Level 1", "Plank Series", "Forearm Plank Carriage Hold", "1 Red", "None", "Bilateral", "Forearms on carriage, toes on platform, hold rigid plank line."],
+                ["Reformer", "Level 1", "Plank Series", "Oblique Plank Knee Tucks", "1 Red", "None", "Unilateral", "Draw knees toward left elbow, then right elbow, rotating waist."],
+                ["Reformer", "Level 1", "Plank Series", "Modified Plank on Footbar", "1 Red, 1 Blue", "None", "Bilateral", "Knees on carriage, hands on footbar, push carriage away with arms."],
+                ["Reformer", "Level 1", "Plank Series", "Plank Saw Forward & Back", "1 Red", "None", "Bilateral", "Hold high plank on bar, rock shoulders forward and back over wrists."],
+                ["Reformer", "Level 1", "Plank Series", "Single Leg Plank Hold", "1 Red, 1 Blue", "None", "Unilateral", "Hold high plank on footbar, float one leg into air without arching back."],
+                ["Reformer", "Level 1", "Plank Series", "Plank Step-Out Series", "1 Red", "None", "Unilateral", "Hold high plank, step one foot out to side platform and return."],
+                ["Reformer", "Level 1", "Plank Series", "Wide Stance Plank Hold", "1 Red, 1 Blue", "None", "Bilateral", "Place feet wide against shoulder blocks, maintain rigid core line."],
+                ["Reformer", "Level 1", "Plank Series", "Plank Hip Dips", "1 Red", "None", "Unilateral", "Hold high plank, dip right hip 2 inches toward carriage, then left."],
+                ["Reformer", "Level 2", "Plank Series", "Forearm Plank Carriage Glides with Box", "1 Red", "Box", "Bilateral", "Forearms on box, toes on carriage, slide carriage away 3-6 inches."],
+                ["Reformer", "Level 2", "Plank Series", "Bear Plank with Pilates Ball Squeeze", "2 Red", "Yoga Ball", "Bilateral", "Squeeze soft ball between knees during bear plank carriage pulses."],
+                ["Reformer", "Level 2", "Plank Series", "Magic Circle Plank Knee Tucks", "1 Red", "Magic Circle", "Bilateral", "Squeeze circle between ankles while pulling knees into chest in plank."],
+                ["Reformer", "Level 2", "Plank Series", "Resistance Band Saw Plank", "1 Red", "Resistance Band", "Bilateral", "Band around forearms, rock shoulders forward and back in forearm plank."],
+                ["Reformer", "Level 2", "Plank Series", "Block Squeeze Plank Jackknife", "1 Red", "Yoga Block", "Bilateral", "Squeeze yoga block between knees while driving plank jackknife."],
+                ["Reformer", "Level 2", "Plank Series", "Jumpboard Plank Press", "1 Red, 1 Blue", "Jumpboard", "Bilateral", "Hands on jumpboard, toes on carriage, press carriage out with core."],
+                ["Reformer", "Level 2", "Plank Series", "Single Leg Plank with Ball Balance", "1 Red", "Yoga Ball", "Unilateral", "Non-working shin rested on soft ball, hold single leg plank."],
+                ["Reformer", "Level 2", "Plank Series", "Magic Circle Oblique Plank Tuck", "1 Red", "Magic Circle", "Unilateral", "Hold circle between knees, draw knees to opposite elbow in plank."],
+                ["Reformer", "Level 2", "Plank Series", "Band Resisted Single Leg Plank", "1 Red, 1 Blue", "Resistance Band", "Unilateral", "Band around working foot, float active leg high in plank pose."],
+                ["Reformer", "Level 2", "Plank Series", "Box Forearm Plank Saw", "1 Red", "Box", "Bilateral", "Forearms on box, slide carriage away using shoulders and core."],
+                ["Reformer", "Level 3", "Plank Series", "Front Control / Plank Press", "1 Red, 1 Blue", "None", "Bilateral", "Hands on footbar, toes on carriage, press carriage out with shoulders."],
+                ["Reformer", "Level 3", "Plank Series", "Plank to Pike / Elephant Plank", "1 Red", "None", "Bilateral", "High plank stance, lift hips straight up to ceiling using deep abs."],
+                ["Reformer", "Level 3", "Plank Series", "Plank Push-Up on Footbar", "1 Red, 1 Blue", "None", "Bilateral", "Maintain rigid plank alignment while performing tricep push-ups."],
+                ["Reformer", "Level 3", "Plank Series", "Side Plank with Carriage Slide", "1 Blue", "None", "Unilateral", "Side plank on elbow, push carriage out with bottom leg."],
+                ["Reformer", "Level 3", "Plank Series", "Magic Circle Plank to Pike", "1 Red", "Magic Circle", "Bilateral", "Squeeze magic circle between ankles, lift hips to high pike from plank."],
+                ["Reformer", "Level 3", "Plank Series", "Resistance Band Plank Push-Up", "1 Red, 1 Blue", "Resistance Band", "Bilateral", "Band across back, perform plank push-ups against double spring/band pull."],
+                ["Reformer", "Level 3", "Plank Series", "Ball Balance Plank Push-Up", "1 Red", "Yoga Ball", "Bilateral", "Hands rested on soft ball on bar, perform plank push-ups."],
+                ["Reformer", "Level 3", "Plank Series", "Box Plank Rebound Sprint", "1 Red", "Box", "Bilateral", "Hands on box, toes on carriage, sprint feet in/out rapidly."],
+                ["Reformer", "Level 3", "Plank Series", "Jumpboard Plank Jack Sprint", "1 Red", "Jumpboard", "Bilateral", "Hands on jumpboard, jump feet wide and close in rapid plank jacks."],
+                ["Reformer", "Level 3", "Plank Series", "Block Squeeze Single Leg Pike", "1 Red", "Yoga Block", "Unilateral", "Squeeze block behind active knee, lift hips to single leg pike."],
+                ["Reformer", "Level 1", "Standing Series", "Standing Side Splits", "1 Blue", "None", "Unilateral", "One foot on platform, one on carriage, press legs apart smoothly."],
+                ["Reformer", "Level 1", "Standing Series", "Standing Front Splits", "1 Red", "None", "Unilateral", "Lunge stance, front foot on platform, press carriage back with rear leg."],
+                ["Reformer", "Level 1", "Standing Series", "Standing Skate / Skater Press", "1 Blue", "None", "Unilateral", "Soft squat stance, press carriage out laterally with active leg."],
+                ["Reformer", "Level 1", "Standing Series", "Standing Adductor Pull-In", "1 Yellow", "None", "Unilateral", "Press carriage out, use inner thighs to squeeze carriage back to stopper."],
+                ["Reformer", "Level 1", "Standing Series", "Standing Reverse Lunge", "1 Red", "None", "Unilateral", "Face back of reformer, slide carriage away into deep glute lunge."],
+                ["Reformer", "Level 1", "Standing Series", "Standing Plié Squat Press", "1 Red", "None", "Bilateral", "Turn toes out 45°, sink into deep plié squat while sliding carriage."],
+                ["Reformer", "Level 1", "Standing Series", "Standing Abductor Glide", "1 Blue", "None", "Unilateral", "Stand tall, slide carriage out laterally maintaining upright torso."],
+                ["Reformer", "Level 1", "Standing Series", "Standing Single Leg Balance Lift", "1 Yellow", "None", "Unilateral", "Balance on platform leg, float active carriage leg 2 inches laterally."],
+                ["Reformer", "Level 1", "Standing Series", "Standing Curtsy Lunge Press", "1 Blue", "None", "Unilateral", "Cross active leg behind, sink into glute while sliding carriage."],
+                ["Reformer", "Level 1", "Standing Series", "Standing Parallel Split Glide", "1 Blue", "None", "Bilateral", "Feet parallel, slide carriage open smoothly, squeeze back in."],
+                ["Reformer", "Level 2", "Standing Series", "Standing Side Split with Band Reach", "1 Blue", "Resistance Band", "Unilateral", "Slide carriage wide while pulling resistance band overhead."],
+                ["Reformer", "Level 2", "Standing Series", "Standing Skater with Yoga Block", "1 Blue", "Yoga Block", "Unilateral", "Squeeze yoga block between hands at chest during skater press."],
+                ["Reformer", "Level 2", "Standing Series", "Magic Circle Standing Adductor Pull", "1 Yellow", "Magic Circle", "Unilateral", "Hold circle between palms, press inward while squeezing adductors."],
+                ["Reformer", "Level 2", "Standing Series", "Standing Front Lunge with Pilates Ball", "1 Red", "Yoga Ball", "Unilateral", "Hold soft ball overhead while executing standing front lunge press."],
+                ["Reformer", "Level 2", "Standing Series", "Box Standing Lunge Press", "1 Blue", "Box", "Unilateral", "Front foot elevated on box on platform, press carriage back in lunge."],
+                ["Reformer", "Level 2", "Standing Series", "Jumpboard Standing Rebound Press", "1 Red", "Jumpboard", "Unilateral", "Rebound off jumpboard from standing lunge stance."],
+                ["Reformer", "Level 2", "Standing Series", "Single Leg Squat with Band Pull", "1 Red", "Resistance Band", "Unilateral", "All weight on standing leg, pull band across chest during single squat."],
+                ["Reformer", "Level 2", "Standing Series", "Magic Circle Standing Side Split", "1 Blue", "Magic Circle", "Unilateral", "Hold circle at chest, press wide into standing side split."],
+                ["Reformer", "Level 2", "Standing Series", "Block Squeeze Standing Curtsy", "1 Blue", "Yoga Block", "Unilateral", "Hold yoga block at chest, execute standing curtsy lunge press."],
+                ["Reformer", "Level 2", "Standing Series", "Box Standing Skater Glide", "1 Blue", "Box", "Unilateral", "Standing leg on box, slide carriage out laterally into skater press."],
+                ["Reformer", "Level 3", "Standing Series", "Standing Balance Lunge", "1 Blue", "None", "Unilateral", "Stand on platform, press carriage away without touching hands down."],
+                ["Reformer", "Level 3", "Standing Series", "Standing Single Leg Squat", "1 Red", "None", "Unilateral", "Weight on platform leg, sink into heel while carriage slides."],
+                ["Reformer", "Level 3", "Standing Series", "Standing Balance T-Pike", "1 Blue", "None", "Unilateral", "Hinge forward on standing leg, extend rear leg parallel to ceiling."],
+                ["Reformer", "Level 3", "Standing Series", "Standing Rotational Woodchopper", "1 Red", "Resistance Band", "Unilateral", "Stand side-facing, pull band diagonally across body into full rotation."],
+                ["Reformer", "Level 3", "Standing Series", "Magic Circle Standing Balance Split", "1 Yellow", "Magic Circle", "Unilateral", "Squeeze circle overhead while balancing in wide side split."],
+                ["Reformer", "Level 3", "Standing Series", "Resistance Band Standing Arabesque", "1 Blue", "Resistance Band", "Unilateral", "Loop band around active foot, lift rear leg into arabesque balance."],
+                ["Reformer", "Level 3", "Standing Series", "Ball Balance Standing Single Squat", "1 Red", "Yoga Ball", "Unilateral", "Standing foot rested on soft ball, execute single leg squat."],
+                ["Reformer", "Level 3", "Standing Series", "Box Standing Arabesque Rebound", "1 Blue", "Box", "Unilateral", "Standing leg on box, perform single leg arabesque leaps."],
+                ["Reformer", "Level 3", "Standing Series", "Jumpboard Standing Cardio Lunge", "1 Red", "Jumpboard", "Unilateral", "Explode off jumpboard in continuous standing cardio lunge sequence."],
+                ["Reformer", "Level 3", "Standing Series", "Block Between Knee Standing Split Pulse", "1 Yellow", "Yoga Block", "Unilateral", "Pinch block between thighs, pulse carriage in wide standing split."],
+                ["Reformer", "Level 1", "Elephant Series", "Elephant: Flat Back", "2 Red", "None", "Bilateral", "Heels flat on carriage, hands on bar, push/pull carriage with abs."],
+                ["Reformer", "Level 1", "Elephant Series", "Elephant: Round Back", "2 Red", "None", "Bilateral", "C-curve spine, nose to navel, drive carriage using lower abdominals."],
+                ["Reformer", "Level 1", "Elephant Series", "Elephant Relevé High Heels", "2 Red", "None", "Bilateral", "Lift heels high off carriage, maintain deep pike curve throughout."],
+                ["Reformer", "Level 1", "Elephant Series", "Wide Stance Elephant", "2 Red", "None", "Bilateral", "Place feet wide against shoulder blocks, pull carriage in firmly."],
+                ["Reformer", "Level 1", "Elephant Series", "Elephant Pulse at Stopper", "2 Red", "None", "Bilateral", "Micro-pulse carriage 2 inches from stopper, firing low abs."],
+                ["Reformer", "Level 1", "Elephant Series", "Elephant Heel Lower & Lift", "2 Red", "None", "Bilateral", "Drive carriage out, lower and lift heels at full carriage extension."],
+                ["Reformer", "Level 1", "Elephant Series", "Single Leg Elephant Touch", "2 Red", "None", "Unilateral", "Lift one leg 2 inches off carriage, pull carriage in with single leg."],
+                ["Reformer", "Level 1", "Elephant Series", "Elephant Spine Articulation", "2 Red", "None", "Bilateral", "Wave spine from round back Elephant into flat back extension."],
+                ["Reformer", "Level 1", "Elephant Series", "Elephant Knee Drive", "2 Red", "None", "Unilateral", "Draw single knee to chest at top of carriage return."],
+                ["Reformer", "Level 1", "Elephant Series", "Parallel Feet Elephant Glide", "2 Red", "None", "Bilateral", "Keep feet parallel against blocks, slide carriage smoothly."],
+                ["Reformer", "Level 2", "Elephant Series", "Elephant with Pilates Ball Between Knees", "2 Red", "Yoga Ball", "Bilateral", "Squeeze soft ball between knees during Elephant round back."],
+                ["Reformer", "Level 2", "Elephant Series", "Single Leg Elephant on Yoga Block", "2 Red", "Yoga Block", "Unilateral", "Place active foot on yoga block, slide carriage using lower abs."],
+                ["Reformer", "Level 2", "Elephant Series", "Magic Circle Elephant Squeeze", "2 Red", "Magic Circle", "Bilateral", "Compress magic circle between ankles while pulling carriage in."],
+                ["Reformer", "Level 2", "Elephant Series", "Resistance Band Elephant Press", "2 Red", "Resistance Band", "Bilateral", "Band wrapped around hips, pull carriage in against band tension."],
+                ["Reformer", "Level 2", "Elephant Series", "Box Elevated Elephant Glide", "2 Red", "Box", "Bilateral", "Hands on box, heels on carriage, pull carriage to stopper with core."],
+                ["Reformer", "Level 2", "Elephant Series", "Jumpboard Elephant Rebound", "2 Red", "Jumpboard", "Bilateral", "Hands on jumpboard, rebound carriage in/out in Elephant stance."],
+                ["Reformer", "Level 2", "Elephant Series", "Single Leg Elephant with Ball", "2 Red", "Yoga Ball", "Unilateral", "Squeeze ball behind non-working knee during single leg Elephant."],
+                ["Reformer", "Level 2", "Elephant Series", "Magic Circle Elephant Chest Press", "2 Red", "Magic Circle", "Bilateral", "Press magic circle between hands on footbar while gliding."],
+                ["Reformer", "Level 2", "Elephant Series", "Band Resisted Single Leg Elephant", "2 Red", "Resistance Band", "Unilateral", "Loop band around floating ankle, draw carriage in with active foot."],
+                ["Reformer", "Level 2", "Elephant Series", "Box Single Leg Elephant", "2 Red", "Box", "Unilateral", "Hands elevated on box, drive single leg Elephant carriage pull."],
+                ["Reformer", "Level 3", "Elephant Series", "Single Leg Elephant", "2 Red", "None", "Unilateral", "Lift one leg straight back, slide carriage using supporting leg/core."],
+                ["Reformer", "Level 3", "Elephant Series", "Elephant with Arabesque Lift", "1 Red, 1 Blue", "None", "Unilateral", "Lift rear leg high into air as carriage presses away."],
+                ["Reformer", "Level 3", "Elephant Series", "Elephant with Single Arm Reach", "1 Red, 1 Blue", "None", "Unilateral", "Reach one hand to opposite ankle, hold diagonal core pull."],
+                ["Reformer", "Level 3", "Elephant Series", "Elephant to Up-Stretch Flow", "2 Red", "None", "Bilateral", "Dynamic flow from pike Elephant into arched thoracic extension."],
+                ["Reformer", "Level 3", "Elephant Series", "Magic Circle Single Leg Arabesque", "1 Red, 1 Blue", "Magic Circle", "Unilateral", "Hold circle in hand while lifting rear leg into arabesque Elephant."],
+                ["Reformer", "Level 3", "Elephant Series", "Resistance Band Elephant Arabesque", "1 Red, 1 Blue", "Resistance Band", "Unilateral", "Band anchored to foot, drive high arabesque lift during Elephant."],
+                ["Reformer", "Level 3", "Elephant Series", "Ball Balance Single Leg Elephant", "2 Red", "Yoga Ball", "Unilateral", "Supporting foot balanced on soft ball, drive single Elephant pull."],
+                ["Reformer", "Level 3", "Elephant Series", "Box Single Leg Arabesque Glide", "1 Red, 1 Blue", "Box", "Unilateral", "Hands on box, float active leg high into arabesque carriage glide."],
+                ["Reformer", "Level 3", "Elephant Series", "Jumpboard Single Leg Elephant Rebound", "2 Red", "Jumpboard", "Unilateral", "Rapid single-leg rebounds off jumpboard from Elephant pike pose."],
+                ["Reformer", "Level 3", "Elephant Series", "Block Between Ankle Single Arabesque", "1 Red, 1 Blue", "Yoga Block", "Unilateral", "Squeeze block behind active knee, lift leg into high arabesque Elephant."],
+                ["Reformer", "Level 1", "Short Box Series", "Short Box: Round Back C-Curve", "All Springs", "Box", "Bilateral", "Feet hooked under strap, scoop lower abs to roll back into C-curve."],
+                ["Reformer", "Level 1", "Short Box Series", "Short Box: Flat Back Hinge", "All Springs", "Box", "Bilateral", "Sit tall on box, hinge back from hips maintaining flat, neutral spine."],
+                ["Reformer", "Level 1", "Short Box Series", "Short Box: Side-to-Side Flexion", "All Springs", "Box", "Unilateral", "Sit tall, reach arms overhead, lateral side bend right and left."],
+                ["Reformer", "Level 1", "Short Box Series", "Short Box: Oblique Twist", "All Springs", "Box", "Unilateral", "Hinge back 45°, rotate torso to side, firing obliques and deep core."],
+                ["Reformer", "Level 1", "Short Box Series", "Short Box: Seated Spine Stacking", "All Springs", "Box", "Bilateral", "Roll back 45°, articulate spine forward and re-stack tall."],
+                ["Reformer", "Level 1", "Short Box Series", "Short Box: Single Leg Hinge", "All Springs", "Box", "Unilateral", "Unhook one foot, hinge back 30° maintaining level pelvis."],
+                ["Reformer", "Level 1", "Short Box Series", "Short Box: Arm Reach Lean", "All Springs", "Box", "Bilateral", "Lean back 30°, reach arms to ceiling, hold 3 seconds."],
+                ["Reformer", "Level 1", "Short Box Series", "Short Box: C-Curve Pulses", "All Springs", "Box", "Bilateral", "Hold lowest point of C-curve, pulse lower abs 2 inches backward."],
+                ["Reformer", "Level 1", "Short Box Series", "Short Box: Seated Twist & Reach", "All Springs", "Box", "Unilateral", "Rotate ribcage 45°, reach hands toward rear corner of carriage."],
+                ["Reformer", "Level 1", "Short Box Series", "Short Box: Hug a Tree Lean", "All Springs", "Box", "Bilateral", "Circle arms in front of chest, hinge back with flat spine."],
+                ["Reformer", "Level 2", "Short Box Series", "Short Box Lean with Pilates Ball", "All Springs", "Box, Yoga Ball", "Bilateral", "Place soft ball behind sacrum, roll back 45° and pulse lower abs."],
+                ["Reformer", "Level 2", "Short Box Series", "Short Box Hinge with Yoga Block", "All Springs", "Box, Yoga Block", "Bilateral", "Hold yoga block overhead while hinging back with flat spine."],
+                ["Reformer", "Level 2", "Short Box Series", "Magic Circle Short Box Oblique Twist", "All Springs", "Box, Magic Circle", "Unilateral", "Squeeze circle between hands, rotate ribcage at lowest hinge point."],
+                ["Reformer", "Level 2", "Short Box Series", "Resistance Band Short Box Flat Back", "All Springs", "Box, Resistance Band", "Bilateral", "Pull band taut overhead while executing flat back hinge on box."],
+                ["Reformer", "Level 2", "Short Box Series", "Short Box Tree Hamstring Stretch", "All Springs", "Box", "Unilateral", "Climb up single leg, extend back over box into supported stretch."],
+                ["Reformer", "Level 2", "Short Box Series", "Jumpboard Short Box Foot Press", "All Springs", "Box, Jumpboard", "Bilateral", "Feet pressed against jumpboard surface, hinge back into C-curve."],
+                ["Reformer", "Level 2", "Short Box Series", "Short Box Single Leg Lean with Ball", "All Springs", "Box, Yoga Ball", "Unilateral", "Ball behind lower back, float one foot off strap during roll-back."],
+                ["Reformer", "Level 2", "Short Box Series", "Magic Circle Short Box C-Curve", "All Springs", "Box, Magic Circle", "Bilateral", "Squeeze circle between hands while rolling back into deep C-curve."],
+                ["Reformer", "Level 2", "Short Box Series", "Band Resisted Short Box Twist", "All Springs", "Box, Resistance Band", "Unilateral", "Pull band across body while rotating torso in 45° hinge."],
+                ["Reformer", "Level 2", "Short Box Series", "Short Box Tree with Block Squeeze", "All Springs", "Box, Yoga Block", "Unilateral", "Squeeze yoga block against chest while climbing up Tree leg."],
+                ["Reformer", "Level 3", "Short Box Series", "Short Box: The Tree Full Extension", "All Springs", "Box", "Unilateral", "Climb up single leg, extend completely back over box to floor."],
+                ["Reformer", "Level 3", "Short Box Series", "Short Box: Around the World", "All Springs", "Box", "Bilateral", "Circle torso smoothly from C-curve, side bend, flat back, to side bend."],
+                ["Reformer", "Level 3", "Short Box Series", "Short Box: Full Spine Extension", "All Springs", "Box", "Bilateral", "Arch completely back over box, opening thoracic spine and chest."],
+                ["Reformer", "Level 3", "Short Box Series", "Single Leg Flat Back Hinge", "All Springs", "Box", "Unilateral", "Extend one leg off box while hinging back with flat spine."],
+                ["Reformer", "Level 3", "Short Box Series", "Magic Circle Around the World", "All Springs", "Box, Magic Circle", "Bilateral", "Hold circle overhead while executing full 360° spinal circle over box."],
+                ["Reformer", "Level 3", "Short Box Series", "Resistance Band Tree Extension", "All Springs", "Box, Resistance Band", "Unilateral", "Loop band around active foot, climb leg and extend back over box."],
+                ["Reformer", "Level 3", "Short Box Series", "Ball Balance Short Box Teaser", "All Springs", "Box, Yoga Ball", "Bilateral", "Rest sacrum on soft ball, sweep arms to toes in high Teaser on box."],
+                ["Reformer", "Level 3", "Short Box Series", "Box Full Extension with Magic Circle", "All Springs", "Box, Magic Circle", "Bilateral", "Hold magic circle overhead, arch back fully over box to floor."],
+                ["Reformer", "Level 3", "Short Box Series", "Jumpboard Short Box Rebound Lean", "All Springs", "Box, Jumpboard", "Bilateral", "Lean back 45°, drive feet against jumpboard in explosive rebounds."],
+                ["Reformer", "Level 3", "Short Box Series", "Block Between Ankle Single Tree", "All Springs", "Box, Yoga Block", "Unilateral", "Pinch block behind non-working knee, climb Tree leg into full extension."],
+                ["Reformer", "Level 1", "Long Box Series", "Jumpboard: Parallel Feet Jumps", "2 Red", "Jumpboard", "Bilateral", "Springy rebound off jumpboard, soft toe-ball-heel landing mechanics."],
+                ["Reformer", "Level 1", "Long Box Series", "Jumpboard: Pilates V Jumps", "2 Red", "Jumpboard", "Bilateral", "Jump with heels together, toes turned out 45°, land softly."],
+                ["Reformer", "Level 1", "Long Box Series", "Jumpboard: Running in Air", "1 Red, 1 Blue", "Jumpboard", "Unilateral", "Switch legs mid-air in steady, controlled jogging cadence."],
+                ["Reformer", "Level 1", "Long Box Series", "Jumpboard: Wide Stance Jumps", "2 Red", "Jumpboard", "Bilateral", "Jump with feet wide at upper corners of jumpboard surface."],
+                ["Reformer", "Level 1", "Long Box Series", "Jumpboard: Single Leg Rebound", "1 Red, 1 Blue", "Jumpboard", "Unilateral", "Jump and land on single foot, keeping pelvis completely level."],
+                ["Reformer", "Level 1", "Long Box Series", "Jumpboard: Heel Press Rebound", "2 Red", "Jumpboard", "Bilateral", "Drive jumps specifically through heels to engage posterior chain."],
+                ["Reformer", "Level 1", "Long Box Series", "Jumpboard: Mid-Range Pulse Jumps", "2 Red", "Jumpboard", "Bilateral", "Low-amplitude rapid jumps without fully extending knees."],
+                ["Reformer", "Level 1", "Long Box Series", "Jumpboard: Relevé Toe Jumps", "1 Red, 1 Blue", "Jumpboard", "Bilateral", "High relevé stance jumps, springing off balls of feet cleanly."],
+                ["Reformer", "Level 1", "Long Box Series", "Jumpboard: Alternating Single Hops", "1 Red, 1 Blue", "Jumpboard", "Unilateral", "Hop 2 times right foot, 2 times left foot in rhythmic pattern."],
+                ["Reformer", "Level 1", "Long Box Series", "Jumpboard: Staggered Foot Jumps", "2 Red", "Jumpboard", "Unilateral", "Jump with one foot high, one foot low on jumpboard surface."],
+                ["Reformer", "Level 2", "Long Box Series", "Jumpboard Jumps with Pilates Ball Squeeze", "2 Red", "Jumpboard, Yoga Ball", "Bilateral", "Squeeze soft ball between knees during parallel jumpboard rebounds."],
+                ["Reformer", "Level 2", "Long Box Series", "Jumpboard Single Leg Hop on Block", "1 Red, 1 Blue", "Jumpboard, Yoga Block", "Unilateral", "Non-working foot rested on yoga block, execute single leg hops."],
+                ["Reformer", "Level 2", "Long Box Series", "Magic Circle Jumpboard Inner Thigh Press", "2 Red", "Jumpboard, Magic Circle", "Bilateral", "Maintain magic circle squeeze between thighs on jumpboard rebounds."],
+                ["Reformer", "Level 2", "Long Box Series", "Resistance Band Jumpboard Scissors", "1 Red, 1 Blue", "Jumpboard, Band", "Unilateral", "Band around ankles, switch scissor legs mid-air against resistance."],
+                ["Reformer", "Level 2", "Long Box Series", "Box Elevated Jumpboard Rebounds", "2 Red", "Jumpboard, Box", "Bilateral", "Upper back rested on box, drive explosive jumps off jumpboard."],
+                ["Reformer", "Level 2", "Long Box Series", "Jumpboard Ski Jumps with Ball", "1 Red, 1 Blue", "Jumpboard, Yoga Ball", "Bilateral", "Hold soft ball between ankles, swing feet side-to-side mid-air."],
+                ["Reformer", "Level 2", "Long Box Series", "Magic Circle Overhead Jumpboard Press", "2 Red", "Jumpboard, Magic Circle", "Bilateral", "Hold circle overhead, drive rapid jumpboard cardio intervals."],
+                ["Reformer", "Level 2", "Long Box Series", "Band Resisted Single Leg Jumpboard Sprint", "1 Red, 1 Blue", "Jumpboard, Band", "Unilateral", "Band around working knee, drive rapid single leg jumpboard sprint."],
+                ["Reformer", "Level 2", "Long Box Series", "Box Single Leg Jumpboard Rebound", "1 Red, 1 Blue", "Jumpboard, Box", "Unilateral", "Lie on side on box, perform single leg jumpboard cardio hops."],
+                ["Reformer", "Level 2", "Long Box Series", "Yoga Block Chest Press Jumpboard Jumps", "2 Red", "Jumpboard, Yoga Block", "Bilateral", "Press block between palms at chest while driving wide jumps."],
+                ["Reformer", "Level 3", "Long Box Series", "Jumpboard Cardio Interval Sprints", "1 Red, 1 Blue", "Jumpboard", "Bilateral", "Fast-paced jumps off board maintaining quick 1-second tempo."],
+                ["Reformer", "Level 3", "Long Box Series", "Jumpboard Scissors & Jack Jumps", "1 Red, 1 Blue", "Jumpboard", "Unilateral", "Alternate scissor legs and wide jacks in continuous cardio rhythm."],
+                ["Reformer", "Level 3", "Long Box Series", "Jumpboard Tuck Jumps", "1 Red, 1 Blue", "Jumpboard", "Bilateral", "Explode off board, pull knees toward chest before soft landing."],
+                ["Reformer", "Level 3", "Long Box Series", "Jumpboard Straddle Jumps", "1 Red", "Jumpboard", "Bilateral", "Open legs wide in air, draw feet back together before touchdown."],
+                ["Reformer", "Level 3", "Long Box Series", "Magic Circle Straddle Jumpboard Explosions", "1 Red", "Jumpboard, Magic Circle", "Bilateral", "Hold magic circle, explode into wide straddle jumps in mid-air."],
+                ["Reformer", "Level 3", "Long Box Series", "Resistance Band Single Leg Tuck Jump", "1 Red", "Jumpboard, Band", "Unilateral", "Band around waist, jump off single leg tucking knee to chest."],
+                ["Reformer", "Level 3", "Long Box Series", "Ball Balance Single Leg Cardio Sprint", "1 Red", "Jumpboard, Yoga Ball", "Unilateral", "Rest lower back on soft ball, drive rapid single leg cardio sprint."],
+                ["Reformer", "Level 3", "Long Box Series", "Box Jumpboard Power Burpee Transitions", "1 Red", "Jumpboard, Box", "Bilateral", "Jump off board, hop up onto box in rapid cardio power sequence."],
+                ["Reformer", "Level 3", "Long Box Series", "Magic Circle Single Leg Scissors Jump", "1 Red, 1 Blue", "Jumpboard, Magic Circle", "Unilateral", "Hold circle, switch scissor legs mid-air on single leg landings."],
+                ["Reformer", "Level 3", "Long Box Series", "Block Squeeze Single Leg Rebound Sprint", "1 Red", "Jumpboard, Yoga Block", "Unilateral", "Squeeze block behind active knee, drive max-effort single leg rebounds."]
+            ];
+
+            rawReformerData.forEach((r, idx) => {
+                const name = r[3];
+                const cat = r[2];
+                const lvl = r[1] === "Level 1" ? "beginner" : r[1] === "Level 2" ? "intermediate" : "advanced";
+                const spring = r[4];
+                const prop = r[5];
+                const isUni = r[6] === "Unilateral";
+                const cue = r[7];
+
+                let posture = "supine";
+                const nLower = name.toLowerCase();
+                if (nLower.includes("plank") || nLower.includes("push-up") || nLower.includes("pike") || nLower.includes("saw")) posture = "pike";
+                else if (nLower.includes("lunge") || nLower.includes("standing") || nLower.includes("scooter") || nLower.includes("skate") || nLower.includes("split")) posture = "lunge";
+                else if (nLower.includes("kneeling") || nLower.includes("cat") || nLower.includes("bird") || nLower.includes("stretch")) posture = "kneeling";
+                else if (nLower.includes("box") || nLower.includes("seated") || nLower.includes("teaser")) posture = "seated";
+
+                window.EXERCISE_DATABASE.reformer.push({
+                    id: `ref_${idx}`,
+                    apparatus: 'reformer',
+                    name: name,
+                    category: cat,
+                    posture: posture,
+                    spring: spring,
+                    prop: prop,
+                    level: lvl,
+                    unilateral: isUni,
+                    cue: cue
+                });
+            });
+
+            const rawMatData = [
+                ["Mat", "Level 1", "Abs/Core", "Single Leg Stretch", "Bodyweight", "None", "Hug one knee to chest extend opposite leg low to 45°."],
+                ["Mat", "Level 1", "Abs/Core", "Rolling Like a Ball", "Bodyweight", "None", "Hug shins roll back to shoulder blades"],
+                ["Mat", "Level 2", "Abs/Core", "The Hundred", "Bodyweight", "None", "Supine head/shoulders curled up"],
+                ["Mat", "Level 2", "Abs/Core", "Double Leg Stretch", "Bodyweight", "None", "Reach arms back and legs forward sweep arms to hug knees."],
+                ["Mat", "Level 2", "Abs/Core", "Single Straight Leg Stretch (Scissors)", "Bodyweight", "None", "Hold single ankle pulse leg toward face twice"],
+                ["Mat", "Level 2", "Abs/Core", "Double Straight Leg Lower & Lift", "Bodyweight", "None", "Hands behind head lower straight legs down 45°"],
+                ["Mat", "Level 2", "Abs/Core", "Criss-Cross (Oblique Twists)", "Bodyweight", "None", "Rotate upper body toward opposite knee extend straight leg low."],
+                ["Mat", "Level 2", "Abs/Core", "The Roll Up", "Bodyweight", "None", "Roll up from mat one vertebra at a time reach past toes."],
+                ["Mat", "Level 3", "Abs/Core", "Teaser 1 (Legs in Tabletop)", "Bodyweight", "None", "Roll up into V-sit posture arms reaching parallel to thighs."],
+                ["Mat", "Level 3", "Abs/Core", "Corkscrew", "Bodyweight", "None", "Circle both straight legs together left-to-right massaging sacrum."],
+                ["Mat", "Level 1", "Arms", "Arm Reaches", "Bodyweight", "None", "On hands and knees reach single arm straight forward at ear height."],
+                ["Mat", "Level 1", "Arms", "Prone Arm Pulsing (Chest Expansion)", "Bodyweight", "None", "Lie prone lift chest slightly"],
+                ["Mat", "Level 1", "Arms", "Prone T-Lifts", "Bodyweight", "None", "Prone arms in wide T"],
+                ["Mat", "Level 1", "Arms", "Seated Arm Circles with Band", "Bodyweight", "Resistance Band", "Sit tall circle band overhead keeping shoulder packing."],
+                ["Mat", "Level 2", "Arms", "Mat Pilates Push-Up", "Bodyweight", "None", "Walk hands out to plank perform 3 tricep push-ups"],
+                ["Mat", "Level 2", "Arms", "Tricep Dips on Mat", "Bodyweight", "None", "Reverse tabletop pose bend elbows back to fire triceps."],
+                ["Mat", "Level 2", "Arms", "Kneeling Arm Press with Band", "Bodyweight", "Resistance Band", "Tall kneeling hold band overhead"],
+                ["Mat", "Level 2", "Arms", "Side-Lying Single-Arm Tricep Press", "Bodyweight", "None", "Lie on side wrap bottom arm"],
+                ["Mat", "Level 2", "Arms", "Plank Shoulder Taps", "Bodyweight", "None", "High plank tap hand to opposite shoulder without hip rocking."],
+                ["Mat", "Level 3", "Arms", "High Plank Walkouts", "Bodyweight", "None", "From standing walk hands out to long plank"],
+                ["Mat", "Level 1", "Balance", "Standing Single-Leg Balance Knee Drive", "Bodyweight", "None", "Hold single foot off mat drive knee to hip height 30s."],
+                ["Mat", "Level 1", "Balance", "Standing Tree Pose Balance", "Bodyweight", "None", "Place sole of foot on inner thigh hold hands at chest."],
+                ["Mat", "Level 2", "Balance", "Standing Single-Leg Arabesque", "Bodyweight", "Yoga Block", "Hinge on standing leg extend trailing leg parallel."],
+                ["Mat", "Level 2", "Balance", "Kneeling Bird-Dog Balance Hold", "Bodyweight", "None", "Hold opposite arm and leg parallel to floor 5s."],
+                ["Mat", "Level 2", "Balance", "Standing Eagle Balance Fold", "Bodyweight", "None", "Cross thighs hinge torso forward holding balance."],
+                ["Mat", "Level 2", "Balance", "Diagonal Balance Lift", "Bodyweight", "None", "Lift right arm and left leg pulse 1 inch upward."],
+                ["Mat", "Level 3", "Balance", "High Plank Single-Arm Balance Hold", "Bodyweight", "None", "Hold high plank with one arm reached straight out."],
+                ["Mat", "Level 3", "Balance", "Side Plank Single-Leg Lift", "Bodyweight", "None", "Side plank on forearm float top leg into wide star pose."],
+                ["Mat", "Level 3", "Balance", "Teaser Balance Hold", "Bodyweight", "None", "Balance on sit-bones in perfect V-shape 10 seconds."],
+                ["Mat", "Level 3", "Balance", "Single-Leg Squat Balance Reach", "Bodyweight", "None", "Sink into single heel reach opposite leg forward and back."],
+                ["Mat", "Level 1", "Bridging", "Classic Shoulder Bridge", "Bodyweight", "None", "Peel spine off mat hold bridge"],
+                ["Mat", "Level 1", "Bridging", "Bridge with Pilates Ball Squeeze", "Bodyweight", "Pilates Ball", "Squeeze ball between knees while articulating hips to ceiling."],
+                ["Mat", "Level 1", "Bridging", "Wide Stance Glute Bridge", "Bodyweight", "None", "Feet wide at mat edges turn toes out"],
+                ["Mat", "Level 1", "Bridging", "Articulating Spine Roll Bridge", "Bodyweight", "None", "Roll up through spine vertebra-by-vertebra lower down with control."],
+                ["Mat", "Level 2", "Bridging", "Single-Leg Bridge Lift & Lower", "Bodyweight", "None", "Hold high bridge lift and lower one straight leg without hip dipping."],
+                ["Mat", "Level 2", "Bridging", "High Relevé Bridge Pulses", "Bodyweight", "None", "Lift heels high pulse hips 2 inches up at top of bridge range."],
+                ["Mat", "Level 2", "Bridging", "Bridge with Magic Circle Press", "Bodyweight", "Magic Circle", "Place circle around outer thighs press outwards into ring."],
+                ["Mat", "Level 2", "Bridging", "Single-Leg Bridge Kicks", "Bodyweight", "None", "Kick extended leg to ceiling lower to knee level in high bridge."],
+                ["Mat", "Level 3", "Bridging", "Single-Leg Hamstring Bridge Pull", "Bodyweight", "None", "Single-leg support drag heel isometric toward glute."],
+                ["Mat", "Level 3", "Bridging", "Hamstring Walkout Bridge", "Bodyweight", "None", "High bridge walk feet out 3 steps"],
+                ["Mat", "Level 1", "Cardio", "High Knee Running in Place", "Bodyweight", "None", "Sprint in place lifting knees to hip height."],
+                ["Mat", "Level 1", "Cardio", "Jumping Jacks with Arm Presses", "Bodyweight", "Band", "Classic jumping jacks pulling band wide at chest."],
+                ["Mat", "Level 1", "Cardio", "Fast Feet Toe Taps on Block", "Bodyweight", "Yoga Block", "Alternate rapid toe taps on top edge of block."],
+                ["Mat", "Level 2", "Cardio", "Mountain Climbers", "Bodyweight", "None", "High plank drive knees rapidly to chest."],
+                ["Mat", "Level 2", "Cardio", "Lateral Skater Bakes", "Bodyweight", "None", "Leap side-to-side sweeping rear leg behind."],
+                ["Mat", "Level 2", "Cardio", "Speed Squat Pulses", "Bodyweight", "None", "Rapid squat pulses at mid-range 30 seconds."],
+                ["Mat", "Level 3", "Cardio", "Full Burpees with Push-Up", "Bodyweight", "None", "Drop to plank perform tricep push-up"],
+                ["Mat", "Level 3", "Cardio", "Plank Jacks & Knee Tucks", "Bodyweight", "None", "Combine 2 plank jacks with 2 knee tucks continuously."],
+                ["Mat", "Level 3", "Cardio", "Commando Plank Sprints", "Bodyweight", "None", "Rapid forearm-to-high plank transitions."],
+                ["Mat", "Level 3", "Cardio", "Star Jack Explosions", "Bodyweight", "None", "Squat low explode into star jump 20 reps."],
+                ["Mat", "Level 1", "Elephant", "Mat Pike Heel Drops", "Bodyweight", "None", "Alternately press right and left heel to mat in pike pose."],
+                ["Mat", "Level 1", "Elephant", "Wide Stance Mat Pike", "Bodyweight", "None", "Feet wide at mat edges press palms down into floor."],
+                ["Mat", "Level 2", "Elephant", "Mat Pike Push & Lift", "Bodyweight", "None", "Downward pike stance draw abs in to lift hips higher."],
+                ["Mat", "Level 2", "Elephant", "Pike Knee-to-Nose Tuck", "Bodyweight", "None", "Draw single knee to forehead at peak of pike stance."],
+                ["Mat", "Level 2", "Elephant", "Mat Pike Pulse at Peak", "Bodyweight", "None", "Micro-pulse hips 2 inches higher using lower abs."],
+                ["Mat", "Level 2", "Elephant", "Pike Relevé Heel Lifts", "Bodyweight", "None", "Rise high onto toes in pike pose lower heels slowly."],
+                ["Mat", "Level 3", "Elephant", "Single-Leg Mat Pike Lift", "Bodyweight", "None", "Pike stance extend one leg straight up into air."],
+                ["Mat", "Level 3", "Elephant", "Pike Shoulder Taps", "Bodyweight", "None", "Hold pike position tap single hand to opposite foot."],
+                ["Mat", "Level 3", "Elephant", "Single-Leg Pike Ankle Tap", "Bodyweight", "None", "Reach hand back to tap standing leg ankle in pike."],
+                ["Mat", "Level 3", "Elephant", "Mat Pike to Plank Wave Flow", "Bodyweight", "None", "Wave spine smoothly from pike forward into plank pose."],
+                ["Mat", "Level 1", "Flexibility", "Hamstring Stretch with Strap", "Bodyweight", "Resistance Band", "Supine loop band around arch"],
+                ["Mat", "Level 1", "Flexibility", "Figure-4 Glute Stretch", "Bodyweight", "None", "Cross ankle over opposite knee pull thigh to chest."],
+                ["Mat", "Level 1", "Flexibility", "Seated Butterfly Fold Stretch", "Bodyweight", "None", "Soles together drop knees wide"],
+                ["Mat", "Level 1", "Flexibility", "Low Lunge Hip Flexor Stretch", "Bodyweight", "None", "Drop rear knee to mat press hips forward into lunge."],
+                ["Mat", "Level 1", "Flexibility", "Cobra Thoracic Chest Opener", "Bodyweight", "None", "Press up into gentle Cobra pulling shoulders back."],
+                ["Mat", "Level 1", "Flexibility", "Downward Dog Calf & Spine Stretch", "Bodyweight", "None", "Inverted V-stance press heels toward floor."],
+                ["Mat", "Level 1", "Flexibility", "Child's Pose Spine Elongation", "Bodyweight", "None", "Sit back on heels reach arms long on mat."],
+                ["Mat", "Level 1", "Flexibility", "Standing Quad Stretch", "Bodyweight", "None", "Pull foot to glute keeping knees together."],
+                ["Mat", "Level 2", "Flexibility", "Pigeon Pose Glute Stretch", "Bodyweight", "Yoga Block", "Fold front leg 90° extend rear leg long behind."],
+                ["Mat", "Level 2", "Flexibility", "Seated Straddle Side Bend Stretch", "Bodyweight", "None", "Legs wide reach arm laterally over opposite leg."],
+                ["Mat", "Level 1", "Footwork", "Mat Footwork Toe Taps", "Bodyweight", "None", "Supine knees in tabletop"],
+                ["Mat", "Level 1", "Footwork", "Mat Footwork Flex & Point", "Bodyweight", "None", "Extend legs to 45° flex and point ankles with deep abdominal imprint."],
+                ["Mat", "Level 1", "Footwork", "Pilates V Leg Presses", "Bodyweight", "Pilates Ball", "Squeeze ball between ankles extend legs to 45° in V-stance."],
+                ["Mat", "Level 1", "Footwork", "Single-Leg Toe Taps in Tabletop", "Bodyweight", "None", "Alternate tapping single foot down keeping 90° knee angle."],
+                ["Mat", "Level 1", "Footwork", "Wide Stance Leg Extensions", "Bodyweight", "Resistance Band", "Band around arches press legs out wide into V-split."],
+                ["Mat", "Level 2", "Footwork", "Single-Leg Heel Lower & Lift", "Bodyweight", "None", "One leg extended high lower heel toward floor with neutral spine."],
+                ["Mat", "Level 2", "Footwork", "Mat Running / Bicycle Legs", "Bodyweight", "None", "Pedal legs smoothly in air keeping hips completely quiet on mat."],
+                ["Mat", "Level 2", "Footwork", "High Relevé Heel Presses", "Bodyweight", "None", "Lift hips slightly press toes into mat as if wearing high heels."],
+                ["Mat", "Level 2", "Footwork", "Single-Leg Circle Taps", "Bodyweight", "None", "Draw small circles with toe before tapping mat surface."],
+                ["Mat", "Level 2", "Footwork", "Mat Plié & Pulse", "Bodyweight", "Magic Circle", "Circle between knees pulse knees inward in tabletop pose."],
+                ["Mat", "Level 2", "Full Body Flows", "Swimming to Cobra Extension Flow", "Bodyweight", "None", "Flutter arms/legs 10s press up into full Cobra."],
+                ["Mat", "Level 2", "Full Body Flows", "Rolling Like a Ball to Squat Jump Flow", "Bodyweight", "None", "Roll back roll forward directly onto feet"],
+                ["Mat", "Level 2", "Full Body Flows", "Bridge to Single-Leg Kick Combo", "Bodyweight", "None", "Lift hips into bridge kick active leg 3x"],
+                ["Mat", "Level 2", "Full Body Flows", "Saw to Spine Stretch Forward Series", "Bodyweight", "None", "Rotate and saw toe return to center"],
+                ["Mat", "Level 3", "Full Body Flows", "Teaser to Control Balance Flow", "Bodyweight", "None", "Roll up into Teaser roll over to shoulders"],
+                ["Mat", "Level 3", "Full Body Flows", "Roll Up to Push-Up Flow", "Bodyweight", "None", "Roll up stand"],
+                ["Mat", "Level 3", "Full Body Flows", "Side Plank to Thread the Needle Flow", "Bodyweight", "None", "Hold side plank thread top arm under upper body."],
+                ["Mat", "Level 3", "Full Body Flows", "Boomerang to Teaser Series", "Bodyweight", "None", "Roll back cross legs"],
+                ["Mat", "Level 3", "Full Body Flows", "Standing Lunge to Single-Leg Deadlift Flow", "Bodyweight", "None", "Reverse lunge transition directly into arabesque balance."],
+                ["Mat", "Level 3", "Full Body Flows", "Forearm Plank Body Saw to Pike Flow", "Bodyweight", "Yoga Block", "Slide shoulders forward/back 3x pike hips up."],
+                ["Mat", "Level 2", "Jumpboard", "Mat Squat Jumps", "Bodyweight", "None", "Deep squat landing explode up driving arms overhead."],
+                ["Mat", "Level 2", "Jumpboard", "Mat Scissor Cardio Jumps", "Bodyweight", "None", "Switch legs mid-air in continuous jumping stride."],
+                ["Mat", "Level 2", "Jumpboard", "Wide Stance Sumo Jumps", "Bodyweight", "None", "Jump from wide squat stance touch floor between feet."],
+                ["Mat", "Level 2", "Jumpboard", "Skater Lateral Jumps", "Bodyweight", "None", "Leap side to side landing on single foot in low squat."],
+                ["Mat", "Level 2", "Jumpboard", "High Knee Cardio Sprint Jumps", "Bodyweight", "None", "Drive knees high in rapid jumping cadence."],
+                ["Mat", "Level 3", "Jumpboard", "Single-Leg Mat Hops", "Bodyweight", "None", "Soft landing on single foot hop upward rapidly."],
+                ["Mat", "Level 3", "Jumpboard", "Mat Tuck Jumps", "Bodyweight", "None", "Explode upward pull knees to chest mid-air."],
+                ["Mat", "Level 3", "Jumpboard", "Mat Burpee Jumps", "Bodyweight", "None", "Drop to plank jump feet back in"],
+                ["Mat", "Level 3", "Jumpboard", "Star Rebound Jumps", "Bodyweight", "None", "Open arms and legs wide mid-air into star pose."],
+                ["Mat", "Level 3", "Jumpboard", "Single-Leg Pulse Hops", "Bodyweight", "None", "Low-amplitude single-leg hops on ball of foot."],
+                ["Mat", "Level 1", "Kneeling", "Kneeling Cat-Cow Spine Stretch", "Bodyweight", "None", "Quadruped arch and round spine with deep breath sync."],
+                ["Mat", "Level 1", "Kneeling", "Kneeling Arm & Leg Reach (Bird-Dog)", "Bodyweight", "None", "Reach opposite arm and leg long hold 2 seconds"],
+                ["Mat", "Level 1", "Kneeling", "Kneeling Side Bend Stretch", "Bodyweight", "None", "Kneel tall reach top arm laterally overhead in side bend."],
+                ["Mat", "Level 1", "Kneeling", "Kneeling Push-Ups", "Bodyweight", "None", "Knees on mat perform tricep push-ups keeping flat core."],
+                ["Mat", "Level 1", "Kneeling", "Kneeling Quad Stretch", "Bodyweight", "None", "Reach back to hold rear ankle press hips forward."],
+                ["Mat", "Level 2", "Kneeling", "Kneeling Thigh Stretch", "Bodyweight", "None", "Lean torso back from knees keeping straight head-to-knee line."],
+                ["Mat", "Level 2", "Kneeling", "Kneeling Torso Twist", "Bodyweight", "Magic Circle", "Hold circle at chest rotate upper body right and left."],
+                ["Mat", "Level 2", "Kneeling", "Kneeling Balance Hover", "Bodyweight", "None", "Hover knees 1 inch off mat from quadruped position."],
+                ["Mat", "Level 3", "Kneeling", "Kneeling Side Kicks", "Bodyweight", "None", "Hand on mat top leg lifted parallel"],
+                ["Mat", "Level 3", "Kneeling", "Kneeling Side Leg Lift", "Bodyweight", "None", "Kneel upright extend single leg sideways"],
+                ["Mat", "Level 1", "Legs & Glutes", "Donkey Kicks", "Bodyweight", "None", "On hands and knees drive flexed foot up to ceiling."],
+                ["Mat", "Level 1", "Legs & Glutes", "Fire Hydrants", "Bodyweight", "None", "Lift bent knee laterally to 90° targeting gluteus medius."],
+                ["Mat", "Level 1", "Legs & Glutes", "Standing Mat Squats", "Bodyweight", "None", "Sit back into heels squat to 90°"],
+                ["Mat", "Level 1", "Legs & Glutes", "Standing Sumo Squat Squeezes", "Bodyweight", "Magic Circle", "Wide stance squeeze magic circle at chest while squatting."],
+                ["Mat", "Level 2", "Legs & Glutes", "Single-Leg Kick", "Bodyweight", "None", "Prone on elbows double pulse heel to glute"],
+                ["Mat", "Level 2", "Legs & Glutes", "Reverse Lunge with Knee Drive", "Bodyweight", "None", "Step back into lunge drive rear knee up to chest at top."],
+                ["Mat", "Level 2", "Legs & Glutes", "Curtsy Lunge Pulses", "Bodyweight", "None", "Cross working leg behind pulse 3 times at lowest point."],
+                ["Mat", "Level 2", "Legs & Glutes", "Glute Rainbow Kicks", "Bodyweight", "None", "Quadruped tap leg left"],
+                ["Mat", "Level 3", "Legs & Glutes", "Double Leg Kick", "Bodyweight", "None", "Prone kick both heels to butt muscles 3x"],
+                ["Mat", "Level 3", "Legs & Glutes", "Single-Leg Deadlift Hinge", "Bodyweight", "None", "Hinge forward on standing leg extend trailing leg parallel."],
+                ["Mat", "Level 1", "Long Box", "Prone Arm T-Lifts", "Bodyweight", "None", "Squeeze upper back blades to lift hands wide in T-shape."],
+                ["Mat", "Level 1", "Long Box", "Prone Tricep Pulses", "Bodyweight", "None", "Arms along sides pulse hands up to ceiling 20 beats."],
+                ["Mat", "Level 2", "Long Box", "Prone Breaststroke Pull", "Bodyweight", "None", "Lie prone sweep arms wide and back"],
+                ["Mat", "Level 2", "Long Box", "Prone Swimming Kick", "Bodyweight", "None", "Flutter legs and arms in fast rhythm holding extension."],
+                ["Mat", "Level 2", "Long Box", "Prone Single-Arm Reach", "Bodyweight", "None", "Reach single arm forward resisting chest dip."],
+                ["Mat", "Level 2", "Long Box", "Prone Hamstring Double Kick", "Bodyweight", "None", "Double kick heels to butt muscles extend legs long."],
+                ["Mat", "Level 2", "Long Box", "Prone Cobra Pulse", "Bodyweight", "None", "Hold high upper back extension pulse chest 1 inch up."],
+                ["Mat", "Level 2", "Long Box", "Prone Y-to-W Arm Lifts", "Bodyweight", "None", "Move arms from Y-shape to W-shape squeezing rhomboids."],
+                ["Mat", "Level 2", "Long Box", "Prone Leg Scissors", "Bodyweight", "None", "Open legs wide and cross right over left in prone pose."],
+                ["Mat", "Level 3", "Long Box", "Prone Full Swan Arc", "Bodyweight", "None", "Arch chest and thighs off mat simultaneously."],
+                ["Mat", "Level 1", "Long Stretch Series", "Cobra Spine Extension", "Bodyweight", "None", "Lie prone press chest up"],
+                ["Mat", "Level 1", "Long Stretch Series", "Sphinx Forearm Hold", "Bodyweight", "None", "Prone on forearms draw collarbones wide"],
+                ["Mat", "Level 1", "Long Stretch Series", "Prone Arm Pull-Backs", "Bodyweight", "Resistance Band", "Lie prone pull band across lower back while lifting chest."],
+                ["Mat", "Level 1", "Long Stretch Series", "Cobra to Child's Pose Wave", "Bodyweight", "None", "Wave smoothly from upper back extension back to rested spine."],
+                ["Mat", "Level 2", "Long Stretch Series", "Prone Swimming Flutter", "Bodyweight", "None", "Lie prone flutter arms and legs in opposition fast cadence."],
+                ["Mat", "Level 2", "Long Stretch Series", "Single-Leg Cobra Extension", "Bodyweight", "None", "Lift chest while floating one leg off mat in prone pose."],
+                ["Mat", "Level 3", "Long Stretch Series", "Full Plank Body Saw", "Bodyweight", "Yoga Block", "Forearm plank rock body forward and back over toes."],
+                ["Mat", "Level 3", "Long Stretch Series", "Swan Dive", "Bodyweight", "None", "Arch up into Cobra rock forward onto chest floating legs."],
+                ["Mat", "Level 3", "Long Stretch Series", "Long Plank Walkouts", "Bodyweight", "None", "Walk hands past shoulders into extended long plank."],
+                ["Mat", "Level 3", "Long Stretch Series", "Swan Dive with Arms Wide", "Bodyweight", "None", "Rock forward in Swan Dive with arms extended into wide T."],
+                ["Mat", "Level 2", "Planks", "High Plank Hold", "Bodyweight", "None", "Hold rigid plank line on hands firing abs"],
+                ["Mat", "Level 2", "Planks", "Forearm Plank Hold", "Bodyweight", "None", "Hold plank line on forearms keeping neutral neck."],
+                ["Mat", "Level 2", "Planks", "Plank Knee to Elbow", "Bodyweight", "None", "Draw right knee to right elbow hold 1s"],
+                ["Mat", "Level 2", "Planks", "Plank Cross-Body Knee Tuck", "Bodyweight", "None", "Drive knee across body toward opposite elbow."],
+                ["Mat", "Level 2", "Planks", "Bear Plank Knee Taps", "Bodyweight", "None", "Hover knees 1 inch tap knees lightly to mat"],
+                ["Mat", "Level 3", "Planks", "Leg Pull Front (Plank Single-Leg Lift)", "Bodyweight", "None", "High plank lift single leg straight up without arching back."],
+                ["Mat", "Level 3", "Planks", "Forearm Plank Body Saw", "Bodyweight", "Yoga Block", "Forearm plank rock body forward and back over toes."],
+                ["Mat", "Level 3", "Planks", "Plank Jacks", "Bodyweight", "None", "Jump feet wide and together while holding plank alignment."],
+                ["Mat", "Level 3", "Planks", "Forearm Plank to High Plank Commandos", "Bodyweight", "None", "Walk up to hands one at a time lower down to forearms."],
+                ["Mat", "Level 3", "Planks", "Plank Pike Ups", "Bodyweight", "None", "Lift hips high to ceiling from plank into downward pike."],
+                ["Mat", "Level 1", "Seated", "Spine Stretch Forward", "Bodyweight", "None", "Sit tall legs extended peel spine forward into deep C-curve."],
+                ["Mat", "Level 1", "Seated", "The Seal", "Bodyweight", "None", "Hold ankles through legs clap feet 3x"],
+                ["Mat", "Level 1", "Seated", "Seated Mermaid Stretch", "Bodyweight", "None", "Z-sit posture reach top arm laterally overhead."],
+                ["Mat", "Level 1", "Seated", "Seated Cross-Legged Twist", "Bodyweight", "Magic Circle", "Rotate torso right and left holding circle at chest."],
+                ["Mat", "Level 1", "Seated", "Seated Butterfly Fold", "Bodyweight", "None", "Soles of feet together fold torso forward over legs."],
+                ["Mat", "Level 2", "Seated", "Saw", "Bodyweight", "None", "Sit tall legs wide rotate torso"],
+                ["Mat", "Level 2", "Seated", "Spine Twist", "Bodyweight", "None", "Sit tall arms wide twist upper body right and left 2 pulses."],
+                ["Mat", "Level 2", "Seated", "Open Leg Rocker", "Bodyweight", "None", "Hold ankles in wide V-sit roll back to shoulders"],
+                ["Mat", "Level 3", "Seated", "Neck Pull", "Bodyweight", "None", "Hands behind head roll down and roll up with flat back finish."],
+                ["Mat", "Level 3", "Seated", "Boomerang", "Bodyweight", "None", "Roll over cross legs"],
+                ["Mat", "Level 1", "Short Box", "Seated Roll-Back C-Curve", "Bodyweight", "None", "Sit tall scoop lower abs to roll back 45°."],
+                ["Mat", "Level 1", "Short Box", "Seated Roll-Back with Pilates Ball", "Bodyweight", "Pilates Ball", "Ball behind sacrum pulse lower abs into ball support."],
+                ["Mat", "Level 1", "Short Box", "Seated Spine Stacking", "Bodyweight", "None", "Articulate spine down to mat re-stack bone-by-bone."],
+                ["Mat", "Level 2", "Short Box", "Seated Flat Back Hinge", "Bodyweight", "None", "Sit tall hinge back from hips keeping flat spine."],
+                ["Mat", "Level 2", "Short Box", "Seated Oblique Twist", "Bodyweight", "Magic Circle", "Hold circle at chest rotate torso left and right in hinge."],
+                ["Mat", "Level 2", "Short Box", "Seated Side-to-Side Reach", "Bodyweight", "None", "Lateral flexion of spine right and left while seated tall."],
+                ["Mat", "Level 2", "Short Box", "Seated Tree Hamstring Stretch", "Bodyweight", "None", "Climb up single leg extend back over mat with control."],
+                ["Mat", "Level 2", "Short Box", "Seated Bow & Arrow Twist", "Bodyweight", "Resistance Band", "Pull band back like bow and arrow while rotating upper body."],
+                ["Mat", "Level 3", "Short Box", "Seated Around-the-World Circle", "Bodyweight", "None", "Circle torso smoothly through roll-back side bend"],
+                ["Mat", "Level 3", "Short Box", "Seated Single-Leg Hinge", "Bodyweight", "None", "Extend one leg straight forward hinge back with flat spine."],
+                ["Mat", "Level 1", "Side-Lying", "Side Kick Series: Front & Back", "Bodyweight", "None", "Lie on side swing top leg forward twice"],
+                ["Mat", "Level 1", "Side-Lying", "Side Kick Series: Up & Down", "Bodyweight", "None", "Kick top leg high to ceiling lower down resisting gravity."],
+                ["Mat", "Level 1", "Side-Lying", "Side Kick Series: Leg Circles", "Bodyweight", "None", "Draw small precise circles with top leg in both directions."],
+                ["Mat", "Level 1", "Side-Lying", "Side Clamshells", "Bodyweight", "Pilates Ball", "Knees bent 90° rotate top knee open while keeping heels glued."],
+                ["Mat", "Level 1", "Side-Lying", "Side-Lying Inner Thigh Lifts", "Bodyweight", "None", "Cross top foot over lift bottom straight leg off mat."],
+                ["Mat", "Level 2", "Side-Lying", "Side-Lying Bicycle", "Bodyweight", "None", "Pedal top leg forward and backward with stable torso."],
+                ["Mat", "Level 2", "Side-Lying", "Side Plank Hold on Forearm", "Bodyweight", "None", "Hold rigid side plank line stacking hips and feet."],
+                ["Mat", "Level 2", "Side-Lying", "Side-Lying Fire Hydrant Pulse", "Bodyweight", "Band", "Band around knees pulse top knee open in side-lying pose."],
+                ["Mat", "Level 3", "Side-Lying", "Side Plank Hip Dips", "Bodyweight", "None", "Lower bottom hip 2 inches from floor lift up with obliques."],
+                ["Mat", "Level 3", "Side-Lying", "Side-Lying Banana Lift", "Bodyweight", "None", "Lie on side float both legs and upper torso off mat together."],
+                ["Mat", "Level 1", "Spine Mobility", "Cat-Cow Articulation", "Bodyweight", "None", "Quadruped roll spine through flexion and extension."],
+                ["Mat", "Level 1", "Spine Mobility", "Thread the Needle Stretch", "Bodyweight", "None", "Quadruped slide arm under torso to stretch upper back spine."],
+                ["Mat", "Level 1", "Spine Mobility", "Supine Spinal Twist", "Bodyweight", "None", "Supine drop bent knees to right side"],
+                ["Mat", "Level 1", "Spine Mobility", "Bridging Spine Roll Down", "Bodyweight", "None", "Melt upper back middle back"],
+                ["Mat", "Level 1", "Spine Mobility", "Side-Lying Thoracic Book Openings", "Bodyweight", "None", "Lie on side open top arm wide to floor behind back."],
+                ["Mat", "Level 2", "Spine Mobility", "Roll Up", "Bodyweight", "Magic Circle", "Roll up through spine reach past toes in long C-curve."],
+                ["Mat", "Level 2", "Spine Mobility", "Spine Twist with Arms Extended", "Bodyweight", "None", "Sit tall rotate upper body side to side in slow motion."],
+                ["Mat", "Level 2", "Spine Mobility", "Swan Extension with Arm Reach", "Bodyweight", "None", "Prone press up into upper back arch"],
+                ["Mat", "Level 3", "Spine Mobility", "Roll Over", "Bodyweight", "None", "Supine lift straight legs overhead to floor behind head."],
+                ["Mat", "Level 3", "Spine Mobility", "Jackknife", "Bodyweight", "None", "Roll legs overhead lift legs straight up to ceiling."],
+                ["Mat", "Level 1", "Standing", "Standing Roll Down", "Bodyweight", "None", "Soft knees roll down spine bone-by-bone to touch toes."],
+                ["Mat", "Level 1", "Standing", "Standing Side Legs Lift", "Bodyweight", "None", "Stand tall lift active leg laterally to side"],
+                ["Mat", "Level 1", "Standing", "Standing Arm Presses with Band", "Bodyweight", "Resistance Band", "Stand on band press handles overhead with stable posture."],
+                ["Mat", "Level 1", "Standing", "Standing Plié Squat Pulses", "Bodyweight", "None", "Turn toes out 45° pulse at bottom of wide squat range."],
+                ["Mat", "Level 1", "Standing", "Standing Calf Raise & Balance", "Bodyweight", "None", "Lift heels high balance on balls of feet 3 seconds."],
+                ["Mat", "Level 2", "Standing", "Standing Single-Leg Balance Clock", "Bodyweight", "Yoga Block", "Stand on block tap active toe forward"],
+                ["Mat", "Level 2", "Standing", "Standing Curtsy Lunge", "Bodyweight", "None", "Step back diagonally sink into glute"],
+                ["Mat", "Level 2", "Standing", "Standing Single-Leg Knee Drive", "Bodyweight", "None", "Balance on one foot drive opposite knee to chest rapidly."],
+                ["Mat", "Level 2", "Standing", "Standing Saw", "Bodyweight", "None", "Feet wide rotate torso"],
+                ["Mat", "Level 2", "Standing", "Standing Woodchopper Twist", "Bodyweight", "Pilates Ball", "Hold ball rotate diagonally from high shoulder to opposite hip."]
+            ];
+
+            rawMatData.forEach((r, idx) => {
+                const name = r[3];
+                const cat = r[2];
+                const lvl = r[1] === "Level 1" ? "beginner" : r[1] === "Level 2" ? "intermediate" : "advanced";
+                const spring = r[4];
+                const prop = r[5];
+                const cue = r[6];
+
+                let isUni = name.toLowerCase().includes("single") || name.toLowerCase().includes("side") || name.toLowerCase().includes("one");
+
+                window.EXERCISE_DATABASE.mat.push({
+                    id: `mat_${idx}`,
+                    apparatus: 'mat',
+                    name: name,
+                    category: cat,
+                    posture: 'supine',
+                    spring: spring,
+                    prop: prop,
+                    level: lvl,
+                    unilateral: isUni,
+                    cue: cue
+                });
+            });
+        };
+
+        window.seededRandom = function(seed) {
+            let x = Math.sin(seed++) * 10000;
+            return x - Math.floor(x);
+        };
+
+        window.renderPropBadge = function(propStr) {
+            if (!propStr || propStr === 'None' || propStr.toLowerCase() === 'none') {
+                return `<span class="inline-flex items-center space-x-1 px-2.5 py-1 rounded-xl bg-mint-50 dark:bg-mint-500/10 border border-mint-200 dark:border-mint-500/20 text-xs font-bold text-mint-700 dark:text-mint-300"><i data-lucide="check" class="w-3.5 h-3.5 text-mint-500"></i><span>Prop-Free</span></span>`;
+            }
+
+            const propsArray = propStr.split(',').map(p => p.trim());
+            return propsArray.map(p => {
+                const pLow = p.toLowerCase();
+                let iconName = 'package';
+                let iconColor = 'text-sage-500';
+                if (pLow.includes('box')) { iconName = 'package'; iconColor = 'text-sage-500'; }
+                else if (pLow.includes('jumpboard')) { iconName = 'activity'; iconColor = 'text-peach-500'; }
+                else if (pLow.includes('ball')) { iconName = 'disc'; iconColor = 'text-mint-500'; }
+                else if (pLow.includes('circle') || pLow.includes('ring')) { iconName = 'circle'; iconColor = 'text-amber-500'; }
+                else if (pLow.includes('block')) { iconName = 'square'; iconColor = 'text-blue-500'; }
+                else if (pLow.includes('band')) { iconName = 'minus'; iconColor = 'text-purple-500'; }
+
+                return `<span class="inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-xl bg-ivory-100 dark:bg-stone-800 border border-ivory-200 dark:border-stone-700 text-xs font-bold text-ivory-900 dark:text-ivory-100"><i data-lucide="${iconName}" class="w-3.5 h-3.5 ${iconColor}"></i><span>Prop: ${p}</span></span>`;
+            }).join(' ');
+        };
+
+        window.generateDailyRoutine = function() {
+            window.initExerciseDatabase();
+            
+            let seed = 0;
+            for (let i = 0; i < window.currentDateStr.length; i++) {
+                seed += window.currentDateStr.charCodeAt(i) * (i + 1);
+            }
+
+            const app = window.primaryEquipment || 'reformer';
+            
+            const pool = (window.EXERCISE_DATABASE[app] || []).filter(ex => {
+                if (window.userSkillLevel === 'beginner') {
+                    if (ex.level !== 'beginner') return false;
+                    if (ex.prop && ex.prop !== 'None' && ex.prop.toLowerCase() !== 'none') return false;
+                    if (ex.category.toLowerCase().includes('short box') || ex.category.toLowerCase().includes('long box')) return false;
+                } else {
+                    if (window.userSkillLevel === 'intermediate' && ex.level === 'advanced') return false;
+                    if (ex.prop && ex.prop !== 'None' && ex.prop.toLowerCase() !== 'none') {
+                        const pLow = ex.prop.toLowerCase();
+                        if (pLow.includes('box') && !window.equipmentAvailable.box) return false;
+                        if (pLow.includes('jumpboard') && !window.equipmentAvailable.jumpboard) return false;
+                        if ((pLow.includes('ball') || pLow.includes('pilates ball')) && !window.equipmentAvailable.ball) return false;
+                        if ((pLow.includes('circle') || pLow.includes('ring')) && !window.equipmentAvailable.circle) return false;
+                        if (pLow.includes('block') && !window.equipmentAvailable.block) return false;
+                        if (pLow.includes('band') && !window.equipmentAvailable.band) return false;
+                    }
+                }
+                return true;
+            });
+
+            const shuffleArray = (arr, s) => {
+                let copy = [...arr];
+                for (let i = copy.length - 1; i > 0; i--) {
+                    const j = Math.floor(window.seededRandom(s + i) * (i + 1));
+                    [copy[i], copy[j]] = [copy[j], copy[i]];
+                }
+                return copy;
+            };
+
+            let blockSpecs = [];
+            if (app === 'reformer') {
+                const candidateBonusCats = [
+                    { title: 'Block 5: Short Box & Box Flow', cats: ['Short Box Series'] },
+                    { title: 'Block 5: Jumpboard Cardio', cats: ['Long Box Series'] },
+                    { title: 'Block 5: Side-Lying Series', cats: ['Side Lying Series'] },
+                    { title: 'Block 5: Elephant & Pike Flow', cats: ['Elephant Series'] },
+                    { title: 'Block 5: Standing Balance Series', cats: ['Standing Series'] },
+                    { title: 'Block 5: Kneeling Stability Series', cats: ['Kneeling Series'] }
+                ];
+                
+                const candidateCoolCats = [
+                    { title: 'Block 6: Bridging & Pelvic Mobility', cats: ['Bridging'] },
+                    { title: 'Block 6: Flexibility & Stretch', cats: ['Footwork', 'Bridging'] }
+                ];
+
+                const b5Spec = candidateBonusCats[Math.floor(window.seededRandom(seed + 99) * candidateBonusCats.length)];
+                const b6Spec = candidateCoolCats[Math.floor(window.seededRandom(seed + 199) * candidateCoolCats.length)];
+
+                blockSpecs = [
+                    { key: 'b1', title: 'Block 1: Warm-Up & Footwork', cats: ['Footwork'] },
+                    { key: 'b2', title: 'Block 2: Arms & Upper Body', cats: ['Arms & Upper Body'] },
+                    { key: 'b3', title: 'Block 3: Legs & Glutes', cats: ['Legs & Glutes'] },
+                    { key: 'b4', title: 'Block 4: Abs & Core', cats: ['Abs/Core'] },
+                    { key: 'b5', title: b5Spec.title, cats: b5Spec.cats },
+                    { key: 'b6', title: b6Spec.title, cats: b6Spec.cats }
+                ];
+            } else {
+                blockSpecs = [
+                    { key: 'b1', title: 'Block 1: Warm-Up & Mobility', cats: ['Spine Mobility', 'Footwork', 'Bridging'] },
+                    { key: 'b2', title: 'Block 2: Abdominal Series', cats: ['Abs/Core'] },
+                    { key: 'b3', title: 'Block 3: Upper Body & Arms', cats: ['Arms', 'Planks'] },
+                    { key: 'b4', title: 'Block 4: Lower Body Series', cats: ['Legs & Glutes', 'Side-Lying'] },
+                    { key: 'b5', title: 'Block 5: Core Integration', cats: ['Kneeling', 'Standing', 'Balance'] },
+                    { key: 'b6', title: 'Block 6: Cool Down & Stretch', cats: ['Flexibility'] }
+                ];
+            }
+
+            const countsPerBlock = window.currentDuration === 45 ? [5, 4, 4, 4, 4, 4] : [4, 3, 4, 3, 3, 3];
+            
+            window.activeRoutine = [];
+            let step = 1;
+
+            blockSpecs.forEach((bSpec, bIdx) => {
+                const targetCount = countsPerBlock[bIdx];
+                const blockPool = pool.filter(ex => bSpec.cats.some(c => ex.category.toLowerCase().includes(c.toLowerCase())));
+                const candidatePool = blockPool.length >= targetCount ? blockPool : pool;
+                const shuffled = shuffleArray(candidatePool, seed + bIdx * 100);
+
+                for (let i = 0; i < targetCount; i++) {
+                    const ex = shuffled[i % shuffled.length];
+                    if (ex) {
+                        window.activeRoutine.push({
+                            ...ex,
+                            blockKey: bSpec.key,
+                            blockTitle: bSpec.title,
+                            stepNumber: step++
+                        });
+                    }
+                }
+            });
+        };
+
+        window.renderDailyView = function() {
+            const container = document.getElementById('routine-cards-container');
+            if (!container) return;
+            container.innerHTML = '';
+
+            if (!window.activeRoutine || window.activeRoutine.length === 0) {
+                window.generateDailyRoutine();
+            }
+
+            const requiredProps = [...new Set(window.activeRoutine.map(e => e.prop).filter(p => p && p !== 'None' && p.toLowerCase() !== 'none'))];
+            const propsIconsHtml = requiredProps.length > 0 
+                ? requiredProps.map(p => {
+                    const pLow = p.toLowerCase();
+                    let iconName = 'package';
+                    let iconColor = 'text-sage-500';
+                    if (pLow.includes('box')) { iconName = 'package'; iconColor = 'text-sage-500'; }
+                    else if (pLow.includes('jumpboard')) { iconName = 'activity'; iconColor = 'text-peach-500'; }
+                    else if (pLow.includes('ball')) { iconName = 'disc'; iconColor = 'text-mint-500'; }
+                    else if (pLow.includes('circle') || pLow.includes('ring')) { iconName = 'circle'; iconColor = 'text-amber-500'; }
+                    else if (pLow.includes('block')) { iconName = 'square'; iconColor = 'text-blue-500'; }
+                    else if (pLow.includes('band')) { iconName = 'minus'; iconColor = 'text-purple-500'; }
+                    return `<span class="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-ivory-100 dark:bg-stone-800 border border-ivory-200 dark:border-stone-700 text-xs font-bold text-ivory-900 dark:text-ivory-100"><i data-lucide="${iconName}" class="w-4 h-4 ${iconColor}"></i><span>${p}</span></span>`;
+                }).join(' ')
+                : '<span class="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-mint-50 dark:bg-mint-500/10 border border-mint-200 dark:border-mint-500/20 text-xs font-bold text-mint-700 dark:text-mint-300"><i data-lucide="check" class="w-4 h-4 text-mint-500"></i><span>Prop-Free Workout</span></span>';
+
+            const summaryCard = document.createElement('div');
+            summaryCard.className = 'bg-white dark:bg-darkbg-800 rounded-3xl p-4 sm:p-5 border border-ivory-200 dark:border-stone-800 shadow-sm space-y-3';
+            summaryCard.innerHTML = `
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 border-b border-ivory-100 dark:border-stone-700/60 pb-3">
+                    <div>
+                        <span class="text-[10px] font-extrabold uppercase text-peach-500 tracking-wider">Today's Workout Summary</span>
+                        <h2 class="text-base sm:text-lg font-black text-ivory-900 dark:text-ivory-50">${window.primaryEquipment === 'reformer' ? 'Reformer Bed Session' : 'Mat Pilates Session'} &bull; ${window.currentDateStr}</h2>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <span class="px-3 py-1 rounded-xl bg-peach-50 dark:bg-peach-500/10 border border-peach-200 dark:border-peach-500/20 text-peach-600 dark:text-peach-400 text-xs font-extrabold">${window.currentDuration} Mins (${window.activeRoutine.length} Moves)</span>
+                        <span class="px-3 py-1 rounded-xl bg-sage-50 dark:bg-sage-500/10 border border-sage-200 dark:border-sage-500/20 text-sage-600 dark:text-sage-400 text-xs font-extrabold capitalize">${window.userSkillLevel}</span>
+                    </div>
+                </div>
+                <div class="space-y-1.5">
+                    <span class="text-[10px] font-bold text-ivory-800 dark:text-ivory-300 uppercase tracking-wide">Required Accessories:</span>
+                    <div class="flex flex-wrap gap-2 items-center">${propsIconsHtml}</div>
+                </div>
+            `;
+            container.appendChild(summaryCard);
+
+            const blocksMap = {};
+            window.activeRoutine.forEach(ex => {
+                if (!blocksMap[ex.blockKey]) {
+                    blocksMap[ex.blockKey] = { title: ex.blockTitle, items: [] };
+                }
+                blocksMap[ex.blockKey].items.push(ex);
+            });
+
+            Object.keys(blocksMap).forEach(bKey => {
+                const block = blocksMap[bKey];
+                const blockCard = document.createElement('div');
+                blockCard.className = 'bg-white dark:bg-darkbg-800 rounded-3xl p-4 sm:p-5 border border-ivory-200 dark:border-stone-800 shadow-sm space-y-3';
+                
+                let itemsHtml = block.items.map(ex => {
+                    const propBadgeHtml = window.renderPropBadge(ex.prop);
+
+                    return `
+                    <div class="flex items-start justify-between p-3 rounded-2xl bg-ivory-50 dark:bg-stone-800/60 border border-ivory-100 dark:border-stone-700/60 gap-3">
+                        <div class="space-y-1 flex-1">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-[10px] font-black text-peach-500 bg-peach-50 dark:bg-peach-500/20 px-2 py-0.5 rounded-md">Move ${ex.stepNumber}</span>
+                                <h4 class="text-xs sm:text-sm font-black text-ivory-900 dark:text-ivory-100">${ex.name}</h4>
+                                ${ex.unilateral ? '<span class="text-[9px] font-extrabold bg-mint-100 dark:bg-mint-500/20 text-mint-600 dark:text-mint-400 px-1.5 py-0.5 rounded">Unilateral 70s</span>' : ''}
+                            </div>
+                            <p class="text-xs text-ivory-800 dark:text-ivory-300 font-medium leading-relaxed">${ex.cue}</p>
+                            <div class="flex items-center space-x-2 text-[10px] font-bold text-ivory-800 dark:text-ivory-300 pt-1">
+                                <span class="text-peach-600 dark:text-peach-400">${ex.spring}</span>
+                                <span>&bull;</span>
+                                ${propBadgeHtml}
+                            </div>
+                        </div>
+                    </div>
+                `;}).join('');
+
+                blockCard.innerHTML = `
+                    <div class="flex items-center justify-between border-b border-ivory-100 dark:border-stone-700/60 pb-2">
+                        <h3 class="text-xs sm:text-sm font-black text-ivory-900 dark:text-ivory-50">${block.title}</h3>
+                        <span class="text-xs font-bold text-sage-600 dark:text-sage-400">${block.items.length} moves</span>
+                    </div>
+                    <div class="space-y-2">${itemsHtml}</div>
+                `;
+                container.appendChild(blockCard);
+            });
+
+            if (window.lucide) window.lucide.createIcons();
+        };
+
+        window.renderLibrary = function() {
+            window.initExerciseDatabase();
+
+            const grid = document.getElementById('library-grid');
+            const search = (document.getElementById('library-search')?.value || '').toLowerCase();
+            const appFilter = document.getElementById('library-app-filter')?.value || 'all';
+            const catFilter = document.getElementById('library-cat-filter')?.value || 'all';
+            const lvlFilter = document.getElementById('library-lvl-filter')?.value || 'all';
+            const propFilter = document.getElementById('library-prop-filter')?.value || 'all';
+            const countIndicator = document.getElementById('library-count-indicator');
+            
+            if (!grid) return;
+            grid.innerHTML = '';
+
+            const allExercises = [
+                ...(window.EXERCISE_DATABASE.reformer || []),
+                ...(window.EXERCISE_DATABASE.mat || [])
+            ];
+
+            const filtered = allExercises.filter(ex => {
+                const matchApp = (appFilter === 'all') || (ex.apparatus === appFilter);
+                const matchCat = (catFilter === 'all') || ex.category.toLowerCase().includes(catFilter.toLowerCase());
+                const matchLvl = (lvlFilter === 'all') || (ex.level === lvlFilter);
+                const matchProp = (propFilter === 'all') || (ex.prop.toLowerCase().includes(propFilter.toLowerCase()));
+                const matchSearch = ex.name.toLowerCase().includes(search) || ex.category.toLowerCase().includes(search) || ex.prop.toLowerCase().includes(search) || ex.cue.toLowerCase().includes(search);
+                
+                return matchApp && matchCat && matchLvl && matchProp && matchSearch;
+            });
+
+            if (countIndicator) {
+                countIndicator.innerText = `Showing ${filtered.length} of ${allExercises.length} Total Studio Movements`;
+            }
+
+            filtered.forEach(ex => {
+                const lvlTag = ex.level === 'beginner' ? 'Level 1' : ex.level === 'intermediate' ? 'Level 2' : 'Level 3';
+                const propBadgeHtml = window.renderPropBadge(ex.prop);
+
+                const card = document.createElement('div');
+                card.className = 'bg-white dark:bg-darkbg-800 rounded-2xl p-3.5 sm:p-4 border border-ivory-200 dark:border-stone-800 shadow-sm space-y-3 hover:border-peach-400 transition flex flex-col justify-between';
+                card.innerHTML = `
+                    <div class="space-y-2">
+                        <div class="flex items-start justify-between gap-1">
+                            <div>
+                                <span class="text-[9px] font-extrabold text-sage-600 dark:text-sage-400 uppercase tracking-widest block">${ex.apparatus} &bull; ${ex.category}</span>
+                                <h4 class="text-xs font-black text-ivory-900 dark:text-ivory-100 mt-0.5">${ex.name}</h4>
+                            </div>
+                        </div>
+                        <div class="h-24 bg-ivory-50 dark:bg-stone-800/80 rounded-xl overflow-hidden flex items-center justify-center border border-ivory-100 dark:border-stone-700/80">
+                            ${window.renderHumanSVG(ex.posture, false)}
+                        </div>
+                        <div class="flex items-center justify-between text-[10px] sm:text-[11px] pt-1">
+                            <span class="font-bold text-peach-600 dark:text-peach-400 bg-peach-50 dark:bg-peach-500/10 px-2 py-0.5 rounded border border-peach-100 dark:border-peach-500/20">${ex.spring}</span>
+                            <span class="text-ivory-800 dark:text-ivory-300 font-semibold">${propBadgeHtml}</span>
+                            <span class="text-[9px] font-bold px-2 py-0.5 rounded-md bg-ivory-100 dark:bg-stone-800 text-ivory-800 dark:text-ivory-200 border border-ivory-200 dark:border-stone-700">${lvlTag}</span>
+                        </div>
+                        <p class="text-[11px] text-ivory-800 dark:text-ivory-300 font-medium leading-relaxed">${ex.cue}</p>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+
+            if (window.lucide) window.lucide.createIcons();
+        };
+
+        window.filterLibrary = function() {
+            window.renderLibrary();
+        };
+
+        window.renderBuilderBank = function() {
+            window.initExerciseDatabase();
+            const bank = document.getElementById('builder-bank');
+            const search = (document.getElementById('builder-search')?.value || '').toLowerCase();
+            if (!bank) return;
+            bank.innerHTML = '';
+
+            const pool = window.EXERCISE_DATABASE[window.primaryEquipment] || [];
+            const filtered = pool.filter(ex => ex.name.toLowerCase().includes(search) || ex.category.toLowerCase().includes(search));
+
+            filtered.slice(0, 36).forEach(ex => {
+                const card = document.createElement('div');
+                card.className = 'bg-white dark:bg-darkbg-800 rounded-xl p-3 border border-ivory-200 dark:border-stone-800 flex items-center justify-between hover:border-peach-400 transition';
+                card.innerHTML = `
+                    <div class="max-w-[70%]">
+                        <h5 class="text-xs font-bold text-ivory-900 dark:text-ivory-100 truncate">${ex.name}</h5>
+                        <span class="text-[10px] text-sage-600 dark:text-sage-400 font-semibold inline-flex items-center space-x-1"><i data-lucide="package" class="w-3 h-3"></i><span>${ex.category} &bull; ${ex.prop}</span></span>
+                    </div>
+                    <button onclick="window.addToCustomQueueByObject('${encodeURIComponent(JSON.stringify(ex))}')" class="px-2.5 py-1 rounded-lg bg-peach-50 dark:bg-peach-500/20 text-peach-600 dark:text-peach-400 font-bold text-xs hover:bg-peach-100 transition flex-shrink-0">
+                        + Add
+                    </button>
+                `;
+                bank.appendChild(card);
+            });
+
+            if (window.lucide) window.lucide.createIcons();
+        };
+
+        window.addToCustomQueueByObject = function(encodedObj) {
+            try {
+                const item = JSON.parse(decodeURIComponent(encodedObj));
+                window.customBuilderQueue.push(item);
+                window.renderBuilderQueue();
+                window.showToast(`Added "${item.name}" to custom flow`);
+            } catch(e) {}
+        };
+
+        window.renderBuilderQueue = function() {
+            const q = document.getElementById('builder-queue');
+            if (!q) return;
+            if (window.customBuilderQueue.length === 0) {
+                q.innerHTML = '<span class="text-xs text-ivory-800 dark:text-ivory-300 font-medium italic w-full text-center">No exercises added yet. Click "+ Add" from the bank below.</span>';
+                return;
+            }
+            q.innerHTML = window.customBuilderQueue.map((ex, i) => `
+                <div class="bg-white dark:bg-stone-800 px-3 py-1.5 rounded-xl border border-ivory-200 dark:border-stone-700 text-xs font-bold text-ivory-900 dark:text-ivory-100 flex items-center space-x-2">
+                    <span>${i + 1}. ${ex.name}</span>
+                    <button onclick="window.removeFromQueue(${i})" class="text-peach-500 hover:text-peach-600 font-black">&times;</button>
+                </div>
+            `).join('');
+        };
+
+        window.removeFromQueue = function(i) {
+            window.customBuilderQueue.splice(i, 1);
+            window.renderBuilderQueue();
+        };
+
+        window.startCustomWorkout = function() {
+            if (window.customBuilderQueue.length === 0) {
+                window.showToast("Please add exercises to your custom flow first!");
+                return;
+            }
+            window.activeRoutine = window.customBuilderQueue.map((ex, i) => ({
+                ...ex,
+                blockTitle: "Custom Flow",
+                blockKey: "custom",
+                stepNumber: i + 1
+            }));
+            window.startWorkout();
+        };
+
+        window.switchView = function(viewName) {
+            ['daily', 'library', 'builder'].forEach(v => {
+                const el = document.getElementById(`view-${v}`);
+                const tab = document.getElementById(`tab-${v}`);
+                const mTab = document.getElementById(`mob-tab-${v}`);
+                if (el) el.classList.add('hidden');
+                if (tab) tab.className = 'px-3 sm:px-3.5 py-2 rounded-xl text-xs font-extrabold transition text-ivory-800 dark:text-ivory-200 hover:bg-ivory-100 dark:hover:bg-stone-800 flex-shrink-0 min-h-[38px]';
+                if (mTab) mTab.className = 'flex flex-col items-center justify-center space-y-0.5 text-ivory-800 dark:text-ivory-300 hover:text-peach-500 transition py-1 px-1.5 min-w-[50px]';
+            });
+
+            const activeEl = document.getElementById(`view-${viewName}`);
+            const activeTab = document.getElementById(`tab-${viewName}`);
+            const activeMTab = document.getElementById(`mob-tab-${viewName}`);
+
+            if (activeEl) activeEl.classList.remove('hidden');
+            if (activeTab) activeTab.className = 'px-3 sm:px-3.5 py-2 rounded-xl text-xs font-extrabold transition bg-peach-500 text-white shadow-sm flex-shrink-0 min-h-[38px]';
+            if (activeMTab) activeMTab.className = 'flex flex-col items-center justify-center space-y-0.5 text-peach-500 font-extrabold transition py-1 px-1.5 min-w-[50px]';
+
+            if (viewName === 'library') window.renderLibrary();
+            if (viewName === 'builder') {
+                window.renderBuilderBank();
+                window.renderBuilderQueue();
+            }
+        };
+
+        window.startWorkout = function() {
+            if (window.activeRoutine.length === 0) window.generateDailyRoutine();
+            window.playerIndex = 0;
+            const firstEx = window.activeRoutine[0];
+            window.playerPhase = firstEx && firstEx.unilateral ? 'WORK_SIDE_1' : 'WORK_FULL';
+            window.timerSeconds = firstEx && firstEx.unilateral ? 30 : 60;
+            document.getElementById('view-player').classList.remove('hidden');
+            window.requestWakeLock();
+            window.updatePlayerUI(true);
+            window.startTimer();
+        };
+
+        window.exitWorkout = function() {
+            window.pauseTimer();
+            window.releaseWakeLock();
+            document.getElementById('view-player').classList.add('hidden');
+        };
+
+        window.updatePlayerUI = function(isStart = false) {
+            const currentEx = window.activeRoutine[window.playerIndex];
+            if (!currentEx) return;
+
+            document.getElementById('player-block-badge').innerText = currentEx.blockTitle;
+            document.getElementById('player-step-counter').innerText = `Move ${window.playerIndex + 1} / ${window.activeRoutine.length}`;
+            document.getElementById('player-category-name').innerText = currentEx.category;
+            document.getElementById('player-exercise-title').innerText = currentEx.name;
+            document.getElementById('player-spring-badge').innerText = currentEx.spring;
+            
+            const propBadgeContainer = document.getElementById('player-prop-badge');
+            if (propBadgeContainer) {
+                propBadgeContainer.innerHTML = window.renderPropBadge(currentEx.prop);
+            }
+
+            document.getElementById('player-form-cue').innerText = currentEx.cue;
+
+            const vectorContainer = document.getElementById('player-vector-container');
+            if (vectorContainer) vectorContainer.innerHTML = window.renderHumanSVG(currentEx.posture, true);
+
+            if (window.playerPhase === 'WORK_SIDE_1' || window.playerPhase === 'WORK_FULL') {
+                window.playBeep(880, 'sine', 0.2);
+                setTimeout(() => {
+                    if (isStart) {
+                        window.speakText(`Welcome to today's workout. ${currentEx.name}. ${currentEx.cue}`);
+                    } else {
+                        window.speakText(`${currentEx.name}. ${currentEx.cue}`);
+                    }
+                }, 250);
+            }
+
+            if (window.lucide) window.lucide.createIcons();
+        };
+
+        window.startTimer = function() {
+            if (window.isTimerRunning) return;
+            window.isTimerRunning = true;
+            window.requestWakeLock();
+
+            if (window.audioCtx && window.audioCtx.state === 'suspended') {
+                window.audioCtx.resume();
+            }
+
+            window.timerInterval = setInterval(() => {
+                if (window.timerSeconds > 0) {
+                    window.timerSeconds--;
+                    window.updateTimerUI();
+
+                    if (window.timerSeconds === 10) {
+                        window.playBeep(880, 'sine', 0.25);
+                        const isWork = window.playerPhase === 'WORK_FULL' || window.playerPhase === 'WORK_SIDE_2';
+                        const nextEx = window.activeRoutine[window.playerIndex + 1];
+                        if (isWork && nextEx) {
+                            setTimeout(() => {
+                                window.speakText(`Upcoming move in 10 seconds: ${nextEx.name}`);
+                            }, 300);
+                        }
+                    }
+                } else {
+                    window.playFinishChime();
+
+                    const currentEx = window.activeRoutine[window.playerIndex];
+
+                    setTimeout(() => {
+                        if (window.playerPhase === 'WORK_SIDE_1') {
+                            window.playerPhase = 'SIDE_CHANGEOVER';
+                            window.timerSeconds = 10;
+                            window.speakText("10 seconds change over sides now");
+                        } else if (window.playerPhase === 'SIDE_CHANGEOVER') {
+                            window.playerPhase = 'WORK_SIDE_2';
+                            window.timerSeconds = 30;
+                            window.speakText("Begin side two");
+                        } else if (window.playerPhase === 'WORK_SIDE_2' || window.playerPhase === 'WORK_FULL') {
+                            const nextEx = window.activeRoutine[window.playerIndex + 1];
+                            if (!nextEx) {
+                                window.speakText("Thank you for completing today's workout. See you for the next one.");
+                                window.exitWorkout();
+                                window.showToast("Workout complete! Great session!");
+                                return;
+                            }
+                            
+                            window.playerIndex++;
+                            const upcomingEx = window.activeRoutine[window.playerIndex];
+
+                            if (upcomingEx.blockKey !== currentEx.blockKey) {
+                                window.playerPhase = 'BLOCK_BREAK';
+                                window.timerSeconds = 20;
+                                window.updatePlayerUI();
+                                window.speakText(`Take a 20 second break. Next block: ${upcomingEx.blockTitle}. Prepare for ${upcomingEx.name}`);
+                            } else {
+                                window.playerPhase = 'TRANSITION';
+                                window.timerSeconds = 15;
+                                window.updatePlayerUI();
+                                window.speakText(`15 second spring transition. Prepare for ${upcomingEx.name}, spring tension ${upcomingEx.spring}`);
+                            }
+                        } else if (window.playerPhase === 'TRANSITION' || window.playerPhase === 'BLOCK_BREAK') {
+                            const activeEx = window.activeRoutine[window.playerIndex];
+                            if (!activeEx) {
+                                window.speakText("Thank you for completing today's workout. See you for the next one.");
+                                window.exitWorkout();
+                                window.showToast("Workout complete! Great session!");
+                                return;
+                            }
+                            window.playerPhase = activeEx.unilateral ? 'WORK_SIDE_1' : 'WORK_FULL';
+                            window.timerSeconds = activeEx.unilateral ? 30 : 60;
+                            window.updatePlayerUI();
+                        }
+                    }, 350);
+                }
+            }, 1000);
+        };
+
+        window.updateTimerUI = function() {
+            const digits = document.getElementById('timer-display-digits');
+            const phaseLabel = document.getElementById('timer-phase-label');
+            const progressCircle = document.getElementById('timer-progress-circle');
+
+            const m = Math.floor(window.timerSeconds / 60);
+            const s = window.timerSeconds % 60;
+            const timeStr = `${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`;
+
+            if (digits) digits.innerText = timeStr;
+
+            let totalForPhase = 60;
+            let labelText = "WORK";
+
+            if (window.playerPhase === 'WORK_SIDE_1') {
+                totalForPhase = 30;
+                labelText = "WORK - SIDE 1";
+            } else if (window.playerPhase === 'SIDE_CHANGEOVER') {
+                totalForPhase = 10;
+                labelText = "10s CHANGE SIDES";
+            } else if (window.playerPhase === 'WORK_SIDE_2') {
+                totalForPhase = 30;
+                labelText = "WORK - SIDE 2";
+            } else if (window.playerPhase === 'TRANSITION') {
+                totalForPhase = 15;
+                labelText = "15s TRANSITION";
+            } else if (window.playerPhase === 'BLOCK_BREAK') {
+                totalForPhase = 20;
+                labelText = "20s BLOCK BREAK";
+            }
+
+            if (phaseLabel) phaseLabel.innerText = labelText;
+
+            if (progressCircle) {
+                const circumference = 326.72;
+                const pct = Math.max(0, Math.min(1, window.timerSeconds / totalForPhase));
+                const offset = circumference * (1 - pct);
+                progressCircle.style.strokeDashoffset = offset;
+            }
+        };
+
+        window.pauseTimer = function() {
+            window.isTimerRunning = false;
+            window.releaseWakeLock();
+            clearInterval(window.timerInterval);
+        };
+
+        window.toggleTimer = function() {
+            if (window.isTimerRunning) window.pauseTimer();
+            else window.startTimer();
+        };
+
+        window.nextExercise = function() {
+            window.pauseTimer();
+            if (window.playerIndex < window.activeRoutine.length - 1) {
+                window.playerIndex++;
+                const nextEx = window.activeRoutine[window.playerIndex];
+                window.playerPhase = nextEx && nextEx.unilateral ? 'WORK_SIDE_1' : 'WORK_FULL';
+                window.timerSeconds = nextEx && nextEx.unilateral ? 30 : 60;
+                window.updatePlayerUI();
+                window.startTimer();
+            } else {
+                window.speakText("Thank you for completing today's workout. See you for the next one.");
+                window.exitWorkout();
+                window.showToast("Workout complete! Great session!");
+            }
+        };
+
+        window.prevExercise = function() {
+            window.pauseTimer();
+            if (window.playerIndex > 0) {
+                window.playerIndex--;
+                const prevEx = window.activeRoutine[window.playerIndex];
+                window.playerPhase = prevEx && prevEx.unilateral ? 'WORK_SIDE_1' : 'WORK_FULL';
+                window.timerSeconds = prevEx && prevEx.unilateral ? 30 : 60;
+                window.updatePlayerUI();
+                window.startTimer();
+            }
+        };
+
+        window.openProfileModal = function() {
+            document.getElementById('modal-profile')?.classList.remove('hidden');
+        };
+
+        window.closeProfileModal = function() {
+            document.getElementById('modal-profile')?.classList.add('hidden');
+        };
+
+        window.showToast = function(msg) {
+            const banner = document.getElementById('toast-banner');
+            const msgEl = document.getElementById('toast-message');
+            if (banner && msgEl) {
+                msgEl.innerText = msg;
+                banner.classList.remove('hidden');
+                setTimeout(() => banner.classList.add('hidden'), 3000);
+            }
+        };
+
+        window.initDateRibbon = function() {
+            const container = document.getElementById('date-ribbon-container');
+            if (!container) return;
+            container.innerHTML = '';
+
+            const today = new Date();
+            for (let i = -3; i <= 3; i++) {
+                const d = new Date();
+                d.setDate(today.getDate() + i);
+                const dateStr = d.toISOString().split('T')[0];
+                const dayName = d.toLocaleDateString('en-US', { weekday: 'short' });
+                const dayNum = d.getDate();
+                const isSelected = dateStr === window.currentDateStr;
+
+                const btn = document.createElement('button');
+                btn.className = isSelected 
+                    ? 'flex-shrink-0 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-2xl bg-peach-500 text-white font-black text-xs shadow-md text-center transition min-h-[40px]'
+                    : 'flex-shrink-0 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-2xl bg-white dark:bg-stone-800 border border-ivory-200 dark:border-stone-700 text-ivory-800 dark:text-ivory-200 hover:border-peach-400 font-extrabold text-xs text-center transition min-h-[40px]';
+                
+                btn.onclick = () => {
+                    window.currentDateStr = dateStr;
+                    window.initDateRibbon();
+                    window.generateDailyRoutine();
+                    window.renderDailyView();
+                };
+
+                btn.innerHTML = `<div class="text-[9px] uppercase opacity-80">${dayName}</div><div class="text-xs sm:text-sm">${dayNum}</div>`;
+                container.appendChild(btn);
+            }
+        };
+
+        window.setEquipmentMode = function(mode) {
+            window.primaryEquipment = mode;
+            ['reformer', 'mat'].forEach(m => {
+                const hdrBtn = document.getElementById(`hdr-equip-${m}`);
+                const optBtn = document.getElementById(`opt-equip-${m}`);
+                const isSel = (m === mode);
+
+                if (hdrBtn) hdrBtn.className = isSel 
+                    ? 'flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-black transition bg-sage-500 text-white shadow-sm min-h-[36px]' 
+                    : 'flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-black transition text-ivory-800 dark:text-ivory-200 hover:text-ivory-900 min-h-[36px]';
+                
+                if (optBtn) optBtn.className = isSel 
+                    ? 'py-2.5 px-3 rounded-xl border text-xs font-bold transition flex items-center justify-center space-x-2 bg-sage-50 border-sage-500 text-sage-600 min-h-[44px]' 
+                    : 'py-2.5 px-3 rounded-xl border text-xs font-bold transition flex items-center justify-center space-x-2 border-ivory-200 dark:border-stone-700 text-ivory-800 dark:text-ivory-200 min-h-[44px]';
+            });
+
+            const bannerLabel = document.getElementById('banner-equipment-label');
+            if (bannerLabel) bannerLabel.innerText = mode === 'reformer' ? "DAILY REFORMER PILATES INSIGHT" : "DAILY MAT PILATES INSIGHT";
+
+            window.savePreferencesToStorage();
+            window.generateDailyRoutine();
+            window.renderDailyView();
+            window.showToast(`Switched to ${mode === 'mat' ? 'Mat Pilates' : 'Reformer Pilates'} Mode`);
+        };
+
+        window.setSkillLevel = function(lvl) {
+            window.userSkillLevel = lvl;
+            ['beginner', 'intermediate', 'advanced'].forEach(l => {
+                const btn = document.getElementById(`opt-lvl-${l}`);
+                if (btn) btn.className = (l === lvl)
+                    ? 'py-2.5 px-2 rounded-xl border text-xs font-bold transition border-peach-500 bg-peach-50 text-peach-600 min-h-[40px]'
+                    : 'py-2.5 px-2 rounded-xl border text-xs font-bold transition border-ivory-200 dark:border-stone-700 text-ivory-800 dark:text-ivory-200 min-h-[40px]';
+            });
+            const badge = document.getElementById('profile-badge-text');
+            if (badge) {
+                const num = lvl === 'beginner' ? 'Level 1' : lvl === 'intermediate' ? 'Level 2' : 'Level 3';
+                badge.innerText = num;
+            }
+
+            const noticeEl = document.getElementById('level-prop-notice');
+            const propsSection = document.getElementById('props-section');
+            if (lvl === 'beginner') {
+                if (noticeEl) noticeEl.innerText = "Level 1 workouts are strictly prop-free and exclude Short & Long Box series.";
+                if (propsSection) propsSection.style.opacity = '0.4';
+            } else {
+                if (noticeEl) noticeEl.innerText = "";
+                if (propsSection) propsSection.style.opacity = '1';
+            }
+
+            window.savePreferencesToStorage();
+        };
+
+        window.setDuration = function(mins) {
+            window.currentDuration = mins;
+            ['30', '45'].forEach(d => {
+                const btn = document.getElementById(`opt-dur-${d}`);
+                if (btn) btn.className = (parseInt(d) === mins)
+                    ? 'py-2.5 px-3 rounded-xl border text-xs font-bold transition flex items-center justify-center space-x-1.5 bg-peach-50 border-peach-500 text-peach-600 min-h-[44px]'
+                    : 'py-2.5 px-3 rounded-xl border text-xs font-bold transition flex items-center justify-center space-x-1.5 border-ivory-200 dark:border-stone-700 text-ivory-800 dark:text-ivory-200 min-h-[44px]';
+            });
+            window.savePreferencesToStorage();
+            window.generateDailyRoutine();
+            window.renderDailyView();
+        };
+
+        window.toggleEquipment = function(prop, isChecked) {
+            window.equipmentAvailable[prop] = isChecked;
+            window.savePreferencesToStorage();
+        };
+
+        window.saveAndApplyProfile = function() {
+            window.savePreferencesToStorage();
+            window.closeProfileModal();
+            window.generateDailyRoutine();
+            window.renderDailyView();
+            window.showToast("Preferences saved & routine regenerated!");
+        };
+
+        window.toggleAudioMode = function() {
+            if (window.audioMode === 'all') window.audioMode = 'beeps';
+            else if (window.audioMode === 'beeps') window.audioMode = 'off';
+            else window.audioMode = 'all';
+
+            window.savePreferencesToStorage();
+            window.showToast(`Voice Cues Set To: ${window.audioMode.toUpperCase()}`);
+        };
+
+        window.playBeep = function(freq, type, duration) {
+            if (window.audioMode === 'off') return;
+            try {
+                if (!window.audioCtx) {
+                    window.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+                if (window.audioCtx.state === 'suspended') {
+                    window.audioCtx.resume();
+                }
+                const osc = window.audioCtx.createOscillator();
+                const gain = window.audioCtx.createGain();
+                osc.type = type || 'sine';
+                osc.frequency.setValueAtTime(freq || 880, window.audioCtx.currentTime);
+                gain.gain.setValueAtTime(0.15, window.audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, window.audioCtx.currentTime + (duration || 0.25));
+                osc.connect(gain);
+                gain.connect(window.audioCtx.destination);
+                osc.start();
+                osc.stop(window.audioCtx.currentTime + (duration || 0.25));
+            } catch(e) {}
+        };
+
+        window.playFinishChime = function() {
+            window.playBeep(1000, 'sine', 0.15);
+            setTimeout(() => {
+                window.playBeep(1400, 'sine', 0.3);
+            }, 150);
+        };
+
+        window.speakText = function(text) {
+            if (window.audioMode !== 'all' || !('speechSynthesis' in window)) return;
+            try {
+                window.speechSynthesis.cancel();
+                const utter = new SpeechSynthesisUtterance(text);
+                utter.rate = 1.0;
+                utter.pitch = 1.0;
+                window.speechSynthesis.speak(utter);
+            } catch(e) {}
+        };
+
+        window.wakeLock = null;
+        window.requestWakeLock = async function() {
+            try {
+                if ('wakeLock' in navigator && !window.wakeLock) {
+                    window.wakeLock = await navigator.wakeLock.request('screen');
+                }
+            } catch (err) {}
+        };
+
+        window.releaseWakeLock = function() {
+            if (window.wakeLock) {
+                window.wakeLock.release().then(() => { window.wakeLock = null; }).catch(() => {});
+            }
+        };
+
+        window.onload = function() {
+            window.initExerciseDatabase();
+            window.loadPreferencesFromStorage();
+            
+            window.setThemeMode(window.themeMode);
+            window.setEquipmentMode(window.primaryEquipment);
+            window.setSkillLevel(window.userSkillLevel);
+            window.setDuration(window.currentDuration);
+
+            if (window.lucide) window.lucide.createIcons();
+            window.initDateRibbon();
+            window.generateDailyRoutine();
+            window.renderDailyView();
+            window.renderLibrary();
+        };
+    </script>
+</body>
+</html>
