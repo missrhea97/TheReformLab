@@ -151,6 +151,10 @@
             </div>
 
             <div class="hidden sm:flex items-center space-x-2">
+                <button onclick="window.openAdminAuth()" class="p-2 rounded-xl bg-ivory-50 dark:bg-stone-800 border border-ivory-200 dark:border-stone-700 text-ivory-800 dark:text-ivory-200 hover:border-peach-400 transition min-h-[38px] min-w-[38px] flex items-center justify-center" title="Admin Mode">
+                    <i data-lucide="lock" class="w-4 h-4"></i>
+                </button>
+
                 <button onclick="window.openProfileModal()" class="flex items-center space-x-2 px-3 py-2 rounded-xl bg-ivory-50 dark:bg-stone-800 border border-ivory-200 dark:border-stone-700 hover:border-peach-400 transition text-xs font-bold text-ivory-800 dark:text-ivory-200 min-h-[38px]" title="Workout Preferences">
                     <i data-lucide="sliders" class="w-4 h-4 text-peach-500 flex-shrink-0"></i>
                     <span>Preferences</span>
@@ -271,9 +275,11 @@
                     </div>
                 </div>
 
-                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between text-xs font-bold text-ivory-800 dark:text-ivory-300 gap-1 pt-1 border-t border-ivory-100 dark:border-stone-700/60">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between text-xs font-bold text-ivory-800 dark:text-ivory-300 gap-2 sm:gap-1 pt-1 border-t border-ivory-100 dark:border-stone-700/60">
                     <span id="library-count-indicator" class="text-peach-600 dark:text-peach-400 font-extrabold">Showing studio movements</span>
-                    <span class="text-[10px] text-sage-600 dark:text-sage-400 uppercase tracking-wide">&bull; Authentic Repertoire Database</span>
+                    <div class="flex items-center space-x-2">
+                        <span class="text-[10px] text-sage-600 dark:text-sage-400 uppercase tracking-wide hidden sm:inline">&bull; Authentic Repertoire Database</span>
+                    </div>
                 </div>
             </div>
 
@@ -307,6 +313,35 @@
             <div id="builder-bank" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"></div>
         </div>
 
+        <!-- VIEW 4: ADMIN DASHBOARD -->
+        <div id="view-admin" class="hidden space-y-4 sm:space-y-6">
+            <div class="bg-white dark:bg-darkbg-800 rounded-3xl p-4 sm:p-5 border border-ivory-200 dark:border-stone-800 space-y-4 shadow-sm">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                    <div>
+                        <h3 class="text-sm font-extrabold text-ivory-900 dark:text-ivory-50 flex items-center gap-2"><i data-lucide="lock" class="w-4 h-4 text-peach-500"></i>Admin Dashboard</h3>
+                        <p class="text-xs text-ivory-800 dark:text-ivory-300 font-medium">Manage library and export data.</p>
+                    </div>
+                    <div class="flex gap-2 w-full sm:w-auto">
+                        <button onclick="window.exportLibraryToCSV()" class="flex-1 sm:flex-none px-4 py-2.5 rounded-xl bg-sage-500 text-white text-xs font-extrabold hover:bg-sage-600 transition shadow-sm flex items-center justify-center space-x-1.5 min-h-[42px]">
+                            <i data-lucide="download" class="w-4 h-4"></i>
+                            <span>Export CSV</span>
+                        </button>
+                        <button onclick="window.switchView('library')" class="flex-1 sm:flex-none px-4 py-2.5 rounded-xl bg-ivory-200 dark:bg-stone-700 text-ivory-900 dark:text-white text-xs font-extrabold transition shadow-sm flex items-center justify-center space-x-1.5 min-h-[42px]">
+                            <i data-lucide="log-out" class="w-4 h-4"></i>
+                            <span>Exit</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="relative w-full">
+                    <i data-lucide="search" class="w-4 h-4 text-ivory-800 dark:text-ivory-300 absolute left-3.5 top-3"></i>
+                    <input type="text" id="admin-search" onkeyup="window.renderAdminBank()" placeholder="Search exercises to edit..." class="w-full pl-10 pr-4 py-2 text-xs font-semibold bg-ivory-50 dark:bg-stone-900 border border-ivory-200 dark:border-stone-700 rounded-xl focus:outline-none focus:border-peach-500 text-ivory-900 dark:text-ivory-100">
+                </div>
+            </div>
+
+            <div id="admin-bank" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"></div>
+        </div>
+
     </main>
 
     <div id="mobile-bottom-menu-bar" class="fixed bottom-0 inset-x-0 z-40 bg-white/95 dark:bg-darkbg-800/95 backdrop-blur-md border-t border-ivory-200 dark:border-stone-800 px-2 py-1.5 pb-safe shadow-xl flex sm:hidden items-center justify-around gap-1 transition-colors">
@@ -323,6 +358,11 @@
         <button id="mob-tab-builder" onclick="window.switchView('builder')" class="flex flex-col items-center justify-center space-y-0.5 text-ivory-800 dark:text-ivory-300 hover:text-peach-500 transition py-1 px-1.5 min-w-[50px]">
             <i data-lucide="wrench" class="w-4 h-4"></i>
             <span class="text-[9px]">Builder</span>
+        </button>
+
+        <button onclick="window.openAdminAuth()" class="flex flex-col items-center justify-center space-y-0.5 text-ivory-800 dark:text-ivory-300 hover:text-peach-500 transition py-1 px-1.5 min-w-[40px]">
+            <i data-lucide="lock" class="w-4 h-4"></i>
+            <span class="text-[9px]">Admin</span>
         </button>
 
         <button id="btn-audio-toggle-mb" onclick="window.toggleAudioMode()" class="p-2 rounded-xl bg-peach-50 dark:bg-peach-500/20 text-peach-600 dark:text-peach-400 border border-peach-100 dark:border-peach-500/30 min-h-[38px] min-w-[38px] flex items-center justify-center" title="Toggle Voice Cues">
@@ -555,6 +595,71 @@
         </div>
     </div>
 
+    <!-- Admin Passcode Modal -->
+    <div id="modal-passcode" class="fixed inset-0 z-50 bg-ivory-900/60 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+        <div class="bg-white dark:bg-darkbg-800 rounded-3xl max-w-sm w-full p-6 space-y-5 shadow-2xl border border-ivory-200 dark:border-stone-800">
+            <div class="text-center space-y-2">
+                <div class="w-12 h-12 rounded-full bg-peach-50 dark:bg-peach-500/20 mx-auto flex items-center justify-center text-peach-500">
+                    <i data-lucide="lock" class="w-6 h-6"></i>
+                </div>
+                <h3 class="text-lg font-black text-ivory-900 dark:text-ivory-50">Admin Access</h3>
+                <p class="text-xs text-ivory-800 dark:text-ivory-300">Enter passcode to manage library.</p>
+            </div>
+            <input type="password" id="admin-passcode-input" placeholder="Passcode..." class="w-full px-4 py-3 text-center text-lg font-black bg-ivory-50 dark:bg-stone-900 border border-ivory-200 dark:border-stone-700 rounded-xl text-ivory-900 dark:text-white focus:outline-none focus:border-peach-500 tracking-widest">
+            <div class="flex space-x-3">
+                <button onclick="window.closeAdminAuth()" class="flex-1 py-3 rounded-xl bg-ivory-200 dark:bg-stone-700 text-ivory-900 dark:text-white font-extrabold text-xs transition">Cancel</button>
+                <button onclick="window.verifyAdminAuth()" class="flex-1 py-3 rounded-xl bg-peach-500 text-white font-extrabold text-xs hover:bg-peach-600 transition shadow-md shadow-peach-500/20">Unlock</button>
+            </div>
+            <p class="text-[10px] text-center text-ivory-500 dark:text-ivory-400">Default passcode: admin</p>
+        </div>
+    </div>
+
+    <!-- Edit Exercise Modal -->
+    <div id="modal-edit-ex" class="fixed inset-0 z-[60] bg-ivory-900/60 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+        <div class="bg-white dark:bg-darkbg-800 rounded-3xl max-w-lg w-full p-6 space-y-4 shadow-2xl border border-ivory-200 dark:border-stone-800 max-h-[90vh] overflow-y-auto">
+            <div class="flex items-center justify-between border-b border-ivory-200 dark:border-stone-700 pb-3">
+                <h3 class="text-base font-black text-ivory-900 dark:text-ivory-50">Edit Movement</h3>
+                <button onclick="window.closeEditModal()" class="p-1 rounded-lg text-ivory-800 dark:text-ivory-200 hover:bg-ivory-100 dark:hover:bg-stone-700 min-h-[36px] min-w-[36px] flex justify-center items-center"><i data-lucide="x" class="w-5 h-5"></i></button>
+            </div>
+            <input type="hidden" id="edit-ex-id">
+            <div class="space-y-3">
+                <div>
+                    <label class="text-[10px] font-extrabold uppercase text-sage-600 dark:text-sage-400">Name</label>
+                    <input type="text" id="edit-ex-name" class="w-full px-3 py-2 text-xs font-bold bg-ivory-50 dark:bg-stone-900 border border-ivory-200 dark:border-stone-700 rounded-xl text-ivory-900 dark:text-white focus:outline-none focus:border-peach-500">
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="text-[10px] font-extrabold uppercase text-sage-600 dark:text-sage-400">Category</label>
+                        <input type="text" id="edit-ex-cat" class="w-full px-3 py-2 text-xs font-bold bg-ivory-50 dark:bg-stone-900 border border-ivory-200 dark:border-stone-700 rounded-xl text-ivory-900 dark:text-white focus:outline-none focus:border-peach-500">
+                    </div>
+                    <div>
+                        <label class="text-[10px] font-extrabold uppercase text-sage-600 dark:text-sage-400">Level</label>
+                        <select id="edit-ex-lvl" class="w-full px-3 py-2 text-xs font-bold bg-ivory-50 dark:bg-stone-900 border border-ivory-200 dark:border-stone-700 rounded-xl text-ivory-900 dark:text-white focus:outline-none focus:border-peach-500">
+                            <option value="beginner">Level 1 (Beginner)</option>
+                            <option value="intermediate">Level 2 (Interm.)</option>
+                            <option value="advanced">Level 3 (Advanced)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="text-[10px] font-extrabold uppercase text-sage-600 dark:text-sage-400">Spring Tension</label>
+                        <input type="text" id="edit-ex-spring" class="w-full px-3 py-2 text-xs font-bold bg-ivory-50 dark:bg-stone-900 border border-ivory-200 dark:border-stone-700 rounded-xl text-ivory-900 dark:text-white focus:outline-none focus:border-peach-500">
+                    </div>
+                    <div>
+                        <label class="text-[10px] font-extrabold uppercase text-sage-600 dark:text-sage-400">Props</label>
+                        <input type="text" id="edit-ex-prop" class="w-full px-3 py-2 text-xs font-bold bg-ivory-50 dark:bg-stone-900 border border-ivory-200 dark:border-stone-700 rounded-xl text-ivory-900 dark:text-white focus:outline-none focus:border-peach-500">
+                    </div>
+                </div>
+                <div>
+                    <label class="text-[10px] font-extrabold uppercase text-sage-600 dark:text-sage-400">Instructional Cue</label>
+                    <textarea id="edit-ex-cue" rows="3" class="w-full px-3 py-2 text-xs font-bold bg-ivory-50 dark:bg-stone-900 border border-ivory-200 dark:border-stone-700 rounded-xl text-ivory-900 dark:text-white focus:outline-none focus:border-peach-500"></textarea>
+                </div>
+            </div>
+            <button onclick="window.saveExerciseEdit()" class="w-full py-3 rounded-xl bg-peach-500 text-white font-extrabold text-xs hover:bg-peach-600 transition shadow-md shadow-peach-500/20">Save Changes</button>
+        </div>
+    </div>
+
     <div id="toast-banner" class="fixed bottom-20 sm:bottom-6 right-4 sm:right-6 z-50 bg-stone-900 text-white px-4 py-2.5 rounded-2xl text-xs font-bold shadow-2xl border border-white/10 hidden transform transition-all duration-300 max-w-xs sm:max-w-md">
         <span id="toast-message">Notification message here</span>
     </div>
@@ -568,6 +673,8 @@
         window.audioMode = 'all';
         window.spotifyUrl = '';
         window.customBuilderQueue = [];
+        window.customExercises = {};
+        window.isAdmin = false;
         window.isTimerRunning = false;
         window.timerInterval = null;
         window.timerSeconds = 60;
@@ -1384,6 +1491,17 @@
                     cue: cue
                 });
             });
+
+            const applyEdits = (arr) => {
+                return arr.map(ex => {
+                    if (window.customExercises[ex.id]) {
+                        return { ...ex, ...window.customExercises[ex.id] };
+                    }
+                    return ex;
+                });
+            };
+            window.EXERCISE_DATABASE.reformer = applyEdits(window.EXERCISE_DATABASE.reformer);
+            window.EXERCISE_DATABASE.mat = applyEdits(window.EXERCISE_DATABASE.mat);
         };
 
         window.seededRandom = function(seed) {
@@ -1475,21 +1593,23 @@
 
             let blockSpecs = [];
             if (app === 'reformer') {
-                let candidateBonusCats = ['Feet in Straps', 'Side Lying Series', 'Kneeling Series', 'Plank Series', 'Standing Series', 'Elephant Series'];
+                let candidateBonusCats = ['Feet in Straps', 'Side Lying Series', 'Kneeling Series', 'Plank Series', 'Standing Series', 'Elephant Series', 'Legs & Glutes'];
                 if (window.equipmentAvailable.box && window.userSkillLevel !== 'beginner') candidateBonusCats.push('Short Box Series', 'Long Box Series');
                 if (window.equipmentAvailable.jumpboard && window.userSkillLevel !== 'beginner') candidateBonusCats.push('Jumpboard');
                 
-                const candidateCoolCats = ['Bridging'];
+                const b3Cat = candidateBonusCats[Math.floor(window.seededRandom(seed + 49) * candidateBonusCats.length)];
+                let remainingBonusCats = candidateBonusCats.filter(c => c !== b3Cat);
+                const b5Cat = remainingBonusCats[Math.floor(window.seededRandom(seed + 99) * remainingBonusCats.length)];
 
-                const b5Cat = candidateBonusCats[Math.floor(window.seededRandom(seed + 99) * candidateBonusCats.length)];
-                let remainingCoolCats = candidateCoolCats.filter(c => c !== b5Cat);
+                const candidateCoolCats = ['Bridging'];
+                let remainingCoolCats = candidateCoolCats.filter(c => c !== b5Cat && c !== b3Cat);
                 if (remainingCoolCats.length === 0) remainingCoolCats = ['Bridging'];
                 const b6Cat = remainingCoolCats[Math.floor(window.seededRandom(seed + 199) * remainingCoolCats.length)];
 
                 blockSpecs = [
                     { key: 'b1', title: `Block 1: Footwork`, cats: ['Footwork'] },
                     { key: 'b2', title: `Block 2: Arms & Upper Body`, cats: ['Arms & Upper Body'] },
-                    { key: 'b3', title: `Block 3: Legs & Glutes`, cats: ['Legs & Glutes'] },
+                    { key: 'b3', title: `Block 3: ${b3Cat}`, cats: [b3Cat] },
                     { key: 'b4', title: `Block 4: Abs/Core`, cats: ['Abs/Core'] },
                     { key: 'b5', title: `Block 5: ${b5Cat}`, cats: [b5Cat] },
                     { key: 'b6', title: `Block 6: ${b6Cat}`, cats: [b6Cat] }
@@ -1520,14 +1640,74 @@
             window.activeRoutine = [];
             let step = 1;
 
+            // Track used exercises to prevent repeats and similar movements
+            const usedIds = new Set();
+            const getSignificantWords = (name) => {
+                const stopWords = ['with','on','in','the','a','and','or','to','of','at','off'];
+                return name.toLowerCase().replace(/[^a-z0-9\s]/g, '').split(' ').filter(w => w.length > 2 && !stopWords.includes(w));
+            };
+            const usedWordSets = [];
+
+            const isSimilar = (name) => {
+                const words = getSignificantWords(name);
+                for (let usedWords of usedWordSets) {
+                    let overlap = 0;
+                    for (let w of words) {
+                        if (usedWords.includes(w)) overlap++;
+                    }
+                    // Consider it similar if they share at least 2 significant words and it makes up 50% or more of the name
+                    if (overlap >= 2 && (overlap / words.length >= 0.5)) return true;
+                }
+                return false;
+            };
+
             blockSpecs.forEach((bSpec, bIdx) => {
                 const targetCount = countsPerBlock[bIdx];
                 const blockPool = pool.filter(ex => bSpec.cats.some(c => ex.category.toLowerCase() === c.toLowerCase()));
-                const candidatePool = blockPool.length >= targetCount ? blockPool : pool;
+                const candidatePool = blockPool.length > 0 ? blockPool : pool; // Fallback to full pool if block pool is empty
                 const shuffled = shuffleArray(candidatePool, seed + bIdx * 100);
 
-                for (let i = 0; i < targetCount; i++) {
-                    const ex = shuffled[i % shuffled.length];
+                let addedForBlock = 0;
+                let attempts = 0;
+
+                // Pass 1: Strict uniqueness (No ID repeats, no similar names)
+                while (addedForBlock < targetCount && attempts < shuffled.length) {
+                    const ex = shuffled[attempts];
+                    if (!usedIds.has(ex.id) && !isSimilar(ex.name)) {
+                        window.activeRoutine.push({
+                            ...ex,
+                            blockKey: bSpec.key,
+                            blockTitle: bSpec.title,
+                            stepNumber: step++
+                        });
+                        usedIds.add(ex.id);
+                        usedWordSets.push(getSignificantWords(ex.name));
+                        addedForBlock++;
+                    }
+                    attempts++;
+                }
+
+                // Pass 2: Relaxed uniqueness (No ID repeats, allow similar names if strict pool ran out)
+                attempts = 0;
+                while (addedForBlock < targetCount && attempts < shuffled.length) {
+                    const ex = shuffled[attempts];
+                    if (!usedIds.has(ex.id)) {
+                        window.activeRoutine.push({
+                            ...ex,
+                            blockKey: bSpec.key,
+                            blockTitle: bSpec.title,
+                            stepNumber: step++
+                        });
+                        usedIds.add(ex.id);
+                        addedForBlock++;
+                    }
+                    attempts++;
+                }
+
+                // Pass 3: Absolute fallback (Allow repeats only if pool is completely exhausted, usually rare)
+                attempts = 0;
+                while (addedForBlock < targetCount) {
+                    const ex = shuffled[attempts % shuffled.length];
                     if (ex) {
                         window.activeRoutine.push({
                             ...ex,
@@ -1535,7 +1715,9 @@
                             blockTitle: bSpec.title,
                             stepNumber: step++
                         });
+                        addedForBlock++;
                     }
+                    attempts++;
                 }
             });
         };
@@ -1638,6 +1820,21 @@
             const grid = document.getElementById('library-grid');
             const search = (document.getElementById('library-search')?.value || '').toLowerCase();
             const appFilter = document.getElementById('library-app-filter')?.value || 'all';
+
+            const catSelect = document.getElementById('library-cat-filter');
+            if (catSelect) {
+                Array.from(catSelect.options).forEach(opt => {
+                    if (opt.value === 'Legs & Glutes') {
+                        const isReformer = (appFilter === 'reformer');
+                        opt.hidden = isReformer;
+                        opt.disabled = isReformer;
+                        if (isReformer && catSelect.value === 'Legs & Glutes') {
+                            catSelect.value = 'all';
+                        }
+                    }
+                });
+            }
+
             const catFilter = document.getElementById('library-cat-filter')?.value || 'all';
             const lvlFilter = document.getElementById('library-lvl-filter')?.value || 'all';
             const propFilter = document.getElementById('library-prop-filter')?.value || 'all';
@@ -1695,6 +1892,62 @@
 
         window.filterLibrary = function() {
             window.renderLibrary();
+        };
+
+        window.exportLibraryToCSV = function() {
+            window.initExerciseDatabase();
+            const allExercises = [
+                ...(window.EXERCISE_DATABASE.reformer || []),
+                ...(window.EXERCISE_DATABASE.mat || [])
+            ];
+
+            if (allExercises.length === 0) {
+                window.showToast("No exercises available to export.");
+                return;
+            }
+
+            const headers = ['Apparatus', 'Level', 'Category', 'Name', 'Spring Tension', 'Prop', 'Unilateral', 'Posture', 'Cue / Instructions'];
+            
+            const escapeCSV = (str) => {
+                if (str === null || str === undefined) return '""';
+                const s = String(str);
+                // Escape quotes, commas, and newlines by wrapping in double quotes
+                if (s.includes(',') || s.includes('"') || s.includes('\n')) {
+                    return `"${s.replace(/"/g, '""')}"`;
+                }
+                return s;
+            };
+
+            let csvContent = headers.join(',') + '\n';
+            
+            allExercises.forEach(ex => {
+                const row = [
+                    ex.apparatus,
+                    ex.level,
+                    ex.category,
+                    ex.name,
+                    ex.spring,
+                    ex.prop,
+                    ex.unilateral ? 'Yes' : 'No',
+                    ex.posture,
+                    ex.cue
+                ];
+                csvContent += row.map(escapeCSV).join(',') + '\n';
+            });
+
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            
+            const link = document.createElement('a');
+            link.setAttribute('href', url);
+            link.setAttribute('download', 'The_Reform_Lab_Exercises.csv');
+            link.style.visibility = 'hidden';
+            
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            window.showToast("Library successfully exported to CSV!");
         };
 
         window.renderBuilderBank = function() {
@@ -1813,7 +2066,7 @@
         };
 
         window.switchView = function(viewName) {
-            ['daily', 'library', 'builder'].forEach(v => {
+            ['daily', 'library', 'builder', 'admin'].forEach(v => {
                 const el = document.getElementById(`view-${v}`);
                 const tab = document.getElementById(`tab-${v}`);
                 const mTab = document.getElementById(`mob-tab-${v}`);
@@ -1835,6 +2088,7 @@
                 window.renderBuilderBank();
                 window.renderBuilderQueue();
             }
+            if (viewName === 'admin') window.renderAdminBank();
         };
 
         window.startWorkout = function() {
@@ -2237,31 +2491,110 @@
             } catch(e) {}
         };
 
-        window.playFinishChime = function() {
-            window.playBeep(1000, 'sine', 0.15);
-            setTimeout(() => {
-                window.playBeep(1400, 'sine', 0.3);
-            }, 150);
+        window.loadCustomExercises = function() {
+            try {
+                const stored = localStorage.getItem('trl_custom_exercises');
+                if (stored) {
+                    window.customExercises = JSON.parse(stored);
+                }
+            } catch(e) {}
         };
 
-        window.speakText = function(text) {
-            if (window.audioMode !== 'all' || !('speechSynthesis' in window)) return;
-            try {
-                // Better browser compatibility checks and workaround for Safari bugs
-                if (window.speechSynthesis.speaking) {
-                    window.speechSynthesis.cancel();
-                }
+        window.openAdminAuth = function() {
+            if (window.isAdmin) {
+                window.switchView('admin');
+            } else {
+                document.getElementById('modal-passcode').classList.remove('hidden');
+                document.getElementById('admin-passcode-input').value = '';
+                document.getElementById('admin-passcode-input').focus();
+            }
+        };
 
-                const utter = new SpeechSynthesisUtterance(text);
-                utter.rate = 1.0;
-                utter.pitch = 1.0;
-                utter.volume = 1.0;
-                
-                // CRITICAL FOR SAFARI: assign to global to prevent garbage collection stopping mid-sentence
-                window._currentUtterance = utter; 
-                
-                window.speechSynthesis.speak(utter);
-            } catch(e) {}
+        window.closeAdminAuth = function() {
+            document.getElementById('modal-passcode').classList.add('hidden');
+        };
+
+        window.verifyAdminAuth = function() {
+            const input = document.getElementById('admin-passcode-input').value;
+            if (input === 'admin') {
+                window.isAdmin = true;
+                window.closeAdminAuth();
+                window.switchView('admin');
+                window.showToast("Admin access granted.");
+            } else {
+                window.showToast("Incorrect passcode. Try 'admin'.");
+            }
+        };
+
+        window.renderAdminBank = function() {
+            window.initExerciseDatabase();
+            const bank = document.getElementById('admin-bank');
+            const search = (document.getElementById('admin-search')?.value || '').toLowerCase();
+            if (!bank) return;
+            bank.innerHTML = '';
+
+            const allExercises = [...(window.EXERCISE_DATABASE.reformer || []), ...(window.EXERCISE_DATABASE.mat || [])];
+            const filtered = allExercises.filter(ex => ex.name.toLowerCase().includes(search) || ex.category.toLowerCase().includes(search));
+
+            filtered.forEach(ex => {
+                const card = document.createElement('div');
+                card.className = 'bg-white dark:bg-darkbg-800 rounded-xl p-3 border border-ivory-200 dark:border-stone-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:border-peach-400 transition';
+                card.innerHTML = `
+                    <div class="flex-1 truncate">
+                        <h5 class="text-xs font-bold text-ivory-900 dark:text-ivory-100 truncate">${ex.name}</h5>
+                        <span class="text-[10px] text-sage-600 dark:text-sage-400 font-semibold">${ex.apparatus} &bull; ${ex.category} &bull; ${ex.level}</span>
+                    </div>
+                    <button onclick="window.openEditModal('${ex.id}')" class="px-3 py-1.5 rounded-lg bg-ivory-100 dark:bg-stone-700 text-ivory-900 dark:text-white font-bold text-xs hover:bg-peach-500 hover:text-white transition w-full sm:w-auto text-center flex-shrink-0">
+                        Edit Move
+                    </button>
+                `;
+                bank.appendChild(card);
+            });
+
+            if (window.lucide) window.lucide.createIcons();
+        };
+
+        window.openEditModal = function(id) {
+            const allExercises = [...(window.EXERCISE_DATABASE.reformer || []), ...(window.EXERCISE_DATABASE.mat || [])];
+            const ex = allExercises.find(e => e.id === id);
+            if (!ex) return;
+
+            document.getElementById('edit-ex-id').value = ex.id;
+            document.getElementById('edit-ex-name').value = ex.name;
+            document.getElementById('edit-ex-cat').value = ex.category;
+            document.getElementById('edit-ex-lvl').value = ex.level;
+            document.getElementById('edit-ex-spring').value = ex.spring;
+            document.getElementById('edit-ex-prop').value = ex.prop;
+            document.getElementById('edit-ex-cue').value = ex.cue;
+
+            document.getElementById('modal-edit-ex').classList.remove('hidden');
+        };
+
+        window.closeEditModal = function() {
+            document.getElementById('modal-edit-ex').classList.add('hidden');
+        };
+
+        window.saveExerciseEdit = function() {
+            const id = document.getElementById('edit-ex-id').value;
+            const updated = {
+                name: document.getElementById('edit-ex-name').value.trim(),
+                category: document.getElementById('edit-ex-cat').value.trim(),
+                level: document.getElementById('edit-ex-lvl').value,
+                spring: document.getElementById('edit-ex-spring').value.trim(),
+                prop: document.getElementById('edit-ex-prop').value.trim(),
+                cue: document.getElementById('edit-ex-cue').value.trim()
+            };
+
+            window.customExercises[id] = updated;
+            localStorage.setItem('trl_custom_exercises', JSON.stringify(window.customExercises));
+            
+            // Force re-init of Database
+            window.EXERCISE_DATABASE = null;
+            window.initExerciseDatabase();
+
+            window.closeEditModal();
+            window.renderAdminBank();
+            window.showToast("Exercise saved successfully!");
         };
 
         window.wakeLock = null;
@@ -2280,6 +2613,7 @@
         };
 
         window.onload = function() {
+            window.loadCustomExercises();
             window.initExerciseDatabase();
             window.loadPreferencesFromStorage();
             
